@@ -25,7 +25,7 @@
 }
 
 -(void)initCartTable
-{
+{   //新加的注释
     UITableView *cartTable =[[UITableView alloc]init];
     cartTable.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-44);
     cartTable.delegate =self;
