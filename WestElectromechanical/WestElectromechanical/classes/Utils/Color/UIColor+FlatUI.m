@@ -145,4 +145,9 @@
 }
 
 
++ (UIColor *) appLineColor{
+    return [UIColor colorFromHexCode:@"c2c2c2"];
+}
+
+
 @end

@@ -44,5 +44,7 @@
 #pragma mark - APP颜色
 + (UIColor *) appBlueColor;
 
++ (UIColor *) appLineColor;
+
 
 @end

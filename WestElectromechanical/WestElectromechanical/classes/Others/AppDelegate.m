@@ -15,6 +15,7 @@
 #import "WEMineHomeVC.h"
 #import "WESearchHomeVC.h"
 #import "WEHomeVC.h"
+#import "PersonCenterVC.h"
 @interface AppDelegate ()
 
 @end
@@ -68,10 +69,11 @@
     WENavitationController *cartNav = [[WENavitationController alloc]
                                        initWithRootViewController:cartVC];
 
-    WEMineHomeVC *mineVC = [[WEMineHomeVC alloc] init];
+    PersonCenterVC *mineVC = [PersonCenterVC alloc];
     mineVC.title = @"我的";
     WENavitationController *mineNav = [[WENavitationController alloc]
                                        initWithRootViewController:mineVC];
+  
     
     RDVTabBarController *tabBarController = [[RDVTabBarController alloc] init];
     [tabBarController setViewControllers:@[homeNav,

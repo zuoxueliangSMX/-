@@ -36,6 +36,9 @@ static NSString * const ACCOUNT_ISINVITATIONFIRST =@"firstInvitation";
 
 static NSString * const ACCOUNT_NEW_FRIEND_REQUEST = @"new_friend_request";
 
+#define LOGIN_STATE @"login_state"
+#define MOBILE_PHONE @"mobilephone"
+
 @interface AccountHanler : NSObject
 
 @property (nonatomic ,assign)BOOL isInvitationLogin;
@@ -48,6 +51,19 @@ static NSString * const ACCOUNT_NEW_FRIEND_REQUEST = @"new_friend_request";
 + (BOOL)isFirstLogin;
 + (void)saveIsFirstLogin:(BOOL)isFirstLogin;
 
+
+
+//登录状态
++ (void)setLoginState:(NSInteger)state;
+
++ (NSInteger)loginState;
+
+
+
+
+//手机号
++ (void)setMobilePhone:(NSString *)phone;
++ (NSString *)mobilePhone;
 
 /**
  *  收到的好友请求数目

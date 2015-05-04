@@ -44,6 +44,29 @@
 
 }
 
+#pragma mark - 登录状态
+
++ (void)setLoginState:(NSInteger)state{
+    
+    [UserDefaultsUtils setIntegerValue:state withKey:LOGIN_STATE];
+    
+}
++ (NSInteger)loginState{
+    return [UserDefaultsUtils integerValueWithKey:LOGIN_STATE];
+}
+
+
+#pragma mark phone
++(void)setMobilePhone:(NSString *)phone{
+    
+    [UserDefaultsUtils saveValue:phone forKey:MOBILE_PHONE];
+
+}
++(NSString *)mobilePhone{
+    
+    return [UserDefaultsUtils valueWithKey:MOBILE_PHONE];
+}
+
 
 + (NSInteger)newFriendRequest{
     return [UserDefaultsUtils integerValueWithKey:ACCOUNT_NEW_FRIEND_REQUEST];
