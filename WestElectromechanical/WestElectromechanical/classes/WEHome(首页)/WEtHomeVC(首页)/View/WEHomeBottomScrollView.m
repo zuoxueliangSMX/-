@@ -10,16 +10,21 @@
 #import "JCTopic.h"
 #import "WERecommendBgView.h"
 #import "TAPageControl.h"
+#import "WERecommendModel.h"
 #define kBottomViewCount 3
+#define kBgViewTag 1000
 @interface WEHomeBottomScrollView()<UIScrollViewDelegate>
 @property (nonatomic ,weak)UIView *recommendBgView;
 @property (nonatomic ,weak)TAPageControl *pageControl;
+@property (nonatomic ,strong)NSMutableArray *bgViews;
 @end
 @implementation WEHomeBottomScrollView
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
 
+        self.userInteractionEnabled = YES;
+        _bgViews =[NSMutableArray array];
         UIView * recommendBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         [recommendBgView setBackgroundColor:[UIColor clearColor]];
         [self addSubview:recommendBgView];
@@ -48,8 +53,15 @@
         
         for (int i = 0; i < kBottomViewCount; i++) {
             WERecommendBgView *bgView =[[WERecommendBgView alloc]initWithFrame:CGRectMake(frame.size.width*i, 0, frame.size.width, bottomScroll.size.height)];
+            bgView.tag =kBgViewTag +i;
+            [bgView setRecommendBgViewBlock:^(NSInteger imgTag) {
+                if (_block) {
+                    _block(i,imgTag);
+                }
+            }];
             bgView.backgroundColor =[UIColor clearColor];
             [bottomScroll addSubview:bgView];
+            [_bgViews addObject:bgView];
         }
         
         TAPageControl *pageControl = [[TAPageControl alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(bottomScroll.frame)-10, frame.size.width, 10)];;
@@ -62,6 +74,40 @@
     }
     return self;
 }
+
+- (void)setUpRecommendsData:(NSMutableArray *)recommends
+{
+    NSMutableArray *tem1 =[NSMutableArray array];
+    NSMutableArray *tem2 =[NSMutableArray array];
+    NSMutableArray *tem3 =[NSMutableArray array];
+
+    for (int i = 0; i<recommends.count; i++) {
+        WERecommendModel *model =[recommends objectAtIndex:i];
+
+        if (i<recommends.count/3) {
+            [tem1 addObject:model];
+        }
+        if (i>recommends.count/3-1&&i<recommends.count/3*2) {
+            [tem2 addObject:model];
+        }
+        if (i>recommends.count/3*2-1&&i<recommends.count/3*3) {
+            [tem3 addObject:model];
+        }
+    }
+    NSArray *tem =@[tem1,tem2,tem3];
+    for (int i = 0; i < kBottomViewCount; i++) {
+       WERecommendBgView *bgView =  [_bgViews objectAtIndex:i];
+        [bgView setUpBgViewData:tem[i]];
+    }
+}
+
+
+- (void)setHomeBottomScrollViewBlock:(homeBottomScrollViewBlock)block
+{
+    _block = block;
+}
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
  

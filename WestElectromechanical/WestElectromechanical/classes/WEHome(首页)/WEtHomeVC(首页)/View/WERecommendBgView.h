@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^recommendBgViewBlock) (NSInteger imgTag);
 @interface WERecommendBgView : UIView
-@property (nonatomic ,strong)NSMutableArray *recommends;
+{
+    __strong recommendBgViewBlock _block;
+}
+- (void)setRecommendBgViewBlock:(recommendBgViewBlock)block;
+- (void)setUpBgViewData:(NSMutableArray *)recommends;
 @end

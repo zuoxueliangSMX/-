@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "RDVTabBarController.h"
 #import "RDVTabBarItem.h"
 #import "WELeadPageVC.h"
 #import "WECartHomeVC.h"
@@ -75,16 +74,17 @@
                                        initWithRootViewController:mineVC];
   
     
-    RDVTabBarController *tabBarController = [[RDVTabBarController alloc] init];
-    [tabBarController setViewControllers:@[homeNav,
+    _tabBarController = [[RDVTabBarController alloc] init];
+    [_tabBarController setViewControllers:@[homeNav,
                                            searchNav,
                                            categoryNav,
                                            cartNav,
                                            mineNav]];
     
-    [self customizeTabBarForController:tabBarController];
+    [self customizeTabBarForController:_tabBarController];
+
 //    [self customizeInterface];
-    self.window.rootViewController = tabBarController;
+    self.window.rootViewController = _tabBarController;
     [self.window makeKeyAndVisible];
     
     

@@ -10,8 +10,7 @@
 #define WestElectromechanical_APIConfig_h
 
 #define gold @"12"
-
-
+#define kWEImgUrl @"http://114.215.135.236/ehsy/"
 #endif
 #define BASEPARAMS [NSMutableDictionary dictionaryWithDictionary:\
 @{\

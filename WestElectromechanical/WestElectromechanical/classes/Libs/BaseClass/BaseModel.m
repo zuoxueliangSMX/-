@@ -20,7 +20,7 @@
         return [(NSString *)value integerValue];
     }
     else {
-        
+        return 0;
     }
     
     return 0;

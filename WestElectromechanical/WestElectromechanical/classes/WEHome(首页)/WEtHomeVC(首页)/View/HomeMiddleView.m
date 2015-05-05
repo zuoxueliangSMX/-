@@ -8,6 +8,7 @@
 
 #import "HomeMiddleView.h"
 #define kMiddleBtnCount 4
+#define kMiddleBtnTag 1000
 @interface HomeMiddleView()
 @end
 @implementation HomeMiddleView
@@ -18,6 +19,7 @@
         self.backgroundColor =[UIColor clearColor];
         for (int i = 0; i< kMiddleBtnCount; i++) {
             UIButton *btn =[UIButton buttonWithType:UIButtonTypeCustom];
+            btn.tag = kMiddleBtnTag+i;
             UIImage *img =[UIImage imageNamed:[NSString stringWithFormat:@"Home_Middle_0%d",i+1]];
             CGFloat margin =(frame.size.width-4*img.size.width)/5;
             btn.frame =CGRectMake(margin+(img.size.width+margin)*i,(frame.size.height-img.size.height)/2.0, img.size.width,img.size.height);
@@ -30,9 +32,16 @@
     return self;
 }
 
+- (void)setHomeMiddleVieBlock:(homeMiddleViewBlock)block
+{
+    _block = block;
+}
+
 - (void)middleClick:(UIButton *)btn
 {
-    
+    if (_block) {
+        _block(btn.tag-kMiddleBtnTag);
+    }
     
 }
 

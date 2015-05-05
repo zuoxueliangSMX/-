@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^homeBottomScrollViewBlock) (NSInteger bgTag ,NSInteger imgTag);
 @interface WEHomeBottomScrollView : UIView
-
+{
+    __strong homeBottomScrollViewBlock _block;
+}
+- (void)setUpRecommendsData:(NSMutableArray *)recommends;
+- (void)setHomeBottomScrollViewBlock:(homeBottomScrollViewBlock)block;
 @end

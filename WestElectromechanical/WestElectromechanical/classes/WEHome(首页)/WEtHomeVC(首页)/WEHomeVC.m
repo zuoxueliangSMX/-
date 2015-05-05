@@ -15,9 +15,12 @@
 #import "UIImageView+WebCacheImg.h"
 #import "WEHomeCityVC.h"
 #import "WEHTTPHandler.h"
+#import "WEHomeInfoModel.h"
+#import "AppDelegate.h"
 @interface WEHomeVC ()
 @property (nonatomic ,strong)NSMutableArray *imgurls;
 @property (nonatomic ,weak)WEHomeScrollView *homeScroll;
+@property (nonatomic ,strong)WEHomeInfoModel *homeInfoModel;
 @end
 
 @implementation WEHomeVC
@@ -26,7 +29,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
-//    [self addRightItem];
+    [self addRightItem];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -34,6 +37,34 @@
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
 
+
+- (void)addRightItem{
+    [self addRightItemWithImage:@"Navigation_Search" action:@selector(searchData:)];
+}
+
+- (UIButton *)addRightItemWithImage:(NSString *)imageName action:(SEL)action {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:imageName];
+    button.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    // 这里需要注意：由于是想让图片右移，所以left需要设置为正，right需要设置为负。正在是相反的。
+    // 让按钮图片右移15
+    //[button setImageEdgeInsets:UIEdgeInsetsMake(0, 15, 0, -15)];
+    
+    [button setImage:image forState:UIControlStateNormal];
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    button.titleLabel.font = [UIFont systemFontOfSize:16];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    return button;
+}
+
+- (void)searchData:(UIButton *)click
+{
+    AppDelegate *delegate =(AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.tabBarController.selectedIndex =1;
+
+}
 - (void)setBarButtonItems
 {
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Navigation_logo"]];
@@ -69,33 +100,23 @@
 
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    NSMutableArray *temArray =[NSMutableArray array];
-    UIImage * PlaceholderImage = [UIImage imageNamed:@"Home_Middle_04"];
-    
-    //网络图片
-    //***********************//
-    //key pic = 地址 NSString
-    //key title = 显示的标题 NSString
-    //key isLoc = 是否本地图片 Bool
-    //key placeholderImage = 网络图片加载失败时显示的图片 UIImage
-    //***********************//
-
-    
-    [temArray addObject:[NSDictionary dictionaryWithObjects:@[@"http://www.ghzw.cn/wzsq/UploadFiles_9194/201109/20110915154150869.bmp",@"PIC1",@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]];
-    
-    [temArray addObject:[NSDictionary dictionaryWithObjects:@[@"http://sudasuta.com/wp-content/uploads/2013/10/10143181686_375e063f2c_z.jpg",@"PIC2",@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]];
-    
-    [temArray addObject:[NSDictionary dictionaryWithObjects:@[@"http://www.yancheng.gov.cn/ztzl/zgycddhsdgy/xwdt/201109/W020110902584601289616.jpg",@"PIC3",@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]];
-    
     WEHomeScrollView *scrollView =[[WEHomeScrollView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49)];
     scrollView.backgroundColor =[UIColor clearColor];
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
-    scrollView.headerView.imageURLs = temArray;
-    [scrollView.headerView.imgPlayerView upDate];
     scrollView.bounces = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:scrollView];
+    [scrollView.bottomView setHomeBottomScrollViewBlock:^(NSInteger bgTag, NSInteger imgTag) {
+        DLog(@"%ld    -----    %ld",bgTag,imgTag);
+    }];
+    [scrollView.middleView setHomeMiddleVieBlock:^(NSInteger index) {
+        if (index == 0) {
+            AppDelegate *delegate =(AppDelegate *)[UIApplication sharedApplication].delegate;
+            delegate.tabBarController.selectedIndex =2;
+//            [delegate.tabBarController viewControllerAtIndex:3];
+        }
+    }];
     _homeScroll = scrollView;
     
     WELocationManager *mgr =[WELocationManager sharedWELocationManager];
@@ -105,7 +126,7 @@
     }];
     
     
-    [self initNetData:@"上海"];
+    [self initNetData:@"北京"];
 }
 
 /**
@@ -114,13 +135,43 @@
 - (void)initNetData:(NSString *)cityName
 {
     WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+    __weak WEHomeVC *bSelf = self;
     [handler executeGetHomeDataTaskWithCityName:cityName withSuccess:^(id obj) {
         DLog(@"homeVC----->%@",obj);
-        [self initAdData:@"1"];
+        _homeInfoModel = (WEHomeInfoModel *)obj;
+//        [self initAdData:@"1"];
+        [bSelf showADInfo];
+        [bSelf showRecommendsInfo];
     } withFailed:^(id obj) {
         DLog(@"homeVC--error-->%@",obj);
     }];
 }
+- (void)showRecommendsInfo
+{
+    [_homeScroll.bottomView setUpRecommendsData:_homeInfoModel.recommends];
+}
+- (void)showADInfo
+{
+    NSMutableArray *temArray =[NSMutableArray array];
+    UIImage * PlaceholderImage = [UIImage imageNamed:@"Home_Middle_04"];
+    NSInteger index = 1;
+    for (WEAdModel *adModel in _homeInfoModel.ads) {
+        //网络图片
+        //***********************//
+        //key pic = 地址 NSString
+        //key title = 显示的标题 NSString
+        //key isLoc = 是否本地图片 Bool
+        //key placeholderImage = 网络图片加载失败时显示的图片 UIImage
+        //***********************//
+        NSString *picTag =[NSString stringWithFormat:@"PIC%ld",index];
+        DLog(@"%@",[NSDictionary dictionaryWithObjects:@[adModel.pic,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]);
+        DLog(@"%@",adModel.pic);
+        [temArray addObject:[NSDictionary dictionaryWithObjects:@[adModel.pic,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]];
+    }
+    _homeScroll.headerView.imageURLs = temArray;
+     [_homeScroll.headerView.imgPlayerView upDate];
+}
+
 
 - (void)initAdData:(NSString *)AdId
 {

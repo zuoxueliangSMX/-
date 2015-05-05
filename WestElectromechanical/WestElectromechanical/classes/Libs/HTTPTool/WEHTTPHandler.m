@@ -10,6 +10,9 @@
 #import "HTTPBaseRequest.h"
 #import "HttpTool.h"
 #import "AccountHanler.h"
+#import "WEHotRecommendModel.h"
+#import "WECategorysModel.h"
+#import "WEHomeInfoModel.h"
 @implementation WEHTTPHandler
 #pragma mark -
 #pragma mark - 首页模块
@@ -29,10 +32,12 @@
     NSString *params =[NSString stringWithFormat:@"city_name=%@",cityName];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
-        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+        
+        WEHomeInfoModel *homeInfoModel =[[WEHomeInfoModel alloc]initWithDict:json];
+        if (homeInfoModel.message == 0) {
         
             if (success) {
-                success(json);
+                success(homeInfoModel);
             }
         }else{
             if (failed) {
@@ -94,10 +99,12 @@
     NSString *params = [NSString stringWithFormat:@"city_name=%@",cityName];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
-        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+        
+        WEHotRecommendModel *model =[[WEHotRecommendModel alloc]initWithDict:json];
+        if (model.message == 0) {
             
             if (success) {
-                success(json);
+                success(model);
             }
         }else{
             if (failed) {
@@ -281,10 +288,12 @@
     NSString *url =[BaseHandler requestUrlWithUrl:API_PRODUCT_SECONDCATEGORYLIST WithPath:@""];
     [HttpTool post:url withParams:nil withSuccess:^(id json) {
         DLog(@"%@",json);
-        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+        
+        WECategorysModel *categorysModel =[[WECategorysModel alloc]initWithDict:json];
+        if (categorysModel.message == 0) {
             
             if (success) {
-                success(json);
+                success(categorysModel);
             }
         }else{
             if (failed) {

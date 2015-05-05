@@ -58,6 +58,7 @@
     WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
     [handler executeGetFirstCategoryTaskWithSuccess:^(id obj) {
         DLog(@"WECategoryHomeVC---json->%@",obj);
+        
         [self initFirstCategoryList:@"1000005"];
     } WithFailed:^(id obj) {
         DLog(@"WECategoryHomeVC---error->%@",obj);

@@ -77,6 +77,14 @@
 		A38A32911AEC0BC100F7FE7C /* WENavitationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32901AEC0BC100F7FE7C /* WENavitationController.m */; };
 		A38A32951AEC0CB000F7FE7C /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */; };
 		A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32971AEC11E700F7FE7C /* ViewController.m */; };
+		A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */; };
+		A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248921AF8FAC400760C72 /* WEHotRecommendSingleModel.m */; };
+		A3C2489A1AF9002F00760C72 /* WECategorysModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248991AF9002F00760C72 /* WECategorysModel.m */; };
+		A3C2489D1AF9004900760C72 /* WECategorySingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2489C1AF9004900760C72 /* WECategorySingleModel.m */; };
+		A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A01AF906BC00760C72 /* WEHomeInfoModel.m */; };
+		A3C248A41AF9074900760C72 /* WEAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A31AF9074900760C72 /* WEAdModel.m */; };
+		A3C248A71AF907C500760C72 /* WENoticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A61AF907C500760C72 /* WENoticeModel.m */; };
+		A3C248AA1AF9088A00760C72 /* WERecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A91AF9088A00760C72 /* WERecommendModel.m */; };
 		A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A8361AEC9AD4001DC327 /* UIBarButtonItem+Extension.m */; };
 		A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A8391AEC9B07001DC327 /* UIView+Extension.m */; };
 		A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A83C1AEC9BF6001DC327 /* UIImage+Extension.m */; };
@@ -249,6 +257,22 @@
 		A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
 		A38A32961AEC11E700F7FE7C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A38A32971AEC11E700F7FE7C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A3C2488E1AF8FA1600760C72 /* WEHotRecommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHotRecommendModel.h; sourceTree = "<group>"; };
+		A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHotRecommendModel.m; sourceTree = "<group>"; };
+		A3C248911AF8FAC400760C72 /* WEHotRecommendSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHotRecommendSingleModel.h; sourceTree = "<group>"; };
+		A3C248921AF8FAC400760C72 /* WEHotRecommendSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHotRecommendSingleModel.m; sourceTree = "<group>"; };
+		A3C248981AF9002F00760C72 /* WECategorysModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WECategorysModel.h; path = ../../../../../../../../../Documents/WECategorysModel.h; sourceTree = "<group>"; };
+		A3C248991AF9002F00760C72 /* WECategorysModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WECategorysModel.m; path = ../../../../../../../../../Documents/WECategorysModel.m; sourceTree = "<group>"; };
+		A3C2489B1AF9004900760C72 /* WECategorySingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WECategorySingleModel.h; path = ../../../../../../../../../Documents/WECategorySingleModel.h; sourceTree = "<group>"; };
+		A3C2489C1AF9004900760C72 /* WECategorySingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WECategorySingleModel.m; path = ../../../../../../../../../Documents/WECategorySingleModel.m; sourceTree = "<group>"; };
+		A3C2489F1AF906BC00760C72 /* WEHomeInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeInfoModel.h; sourceTree = "<group>"; };
+		A3C248A01AF906BC00760C72 /* WEHomeInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHomeInfoModel.m; sourceTree = "<group>"; };
+		A3C248A21AF9074900760C72 /* WEAdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEAdModel.h; sourceTree = "<group>"; };
+		A3C248A31AF9074900760C72 /* WEAdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEAdModel.m; sourceTree = "<group>"; };
+		A3C248A51AF907C500760C72 /* WENoticeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WENoticeModel.h; sourceTree = "<group>"; };
+		A3C248A61AF907C500760C72 /* WENoticeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WENoticeModel.m; sourceTree = "<group>"; };
+		A3C248A81AF9088A00760C72 /* WERecommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WERecommendModel.h; sourceTree = "<group>"; };
+		A3C248A91AF9088A00760C72 /* WERecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WERecommendModel.m; sourceTree = "<group>"; };
 		A3C2A8351AEC9AD4001DC327 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
 		A3C2A8361AEC9AD4001DC327 /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 		A3C2A8381AEC9B07001DC327 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -573,6 +597,7 @@
 				A38A32521AEC033D00F7FE7C /* Others */,
 				A38A32531AEC033D00F7FE7C /* Resource */,
 				A38A32571AEC033D00F7FE7C /* Utils */,
+				A3C248AB1AF91DA000760C72 /* WEProduct(商品) */,
 				A38A32581AEC033D00F7FE7C /* WECart(购物车) */,
 				A38A325A1AEC033D00F7FE7C /* WECategory(分类) */,
 				A38A325C1AEC033D00F7FE7C /* WEHome(首页) */,
@@ -684,6 +709,7 @@
 		A38A325B1AEC033D00F7FE7C /* WECategorytHomeVC(分类首页) */ = {
 			isa = PBXGroup;
 			children = (
+				A3C248941AF8FE8500760C72 /* Model */,
 				A3C48FAC1AEFC2AF001D9717 /* View */,
 				A38A32781AEC075500F7FE7C /* WECategoryHomeVC.h */,
 				A38A32791AEC075500F7FE7C /* WECategoryHomeVC.m */,
@@ -703,6 +729,7 @@
 		A38A325D1AEC033D00F7FE7C /* WEtHomeVC(首页) */ = {
 			isa = PBXGroup;
 			children = (
+				A3C2489E1AF906AC00760C72 /* Model */,
 				A38851B01AED2C4C0019D6E5 /* View */,
 				A38A32721AEC06C900F7FE7C /* WEHomeVC.h */,
 				A38A32731AEC06C900F7FE7C /* WEHomeVC.m */,
@@ -755,6 +782,7 @@
 		A38A32631AEC033D00F7FE7C /* WESearchHomeVC(搜索首页) */ = {
 			isa = PBXGroup;
 			children = (
+				A3C2488D1AF8F9FD00760C72 /* Model */,
 				A38A32811AEC07E200F7FE7C /* WESearchHomeVC.h */,
 				A38A32821AEC07E200F7FE7C /* WESearchHomeVC.m */,
 			);
@@ -799,6 +827,50 @@
 				A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		A3C2488D1AF8F9FD00760C72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3C2488E1AF8FA1600760C72 /* WEHotRecommendModel.h */,
+				A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */,
+				A3C248911AF8FAC400760C72 /* WEHotRecommendSingleModel.h */,
+				A3C248921AF8FAC400760C72 /* WEHotRecommendSingleModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A3C248941AF8FE8500760C72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3C248981AF9002F00760C72 /* WECategorysModel.h */,
+				A3C248991AF9002F00760C72 /* WECategorysModel.m */,
+				A3C2489B1AF9004900760C72 /* WECategorySingleModel.h */,
+				A3C2489C1AF9004900760C72 /* WECategorySingleModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A3C2489E1AF906AC00760C72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3C2489F1AF906BC00760C72 /* WEHomeInfoModel.h */,
+				A3C248A01AF906BC00760C72 /* WEHomeInfoModel.m */,
+				A3C248A21AF9074900760C72 /* WEAdModel.h */,
+				A3C248A31AF9074900760C72 /* WEAdModel.m */,
+				A3C248A51AF907C500760C72 /* WENoticeModel.h */,
+				A3C248A61AF907C500760C72 /* WENoticeModel.m */,
+				A3C248A81AF9088A00760C72 /* WERecommendModel.h */,
+				A3C248A91AF9088A00760C72 /* WERecommendModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A3C248AB1AF91DA000760C72 /* WEProduct(商品) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "WEProduct(商品)";
 			sourceTree = "<group>";
 		};
 		A3C2A82F1AEC9518001DC327 /* Category */ = {
@@ -1008,15 +1080,18 @@
 				A3C466F21AF313B300E1604D /* TADotView.m in Sources */,
 				7FDEDC1A1AF764CD00911A02 /* MyRegisterVC.m in Sources */,
 				A369CFB41AEE70C4001F3DB7 /* PinyinHelper.m in Sources */,
+				A3C2489D1AF9004900760C72 /* WECategorySingleModel.m in Sources */,
 				7FDEDC0D1AF71D6400911A02 /* NSArray+MASAdditions.m in Sources */,
 				A369CF4C1AEDBF20001F3DB7 /* WEHomeCityVC.m in Sources */,
 				A369CF7F1AEDC9B1001F3DB7 /* BaseEntity.m in Sources */,
 				7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */,
+				A3C248AA1AF9088A00760C72 /* WERecommendModel.m in Sources */,
 				A3843ECE1AF47A6000FDE84F /* HTTPBaseRequest.m in Sources */,
 				A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */,
 				A3C466F11AF313B300E1604D /* TAAnimatedDotView.m in Sources */,
 				A38A32911AEC0BC100F7FE7C /* WENavitationController.m in Sources */,
 				A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */,
+				A3C2489A1AF9002F00760C72 /* WECategorysModel.m in Sources */,
 				A3C466E31AF30B3C00E1604D /* WEHomeBottomScrollView.m in Sources */,
 				7FDEDC0E1AF71D6400911A02 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				A38851B91AED2DD40019D6E5 /* ImagePlayerView.m in Sources */,
@@ -1026,6 +1101,7 @@
 				A3C466F31AF313B300E1604D /* TAPageControl.m in Sources */,
 				7FDEDC0C1AF71D6400911A02 /* MASViewConstraint.m in Sources */,
 				A369CF841AEDC9B1001F3DB7 /* RTDatabaseHelper.m in Sources */,
+				A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */,
 				7FDEDC071AF71D6400911A02 /* MASCompositeConstraint.m in Sources */,
 				A3843ECD1AF47A6000FDE84F /* UserDefaultsUtils.m in Sources */,
 				A38851C01AED36C40019D6E5 /* UIImageView+WebCacheImg.m in Sources */,
@@ -1044,10 +1120,13 @@
 				A369CFAF1AEE70C4001F3DB7 /* ChineseToPinyinResource.m in Sources */,
 				A369CF831AEDC9B1001F3DB7 /* BaseViewController.m in Sources */,
 				A38A328C1AEC083900F7FE7C /* RDVTabBarController.m in Sources */,
+				A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */,
 				A38A328D1AEC083900F7FE7C /* RDVTabBarItem.m in Sources */,
 				A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */,
+				A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */,
 				A369CF821AEDC9B1001F3DB7 /* BaseTableViewProtocol.m in Sources */,
 				A369CFB31AEE70C4001F3DB7 /* PinYinForObjc.m in Sources */,
+				A3C248A71AF907C500760C72 /* WENoticeModel.m in Sources */,
 				7FDEDC161AF7549C00911A02 /* SendIFAPPDefault.m in Sources */,
 				A3C48FAF1AEFC2C7001D9717 /* WECategoryHomeCell.m in Sources */,
 				A3C466F01AF313B300E1604D /* TAAbstractDotView.m in Sources */,
@@ -1058,6 +1137,7 @@
 				A37F75601AF3DF040054B677 /* WECartHomeCellBottomView.m in Sources */,
 				A3C466E01AF30B1900E1604D /* JCTopic.m in Sources */,
 				A369CFB21AEE70C4001F3DB7 /* PinyinFormatter.m in Sources */,
+				A3C248A41AF9074900760C72 /* WEAdModel.m in Sources */,
 				A3843ECC1AF47A6000FDE84F /* AccountHanler.m in Sources */,
 				A38A32831AEC07E200F7FE7C /* WESearchHomeVC.m in Sources */,
 				7FDEDC081AF71D6400911A02 /* MASConstraint.m in Sources */,

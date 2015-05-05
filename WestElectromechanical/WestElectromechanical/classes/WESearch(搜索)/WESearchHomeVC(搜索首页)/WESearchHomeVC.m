@@ -8,10 +8,12 @@
 
 #import "WESearchHomeVC.h"
 #import "WEHTTPHandler.h"
+#import "WEHotRecommendModel.h"
 @interface WESearchHomeVC ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic ,weak)UISearchBar *mySearchBar;
 @property (nonatomic ,weak)UITableView *searchTable;
+@property (nonatomic ,strong)WEHotRecommendModel *hotRecommendModel;
 @end
 
 @implementation WESearchHomeVC
@@ -39,9 +41,28 @@
     [mySearchBar sizeToFit];
     mySearchBar.backgroundImage =[self imageWithColor:[UIColor clearColor] size:mySearchBar.bounds.size];
     _mySearchBar = mySearchBar;
+    _searchTable = searchTable;
     searchTable.tableHeaderView = mySearchBar;
     [self initNetData:@"上海"];
 }
+
+/**
+ *  获取热门推荐数据
+ */
+- (void)initNetData:(NSString *)cityName{
+    WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+    [handler executeGetHotRecommendWithCityName:cityName withSuccess:^(id obj) {
+        DLog(@"WESearchHomeVC--->%@",obj);
+        _hotRecommendModel = (WEHotRecommendModel *)obj;
+        [_searchTable reloadData];
+        //        [self initProductDetailData:@"12168005"];
+    } withFailed:^(id obj) {
+        DLog(@"WESearchHomeVC--->%@",obj);
+    }];
+    
+}
+
+
 /**
  *  根据内容搜索
  */
@@ -71,23 +92,7 @@
     }];
 }
 
-/**
- *  获取热门推荐数据
- */
-- (void)initNetData:(NSString *)cityName{
-    WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
-    [handler executeGetHotRecommendWithCityName:cityName withSuccess:^(id obj) {
-        DLog(@"WESearchHomeVC--->%@",obj);
-        for (NSDictionary *dict in [obj objectForKey:@"infos"]) {
-            DLog(@"%@",[dict objectForKey:@"name"]);
-        }
-        
-        [self initProductDetailData:@"12168005"];
-    } withFailed:^(id obj) {
-        DLog(@"WESearchHomeVC--->%@",obj);
-    }];
-    
-}
+
 
 
 /**
@@ -227,7 +232,7 @@
     return header;
 }
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.items count];
+    return _hotRecommendModel.infos.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -241,7 +246,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.textLabel.text = self.items[indexPath.row];
+    cell.textLabel.text = [_hotRecommendModel.infos[indexPath.row] name];
     
     return cell;
 }
