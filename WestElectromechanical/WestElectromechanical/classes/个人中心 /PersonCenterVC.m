@@ -81,12 +81,11 @@
         imgv.hidden =YES;
                labbb.hidden = NO;
         
-<<<<<<< HEAD
+
         labbb.hidden = NO;
         if ([SendIFAPPDefault shareAppDefault].phone.length==0) {
             
             labbb.text =[AccountHanler userName];
-=======
         NSString *userID =[AccountHanler userId];
         [weh executeGetPersonCenterInfoWithUserId:userID Success:^(id obj) {
             NSString *str = [NSString stringWithFormat:@"%@先生",[obj objectForKey:@"u_name"]];
@@ -94,7 +93,6 @@
             textLa.text =str;
 
         } failed:^(id obj) {
->>>>>>> 0c3692f08b369e78e41b20c96bdad805de36c0c3
             
         }];
         
