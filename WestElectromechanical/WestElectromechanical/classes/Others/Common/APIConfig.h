@@ -96,13 +96,6 @@
  */
 #define API_PERSONCENTERINFO @"/json_member.php"
 
-
-/**
- *  个人中心
- */
-#define API_PERSONCENTERINFO @"/json_member.php"
-
-
 /**
  *  个人信息
  */
@@ -112,13 +105,47 @@
  */
 
 #define API_UPDATEPERSONINFO @"/json_infoedite.php"
-
-
 /**
  *  修改用户密码
  */
 #define API_UPDATEPWD @"/json_passwordedite.php"
 
+/**
+ *  18.我的收藏
+ */
+#define API_MYCOLLECTION @"/json_collectionmy.php"
+/**
+ *  19.删除我的收藏
+ */
+#define API_DELETEMYCOLLECTION @"/json_collectionmydelete.php"
+/**
+ *  20.添加收货地址
+ */
+#define API_ADDADRESS @"/json_addressadd.php"
+/**
+ *  21.修改收货地址
+ */
+#define API_UPDATEADDRESS @"/json_addressupdate.php"
+/**
+ *  22.删除收货地址
+ */
+#define API_DELETEMYADRESS @"/json_addressdelete.php"
+/**
+*  23.设置某条收货地址为默认地址
+*/
+#define API_SETDEFAULTADRESS @"/json_addresset.php"
+/**
+*  24.收货地址管理列表
+*/
+#define API_ADRESSLIST @"/json_address.php"
+/**
+*  25.购物车列表数据
+*/
+#define API_CARTLIST @"/json_shoppinglist.php"
+/**
+*  26.修改购物车里单个产品购买数量
+*/
+#define API_UPDATECARTPRODUCTCOUNT @"/json_shoppingnumber.php"
 
 
 
