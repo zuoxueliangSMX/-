@@ -9,6 +9,7 @@
 #import "EmailForCodeVC.h"
 #import "WEHTTPHandler.h"
 #import "NSString+val.h"
+#import "RDVTabBarController.h"
 #define kGap 10
 
 @interface EmailForCodeVC ()<UITextFieldDelegate>
@@ -16,6 +17,18 @@
 @end
 
 @implementation EmailForCodeVC
+#pragma mark -
+#pragma mark - pop和push控制器时的操作
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

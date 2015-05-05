@@ -10,6 +10,7 @@
 #import "ChangePsdVC.h"
 #import "WEHTTPHandler.h"
 #import "AccountHanler.h"
+#import "RDVTabBarController.h"
 #define kGap 10
 
 @interface CheckPersonInFoVC ()<UITextFieldDelegate>
@@ -21,6 +22,17 @@
 
 
 @implementation CheckPersonInFoVC
+#pragma mark -
+#pragma mark - pop和push控制器时的操作
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,20 +45,11 @@
 
     
     WEHTTPHandler *we=[[WEHTTPHandler alloc]init];
-    
-    
-    
     [we executeGetUserInfoWithUserId:[AccountHanler userId] Success:^(id obj) {
-        
-        
-       
      _phoneTF.text=   [obj objectForKey:@"phone"];
      _emailTF.text = [obj objectForKey:@"email"];
      _namefi.text = [obj objectForKey:@"u_name"];
 
-        
-        
-        
     } failed:^(id obj) {
         
         
@@ -106,15 +109,8 @@
     imgv2.frame = CGRectMake(10, CGRectGetMaxY(phoneNumTF.frame)+1, squareView.frame.size.width-20, 1);
     [squareView addSubview:imgv2];
     
-
-    
-    
     [squareView addSubview:phoneNumTF];
-    
-    
-    
-    
-    
+
     _emailTF = [[UITextField alloc] initWithFrame:CGRectMake(kGap+10,CGRectGetMaxY(phoneNumTF.frame), self.view.frame.size.width-2*kGap-30, 50)];
     _emailTF.placeholder = @"       邮箱";
     [_emailTF setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];

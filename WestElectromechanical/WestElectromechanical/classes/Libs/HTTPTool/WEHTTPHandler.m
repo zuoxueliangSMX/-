@@ -564,8 +564,8 @@
                                Success:(SuccessBlock)success
                                 failed:(FailedBlock)failed
 {
-    [AlertUtil showAlertWithText:@"修改个人信息"];
-    NSString *url =[BaseHandler requestUrlWithUrl:API_UPDATEPERSONINFO WithPath:@""];
+    [AlertUtil showAlertWithText:@"修改用户密码"];
+    NSString *url =[BaseHandler requestUrlWithUrl:API_UPDATEPWD WithPath:@""];
     NSString *params = [NSString stringWithFormat:@"uid=%@&order_password=%@&new_password=%@",userId,oldPwd,newPwd];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);

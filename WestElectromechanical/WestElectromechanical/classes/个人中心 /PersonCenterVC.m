@@ -35,8 +35,7 @@
 #import "WEHTTPHandler.h"
 #import "RDVTabBarController.h"
 #import "WEHomeVC.h"
-
-
+#import "RDVTabBarController.h"
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 {
@@ -68,6 +67,13 @@
 @end
 
 @implementation PersonCenterVC
+
+#pragma mark -
+#pragma mark - pop和push控制器时的操作
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
 
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -114,12 +120,6 @@
     }
    }
 }
-- (void)viewWillDisappear:(BOOL)animated{
-
-    [super viewWillDisappear:animated];
-//    [HttpManager cancelAllRequestHttpTool];
-}
-
 
 - (void)viewDidLoad
 {

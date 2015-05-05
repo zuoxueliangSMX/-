@@ -12,6 +12,7 @@
 #import "SendIFAppDefault.h"
 #import "WEHTTPHandler.h"
 #import "NSString+val.h"
+#import "RDVTabBarController.h"
 
 @interface MyRegisterVC ()<UITextFieldDelegate>{
 
@@ -27,6 +28,20 @@
 @end
 
 @implementation MyRegisterVC
+
+#pragma mark -
+#pragma mark - pop和push控制器时的操作
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+
+
 
 - (void)back{
 
