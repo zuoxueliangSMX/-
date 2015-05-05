@@ -9,6 +9,7 @@
 #import "WEHTTPHandler.h"
 #import "HTTPBaseRequest.h"
 #import "HttpTool.h"
+#import "AccountHanler.h"
 @implementation WEHTTPHandler
 #pragma mark -
 #pragma mark - 首页模块
@@ -348,7 +349,7 @@
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         if ([[json  objectForKey:@"message"] integerValue]== 0) {
-            
+            [AccountHanler saveAccountInfo:json];
             if (success) {
                 success(json);
             }
@@ -411,7 +412,6 @@
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         if ([[json  objectForKey:@"message"] integerValue]== 0) {
-            
             if (success) {
                 success(json);
             }
@@ -472,7 +472,7 @@
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         if ([[json  objectForKey:@"message"] integerValue]== 0) {
-            
+            [AccountHanler saveAccountOtherInfo:json];
             if (success) {
                 success(json);
             }
