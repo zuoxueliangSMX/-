@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 sendInfo. All rights reserved.
 //
 
-#import "MeVC.h"
+#import "LoginVC.h"
 #import "SendIFAPPDefault.h"
 #import "AppDelegate.h"
 //#import "LSNVController.h"
@@ -20,7 +20,7 @@
 #define kGap 10
 
 
-@interface MeVC ()<UITextFieldDelegate,UIActionSheetDelegate>
+@interface LoginVC ()<UITextFieldDelegate,UIActionSheetDelegate>
 
 
 {
@@ -41,7 +41,7 @@ BOOL  isClick ;
 
 @end
 
-@implementation MeVC
+@implementation LoginVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

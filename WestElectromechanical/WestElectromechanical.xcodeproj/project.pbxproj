@@ -16,12 +16,15 @@
 		7FDEDC0D1AF71D6400911A02 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC001AF71D6400911A02 /* NSArray+MASAdditions.m */; };
 		7FDEDC0E1AF71D6400911A02 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC031AF71D6400911A02 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		7FDEDC0F1AF71D6400911A02 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC051AF71D6400911A02 /* View+MASAdditions.m */; };
-		7FDEDC121AF7541000911A02 /* MeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC111AF7541000911A02 /* MeVC.m */; };
+		7FDEDC121AF7541000911A02 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC111AF7541000911A02 /* LoginVC.m */; };
 		7FDEDC161AF7549C00911A02 /* SendIFAPPDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC141AF7549C00911A02 /* SendIFAPPDefault.m */; };
 		7FDEDC171AF7549C00911A02 /* SendIFAPPSeting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7FDEDC151AF7549C00911A02 /* SendIFAPPSeting.plist */; };
 		7FDEDC1A1AF764CD00911A02 /* MyRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC191AF764CD00911A02 /* MyRegisterVC.m */; };
 		7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FDEDC1B1AF77A1900911A02 /* Images.xcassets */; };
 		7FDEE40E1AF706B200674488 /* PersonCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEE40D1AF706B200674488 /* PersonCenterVC.m */; };
+		7FE556B51AF84C8C00D98006 /* CheckPersonInFoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */; };
+		7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B71AF8519D00D98006 /* MyCollectionVC.m */; };
+		7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BA1AF8649100D98006 /* ChangePsdVC.m */; };
 		7FE643AA1AF7921A000809A4 /* EmailForCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */; };
 		9D0E523495E67FFBE6F2714B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37D720A9818131CA3C9CC92 /* libPods.a */; };
 		A369CF4C1AEDBF20001F3DB7 /* WEHomeCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CF4B1AEDBF20001F3DB7 /* WEHomeCityVC.m */; };
@@ -125,8 +128,8 @@
 		7FDEDC041AF71D6400911A02 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
 		7FDEDC051AF71D6400911A02 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
 		7FDEDC061AF71D6400911A02 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		7FDEDC101AF7541000911A02 /* MeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeVC.h; sourceTree = "<group>"; };
-		7FDEDC111AF7541000911A02 /* MeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeVC.m; sourceTree = "<group>"; };
+		7FDEDC101AF7541000911A02 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		7FDEDC111AF7541000911A02 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		7FDEDC131AF7549C00911A02 /* SendIFAPPDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendIFAPPDefault.h; path = Libs/SendIFAPPDefault.h; sourceTree = "<group>"; };
 		7FDEDC141AF7549C00911A02 /* SendIFAPPDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendIFAPPDefault.m; path = Libs/SendIFAPPDefault.m; sourceTree = "<group>"; };
 		7FDEDC151AF7549C00911A02 /* SendIFAPPSeting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SendIFAPPSeting.plist; path = Libs/SendIFAPPSeting.plist; sourceTree = "<group>"; };
@@ -135,6 +138,12 @@
 		7FDEDC1B1AF77A1900911A02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7FDEE40C1AF706B200674488 /* PersonCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCenterVC.h; sourceTree = "<group>"; };
 		7FDEE40D1AF706B200674488 /* PersonCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterVC.m; sourceTree = "<group>"; };
+		7FE556B31AF84C8C00D98006 /* CheckPersonInFoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPersonInFoVC.h; sourceTree = "<group>"; };
+		7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPersonInFoVC.m; sourceTree = "<group>"; };
+		7FE556B61AF8519D00D98006 /* MyCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionVC.h; sourceTree = "<group>"; };
+		7FE556B71AF8519D00D98006 /* MyCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionVC.m; sourceTree = "<group>"; };
+		7FE556B91AF8649100D98006 /* ChangePsdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePsdVC.h; sourceTree = "<group>"; };
+		7FE556BA1AF8649100D98006 /* ChangePsdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePsdVC.m; sourceTree = "<group>"; };
 		7FE643A81AF7921A000809A4 /* EmailForCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailForCodeVC.h; sourceTree = "<group>"; };
 		7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailForCodeVC.m; sourceTree = "<group>"; };
 		A369CF4A1AEDBF20001F3DB7 /* WEHomeCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeCityVC.h; sourceTree = "<group>"; };
@@ -323,10 +332,16 @@
 			children = (
 				7FDEDC181AF764CD00911A02 /* MyRegisterVC.h */,
 				7FDEDC191AF764CD00911A02 /* MyRegisterVC.m */,
-				7FDEDC101AF7541000911A02 /* MeVC.h */,
-				7FDEDC111AF7541000911A02 /* MeVC.m */,
+				7FDEDC101AF7541000911A02 /* LoginVC.h */,
+				7FDEDC111AF7541000911A02 /* LoginVC.m */,
 				7FDEE40C1AF706B200674488 /* PersonCenterVC.h */,
 				7FDEE40D1AF706B200674488 /* PersonCenterVC.m */,
+				7FE556B61AF8519D00D98006 /* MyCollectionVC.h */,
+				7FE556B71AF8519D00D98006 /* MyCollectionVC.m */,
+				7FE556B31AF84C8C00D98006 /* CheckPersonInFoVC.h */,
+				7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */,
+				7FE556B91AF8649100D98006 /* ChangePsdVC.h */,
+				7FE556BA1AF8649100D98006 /* ChangePsdVC.m */,
 				7FE643A81AF7921A000809A4 /* EmailForCodeVC.h */,
 				7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */,
 			);
@@ -984,12 +999,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FE556B51AF84C8C00D98006 /* CheckPersonInFoVC.m in Sources */,
 				A3C466F21AF313B300E1604D /* TADotView.m in Sources */,
 				7FDEDC1A1AF764CD00911A02 /* MyRegisterVC.m in Sources */,
 				A369CFB41AEE70C4001F3DB7 /* PinyinHelper.m in Sources */,
 				7FDEDC0D1AF71D6400911A02 /* NSArray+MASAdditions.m in Sources */,
 				A369CF4C1AEDBF20001F3DB7 /* WEHomeCityVC.m in Sources */,
 				A369CF7F1AEDC9B1001F3DB7 /* BaseEntity.m in Sources */,
+				7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */,
 				A3843ECE1AF47A6000FDE84F /* HTTPBaseRequest.m in Sources */,
 				A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */,
 				A3C466F11AF313B300E1604D /* TAAnimatedDotView.m in Sources */,
@@ -1016,6 +1033,7 @@
 				A38851BD1AED2DF80019D6E5 /* HomeHeaderScrollView.m in Sources */,
 				A38A32771AEC073100F7FE7C /* WELeadPageVC.m in Sources */,
 				A38A32131AEBE98800F7FE7C /* main.m in Sources */,
+				7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */,
 				A38A32801AEC078400F7FE7C /* WEMineHomeVC.m in Sources */,
 				A369CFAF1AEE70C4001F3DB7 /* ChineseToPinyinResource.m in Sources */,
 				A369CF831AEDC9B1001F3DB7 /* BaseViewController.m in Sources */,
@@ -1043,7 +1061,7 @@
 				A3C48FB61AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m in Sources */,
 				7FDEDC0B1AF71D6400911A02 /* MASViewAttribute.m in Sources */,
 				A369CFB01AEE70C4001F3DB7 /* HanyuPinyinOutputFormat.m in Sources */,
-				7FDEDC121AF7541000911A02 /* MeVC.m in Sources */,
+				7FDEDC121AF7541000911A02 /* LoginVC.m in Sources */,
 				A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */,
 				7FDEDC0A1AF71D6400911A02 /* MASLayoutConstraint.m in Sources */,
 				A38851A81AED0AE40019D6E5 /* WELocationManager.m in Sources */,

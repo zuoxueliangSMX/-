@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MeVC : UIViewController
+@interface LoginVC : UIViewController
 
 @end
