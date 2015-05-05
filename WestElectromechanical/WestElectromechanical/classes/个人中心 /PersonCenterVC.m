@@ -75,7 +75,7 @@
         labbb.hidden = NO;
         if ([SendIFAPPDefault shareAppDefault].phone.length==0) {
             
-            labbb.text =[AccountHanler nickname];
+            labbb.text =[AccountHanler userName];
             
         }else{
         
