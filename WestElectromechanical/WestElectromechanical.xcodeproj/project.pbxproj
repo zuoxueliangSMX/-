@@ -25,6 +25,7 @@
 		7FE556B51AF84C8C00D98006 /* CheckPersonInFoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */; };
 		7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B71AF8519D00D98006 /* MyCollectionVC.m */; };
 		7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BA1AF8649100D98006 /* ChangePsdVC.m */; };
+		7FE556BE1AF8A1F700D98006 /* NSString+val.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BD1AF8A1F700D98006 /* NSString+val.m */; };
 		7FE643AA1AF7921A000809A4 /* EmailForCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */; };
 		9D0E523495E67FFBE6F2714B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37D720A9818131CA3C9CC92 /* libPods.a */; };
 		A369CF4C1AEDBF20001F3DB7 /* WEHomeCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CF4B1AEDBF20001F3DB7 /* WEHomeCityVC.m */; };
@@ -144,6 +145,8 @@
 		7FE556B71AF8519D00D98006 /* MyCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectionVC.m; sourceTree = "<group>"; };
 		7FE556B91AF8649100D98006 /* ChangePsdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePsdVC.h; sourceTree = "<group>"; };
 		7FE556BA1AF8649100D98006 /* ChangePsdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePsdVC.m; sourceTree = "<group>"; };
+		7FE556BC1AF8A1F700D98006 /* NSString+val.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+val.h"; sourceTree = "<group>"; };
+		7FE556BD1AF8A1F700D98006 /* NSString+val.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+val.m"; sourceTree = "<group>"; };
 		7FE643A81AF7921A000809A4 /* EmailForCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailForCodeVC.h; sourceTree = "<group>"; };
 		7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailForCodeVC.m; sourceTree = "<group>"; };
 		A369CF4A1AEDBF20001F3DB7 /* WEHomeCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeCityVC.h; sourceTree = "<group>"; };
@@ -583,6 +586,8 @@
 		A38A32511AEC033D00F7FE7C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7FE556BC1AF8A1F700D98006 /* NSString+val.h */,
+				7FE556BD1AF8A1F700D98006 /* NSString+val.m */,
 				7FDEDBEF1AF71D6400911A02 /* Masonry */,
 				7FDEDBEE1AF71A0B00911A02 /* SendIFMacros.h */,
 				A3843EC21AF47A6000FDE84F /* AccountTool */,
@@ -1031,6 +1036,7 @@
 				A38851BA1AED2DD40019D6E5 /* SMPageControl.m in Sources */,
 				7FDEDC0F1AF71D6400911A02 /* View+MASAdditions.m in Sources */,
 				A38851BD1AED2DF80019D6E5 /* HomeHeaderScrollView.m in Sources */,
+				7FE556BE1AF8A1F700D98006 /* NSString+val.m in Sources */,
 				A38A32771AEC073100F7FE7C /* WELeadPageVC.m in Sources */,
 				A38A32131AEBE98800F7FE7C /* main.m in Sources */,
 				7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */,

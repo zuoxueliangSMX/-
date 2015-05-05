@@ -8,6 +8,8 @@
 
 #import "CheckPersonInFoVC.h"
 #import "ChangePsdVC.h"
+#import "WEHTTPHandler.h"
+#import "AccountHanler.h"
 #define kGap 10
 
 @interface CheckPersonInFoVC ()<UITextFieldDelegate>
@@ -30,7 +32,25 @@
     [self.view addSubview:squareView];
 
     
+    WEHTTPHandler *we=[[WEHTTPHandler alloc]init];
     
+    
+    
+    [we executeGetUserInfoWithUserId:[AccountHanler userId] Success:^(id obj) {
+        
+        
+       
+     _phoneTF.text=   [obj objectForKey:@"phone"];
+     _emailTF.text = [obj objectForKey:@"email"];
+     _namefi.text = [obj objectForKey:@"u_name"];
+
+        
+        
+        
+    } failed:^(id obj) {
+        
+        
+    }];
     
     _namefi = [[UITextField alloc] initWithFrame:CGRectMake(kGap+10,5, self.view.frame.size.width-2*kGap-30, 50)];
     _namefi.placeholder = @"       用户";
@@ -43,7 +63,7 @@
     _namefi.delegate =self;
     [_namefi setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_namefi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
     [leftimg setImage: [UIImage imageNamed:@"ren"]];
     _namefi.leftViewMode = UITextFieldViewModeAlways;
@@ -67,7 +87,6 @@
     
     
     [phoneNumTF setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-    [phoneNumTF setSecureTextEntry:YES];
     [phoneNumTF setClearButtonMode:UITextFieldViewModeWhileEditing];
     [phoneNumTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     [phoneNumTF setDelegate:self];
@@ -75,7 +94,7 @@
       [phoneNumTF.layer setMasksToBounds:YES];
     [phoneNumTF.layer setCornerRadius:5];
     phoneNumTF.enabled =NO;
-    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
     [psdleftimg setImage: [UIImage imageNamed:@"lock"]];
     phoneNumTF.leftViewMode = UITextFieldViewModeAlways;
@@ -107,7 +126,7 @@
     _emailTF.delegate =self;
     [_emailTF setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_emailTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *leftimg2 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
     [leftimg2 setImage: [UIImage imageNamed:@"t"]];
     _emailTF.leftViewMode = UITextFieldViewModeAlways;

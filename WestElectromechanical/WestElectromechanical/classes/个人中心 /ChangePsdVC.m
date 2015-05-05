@@ -7,6 +7,8 @@
 //
 
 #import "ChangePsdVC.h"
+#import "WEHTTPHandler.h"
+#import "AccountHanler.h"
 
 @interface ChangePsdVC ()<UITextFieldDelegate>
 
@@ -40,7 +42,7 @@
     _oldPsdTF.delegate =self;
     [_oldPsdTF setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_oldPsdTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
     [leftimg setImage: [UIImage imageNamed:@"lock"]];
     _oldPsdTF.leftViewMode = UITextFieldViewModeAlways;
@@ -70,7 +72,7 @@
     
     [NewTF.layer setMasksToBounds:YES];
     [NewTF.layer setCornerRadius:5];
-    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
     [psdleftimg setImage: [UIImage imageNamed:@"lock"]];
     NewTF.leftViewMode = UITextFieldViewModeAlways;
@@ -102,7 +104,7 @@
     _surePsdTF.delegate =self;
     [_surePsdTF setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_surePsdTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *leftimg2 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
     [leftimg2 setImage: [UIImage imageNamed:@"lock"]];
     _surePsdTF.leftViewMode = UITextFieldViewModeAlways;
@@ -146,10 +148,29 @@
 }
 -(void)sureBtnClick
 {
+    if (!([ _NewPsdTF.text isEqualToString:_surePsdTF.text]&&_surePsdTF.text!=nil)) {
+        
+        ALERT_WARN(@"两次输入的密码不一致,请重新输入");
+        return;
+    }
 
-
+    WEHTTPHandler  *weh = [[WEHTTPHandler alloc]init];
+    if ([AccountHanler loginState]==0) {
+        WARN_ALERT(@"请先登录");
+    }
+    [weh executeUpdateUserPwdWithUserId:[AccountHanler userId] withOrderPwd:_oldPsdTF.text withNewPwd:_surePsdTF.text Success:^(id obj) {
+        DLog(@"修改成功么%@",obj);
+    } failed:^(id obj) {
+         DLog(@"修改成功么%@",obj);
+    }];
 
 }
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    [self.view endEditing:YES];
+}
+
 /*
 #pragma mark - Navigation
 

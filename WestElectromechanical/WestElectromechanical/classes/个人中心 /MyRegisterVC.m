@@ -10,6 +10,8 @@
 //#import "HttpManager.h"
 //#import "UIView+Toast.h"
 #import "SendIFAppDefault.h"
+#import "WEHTTPHandler.h"
+#import "NSString+val.h"
 
 @interface MyRegisterVC ()<UITextFieldDelegate>{
 
@@ -322,11 +324,20 @@
 - (void)registerBtn{
 
 
-    
+    if ( userNameTf.text.length==0) {
+        [self animationForTextfield:userNameTf];
+    }
     
     if (LogNmTextF.text.length == 0) {
         [self animationForTextfield:LogNmTextF];
     }
+    
+    
+    
+    if (emailTf.text.length == 0) {
+        [self animationForTextfield:emailTf];
+    }
+
     
     if (pwdNmTextF.text.length == 0) {
         
@@ -339,18 +350,18 @@
     if (sureTf.text.length == 0 && sureTf!=nil) {
         [self animationForTextfield:sureTf];
     }
-    if (valCodeTf.text.length == 0) {
-        
-        [self animationForTextfield:valCodeTf];
-    }
-    if (valCodeTf.text.length == 0 && sureTf !=nil) {
-        
-        [self animationForTextfield:valCodeTf];
-        
-    }
+//    if (valCodeTf.text.length == 0) {
+//        
+//        [self animationForTextfield:valCodeTf];
+//    }
+//    if (valCodeTf.text.length == 0 && sureTf !=nil) {
+//        
+//        [self animationForTextfield:valCodeTf];
+//        
+//    }
     
     
-    if (LogNmTextF.text.length == 0||pwdNmTextF.text.length==0 || (valCodeTf.text.length ==0&&sureTf!=nil)) {
+    if (emailTf.text.length==0||userNameTf.text.length==0||LogNmTextF.text.length == 0||pwdNmTextF.text.length==0 ) {
         
         return;
     }
@@ -365,11 +376,11 @@
         return;
     }
     
-    if (![valCodeTf.text isEqualToString:checkCode] && sureTf !=nil) {
-        
-        ALERT_WARN(@"请输入正确的验证码");
-        return;
-    }
+//    if (![valCodeTf.text isEqualToString:checkCode] && sureTf !=nil) {
+//        
+//        ALERT_WARN(@"请输入正确的验证码");
+//        return;
+//    }
     
     [pwdNmTextF resignFirstResponder];
     [LogNmTextF resignFirstResponder];
@@ -378,6 +389,18 @@
     
 
     
+    
+      WEHTTPHandler *we =[[WEHTTPHandler alloc]init];
+    
+    
+    [we executeRegistUserTaskWithName:userNameTf.text withPaw:pwdNmTextF.text withEmail:emailTf.text withPhone:LogNmTextF.text success:^(id obj) {
+        
+        
+        DLog(@"输出%@",obj);
+    } failed:^(id obj) {
+        
+         DLog(@"输出%@",obj);
+    }];
     //调用注册接口
     
 //    NSDictionary *subD = @{@"login": LogNmTextF.text,@"pass":pwdNmTextF.text,@"mobile":LogNmTextF.text,@"email":@"hill@163.com"};
@@ -430,6 +453,34 @@
     
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField==userNameTf) {
+//        if ([NSString userNameValidate:userNameTf.text]==NO) {
+//            WARN_ALERT(@"不超过四个汉字");
+//             return;
+//
+//        }
+        
+    }else if (textField==LogNmTextF){
+        if ([NSString phoneValidate:LogNmTextF.text]==NO) {
+            WARN_ALERT(@"检查你的电话号码");
+             return;
+        }
+        
+    
+    }else if (textField==emailTf){
+        if ( [NSString  isValidateEmail:emailTf.text]==NO) {
+            WARN_ALERT(@"检查你的邮箱");
+            
+            return;
+        }
+    
+    }
+    
+}
+
+
 -(void)protolcBtnClick:(UIButton*)btn
 {
     
@@ -457,6 +508,11 @@
     
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    [self.view endEditing:YES];
+}
 
 
 

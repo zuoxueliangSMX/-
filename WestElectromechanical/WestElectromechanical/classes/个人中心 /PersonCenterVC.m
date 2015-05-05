@@ -32,6 +32,10 @@
 #import "MyRegisterVC.h"
 #import "LoginVC.h"
 #import "CheckPersonInFoVC.h"
+#import "WEHTTPHandler.h"
+#import "RDVTabBarController.h"
+#import "WEHomeVC.h"
+
 
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
@@ -55,6 +59,10 @@
     UIImageView *imgv;
     
     UIView *head;
+    
+    UILabel *textLa;
+    
+    WEHTTPHandler *weh;
 
 }
 @end
@@ -71,16 +79,27 @@
         loginBtn.hidden = YES;
         registBtn.hidden = YES;
         imgv.hidden =YES;
+               labbb.hidden = NO;
         
-        labbb.hidden = NO;
-        if ([SendIFAPPDefault shareAppDefault].phone.length==0) {
+        NSString *userID =[AccountHanler userId];
+        [weh executeGetPersonCenterInfoWithUserId:userID Success:^(id obj) {
+            NSString *str = [NSString stringWithFormat:@"%@先生",[obj objectForKey:@"u_name"]];
+            NSString *is_identification= [obj objectForKey:@"is_identification"];
+            textLa.text =str;
+
+        } failed:^(id obj) {
             
-            labbb.text =[AccountHanler nickname];
-            
-        }else{
+        }];
         
-            labbb.text =[SendIFAPPDefault shareAppDefault].phone;}
         
+//        
+//        if ([SendIFAPPDefault shareAppDefault].phone.length==0) {
+//
+//            
+//        }else{
+//        
+//            labbb.text =[SendIFAPPDefault shareAppDefault].phone;}
+//        
         
     }else{
         
@@ -103,7 +122,7 @@
     VIEW_BACKGROUND;
     [self setTitle:@"个人中心"];
     array1 = @[@"查看信息",@"浏览历史",@"我的收藏",@"40025558787"];
-    
+    weh = [[WEHTTPHandler alloc]init];
     
   walert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"登陆成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] ;
     
@@ -195,7 +214,7 @@
     imgv.frame = CGRectMake((head.frame.size.width-150)/4, (head.frame.size.height-60)/2-42, 50, 50);
     [head addSubview:imgv];
     
-    UILabel *textLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+5,  (head.frame.size.height-60)/2-42, 190, 50)];
+    textLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+5,  (head.frame.size.height-60)/2-42, 190, 50)];
     textLa.text =@"登陆可以查看会员价哦～";
     textLa.textColor =[UIColor whiteColor];
     [head addSubview:textLa];
@@ -303,16 +322,17 @@
 }
 - (void)outBtnClick{
 
-//    
-//    TabbarVC *fvc = [[TabbarVC alloc] init];
-//    
-//    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-//    app.window.rootViewController = fvc;
-//    
-//    
-//    [[SendIFAppDefault shareAppDefault] setLoginState:@"0"];
-//    [[SendIFAppDefault shareAppDefault] setCurrentUserId:nil];
+    
+    
+    
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [app initTabControlers];
+    
 //    [[SendIFAppDefault shareAppDefault] setMobilePhone:nil];
+    
+    [AccountHanler setLoginState:0];
+    
+    [AccountHanler saveUserId:nil];
     
 }
 
@@ -377,12 +397,12 @@
         if (indexPath.row == 0) {
 
 
-//            if ([SendIFAPPDefault shareAppDefault].currentUserId.length==0) {
-//            
-//                ALERT_WARN(@"请先登录");
-//                return;
-//                
-//            }
+            if ([AccountHanler userId]==NULL) {
+            
+                ALERT_WARN(@"请先登录");
+                return;
+                
+            }
             
             
             
