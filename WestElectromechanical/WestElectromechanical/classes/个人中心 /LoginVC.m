@@ -9,14 +9,11 @@
 #import "LoginVC.h"
 #import "SendIFAPPDefault.h"
 #import "AppDelegate.h"
-//#import "LSNVController.h"
-//#import "HomeVC.h"
-//#import "RegisterVC.h"
-//#import "TabbarController.h"
-//#import "HttpManager.h"
 //#import "NSString+MD5.h"
 #import "MyRegisterVC.h"
 #import "EmailForCodeVC.h"
+#import "WEHTTPHandler.h"
+#import "AccountHanler.h"
 #define kGap 10
 
 
@@ -28,6 +25,7 @@
     UIActionSheet *actsheet;
 
 BOOL  isClick ;
+WEHTTPHandler *whanle;
 
 }
 @property (strong, nonatomic) UITextField *namefi;
@@ -51,6 +49,8 @@ BOOL  isClick ;
     [self addUI];
     
     actsheet  =[[UIActionSheet alloc]initWithTitle:@"" delegate:self cancelButtonTitle:@"取消"destructiveButtonTitle:nil otherButtonTitles:@"通过邮箱找回密码", nil];
+    
+    whanle = [[WEHTTPHandler alloc]init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,7 +90,7 @@ BOOL  isClick ;
     _namefi.delegate =self;
     [_namefi setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_namefi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
     [leftimg setImage: [UIImage imageNamed:@"ren"]];
     _namefi.leftViewMode = UITextFieldViewModeAlways;
@@ -123,7 +123,7 @@ BOOL  isClick ;
     [pswfi.layer setMasksToBounds:YES];
     [pswfi.layer setCornerRadius:5];
 
-    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
     [psdleftimg setImage: [UIImage imageNamed:@"lock"]];
     pswfi.leftViewMode = UITextFieldViewModeAlways;
@@ -207,15 +207,50 @@ BOOL  isClick ;
     return YES;
 }
 
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+
+   
+}
+
 // 登录
 - (void)login
 {
     [self.view endEditing:YES];
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//    
-//    
-//
-//    
+    
+    
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+
+    
+    [whanle executeLoginUserTaskWithAccount:_namefi.text withPaw:self.loginPass.text success:^(id obj) {
+    
+        
+        NSLog(@"输出这个内容%@",[obj objectForKey:@"message"]);
+        
+        if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+            
+            [AccountHanler saveUserId:[obj objectForKey:@"uid"]];
+            [AccountHanler setLoginState:1];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            [alert  setTitle:@"登陆成功"];
+            [alert show];
+        }
+        
+    } failed:^(id obj) {
+    
+        DLog(@"会出现%@",obj);
+        
+
+    }];
+    
+    
+    
+    
+    
+    
+   
 //        NSDictionary *accountLogin = @{@"login":self.namefi.text,
 //                                       @"pass":[self.loginPass.text md5]
 //                                       
