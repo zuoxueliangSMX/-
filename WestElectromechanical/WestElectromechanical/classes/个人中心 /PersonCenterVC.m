@@ -81,7 +81,6 @@
         imgv.hidden =YES;
                labbb.hidden = NO;
         
-
         labbb.hidden = NO;
         if ([SendIFAPPDefault shareAppDefault].phone.length==0) {
             
@@ -114,6 +113,7 @@
         labbb.hidden = YES;
     }
    }
+}
 - (void)viewWillDisappear:(BOOL)animated{
 
     [super viewWillDisappear:animated];
