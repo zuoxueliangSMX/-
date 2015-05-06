@@ -39,7 +39,7 @@ fprintf(stderr, "-----------------------------------\n");                       
 #define DLog(...)
 #endif
 
-#define VIEW_BACKGROUND [self.view setBackgroundColor:[UIColor colorWithRed:242.0/255 green:242.0/255 blue:242.0/255 alpha:1]];
+#define VIEW_BACKGROUND [self.view setBackgroundColor:[UIColor colorFromHexCode:@"#f2f2f2"]];
 
 //当前系统版本
 #define isIOS6 [[UIDevice currentDevice].systemVersion intValue]==6?1:0

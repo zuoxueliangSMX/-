@@ -21,6 +21,12 @@
     return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
+- (UIBarButtonItem *)itemInitWithImageName:(NSString *)imageName highImageName:(NSString *)highImageName target:(id)target action:(SEL)action
+{
+    return [self itemInitWithImageName:imageName highImageName:highImageName target:target action:action];
+}
+
+
 - (UIBarButtonItem *)initTarget:(id)target WithTitle:(NSString *)title withColor:(UIColor *)color action:(SEL)action
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
