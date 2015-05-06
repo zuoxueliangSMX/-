@@ -9,11 +9,17 @@
 #import "AddAdressVC.h"
 #import "PAPickView.h"
 #import "RDVTabBarController.h"
+#import "NSString+val.h"
+#import "WEHTTPHandler.h"
+#import "AccountHanler.h"
+#import "GCPlaceholderTextView.h"
 
 
-@interface AddAdressVC ()<UITextFieldDelegate>{
+@interface AddAdressVC ()<UITextFieldDelegate,UITextViewDelegate>{
 
 UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*addressTf;
+    WEHTTPHandler *we;
+    GCPlaceholderTextView *tv;
    }
 @property(nonatomic,strong)PAPickView *pickView;
 @end
@@ -42,7 +48,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    we = [[WEHTTPHandler alloc]init];
        self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
     UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(20, 80, 280, 90)];
     squareView.backgroundColor = [UIColor whiteColor];
@@ -154,31 +160,60 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     
     // 街道门牌信息
-    streetAdressTF = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(addressTf.frame), 280, 40)];
-    [streetAdressTF setBorderStyle:UITextBorderStyleNone];
-    streetAdressTF.textColor = [UIColor blackColor];
-    [streetAdressTF setClearButtonMode:UITextFieldViewModeWhileEditing];
-    [streetAdressTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+//    streetAdressTF = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(addressTf.frame), 280, 40)];
+//    [streetAdressTF setBorderStyle:UITextBorderStyleNone];
+//    streetAdressTF.textColor = [UIColor blackColor];
+//    [streetAdressTF setClearButtonMode:UITextFieldViewModeWhileEditing];
+//    [streetAdressTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+//    UIButton *pwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [pwdBut setImage:[UIImage imageNamed:@"streetnum"] forState:UIControlStateNormal];
+//    [pwdBut setBounds:CGRectMake(0, 0, 50, 40)];
+//    [pwdBut setUserInteractionEnabled:NO];
+//    streetAdressTF.leftViewMode = UITextFieldViewModeAlways;
+//    [streetAdressTF setLeftView:pwdBut];
+//    [streetAdressTF setDelegate:self];
+//    streetAdressTF.returnKeyType=UIReturnKeyGo;//返回键的类型
+//    [streetAdressTF setPlaceholder:@"街道门牌信息"]; //默认显示的字
+//    //    [pwdNmTextF setTextAlignment:NSTextAlignmentCenter];
+//    [squareView2 addSubview:streetAdressTF];
+//    
+    
+    
+    
+  tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(60, CGRectGetMaxY(addressTf.frame)+5, 220, 35)];
+    tv.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    tv.delegate = self;
+    
+    tv.keyboardType = UIKeyboardTypeDefault;
+    tv.placeholder=@"街道门牌信息";
+    tv.autoresizingMask =  UIViewAutoresizingFlexibleHeight;
+    tv.scrollEnabled = YES;//是否可以拖动
+    
+    
     UIButton *pwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
     [pwdBut setImage:[UIImage imageNamed:@"streetnum"] forState:UIControlStateNormal];
-    [pwdBut setBounds:CGRectMake(0, 0, 50, 40)];
+    pwdBut.frame =CGRectMake(CGRectGetMinX(tv.frame)-39, CGRectGetMinY(tv.frame), 50, 40);
     [pwdBut setUserInteractionEnabled:NO];
-    streetAdressTF.leftViewMode = UITextFieldViewModeAlways;
-    [streetAdressTF setLeftView:pwdBut];
-    [streetAdressTF setDelegate:self];
-    streetAdressTF.returnKeyType=UIReturnKeyGo;//返回键的类型
-    [streetAdressTF setPlaceholder:@"街道门派信息"]; //默认显示的字
-    //    [pwdNmTextF setTextAlignment:NSTextAlignmentCenter];
-    [squareView2 addSubview:streetAdressTF];
+    [squareView2 addSubview:pwdBut];
+
+    
+    tv.font= [UIFont systemFontOfSize:17];
+    tv.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    tv.layer.borderWidth =0.8;
+    
+    [squareView2 addSubview:tv];
+    
     
     UIImageView *imgv3 = [[UIImageView alloc] init];
-    imgv3.frame = CGRectMake(10, CGRectGetMaxY(streetAdressTF.frame)+1, squareView.frame.size.width-20, 1);
+    imgv3.frame = CGRectMake(10, CGRectGetMaxY(tv.frame)+1, squareView.frame.size.width-20, 1);
     imgv3.backgroundColor = [UIColor appLineColor];
     [squareView2 addSubview:imgv3];
+
     
     
     // 邮政编码
-    emadilCodeTf = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(streetAdressTF.frame), 280, 40)];
+    emadilCodeTf = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(tv.frame), 280, 40)];
     [emadilCodeTf setBorderStyle:UITextBorderStyleNone];
     emadilCodeTf.textColor = [UIColor blackColor];
     [emadilCodeTf setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -186,9 +221,9 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     UIButton *surepwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
     [surepwdBut setImage:[UIImage imageNamed:@"emailnum"] forState:UIControlStateNormal];
     [surepwdBut setBounds:CGRectMake(0, 0, 50, 40)];
-    [surepwdBut setUserInteractionEnabled:NO];
     emadilCodeTf.leftViewMode = UITextFieldViewModeAlways;
     [emadilCodeTf setLeftView:surepwdBut];
+    [surepwdBut setUserInteractionEnabled:NO];
     [emadilCodeTf setDelegate:self];
     emadilCodeTf.returnKeyType=UIReturnKeyGo;//返回键的类型
     [emadilCodeTf setPlaceholder:@"邮政编码"]; //默认显示的字
@@ -218,6 +253,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     
     PAPickView *pick =[[PAPickView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 260)];
+    pick.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
     [pick setPAPickViewBlock:^(NSInteger tag) {
         if (tag == 1000) {
             [_pickView cancelPicker];
@@ -240,7 +276,12 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
 -(void)saveBtnclick
 {
 
-
+    [we executeAddAdressTaskWithUserId:[AccountHanler userId] withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:tv.text withPostalcode:emadilCodeTf.text withPhone:phoneNumTF.text Success:^(id obj) {
+        
+        DLog(@"输出保存地址是否成功%@",obj);
+    } failed:^(id obj) {
+        
+    }];
 
 }
 -(void)locationBtnClick
@@ -252,9 +293,38 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [_pickView showInView:self.view];
-    return NO;
+
+    return YES;
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+    
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField==userNameTf) {
+        //        if ([NSString userNameValidate:userNameTf.text]==NO) {
+        //            WARN_ALERT(@"不超过四个汉字");
+        //             return;
+        //
+        //        }
+        
+    }else if (textField==phoneNumTF){
+        if ([NSString phoneValidate:phoneNumTF.text]==NO) {
+            WARN_ALERT(@"检查你的电话号码");
+            return;
+        }
+        
+        
+    }
+    
+    
+}
+
+
 /*
 #pragma mark - Navigation
 

@@ -25,10 +25,10 @@
         
         UIView *toolBar =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
         toolBar.userInteractionEnabled = YES;
-        toolBar.backgroundColor = [UIColor blueColor];
+        toolBar.backgroundColor = SET_COLOR(50.0, 123.0, 76.0);
         [self addSubview:toolBar];
 
-        UIButton * cancel =[UIButton addTarget:self WithNorTitle:@"取消" withNorColor:[UIColor whiteColor] withSelectedTitle:@"取消" withSelectedColor:[UIColor whiteColor] withBackgroundColor:[UIColor clearColor] withTileSize:font(16) action:@selector(cancel:)];
+        UIButton * cancel =[UIButton addTarget:self WithNorTitle:@"取消" withNorColor:[UIColor  whiteColor] withSelectedTitle:@"取消" withSelectedColor:[UIColor whiteColor] withBackgroundColor:[UIColor clearColor] withTileSize:font(16) action:@selector(cancel:)];
         cancel.tag = 1000;
         cancel.frame =CGRectMake(10, 0, cancel.bounds.size.width, 44);
         [toolBar addSubview:cancel];
@@ -37,7 +37,7 @@
         confirm.tag = 1001;
         confirm.frame =CGRectMake(SCREEN_WIDTH -cancel.bounds.size.width-10, 0, cancel.bounds.size.width, 44);
         [toolBar addSubview:confirm];
-        
+
         UIPickerView *pickView =[[UIPickerView alloc]initWithFrame:CGRectMake(0,CGRectGetMaxY(cancel.frame), SCREEN_WIDTH, 216)];
         pickView.delegate = self;
         pickView.dataSource =self;
