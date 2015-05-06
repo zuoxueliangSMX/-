@@ -20,6 +20,7 @@
 #import "RDVTabBarController.h"
 #import "AlwaysUsedAddresVC.h"
 #import "AccountHanler.h"
+#import "UIBarButtonItem+Extension.h"
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 {
@@ -65,6 +66,8 @@
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:animated];
+    
+    [self addRightItem];
     if ([AccountHanler loginState]==1) {
         
      
@@ -100,6 +103,20 @@
     }
    
 }
+- (void)addRightItem{
+    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"setb" highImageName:@"setb" target:self action:@selector(condition:)];
+    /**
+     *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
+     *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
+     */
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = 5;
+
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer,right];
+}
+
 
 - (void)viewDidLoad
 {
@@ -193,7 +210,7 @@
 {
     
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setb"] style:UIBarButtonItemStyleDone target:self action:@selector(setBtnClick)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setb"] style:UIBarButtonItemStyleDone target:self action:@selector(setBtnClick)];
 
     
     
