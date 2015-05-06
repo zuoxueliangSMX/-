@@ -44,7 +44,11 @@
         [self addSubview:pickView];
         _locatePicker = pickView;
         
-        
+        /**
+         添加注释
+         
+         :returns: <#return value description#>
+         */
         _provinces = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"area.plist" ofType:nil]];
         _cities = [[_provinces objectAtIndex:0] objectForKey:@"cities"];
         
