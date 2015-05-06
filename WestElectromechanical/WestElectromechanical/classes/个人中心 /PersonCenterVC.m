@@ -8,27 +8,9 @@
 
 #import "PersonCenterVC.h"
 //#import "SendIFAppDefault.h"
-#import "AccountHanler.h"
-
-//#import "TabbarVC.h"
 #import "AppDelegate.h"
-//#import "MyOrderListVC.h"
-//#import "MyFavVC.h"
-//#import "AboutVC.h"
-//#import "ProgressHUD.h"
-//#import "AFHTTPClient.h"
-//#import "ChangePassVC.h"
-//#import "HttpManager.h"
-//#import "MyRegisterVC.h"
-//#import "MyLoginVC.h"
-//#import "CardVoucherVC.h"
 #import "SDImageCache.h"
-//#import "ManagerPushMessVC.h"
-//#import "FunctionIntroVC.h"
-//#import "ShowWordsVC.h"
-//#import "SegmentOrderVC.h"
 #import "SendIFAPPDefault.h"
-
 #import "MyRegisterVC.h"
 #import "LoginVC.h"
 #import "CheckPersonInFoVC.h"
@@ -36,6 +18,8 @@
 #import "RDVTabBarController.h"
 #import "WEHomeVC.h"
 #import "RDVTabBarController.h"
+#import "AlwaysUsedAddresVC.h"
+#import "AccountHanler.h"
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 {
@@ -62,6 +46,8 @@
     UILabel *textLa;
     
     WEHTTPHandler *weh;
+    
+    UIButton *addresBut;
 
 }
 @end
@@ -85,15 +71,14 @@
         loginBtn.hidden = YES;
         registBtn.hidden = YES;
         imgv.hidden =YES;
-               labbb.hidden = NO;
+        labbb.hidden = NO; addresBut.hidden =NO;
         
         labbb.hidden = NO;
-        if ([SendIFAPPDefault shareAppDefault].phone.length==0) {
-            
-            labbb.text =[AccountHanler userName];
+        
+           labbb.text =[AccountHanler userName];
         NSString *userID =[AccountHanler userId];
         [weh executeGetPersonCenterInfoWithUserId:userID Success:^(id obj) {
-            NSString *str = [NSString stringWithFormat:@"%@先生",[obj objectForKey:@"u_name"]];
+            NSString *str = [NSString stringWithFormat:@"您好：%@先生",[obj objectForKey:@"u_name"]];
             NSString *is_identification= [obj objectForKey:@"is_identification"];
             textLa.text =str;
 
@@ -102,23 +87,18 @@
         }];
         
         
-//        
-//        if ([SendIFAPPDefault shareAppDefault].phone.length==0) {
-//
-//            
-//        }else{
-//        
-//            labbb.text =[SendIFAPPDefault shareAppDefault].phone;}
-//        
         
-    }else{
+    }else if ([AccountHanler loginState]==0){
         
         loginBtn.hidden = NO;
         registBtn.hidden = NO;
         imgv.hidden =NO;
         labbb.hidden = YES;
+        addresBut.hidden =YES;
+        
+        
     }
-   }
+   
 }
 
 - (void)viewDidLoad
@@ -216,13 +196,27 @@
     head = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
    
    imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"qw"]];
-    imgv.frame = CGRectMake((head.frame.size.width-150)/4, (head.frame.size.height-60)/2-42, 50, 50);
+    imgv.frame = CGRectMake((head.frame.size.width-200)/4, (head.frame.size.height-60)/2-42, 50, 50);
     [head addSubview:imgv];
     
-    textLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+5,  (head.frame.size.height-60)/2-42, 190, 50)];
+    textLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame),  (head.frame.size.height-60)/2-42, 190, 50)];
     textLa.text =@"登陆可以查看会员价哦～";
     textLa.textColor =[UIColor whiteColor];
     [head addSubview:textLa];
+    
+    
+    // 管理地址
+     addresBut = [UIButton buttonWithType:UIButtonTypeCustom];
+    [addresBut setFrame:CGRectMake(CGRectGetMinX(textLa.frame)+30, CGRectGetMaxY(textLa.frame), 110, 25)];
+    [addresBut setTitle:@"管理我的地址 >" forState:UIControlStateNormal];
+    [addresBut addTarget:self action:@selector(addressMangerClick) forControlEvents:UIControlEventTouchUpInside];
+    addresBut.titleLabel.font =[UIFont systemFontOfSize:15];
+    [addresBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [addresBut setImage:[UIImage imageNamed:@"addres"] forState:UIControlStateNormal];
+    addresBut.imageEdgeInsets = UIEdgeInsetsMake(0.0, -20, 0.0, 0.0);
+    addresBut.titleEdgeInsets = UIEdgeInsetsMake(0.0, -15.0, 0.0, 0.0);
+    [head addSubview:addresBut];
+    
 
     UIImageView *imgvbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"qweqwe"]];
     [head addSubview:imgvbg];
@@ -391,6 +385,18 @@
     
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
+}
+-(void)addressMangerClick
+{
+
+
+    AlwaysUsedAddresVC *addres = [[AlwaysUsedAddresVC alloc]init];
+    
+    [self.navigationController pushViewController:addres animated:YES];
+
+
+
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

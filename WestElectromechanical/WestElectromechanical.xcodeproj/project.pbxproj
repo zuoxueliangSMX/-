@@ -22,6 +22,7 @@
 		7FDEDC1A1AF764CD00911A02 /* MyRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC191AF764CD00911A02 /* MyRegisterVC.m */; };
 		7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FDEDC1B1AF77A1900911A02 /* Images.xcassets */; };
 		7FDEE40E1AF706B200674488 /* PersonCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEE40D1AF706B200674488 /* PersonCenterVC.m */; };
+		7FE42B321AF9AF5A00EB923E /* AlwaysUsedAddresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */; };
 		7FE556B51AF84C8C00D98006 /* CheckPersonInFoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */; };
 		7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B71AF8519D00D98006 /* MyCollectionVC.m */; };
 		7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BA1AF8649100D98006 /* ChangePsdVC.m */; };
@@ -147,6 +148,8 @@
 		7FDEDC1B1AF77A1900911A02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7FDEE40C1AF706B200674488 /* PersonCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCenterVC.h; sourceTree = "<group>"; };
 		7FDEE40D1AF706B200674488 /* PersonCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterVC.m; sourceTree = "<group>"; };
+		7FE42B301AF9AF5A00EB923E /* AlwaysUsedAddresVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlwaysUsedAddresVC.h; sourceTree = "<group>"; };
+		7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlwaysUsedAddresVC.m; sourceTree = "<group>"; };
 		7FE556B31AF84C8C00D98006 /* CheckPersonInFoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPersonInFoVC.h; sourceTree = "<group>"; };
 		7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPersonInFoVC.m; sourceTree = "<group>"; };
 		7FE556B61AF8519D00D98006 /* MyCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionVC.h; sourceTree = "<group>"; };
@@ -371,6 +374,8 @@
 				7FE556BA1AF8649100D98006 /* ChangePsdVC.m */,
 				7FE643A81AF7921A000809A4 /* EmailForCodeVC.h */,
 				7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */,
+				7FE42B301AF9AF5A00EB923E /* AlwaysUsedAddresVC.h */,
+				7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */,
 			);
 			path = "个人中心 ";
 			sourceTree = "<group>";
@@ -1149,6 +1154,7 @@
 				7FDEDC121AF7541000911A02 /* LoginVC.m in Sources */,
 				A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */,
 				A3883D111AF9A27400EC2CEA /* WECategorySingleModel.m in Sources */,
+				7FE42B321AF9AF5A00EB923E /* AlwaysUsedAddresVC.m in Sources */,
 				7FDEDC0A1AF71D6400911A02 /* MASLayoutConstraint.m in Sources */,
 				A38851A81AED0AE40019D6E5 /* WELocationManager.m in Sources */,
 				A3C466E61AF30D4300E1604D /* WERecommendBgView.m in Sources */,

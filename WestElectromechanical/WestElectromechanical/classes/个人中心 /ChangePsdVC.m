@@ -172,10 +172,15 @@
         WARN_ALERT(@"请先登录");
     }
     [weh executeUpdateUserPwdWithUserId:[AccountHanler userId] withOrderPwd:_oldPsdTF.text withNewPwd:_surePsdTF.text Success:^(id obj) {
-        DLog(@"修改成功么%@",obj);
+        if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+            
+            WARN_ALERT(@"修改成功");
+            
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+        }
     } failed:^(id obj) {
-         DLog(@"修改成功么%@",obj);
-    }];
+        
+            }];
 
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
