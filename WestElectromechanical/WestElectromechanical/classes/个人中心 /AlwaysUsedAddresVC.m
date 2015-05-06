@@ -33,10 +33,10 @@
     [super viewDidLoad];
     self.title =@"常用地址";
     
-   
-  self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
+    self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
+
     self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
-      UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 70*4+60) style:UITableViewStylePlain];
+    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
     
     
     table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
@@ -44,10 +44,10 @@
     self.view.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
 
     table.delegate =self;
-    
-    
     table.dataSource =self;
     [self.view addSubview:table];
+    UIView *view =[[UIView alloc]init];
+    table.tableFooterView = view;
 }
 
 
