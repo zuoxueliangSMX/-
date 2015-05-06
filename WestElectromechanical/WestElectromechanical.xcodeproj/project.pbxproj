@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F8B1AAE1AFA01560085FE2D /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F8B1AA41AFA01560085FE2D /* area.plist */; };
+		7F8B1AAF1AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AA71AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m */; };
+		7F8B1AB01AFA01560085FE2D /* UIButton+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AA91AFA01560085FE2D /* UIButton+Button.m */; };
+		7F8B1AB11AFA01560085FE2D /* PALocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AAB1AFA01560085FE2D /* PALocation.m */; };
+		7F8B1AB21AFA01560085FE2D /* PAPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AAD1AFA01560085FE2D /* PAPickView.m */; };
 		7FDEDC071AF71D6400911A02 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDBF11AF71D6400911A02 /* MASCompositeConstraint.m */; };
 		7FDEDC081AF71D6400911A02 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDBF41AF71D6400911A02 /* MASConstraint.m */; };
 		7FDEDC091AF71D6400911A02 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDBF61AF71D6400911A02 /* MASConstraintMaker.m */; };
@@ -23,6 +28,7 @@
 		7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FDEDC1B1AF77A1900911A02 /* Images.xcassets */; };
 		7FDEE40E1AF706B200674488 /* PersonCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEE40D1AF706B200674488 /* PersonCenterVC.m */; };
 		7FE42B321AF9AF5A00EB923E /* AlwaysUsedAddresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */; };
+		7FE42B351AF9E73000EB923E /* AddAdressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE42B341AF9E73000EB923E /* AddAdressVC.m */; };
 		7FE556B51AF84C8C00D98006 /* CheckPersonInFoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */; };
 		7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B71AF8519D00D98006 /* MyCollectionVC.m */; };
 		7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BA1AF8649100D98006 /* ChangePsdVC.m */; };
@@ -114,6 +120,15 @@
 
 /* Begin PBXFileReference section */
 		2BAB02AEF7A18EC6E0E34F4A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7F8B1AA41AFA01560085FE2D /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
+		7F8B1AA61AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+BarButtonItem.h"; sourceTree = "<group>"; };
+		7F8B1AA71AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+BarButtonItem.m"; sourceTree = "<group>"; };
+		7F8B1AA81AFA01560085FE2D /* UIButton+Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Button.h"; sourceTree = "<group>"; };
+		7F8B1AA91AFA01560085FE2D /* UIButton+Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Button.m"; sourceTree = "<group>"; };
+		7F8B1AAA1AFA01560085FE2D /* PALocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PALocation.h; sourceTree = "<group>"; };
+		7F8B1AAB1AFA01560085FE2D /* PALocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PALocation.m; sourceTree = "<group>"; };
+		7F8B1AAC1AFA01560085FE2D /* PAPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPickView.h; sourceTree = "<group>"; };
+		7F8B1AAD1AFA01560085FE2D /* PAPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPickView.m; sourceTree = "<group>"; };
 		7FDEDBEE1AF71A0B00911A02 /* SendIFMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendIFMacros.h; sourceTree = "<group>"; };
 		7FDEDBF01AF71D6400911A02 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		7FDEDBF11AF71D6400911A02 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
@@ -150,6 +165,8 @@
 		7FDEE40D1AF706B200674488 /* PersonCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterVC.m; sourceTree = "<group>"; };
 		7FE42B301AF9AF5A00EB923E /* AlwaysUsedAddresVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlwaysUsedAddresVC.h; sourceTree = "<group>"; };
 		7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlwaysUsedAddresVC.m; sourceTree = "<group>"; };
+		7FE42B331AF9E73000EB923E /* AddAdressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAdressVC.h; sourceTree = "<group>"; };
+		7FE42B341AF9E73000EB923E /* AddAdressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAdressVC.m; sourceTree = "<group>"; };
 		7FE556B31AF84C8C00D98006 /* CheckPersonInFoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPersonInFoVC.h; sourceTree = "<group>"; };
 		7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPersonInFoVC.m; sourceTree = "<group>"; };
 		7FE556B61AF8519D00D98006 /* MyCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionVC.h; sourceTree = "<group>"; };
@@ -327,6 +344,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F8B1AA31AFA01560085FE2D /* pickView */ = {
+			isa = PBXGroup;
+			children = (
+				7F8B1AA41AFA01560085FE2D /* area.plist */,
+				7F8B1AA51AFA01560085FE2D /* CustomBarButton */,
+				7F8B1AAA1AFA01560085FE2D /* PALocation.h */,
+				7F8B1AAB1AFA01560085FE2D /* PALocation.m */,
+				7F8B1AAC1AFA01560085FE2D /* PAPickView.h */,
+				7F8B1AAD1AFA01560085FE2D /* PAPickView.m */,
+			);
+			path = pickView;
+			sourceTree = "<group>";
+		};
+		7F8B1AA51AFA01560085FE2D /* CustomBarButton */ = {
+			isa = PBXGroup;
+			children = (
+				7F8B1AA61AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.h */,
+				7F8B1AA71AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m */,
+				7F8B1AA81AFA01560085FE2D /* UIButton+Button.h */,
+				7F8B1AA91AFA01560085FE2D /* UIButton+Button.m */,
+			);
+			path = CustomBarButton;
+			sourceTree = "<group>";
+		};
 		7FDEDBEF1AF71D6400911A02 /* Masonry */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +417,8 @@
 				7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */,
 				7FE42B301AF9AF5A00EB923E /* AlwaysUsedAddresVC.h */,
 				7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */,
+				7FE42B331AF9E73000EB923E /* AddAdressVC.h */,
+				7FE42B341AF9E73000EB923E /* AddAdressVC.m */,
 			);
 			path = "个人中心 ";
 			sourceTree = "<group>";
@@ -627,6 +670,7 @@
 		A38A32511AEC033D00F7FE7C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7F8B1AA31AFA01560085FE2D /* pickView */,
 				7FE556BC1AF8A1F700D98006 /* NSString+val.h */,
 				7FE556BD1AF8A1F700D98006 /* NSString+val.m */,
 				7FDEDBEF1AF71D6400911A02 /* Masonry */,
@@ -1029,6 +1073,7 @@
 				A369CF971AEE6CDD001F3DB7 /* citydict.plist in Resources */,
 				A38A32211AEBE98800F7FE7C /* LaunchScreen.xib in Resources */,
 				7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */,
+				7F8B1AAE1AFA01560085FE2D /* area.plist in Resources */,
 				7FDEDC171AF7549C00911A02 /* SendIFAPPSeting.plist in Resources */,
 				A369CFB51AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 			);
@@ -1097,6 +1142,7 @@
 				A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */,
 				A3C466E31AF30B3C00E1604D /* WEHomeBottomScrollView.m in Sources */,
 				7FDEDC0E1AF71D6400911A02 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				7FE42B351AF9E73000EB923E /* AddAdressVC.m in Sources */,
 				A38851B91AED2DD40019D6E5 /* ImagePlayerView.m in Sources */,
 				A3843EE01AF4A82300FDE84F /* HttpTool.m in Sources */,
 				A38A327A1AEC075500F7FE7C /* WECategoryHomeVC.m in Sources */,
@@ -1105,6 +1151,7 @@
 				7FDEDC0C1AF71D6400911A02 /* MASViewConstraint.m in Sources */,
 				A369CF841AEDC9B1001F3DB7 /* RTDatabaseHelper.m in Sources */,
 				A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */,
+				7F8B1AB01AFA01560085FE2D /* UIButton+Button.m in Sources */,
 				7FDEDC071AF71D6400911A02 /* MASCompositeConstraint.m in Sources */,
 				A3843ECD1AF47A6000FDE84F /* UserDefaultsUtils.m in Sources */,
 				A38851C01AED36C40019D6E5 /* UIImageView+WebCacheImg.m in Sources */,
@@ -1126,6 +1173,7 @@
 				A38A328C1AEC083900F7FE7C /* RDVTabBarController.m in Sources */,
 				A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */,
 				A38A328D1AEC083900F7FE7C /* RDVTabBarItem.m in Sources */,
+				7F8B1AB21AFA01560085FE2D /* PAPickView.m in Sources */,
 				A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */,
 				A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */,
 				A369CF821AEDC9B1001F3DB7 /* BaseTableViewProtocol.m in Sources */,
@@ -1141,6 +1189,7 @@
 				A37F75601AF3DF040054B677 /* WECartHomeCellBottomView.m in Sources */,
 				A3C466E01AF30B1900E1604D /* JCTopic.m in Sources */,
 				A369CFB21AEE70C4001F3DB7 /* PinyinFormatter.m in Sources */,
+				7F8B1AAF1AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m in Sources */,
 				A3C248A41AF9074900760C72 /* WEAdModel.m in Sources */,
 				A3843ECC1AF47A6000FDE84F /* AccountHanler.m in Sources */,
 				A38A32831AEC07E200F7FE7C /* WESearchHomeVC.m in Sources */,
@@ -1151,6 +1200,7 @@
 				A3C48FB61AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m in Sources */,
 				7FDEDC0B1AF71D6400911A02 /* MASViewAttribute.m in Sources */,
 				A369CFB01AEE70C4001F3DB7 /* HanyuPinyinOutputFormat.m in Sources */,
+				7F8B1AB11AFA01560085FE2D /* PALocation.m in Sources */,
 				7FDEDC121AF7541000911A02 /* LoginVC.m in Sources */,
 				A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */,
 				A3883D111AF9A27400EC2CEA /* WECategorySingleModel.m in Sources */,

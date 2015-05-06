@@ -8,6 +8,7 @@
 
 #import "AlwaysUsedAddresVC.h"
 #import "BaseTableViewProtocol.h"
+#import "AddAdressVC.h"
 
 @interface AlwaysUsedAddresVC ()<TableViewCellDelegate,UITableViewDataSource,UITableViewDelegate>
 
@@ -18,10 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"常用地址";
-//    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStyleDone target:self action:@selector(addClick)];
- 
     
+   
+  self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
+    self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
       UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 70*4+60) style:UITableViewStylePlain];
     
     
@@ -101,7 +102,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)addClick
+{
+    AddAdressVC *add  =[[AddAdressVC alloc]init];
+    
+    [self.navigationController pushViewController:add animated:YES];
 
+
+
+}
 /*
 #pragma mark - Navigation
 
