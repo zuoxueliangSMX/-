@@ -53,6 +53,8 @@
 		A3843EDB1AF48D5C00FDE84F /* WEHTTPHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A3843EDA1AF48D5C00FDE84F /* WEHTTPHandler.m */; };
 		A3843EDD1AF4900600FDE84F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3843EDC1AF4900600FDE84F /* SystemConfiguration.framework */; };
 		A3843EE01AF4A82300FDE84F /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A3843EDF1AF4A82300FDE84F /* HttpTool.m */; };
+		A3883D111AF9A27400EC2CEA /* WECategorySingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3883D0E1AF9A27400EC2CEA /* WECategorySingleModel.m */; };
+		A3883D121AF9A27400EC2CEA /* WECategorysModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3883D101AF9A27400EC2CEA /* WECategorysModel.m */; };
 		A38851A81AED0AE40019D6E5 /* WELocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A38851A71AED0AE40019D6E5 /* WELocationManager.m */; };
 		A38851B31AED2C7F0019D6E5 /* WEHomeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A38851B21AED2C7F0019D6E5 /* WEHomeScrollView.m */; };
 		A38851B91AED2DD40019D6E5 /* ImagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A38851B61AED2DD40019D6E5 /* ImagePlayerView.m */; };
@@ -79,8 +81,6 @@
 		A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32971AEC11E700F7FE7C /* ViewController.m */; };
 		A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */; };
 		A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248921AF8FAC400760C72 /* WEHotRecommendSingleModel.m */; };
-		A3C2489A1AF9002F00760C72 /* WECategorysModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248991AF9002F00760C72 /* WECategorysModel.m */; };
-		A3C2489D1AF9004900760C72 /* WECategorySingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2489C1AF9004900760C72 /* WECategorySingleModel.m */; };
 		A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A01AF906BC00760C72 /* WEHomeInfoModel.m */; };
 		A3C248A41AF9074900760C72 /* WEAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A31AF9074900760C72 /* WEAdModel.m */; };
 		A3C248A71AF907C500760C72 /* WENoticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A61AF907C500760C72 /* WENoticeModel.m */; };
@@ -206,6 +206,10 @@
 		A3843EDC1AF4900600FDE84F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A3843EDE1AF4A82300FDE84F /* HttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTool.h; sourceTree = "<group>"; };
 		A3843EDF1AF4A82300FDE84F /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; };
+		A3883D0D1AF9A27400EC2CEA /* WECategorySingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECategorySingleModel.h; sourceTree = "<group>"; };
+		A3883D0E1AF9A27400EC2CEA /* WECategorySingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECategorySingleModel.m; sourceTree = "<group>"; };
+		A3883D0F1AF9A27400EC2CEA /* WECategorysModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECategorysModel.h; sourceTree = "<group>"; };
+		A3883D101AF9A27400EC2CEA /* WECategorysModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECategorysModel.m; sourceTree = "<group>"; };
 		A38851A61AED0AE40019D6E5 /* WELocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WELocationManager.h; sourceTree = "<group>"; };
 		A38851A71AED0AE40019D6E5 /* WELocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WELocationManager.m; sourceTree = "<group>"; };
 		A38851B11AED2C7F0019D6E5 /* WEHomeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeScrollView.h; sourceTree = "<group>"; };
@@ -261,10 +265,6 @@
 		A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHotRecommendModel.m; sourceTree = "<group>"; };
 		A3C248911AF8FAC400760C72 /* WEHotRecommendSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHotRecommendSingleModel.h; sourceTree = "<group>"; };
 		A3C248921AF8FAC400760C72 /* WEHotRecommendSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHotRecommendSingleModel.m; sourceTree = "<group>"; };
-		A3C248981AF9002F00760C72 /* WECategorysModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WECategorysModel.h; path = ../../../../../../../../../Documents/WECategorysModel.h; sourceTree = "<group>"; };
-		A3C248991AF9002F00760C72 /* WECategorysModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WECategorysModel.m; path = ../../../../../../../../../Documents/WECategorysModel.m; sourceTree = "<group>"; };
-		A3C2489B1AF9004900760C72 /* WECategorySingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WECategorySingleModel.h; path = ../../../../../../../../../Documents/WECategorySingleModel.h; sourceTree = "<group>"; };
-		A3C2489C1AF9004900760C72 /* WECategorySingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WECategorySingleModel.m; path = ../../../../../../../../../Documents/WECategorySingleModel.m; sourceTree = "<group>"; };
 		A3C2489F1AF906BC00760C72 /* WEHomeInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeInfoModel.h; sourceTree = "<group>"; };
 		A3C248A01AF906BC00760C72 /* WEHomeInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHomeInfoModel.m; sourceTree = "<group>"; };
 		A3C248A21AF9074900760C72 /* WEAdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEAdModel.h; sourceTree = "<group>"; };
@@ -488,6 +488,17 @@
 			path = HTTPTool;
 			sourceTree = "<group>";
 		};
+		A3883D0C1AF9A27400EC2CEA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3883D0D1AF9A27400EC2CEA /* WECategorySingleModel.h */,
+				A3883D0E1AF9A27400EC2CEA /* WECategorySingleModel.m */,
+				A3883D0F1AF9A27400EC2CEA /* WECategorysModel.h */,
+				A3883D101AF9A27400EC2CEA /* WECategorysModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A38851A51AED0A770019D6E5 /* WELocationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,7 +720,7 @@
 		A38A325B1AEC033D00F7FE7C /* WECategorytHomeVC(分类首页) */ = {
 			isa = PBXGroup;
 			children = (
-				A3C248941AF8FE8500760C72 /* Model */,
+				A3883D0C1AF9A27400EC2CEA /* Model */,
 				A3C48FAC1AEFC2AF001D9717 /* View */,
 				A38A32781AEC075500F7FE7C /* WECategoryHomeVC.h */,
 				A38A32791AEC075500F7FE7C /* WECategoryHomeVC.m */,
@@ -836,17 +847,6 @@
 				A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */,
 				A3C248911AF8FAC400760C72 /* WEHotRecommendSingleModel.h */,
 				A3C248921AF8FAC400760C72 /* WEHotRecommendSingleModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A3C248941AF8FE8500760C72 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				A3C248981AF9002F00760C72 /* WECategorysModel.h */,
-				A3C248991AF9002F00760C72 /* WECategorysModel.m */,
-				A3C2489B1AF9004900760C72 /* WECategorySingleModel.h */,
-				A3C2489C1AF9004900760C72 /* WECategorySingleModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1080,7 +1080,6 @@
 				A3C466F21AF313B300E1604D /* TADotView.m in Sources */,
 				7FDEDC1A1AF764CD00911A02 /* MyRegisterVC.m in Sources */,
 				A369CFB41AEE70C4001F3DB7 /* PinyinHelper.m in Sources */,
-				A3C2489D1AF9004900760C72 /* WECategorySingleModel.m in Sources */,
 				7FDEDC0D1AF71D6400911A02 /* NSArray+MASAdditions.m in Sources */,
 				A369CF4C1AEDBF20001F3DB7 /* WEHomeCityVC.m in Sources */,
 				A369CF7F1AEDC9B1001F3DB7 /* BaseEntity.m in Sources */,
@@ -1091,7 +1090,6 @@
 				A3C466F11AF313B300E1604D /* TAAnimatedDotView.m in Sources */,
 				A38A32911AEC0BC100F7FE7C /* WENavitationController.m in Sources */,
 				A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */,
-				A3C2489A1AF9002F00760C72 /* WECategorysModel.m in Sources */,
 				A3C466E31AF30B3C00E1604D /* WEHomeBottomScrollView.m in Sources */,
 				7FDEDC0E1AF71D6400911A02 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				A38851B91AED2DD40019D6E5 /* ImagePlayerView.m in Sources */,
@@ -1119,6 +1117,7 @@
 				A38A32801AEC078400F7FE7C /* WEMineHomeVC.m in Sources */,
 				A369CFAF1AEE70C4001F3DB7 /* ChineseToPinyinResource.m in Sources */,
 				A369CF831AEDC9B1001F3DB7 /* BaseViewController.m in Sources */,
+				A3883D121AF9A27400EC2CEA /* WECategorysModel.m in Sources */,
 				A38A328C1AEC083900F7FE7C /* RDVTabBarController.m in Sources */,
 				A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */,
 				A38A328D1AEC083900F7FE7C /* RDVTabBarItem.m in Sources */,
@@ -1149,6 +1148,7 @@
 				A369CFB01AEE70C4001F3DB7 /* HanyuPinyinOutputFormat.m in Sources */,
 				7FDEDC121AF7541000911A02 /* LoginVC.m in Sources */,
 				A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */,
+				A3883D111AF9A27400EC2CEA /* WECategorySingleModel.m in Sources */,
 				7FDEDC0A1AF71D6400911A02 /* MASLayoutConstraint.m in Sources */,
 				A38851A81AED0AE40019D6E5 /* WELocationManager.m in Sources */,
 				A3C466E61AF30D4300E1604D /* WERecommendBgView.m in Sources */,
