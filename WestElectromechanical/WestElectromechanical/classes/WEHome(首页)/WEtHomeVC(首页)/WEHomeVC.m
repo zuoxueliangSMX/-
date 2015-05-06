@@ -17,6 +17,7 @@
 #import "WEHTTPHandler.h"
 #import "WEHomeInfoModel.h"
 #import "AppDelegate.h"
+#import "WEProductListVC.h"
 @interface WEHomeVC ()
 @property (nonatomic ,strong)NSMutableArray *imgurls;
 @property (nonatomic ,weak)WEHomeScrollView *homeScroll;
@@ -99,7 +100,7 @@
     [self setBarButtonItems];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    __weak WEHomeVC *bSelf =self;
     WEHomeScrollView *scrollView =[[WEHomeScrollView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49)];
     scrollView.backgroundColor =[UIColor clearColor];
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
@@ -115,12 +116,14 @@
             AppDelegate *delegate =(AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.tabBarController.selectedIndex =2;
 //            [delegate.tabBarController viewControllerAtIndex:3];
+        }else{
+            WEProductListVC *productListVC =[[WEProductListVC alloc]init];
+            [bSelf.navigationController pushViewController:productListVC animated:YES];
         }
     }];
     _homeScroll = scrollView;
     
     WELocationManager *mgr =[WELocationManager sharedWELocationManager];
-    __weak WEHomeVC *bSelf = self;
     [mgr getLocationCity:^(NSString *cityString) {
         [bSelf setLeftItems];
     }];

@@ -10,6 +10,7 @@
 
 @interface UIBarButtonItem (Extension)
 + (UIBarButtonItem *)itemWithImageName:(NSString *)imageName highImageName:(NSString *)highImageName target:(id)target action:(SEL)action;
+- (UIBarButtonItem *)itemInitWithImageName:(NSString *)imageName highImageName:(NSString *)highImageName target:(id)target action:(SEL)action;
 + (UIBarButtonItem *)addTarget:(id)target WithTitle:(NSString *)title withColor:(UIColor *)color action:(SEL)action;
 - (UIBarButtonItem *)initTarget:(id)target WithTitle:(NSString *)title withColor:(UIColor *)color action:(SEL)action;
 

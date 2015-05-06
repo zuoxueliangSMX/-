@@ -86,6 +86,8 @@
 		A38A32911AEC0BC100F7FE7C /* WENavitationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32901AEC0BC100F7FE7C /* WENavitationController.m */; };
 		A38A32951AEC0CB000F7FE7C /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */; };
 		A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32971AEC11E700F7FE7C /* ViewController.m */; };
+		A39E9A871AFA6AD80035A059 /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E9A861AFA6AD80035A059 /* UIButton+Extension.m */; };
+		A39E9A8A1AFA6E760035A059 /* WEProductCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E9A891AFA6E760035A059 /* WEProductCollectionCell.m */; };
 		A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */; };
 		A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248921AF8FAC400760C72 /* WEHotRecommendSingleModel.m */; };
 		A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A01AF906BC00760C72 /* WEHomeInfoModel.m */; };
@@ -282,6 +284,10 @@
 		A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
 		A38A32961AEC11E700F7FE7C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A38A32971AEC11E700F7FE7C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A39E9A851AFA6AD80035A059 /* UIButton+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
+		A39E9A861AFA6AD80035A059 /* UIButton+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
+		A39E9A881AFA6E760035A059 /* WEProductCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductCollectionCell.h; sourceTree = "<group>"; };
+		A39E9A891AFA6E760035A059 /* WEProductCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductCollectionCell.m; sourceTree = "<group>"; };
 		A3C2488E1AF8FA1600760C72 /* WEHotRecommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHotRecommendModel.h; sourceTree = "<group>"; };
 		A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHotRecommendModel.m; sourceTree = "<group>"; };
 		A3C248911AF8FAC400760C72 /* WEHotRecommendSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHotRecommendSingleModel.h; sourceTree = "<group>"; };
@@ -933,6 +939,8 @@
 				A38851BF1AED36C40019D6E5 /* UIImageView+WebCacheImg.m */,
 				A3C2A83B1AEC9BF6001DC327 /* UIImage+Extension.h */,
 				A3C2A83C1AEC9BF6001DC327 /* UIImage+Extension.m */,
+				A39E9A851AFA6AD80035A059 /* UIButton+Extension.h */,
+				A39E9A861AFA6AD80035A059 /* UIButton+Extension.m */,
 				A3C2A8351AEC9AD4001DC327 /* UIBarButtonItem+Extension.h */,
 				A3C2A8361AEC9AD4001DC327 /* UIBarButtonItem+Extension.m */,
 				A3C2A8381AEC9B07001DC327 /* UIView+Extension.h */,
@@ -962,6 +970,8 @@
 		A3C2CC7E1AFA4AC10087BDED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A39E9A881AFA6E760035A059 /* WEProductCollectionCell.h */,
+				A39E9A891AFA6E760035A059 /* WEProductCollectionCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1192,6 +1202,7 @@
 				A38851BA1AED2DD40019D6E5 /* SMPageControl.m in Sources */,
 				7FDEDC0F1AF71D6400911A02 /* View+MASAdditions.m in Sources */,
 				A38851BD1AED2DF80019D6E5 /* HomeHeaderScrollView.m in Sources */,
+				A39E9A871AFA6AD80035A059 /* UIButton+Extension.m in Sources */,
 				7FE556BE1AF8A1F700D98006 /* NSString+val.m in Sources */,
 				A38A32771AEC073100F7FE7C /* WELeadPageVC.m in Sources */,
 				A38A32131AEBE98800F7FE7C /* main.m in Sources */,
@@ -1207,6 +1218,7 @@
 				A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */,
 				A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */,
 				A369CF821AEDC9B1001F3DB7 /* BaseTableViewProtocol.m in Sources */,
+				A39E9A8A1AFA6E760035A059 /* WEProductCollectionCell.m in Sources */,
 				A369CFB31AEE70C4001F3DB7 /* PinYinForObjc.m in Sources */,
 				A3C248A71AF907C500760C72 /* WENoticeModel.m in Sources */,
 				7FDEDC161AF7549C00911A02 /* SendIFAPPDefault.m in Sources */,
