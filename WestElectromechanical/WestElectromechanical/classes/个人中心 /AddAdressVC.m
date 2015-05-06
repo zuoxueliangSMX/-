@@ -216,6 +216,20 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     [loginBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:loginBut];
     
+    
+    PAPickView *pick =[[PAPickView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 260)];
+    [pick setPAPickViewBlock:^(NSInteger tag) {
+        if (tag == 1000) {
+            [_pickView cancelPicker];
+        }else{
+            NSLog(@"%@赶紧出来 %@ %@",_pickView.location.state,_pickView.location.city,_pickView.location.district);
+            addressTf.text =[NSString stringWithFormat:@"%@%@%@",_pickView.location.state,_pickView.location.city,_pickView.location.district];
+            [_pickView cancelPicker];
+        }
+    }];
+    _pickView =pick;
+    [self.view addSubview:pick];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -232,20 +246,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
 -(void)locationBtnClick
 {
 
-   
-  PAPickView *pick =[[PAPickView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-64, SCREEN_WIDTH, 260)];
-    [pick setPAPickViewBlock:^(NSInteger tag) {
-        if (tag == 1000) {
-            [_pickView cancelPicker];
-        }else{
-            NSLog(@"%@赶紧出来 %@ %@",_pickView.location.state,_pickView.location.city,_pickView.location.district);
-            addressTf.text =[NSString stringWithFormat:@"%@%@%@",_pickView.location.state,_pickView.location.city,_pickView.location.district];
-            [_pickView cancelPicker];
-        }
-    }];
-           _pickView =pick;
-          [self.view addSubview:pick];
-    
+    [_pickView showInView:self.view];
 }
 
 
