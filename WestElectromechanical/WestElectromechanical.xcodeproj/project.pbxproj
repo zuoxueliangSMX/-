@@ -26,6 +26,7 @@
 		7FDEDC1A1AF764CD00911A02 /* MyRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC191AF764CD00911A02 /* MyRegisterVC.m */; };
 		7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FDEDC1B1AF77A1900911A02 /* Images.xcassets */; };
 		7FDEE40E1AF706B200674488 /* PersonCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEE40D1AF706B200674488 /* PersonCenterVC.m */; };
+		7FE4204E1AFA6E8C00988846 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4204D1AFA6E8C00988846 /* GCPlaceholderTextView.m */; };
 		7FE42B321AF9AF5A00EB923E /* AlwaysUsedAddresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */; };
 		7FE42B351AF9E73000EB923E /* AddAdressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE42B341AF9E73000EB923E /* AddAdressVC.m */; };
 		7FE556B51AF84C8C00D98006 /* CheckPersonInFoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */; };
@@ -165,6 +166,8 @@
 		7FDEDC1B1AF77A1900911A02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7FDEE40C1AF706B200674488 /* PersonCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCenterVC.h; sourceTree = "<group>"; };
 		7FDEE40D1AF706B200674488 /* PersonCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterVC.m; sourceTree = "<group>"; };
+		7FE4204C1AFA6E8C00988846 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
+		7FE4204D1AFA6E8C00988846 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		7FE42B301AF9AF5A00EB923E /* AlwaysUsedAddresVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlwaysUsedAddresVC.h; sourceTree = "<group>"; };
 		7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlwaysUsedAddresVC.m; sourceTree = "<group>"; };
 		7FE42B331AF9E73000EB923E /* AddAdressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAdressVC.h; sourceTree = "<group>"; };
@@ -679,6 +682,8 @@
 		A38A32511AEC033D00F7FE7C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7FE4204C1AFA6E8C00988846 /* GCPlaceholderTextView.h */,
+				7FE4204D1AFA6E8C00988846 /* GCPlaceholderTextView.m */,
 				7F8B1AA31AFA01560085FE2D /* pickView */,
 				7FE556BC1AF8A1F700D98006 /* NSString+val.h */,
 				7FE556BD1AF8A1F700D98006 /* NSString+val.m */,
@@ -1225,6 +1230,7 @@
 				A3C48FAF1AEFC2C7001D9717 /* WECategoryHomeCell.m in Sources */,
 				A3C466F01AF313B300E1604D /* TAAbstractDotView.m in Sources */,
 				7FE643AA1AF7921A000809A4 /* EmailForCodeVC.m in Sources */,
+				7FE4204E1AFA6E8C00988846 /* GCPlaceholderTextView.m in Sources */,
 				A38A32741AEC06C900F7FE7C /* WEHomeVC.m in Sources */,
 				A369CFB81AEE713B001F3DB7 /* ChineseInclude.m in Sources */,
 				A3843EDB1AF48D5C00FDE84F /* WEHTTPHandler.m in Sources */,

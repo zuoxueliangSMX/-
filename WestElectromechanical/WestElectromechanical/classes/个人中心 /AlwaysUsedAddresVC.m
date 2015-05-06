@@ -10,8 +10,14 @@
 #import "BaseTableViewProtocol.h"
 #import "AddAdressVC.h"
 #import "RDVTabBarController.h"
+#import "WEHTTPHandler.h"
+#import "AccountHanler.h"
 @interface AlwaysUsedAddresVC ()<TableViewCellDelegate,UITableViewDataSource,UITableViewDelegate>
+{
 
+    WEHTTPHandler *we;
+
+}
 @end
 
 @implementation AlwaysUsedAddresVC
@@ -21,7 +27,16 @@
 #pragma mark - pop和push控制器时的操作
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];}
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    
+    
+    [we executeGetAdressListTaskWithUserId:[AccountHanler userId] Success:^(id obj) {
+        DLog(@"输出%@",obj);
+    } failed:^(id obj) {
+        
+    }];
+
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -32,9 +47,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"常用地址";
+<<<<<<< HEAD
+   we= [[WEHTTPHandler alloc]init];
+   
+  self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
+=======
     
     self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
 
+>>>>>>> 0d629f190d909063fbb6c5485df35c0d6e3b1e63
     self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
     UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
     
@@ -124,6 +145,9 @@
 
 
 }
+
+
+
 /*
 #pragma mark - Navigation
 

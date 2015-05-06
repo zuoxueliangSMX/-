@@ -193,6 +193,10 @@
 {
     
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setb"] style:UIBarButtonItemStyleDone target:self action:@selector(setBtnClick)];
+
+    
+    
     head = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
    
    imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"qw"]];
@@ -454,7 +458,13 @@
 //}
 
 
+-(void)setBtnClick
+{
 
+
+
+
+}
 
 
 @end
