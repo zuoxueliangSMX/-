@@ -7,12 +7,12 @@
 //
 
 #import "SheZhiVC.h"
-import "RDVTabBarController.h"
+#import "RDVTabBarController.h"
 #import "WEHTTPHandler.h"
 #import "AccountHanler.h"
 
 
-@interface SheZhiVC ()<TableViewCellDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface SheZhiVC ()<UITableViewDataSource,UITableViewDelegate>
 {
     
     WEHTTPHandler *we;
@@ -24,14 +24,9 @@ import "RDVTabBarController.h"
 
 @implementation SheZhiVC
 
-
-- (void)viewWillAppear:(BOOL)animated {
+-(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
-    
-
-    }];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

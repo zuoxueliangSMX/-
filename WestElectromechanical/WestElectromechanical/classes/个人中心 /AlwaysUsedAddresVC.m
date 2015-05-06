@@ -11,7 +11,7 @@
 #import "RDVTabBarController.h"
 #import "WEHTTPHandler.h"
 #import "AccountHanler.h"
-@interface AlwaysUsedAddresVC ()<TableViewCellDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface AlwaysUsedAddresVC ()<UITableViewDataSource,UITableViewDelegate>
 {
 
     WEHTTPHandler *we;
@@ -48,18 +48,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"常用地址";
-<<<<<<< HEAD
    we= [[WEHTTPHandler alloc]init];
-   
-  self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
-=======
-
-   we= [[WEHTTPHandler alloc]init];
-   
-    self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
-
->>>>>>> 7351400d5a0191f1b139f910aa75d716c8e9a3e1
-    self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(addClick)];
+            self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
     UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
     
     
