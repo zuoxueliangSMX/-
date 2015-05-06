@@ -95,6 +95,7 @@
 		A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A8361AEC9AD4001DC327 /* UIBarButtonItem+Extension.m */; };
 		A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A8391AEC9B07001DC327 /* UIView+Extension.m */; };
 		A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A83C1AEC9BF6001DC327 /* UIImage+Extension.m */; };
+		A3C2CC811AFA4AD40087BDED /* WEProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2CC801AFA4AD40087BDED /* WEProductListVC.m */; };
 		A3C466E01AF30B1900E1604D /* JCTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C466DF1AF30B1900E1604D /* JCTopic.m */; };
 		A3C466E31AF30B3C00E1604D /* WEHomeBottomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C466E21AF30B3C00E1604D /* WEHomeBottomScrollView.m */; };
 		A3C466E61AF30D4300E1604D /* WERecommendBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C466E51AF30D4300E1604D /* WERecommendBgView.m */; };
@@ -299,6 +300,8 @@
 		A3C2A8391AEC9B07001DC327 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		A3C2A83B1AEC9BF6001DC327 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		A3C2A83C1AEC9BF6001DC327 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		A3C2CC7F1AFA4AD40087BDED /* WEProductListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductListVC.h; sourceTree = "<group>"; };
+		A3C2CC801AFA4AD40087BDED /* WEProductListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductListVC.m; sourceTree = "<group>"; };
 		A3C466DE1AF30B1900E1604D /* JCTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTopic.h; sourceTree = "<group>"; };
 		A3C466DF1AF30B1900E1604D /* JCTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTopic.m; sourceTree = "<group>"; };
 		A3C466E11AF30B3C00E1604D /* WEHomeBottomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeBottomScrollView.h; sourceTree = "<group>"; };
@@ -918,6 +921,7 @@
 		A3C248AB1AF91DA000760C72 /* WEProduct(商品) */ = {
 			isa = PBXGroup;
 			children = (
+				A3C2CC7C1AFA4AC10087BDED /* ProducListVC */,
 			);
 			path = "WEProduct(商品)";
 			sourceTree = "<group>";
@@ -935,6 +939,31 @@
 				A3C2A8391AEC9B07001DC327 /* UIView+Extension.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		A3C2CC7C1AFA4AC10087BDED /* ProducListVC */ = {
+			isa = PBXGroup;
+			children = (
+				A3C2CC7D1AFA4AC10087BDED /* Model */,
+				A3C2CC7E1AFA4AC10087BDED /* View */,
+				A3C2CC7F1AFA4AD40087BDED /* WEProductListVC.h */,
+				A3C2CC801AFA4AD40087BDED /* WEProductListVC.m */,
+			);
+			path = ProducListVC;
+			sourceTree = "<group>";
+		};
+		A3C2CC7D1AFA4AC10087BDED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A3C2CC7E1AFA4AC10087BDED /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A3C466DD1AF30B1900E1604D /* JCTopic */ = {
@@ -1142,6 +1171,7 @@
 				A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */,
 				A3C466E31AF30B3C00E1604D /* WEHomeBottomScrollView.m in Sources */,
 				7FDEDC0E1AF71D6400911A02 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				A3C2CC811AFA4AD40087BDED /* WEProductListVC.m in Sources */,
 				7FE42B351AF9E73000EB923E /* AddAdressVC.m in Sources */,
 				A38851B91AED2DD40019D6E5 /* ImagePlayerView.m in Sources */,
 				A3843EE01AF4A82300FDE84F /* HttpTool.m in Sources */,
