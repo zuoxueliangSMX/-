@@ -21,6 +21,7 @@
 #import "AlwaysUsedAddresVC.h"
 #import "AccountHanler.h"
 #import "UIBarButtonItem+Extension.h"
+#import "SheZhiVC.h"
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 {
@@ -478,7 +479,9 @@
 -(void)setBtnClick
 {
 
-
+    SheZhiVC *shezhi = [[SheZhiVC alloc]init];
+    
+    [self.navigationController pushViewController:shezhi animated:YES];
 
 
 }

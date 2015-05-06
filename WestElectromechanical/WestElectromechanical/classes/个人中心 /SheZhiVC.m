@@ -16,6 +16,8 @@
 {
     
     WEHTTPHandler *we;
+    NSArray *imgArr;
+    NSArray *titleArr;
     
 }
 
@@ -42,6 +44,8 @@
            UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
     
     
+    imgArr = @[@"update",@"advice",@"share",@"exit",];
+    titleArr =@[@"版本更新",@"意见反馈评分",@"软件分享",@"注销"];
     table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
     
     self.view.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
@@ -59,6 +63,73 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    return 70;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    
+    return 4;
+}
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    NSString * cellidentifer = @"cell";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellidentifer];
+    if (cell ==nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 65)] ;
+        view.backgroundColor = [UIColor whiteColor];
+        cell.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
+        
+        view.tag =10;
+        [cell addSubview:view];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+        
+        UIImageView *imgv =[[UIImageView alloc]initWithFrame:CGRectMake(10, 20, 30, 30)];
+        imgv.tag =101;
+        
+        
+        
+        
+        UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+5, 20, 150, 30)];
+        nameLa.textColor =[UIColor blackColor];
+        nameLa.tag =100;
+       
+        
+
+       [view addSubview:imgv];
+       [view addSubview:nameLa];
+        
+    }
+    
+    UIView *view = (UIView*)[cell viewWithTag:10];
+    
+    UIImageView *imgv = (UIImageView*)[view viewWithTag:101];
+    UILabel *nameLa = (UILabel*)[view viewWithTag:100];
+    imgv.image =[UIImage imageNamed:[imgArr objectAtIndex:indexPath.row]];
+    nameLa.text =[titleArr objectAtIndex:indexPath.row];
+    
+    
+    
+    return cell;
+    
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+    
+    
+}
 /*
 #pragma mark - Navigation
 
