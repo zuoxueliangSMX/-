@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F8B1AAE1AFA01560085FE2D /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F8B1AA41AFA01560085FE2D /* area.plist */; };
 		7F8B1AAF1AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AA71AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m */; };
 		7F8B1AB01AFA01560085FE2D /* UIButton+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AA91AFA01560085FE2D /* UIButton+Button.m */; };
 		7F8B1AB11AFA01560085FE2D /* PALocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AAB1AFA01560085FE2D /* PALocation.m */; };
@@ -62,6 +61,7 @@
 		A3843EE01AF4A82300FDE84F /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A3843EDF1AF4A82300FDE84F /* HttpTool.m */; };
 		A3883D111AF9A27400EC2CEA /* WECategorySingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3883D0E1AF9A27400EC2CEA /* WECategorySingleModel.m */; };
 		A3883D121AF9A27400EC2CEA /* WECategorysModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3883D101AF9A27400EC2CEA /* WECategorysModel.m */; };
+		A3883D821AFA186D00EC2CEA /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3883D811AFA186D00EC2CEA /* area.plist */; };
 		A38851A81AED0AE40019D6E5 /* WELocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A38851A71AED0AE40019D6E5 /* WELocationManager.m */; };
 		A38851B31AED2C7F0019D6E5 /* WEHomeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A38851B21AED2C7F0019D6E5 /* WEHomeScrollView.m */; };
 		A38851B91AED2DD40019D6E5 /* ImagePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A38851B61AED2DD40019D6E5 /* ImagePlayerView.m */; };
@@ -120,7 +120,6 @@
 
 /* Begin PBXFileReference section */
 		2BAB02AEF7A18EC6E0E34F4A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		7F8B1AA41AFA01560085FE2D /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = area.plist; path = pickView/area.plist; sourceTree = "<group>"; };
 		7F8B1AA61AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+BarButtonItem.h"; sourceTree = "<group>"; };
 		7F8B1AA71AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+BarButtonItem.m"; sourceTree = "<group>"; };
 		7F8B1AA81AFA01560085FE2D /* UIButton+Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Button.h"; sourceTree = "<group>"; };
@@ -230,6 +229,7 @@
 		A3883D0E1AF9A27400EC2CEA /* WECategorySingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECategorySingleModel.m; sourceTree = "<group>"; };
 		A3883D0F1AF9A27400EC2CEA /* WECategorysModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECategorysModel.h; sourceTree = "<group>"; };
 		A3883D101AF9A27400EC2CEA /* WECategorysModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECategorysModel.m; sourceTree = "<group>"; };
+		A3883D811AFA186D00EC2CEA /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
 		A38851A61AED0AE40019D6E5 /* WELocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WELocationManager.h; sourceTree = "<group>"; };
 		A38851A71AED0AE40019D6E5 /* WELocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WELocationManager.m; sourceTree = "<group>"; };
 		A38851B11AED2C7F0019D6E5 /* WEHomeScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeScrollView.h; sourceTree = "<group>"; };
@@ -347,6 +347,7 @@
 		7F8B1AA31AFA01560085FE2D /* pickView */ = {
 			isa = PBXGroup;
 			children = (
+				A3883D811AFA186D00EC2CEA /* area.plist */,
 				7F8B1AA51AFA01560085FE2D /* CustomBarButton */,
 				7F8B1AAA1AFA01560085FE2D /* PALocation.h */,
 				7F8B1AAB1AFA01560085FE2D /* PALocation.m */,
@@ -669,7 +670,6 @@
 		A38A32511AEC033D00F7FE7C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				7F8B1AA41AFA01560085FE2D /* area.plist */,
 				7F8B1AA31AFA01560085FE2D /* pickView */,
 				7FE556BC1AF8A1F700D98006 /* NSString+val.h */,
 				7FE556BD1AF8A1F700D98006 /* NSString+val.m */,
@@ -1073,7 +1073,7 @@
 				A369CF971AEE6CDD001F3DB7 /* citydict.plist in Resources */,
 				A38A32211AEBE98800F7FE7C /* LaunchScreen.xib in Resources */,
 				7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */,
-				7F8B1AAE1AFA01560085FE2D /* area.plist in Resources */,
+				A3883D821AFA186D00EC2CEA /* area.plist in Resources */,
 				7FDEDC171AF7549C00911A02 /* SendIFAPPSeting.plist in Resources */,
 				A369CFB51AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 			);

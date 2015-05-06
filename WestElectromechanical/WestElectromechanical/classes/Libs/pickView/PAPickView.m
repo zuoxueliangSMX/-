@@ -46,7 +46,7 @@
         
         
         _provinces = [[NSMutableArray alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"area.plist" ofType:nil]];
-        _cities = [[_provinces objectAtIndex:0] objectForKey:@"Cities"];
+        _cities = [[_provinces objectAtIndex:0] objectForKey:@"cities"];
         
         self.location.state = [[_provinces objectAtIndex:0] objectForKey:@"state"];
         self.location.city = [[_cities objectAtIndex:0] objectForKey:@"city"];
@@ -109,7 +109,7 @@
             return [[_provinces objectAtIndex:row] objectForKey:@"state"];
             break;
         case 1:
-            return [[_cities objectAtIndex:row] objectForKey:@"Cities"];
+            return [[_cities objectAtIndex:row] objectForKey:@"city"];
             break;
         case 2:
             if ([_areas count] > 0) {
