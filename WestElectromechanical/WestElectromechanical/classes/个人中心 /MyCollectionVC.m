@@ -63,35 +63,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      we=[[WEHTTPHandler alloc]init];
-   
-    
-    [we executeGetMyCollectionTaskWithUserId:@"1002" withPage:@"2" Success:^(id obj) {
-       
-        _arr = [[NSMutableArray alloc] initWithCapacity:0];
+    _arr = [[NSMutableArray alloc] initWithCapacity:0];
+    VIEW_BACKGROUND;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.title = @"我的收藏";
+    [self addRightItem];
+    [self initCollectionView];
+    [self initNetData:1];
+}
+
+
+- (void)initNetData:(NSInteger)page
+{
+    [we executeGetMyCollectionTaskWithUserId:@"1002" withPage:[NSString stringWithFormat:@"%ld",page] Success:^(id obj) {
+        
         
         NSLog(@"输出我的收藏的%@",_arr);
         NSDictionary *dic = [obj objectForKey:@"products"];
         for (NSDictionary *dv in dic) {
             
             CollectionM *cm =  [JsonToModel objectFromDictionary:dv className:@"CollectionM"];
-            
-
-            
-            
-            
             [_arr addObject:cm];
+            [self.productCollection reloadData];
         }
-    
+        
     } failed:^(id obj) {
         
         
         
     }];
-    VIEW_BACKGROUND;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.title = @"我的收藏";
-    [self addRightItem];
-    [self initCollectionView];
 }
 
 - (void)didReceiveMemoryWarning {
