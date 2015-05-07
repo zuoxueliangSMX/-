@@ -11,6 +11,7 @@
 #import "UIBarButtonItem+Extension.h"
 #import "UIButton+Extension.h"
 #import "WEProductCollectionCell.h"
+#import "WEProductTableCell.h"
 @interface WEProductListVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic ,weak)UITableView *productList;
 @property (nonatomic ,weak)UICollectionView *productCollection;
@@ -76,6 +77,7 @@
     productList.dataSource =self;
     productList.hidden = YES;
     productList.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
+    productList.separatorStyle = UITableViewCellSelectionStyleNone;
     [self.view addSubview:productList];
     _productList = productList;
 }
@@ -128,16 +130,21 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 110;
 }
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    WEProductTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[WEProductTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.backgroundColor =[UIColor redColor];
+    cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
+    cell.productTitle.text = @"黄金钻头";
+    cell.productType.text = @"ZH-85";
+    cell.productBrand.text =@"西门子";
+    cell.productOrder.text = @"西域订货号：MAS294";
+//    cell.backgroundColor =[UIColor redColor];
     
     return cell;
 }
