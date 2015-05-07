@@ -39,9 +39,9 @@
 }
 
 - (void)addRightItem{
-    shopingCartBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 30, 30)];
+    shopingCartBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 25, 25)];
     shopingCartBtn.backgroundColor = [UIColor clearColor];
-    [shopingCartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
+    [shopingCartBtn setBackgroundImage:[UIImage imageNamed:@"Navitation_Cart"] forState:UIControlStateNormal];
     [shopingCartBtn addTarget:self action:@selector(rigBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     editBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shopingCartBtn.frame)+5, 5, 50, 30)];
     editBtn.backgroundColor = [UIColor clearColor];

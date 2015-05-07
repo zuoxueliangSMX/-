@@ -306,35 +306,12 @@
     [registBtn setBackgroundImage:[UIImage imageNamed:@"retertret"] forState:UIControlStateNormal];
     [head addSubview:registBtn];
     
-    
    
-    
-   
-
-    
-    
-    //footer
-    UIView *fooV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
-    
-    UIButton *outBtn = [[UIButton alloc] init];
-    [outBtn setTitle:@"安全退出登录" forState:UIControlStateNormal];
-    [outBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    outBtn.layer.cornerRadius = 8;
-    outBtn.layer.masksToBounds = YES;
-    outBtn.layer.borderWidth = 1.0;
-    [outBtn addTarget:self action:@selector(outBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    outBtn.layer.borderColor = [UIColor redColor].CGColor;
-    [fooV addSubview:outBtn];
-    [outBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.edges.equalTo(fooV).with.insets(UIEdgeInsetsMake(0, 5, 2, 5));
-    }];
-    
     UITableView *tabelView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [tabelView setDelegate:self];
     [tabelView setDataSource:self];
     tabelView.tableHeaderView = head;
-    tabelView.tableFooterView = fooV;
+
     [self.view addSubview:tabelView];
     
     [tabelView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -342,21 +319,7 @@
         make.edges.equalTo(self.view).with.insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
 }
-- (void)outBtnClick{
 
-    
-    
-    
-    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    [app initTabControlers];
-    
-//    [[SendIFAppDefault shareAppDefault] setMobilePhone:nil];
-    
-    [AccountHanler setLoginState:0];
-    
-    [AccountHanler saveUserId:nil];
-    
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -491,7 +454,7 @@
 
 -(void)setBtnClick
 {
-
+     
     SheZhiVC *shezhi = [[SheZhiVC alloc]init];
     
     [self.navigationController pushViewController:shezhi animated:YES];
