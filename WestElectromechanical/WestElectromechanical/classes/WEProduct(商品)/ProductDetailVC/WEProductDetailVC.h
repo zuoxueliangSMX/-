@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WEProductDetailVC : UIViewController
-
+@property (nonatomic ,copy)NSString *productId;
 @end

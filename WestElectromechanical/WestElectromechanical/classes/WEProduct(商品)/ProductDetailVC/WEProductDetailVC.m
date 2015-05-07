@@ -9,7 +9,12 @@
 #import "WEProductDetailVC.h"
 #import "RDVTabBarController.h"
 #import "UIBarButtonItem+Extension.h"
-@interface WEProductDetailVC ()
+#import "HomeHeaderScrollView.h"
+#import "UIButton+Extension.h"
+#import "WEHTTPHandler.h"
+@interface WEProductDetailVC ()<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic ,weak)HomeHeaderScrollView *headerView;
+@property (nonatomic ,weak)UITableView *productForm;
 
 @end
 
@@ -27,8 +32,8 @@
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
 - (void)addRightItem{
-    UIBarButtonItem *right1 =[UIBarButtonItem itemWithImageName:@"Product_Condition" highImageName:@"Product_Condition" target:self action:@selector(addCart:)];
-    UIBarButtonItem *right2 =[UIBarButtonItem itemWithImageName:@"Product_Screen" highImageName:@"Product_Screen" target:self action:@selector(shareProduct:)];
+    UIBarButtonItem *right1 =[UIBarButtonItem itemWithImageName:@"Navitation_Cart" highImageName:@"Navitation_Cart" target:self action:@selector(addCart:)];
+    UIBarButtonItem *right2 =[UIBarButtonItem itemWithImageName:@"Navitation_Cart" highImageName:@"Navitation_Cart" target:self action:@selector(shareProduct:)];
     /**
      *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
      *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
@@ -51,12 +56,89 @@
     NSLog(@"分享产品");
 }
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
+    self.title = @"商品详情";
+    [self initTableView];
+    [self initTableHeaderView];
+    [self initTableFooterView];
+    
+    WEHTTPHandler *handler = [[WEHTTPHandler alloc]init];
+    [handler executeGetProductDetailDataWithProductId:_productId withSuccess:^(id obj) {
+        DLog(@"%@",obj);
+    } withFailed:^(id obj) {
+        DLog(@"%@",obj);
+    }];
+
+    
 }
+- (void)initTableView
+{
+    UITableView *productForm =[[UITableView alloc]init];
+    productForm.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    productForm.delegate =self;
+    productForm.dataSource =self;
+    productForm.backgroundColor =[UIColor clearColor];
+    [self.view addSubview:productForm];
+    _productForm = productForm;
+    
+}
+- (void)initTableHeaderView
+{
+    HomeHeaderScrollView *headerView =[[HomeHeaderScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,(SCREEN_HEIGHT-64)*0.3)];
+    headerView.backgroundColor =[UIColor clearColor];
+    [self.view addSubview:headerView];
+    _headerView = headerView;
+    _productForm.tableHeaderView = _headerView;
+}
+
+- (void)initTableFooterView
+{
+    UIView *footer =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+    UIButton *button =[UIButton addTarget:self WithNorTitle:@"加入购物车" withNorColor:[UIColor whiteColor] withSelectedTitle:@"加入购物车" withSelectedColor:[UIColor whiteColor] withBackgroundColor:[UIColor redColor] withTileSize:font(16) action:@selector(addProductCart:)];
+    button.frame = CGRectMake(5, 5, SCREEN_WIDTH-10, 40);
+    button.layer.cornerRadius = 5;
+    [footer addSubview:button];
+    
+    _productForm.tableFooterView = footer;
+}
+- (void)addProductCart:(UIButton *)btn
+{
+    
+}
+#pragma mark -
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44;
+}
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if(cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    }
+    if (indexPath.row > 0) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    cell.textLabel.text = @"更多产品";
+    return cell;
+}
+#pragma mark -
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

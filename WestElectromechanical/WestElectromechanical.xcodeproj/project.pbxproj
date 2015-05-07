@@ -41,6 +41,8 @@
 		7FE6D47A1AFB40C200CFABE4 /* CollectionM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D4791AFB40C200CFABE4 /* CollectionM.m */; };
 		7FE6D47D1AFB422400CFABE4 /* JsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */; };
 		9D0E523495E67FFBE6F2714B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37D720A9818131CA3C9CC92 /* libPods.a */; };
+		A32D858C1AFBB9B600BC0CB0 /* WEProductImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D858B1AFBB9B600BC0CB0 /* WEProductImgModel.m */; };
+		A32D858F1AFBBA3500BC0CB0 /* WEProductModelImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D858E1AFBBA3500BC0CB0 /* WEProductModelImgModel.m */; };
 		A369CF4C1AEDBF20001F3DB7 /* WEHomeCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CF4B1AEDBF20001F3DB7 /* WEHomeCityVC.m */; };
 		A369CF7E1AEDC9B1001F3DB7 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CF701AEDC9B1001F3DB7 /* BaseDao.m */; };
 		A369CF7F1AEDC9B1001F3DB7 /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CF721AEDC9B1001F3DB7 /* BaseEntity.m */; };
@@ -97,6 +99,7 @@
 		A39E9A8A1AFA6E760035A059 /* WEProductCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E9A891AFA6E760035A059 /* WEProductCollectionCell.m */; };
 		A3BFB6251AFB9EC400024BEE /* WEProductTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BFB6241AFB9EC400024BEE /* WEProductTableCell.m */; };
 		A3BFB62E1AFBA8C200024BEE /* WEProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BFB62D1AFBA8C200024BEE /* WEProductDetailVC.m */; };
+		A3BFB6311AFBB6E600024BEE /* WEProductDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BFB6301AFBB6E600024BEE /* WEProductDetailModel.m */; };
 		A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */; };
 		A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248921AF8FAC400760C72 /* WEHotRecommendSingleModel.m */; };
 		A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A01AF906BC00760C72 /* WEHomeInfoModel.m */; };
@@ -201,6 +204,10 @@
 		7FE6D4791AFB40C200CFABE4 /* CollectionM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionM.m; sourceTree = "<group>"; };
 		7FE6D47B1AFB422400CFABE4 /* JsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonToModel.h; sourceTree = "<group>"; };
 		7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonToModel.m; sourceTree = "<group>"; };
+		A32D858A1AFBB9B600BC0CB0 /* WEProductImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductImgModel.h; sourceTree = "<group>"; };
+		A32D858B1AFBB9B600BC0CB0 /* WEProductImgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductImgModel.m; sourceTree = "<group>"; };
+		A32D858D1AFBBA3500BC0CB0 /* WEProductModelImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductModelImgModel.h; sourceTree = "<group>"; };
+		A32D858E1AFBBA3500BC0CB0 /* WEProductModelImgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductModelImgModel.m; sourceTree = "<group>"; };
 		A369CF4A1AEDBF20001F3DB7 /* WEHomeCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeCityVC.h; sourceTree = "<group>"; };
 		A369CF4B1AEDBF20001F3DB7 /* WEHomeCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHomeCityVC.m; sourceTree = "<group>"; };
 		A369CF6F1AEDC9B1001F3DB7 /* BaseDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDao.h; sourceTree = "<group>"; };
@@ -314,6 +321,8 @@
 		A3BFB6241AFB9EC400024BEE /* WEProductTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductTableCell.m; sourceTree = "<group>"; };
 		A3BFB62C1AFBA8C200024BEE /* WEProductDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductDetailVC.h; sourceTree = "<group>"; };
 		A3BFB62D1AFBA8C200024BEE /* WEProductDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductDetailVC.m; sourceTree = "<group>"; };
+		A3BFB62F1AFBB6E600024BEE /* WEProductDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductDetailModel.h; sourceTree = "<group>"; };
+		A3BFB6301AFBB6E600024BEE /* WEProductDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductDetailModel.m; sourceTree = "<group>"; };
 		A3C2488E1AF8FA1600760C72 /* WEHotRecommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHotRecommendModel.h; sourceTree = "<group>"; };
 		A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHotRecommendModel.m; sourceTree = "<group>"; };
 		A3C248911AF8FAC400760C72 /* WEHotRecommendSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHotRecommendSingleModel.h; sourceTree = "<group>"; };
@@ -959,6 +968,12 @@
 		A3BFB6271AFBA66B00024BEE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A3BFB62F1AFBB6E600024BEE /* WEProductDetailModel.h */,
+				A3BFB6301AFBB6E600024BEE /* WEProductDetailModel.m */,
+				A32D858A1AFBB9B600BC0CB0 /* WEProductImgModel.h */,
+				A32D858B1AFBB9B600BC0CB0 /* WEProductImgModel.m */,
+				A32D858D1AFBBA3500BC0CB0 /* WEProductModelImgModel.h */,
+				A32D858E1AFBBA3500BC0CB0 /* WEProductModelImgModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1258,6 +1273,7 @@
 				7FE420511AFA7CA400988846 /* SheZhiVC.m in Sources */,
 				7FE6D47D1AFB422400CFABE4 /* JsonToModel.m in Sources */,
 				A38A326B1AEC043B00F7FE7C /* AppDelegate.m in Sources */,
+				A32D858F1AFBBA3500BC0CB0 /* WEProductModelImgModel.m in Sources */,
 				A3C466F31AF313B300E1604D /* TAPageControl.m in Sources */,
 				7FE59F081AFB9DF200D8ABA9 /* GlanceHistoryVC.m in Sources */,
 				7FDEDC0C1AF71D6400911A02 /* MASViewConstraint.m in Sources */,
@@ -1272,6 +1288,7 @@
 				7FDEDC091AF71D6400911A02 /* MASConstraintMaker.m in Sources */,
 				A369CF801AEDC9B1001F3DB7 /* BaseHandler.m in Sources */,
 				A38A32951AEC0CB000F7FE7C /* UIColor+FlatUI.m in Sources */,
+				A32D858C1AFBB9B600BC0CB0 /* WEProductImgModel.m in Sources */,
 				A38A327D1AEC076600F7FE7C /* WECartHomeVC.m in Sources */,
 				A38851BA1AED2DD40019D6E5 /* SMPageControl.m in Sources */,
 				7FDEDC0F1AF71D6400911A02 /* View+MASAdditions.m in Sources */,
@@ -1286,6 +1303,7 @@
 				A369CFAF1AEE70C4001F3DB7 /* ChineseToPinyinResource.m in Sources */,
 				A369CF831AEDC9B1001F3DB7 /* BaseViewController.m in Sources */,
 				A3883D121AF9A27400EC2CEA /* WECategorysModel.m in Sources */,
+				A3BFB6311AFBB6E600024BEE /* WEProductDetailModel.m in Sources */,
 				A38A328C1AEC083900F7FE7C /* RDVTabBarController.m in Sources */,
 				A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */,
 				A38A328D1AEC083900F7FE7C /* RDVTabBarItem.m in Sources */,
