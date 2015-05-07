@@ -17,7 +17,7 @@
 #import "JsonToModel.h"
 
 @interface MyCollectionVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>{
-    UIButton *shopingCartBtn,*editBtn;
+    UIButton *shopingCartBtn,*editBtn,*deleteBtn;
 
     WEHTTPHandler *we;
    }
@@ -43,17 +43,17 @@
     shopingCartBtn.backgroundColor = [UIColor clearColor];
     [shopingCartBtn setBackgroundImage:[UIImage imageNamed:@"headBtn4"] forState:UIControlStateNormal];
     [shopingCartBtn addTarget:self action:@selector(rigBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    editBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shopingCartBtn.frame)+5, 5, 40, 30)];
+    editBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shopingCartBtn.frame)+5, 5, 50, 30)];
     editBtn.backgroundColor = [UIColor clearColor];
     [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
     
     [editBtn setTitle:@"取消编辑" forState:UIControlStateSelected];
-    editBtn.titleLabel.font =[UIFont systemFontOfSize:13];
+    editBtn.titleLabel.font =[UIFont systemFontOfSize:12];
     [editBtn addTarget:self action:@selector(rigBtnClick:) forControlEvents:UIControlEventTouchUpInside];
      UIView * view =[[UIView alloc]init];
     [view addSubview:shopingCartBtn];
     [view addSubview:editBtn];
-    view.bounds = CGRectMake(0, 0, 80, 40);
+    view.bounds = CGRectMake(0, 0, 90, 40);
     
        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:view];
     self.navigationItem.rightBarButtonItem = item;
@@ -70,7 +70,7 @@
     [self addRightItem];
     [self initCollectionView];
     [self initNetData:1];
-}
+    }
 
 
 - (void)initNetData:(NSInteger)page
@@ -140,6 +140,12 @@
     cell.productType.text = cm.p_version;
     
     cell.productBrand.text =cm.p_brand;
+    cell.deleteBu.tag=[indexPath row]+1;
+    deleteBtn =cell.deleteBu;
+    
+    [deleteBtn addTarget:self action:@selector(deleteClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+
     return cell;
 }
 
@@ -178,7 +184,10 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    DLog(@"点击的是----%ld",indexPath.row);
+    
+    
+    
+    DLog(@"点击的是----%d",indexPath.row);
 }
 BOOL  isClick ;
 -(void)rigBtnClick:(UIButton *)btn
@@ -188,12 +197,13 @@ BOOL  isClick ;
         
         if (isClick) {
             
-//                    [_productCollection setEditing:YES animated:YES];
+            deleteBtn.hidden=NO;
             [btn setTitle:@"取消编辑" forState:UIControlStateNormal ];
             return;
             
         }else {
 //                [_productCollection set];
+            deleteBtn.hidden =YES;
             [btn setTitle:@"编辑" forState:UIControlStateNormal];
         }
         
@@ -206,6 +216,29 @@ BOOL  isClick ;
     }
      }
 
+
+-(void)deleteClick:(UIButton*)btn
+{
+
+
+
+//      NSLog(@"MyRow:%d",[_productCollection indexPathForCell:((WEProductCollectionCell*)[[btn superview]superview])].row);	//这个方便一点点，不用设置tag。
+
+       NSInteger row= ((WEProductCollectionCell*)[[btn superview]superview]).tag;
+    
+        CollectionM  *cm =[_arr objectAtIndex: row];
+    
+     [we  executeDeleteMyCollectionTaskWithUserId:@"1002" withProductIds:cm.p_id Success:^(id obj) {
+          DLog(@"删除%@",obj);
+         if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+            [self.productCollection reloadData];
+             WARN_ALERT(@"删除成功");
+         }
+     } failed:^(id obj) {
+         
+     }];
+
+}
 /*
 #pragma mark - Navigation
 

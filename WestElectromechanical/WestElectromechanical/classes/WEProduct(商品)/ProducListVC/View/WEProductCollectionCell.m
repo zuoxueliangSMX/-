@@ -21,7 +21,22 @@
         [productImg setImage:[UIImage imageNamed:@"Product_Placeholder"]];
         productImg.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productImg];
+        productImg.userInteractionEnabled=YES;
         _productImg = productImg;
+        
+        _deleteBu = [UIButton buttonWithType:UIButtonTypeCustom];
+        _deleteBu.hidden =YES;
+        [_deleteBu setTitle:@"—" forState:UIControlStateNormal];
+        [_deleteBu setTitle:@"" forState:UIControlStateHighlighted];
+        [_deleteBu setFrame:CGRectMake(CGRectGetMaxX(productImg.frame)-30, CGRectGetMinY(productImg.frame)+5, 20, 20)];
+        [_deleteBu setBackgroundColor:[UIColor redColor]];
+        [_deleteBu.layer setMasksToBounds:YES];
+        [_deleteBu.layer setCornerRadius:9];
+//        [_deleteBu addTarget:self action:@selector(deleteClick) forControlEvents:UIControlEventTouchUpInside];
+        [productImg addSubview:_deleteBu];
+ 
+        
+        
         
         UILabel *productTitle =[[UILabel alloc]init];
         productTitle.frame =CGRectMake(  CGRectGetMinX(productImg.frame),CGRectGetMaxY(productImg.frame)+5,frame.size.width-10,18);

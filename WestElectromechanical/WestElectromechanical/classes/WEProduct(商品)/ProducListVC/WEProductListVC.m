@@ -210,7 +210,7 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DLog(@"点击的是----%ld",indexPath.row);
+//    DLog(@"点击的是----%ld",indexPath.row);
 }
 
 

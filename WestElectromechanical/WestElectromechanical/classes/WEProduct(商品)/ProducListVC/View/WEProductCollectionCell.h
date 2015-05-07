@@ -25,4 +25,8 @@
  *  型号
  */
 @property (nonatomic ,weak)UILabel *productType;
+/**
+ 删除按钮
+ **/
+@property (nonatomic ,weak)UIButton *deleteBu;
 @end
