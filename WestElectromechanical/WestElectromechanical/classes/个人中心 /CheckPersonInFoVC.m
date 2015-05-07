@@ -68,7 +68,7 @@
     [_namefi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [leftimg setImage: [UIImage imageNamed:@"ren"]];
+    [leftimg setImage: [UIImage imageNamed:@"Person_user"]];
     _namefi.leftViewMode = UITextFieldViewModeAlways;
     
     UIImageView *imgv1 = [[UIImageView alloc] init];
@@ -99,7 +99,7 @@
     phoneNumTF.enabled =NO;
     UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [psdleftimg setImage: [UIImage imageNamed:@"lock"]];
+    [psdleftimg setImage: [UIImage imageNamed:@"Person_lock"]];
     phoneNumTF.leftViewMode = UITextFieldViewModeAlways;
     [psdleft addSubview:psdleftimg];
     phoneNumTF.leftView = psdleft;
@@ -124,7 +124,7 @@
     [_emailTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *leftimg2 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [leftimg2 setImage: [UIImage imageNamed:@"t"]];
+    [leftimg2 setImage: [UIImage imageNamed:@"Person_email"]];
     _emailTF.leftViewMode = UITextFieldViewModeAlways;
     _emailTF.enabled =NO;
     [left2 addSubview:leftimg2];
@@ -151,7 +151,7 @@
     [loginBut setBackgroundColor:[UIColor whiteColor]];
     [loginBut addTarget:self action:@selector(changePsd) forControlEvents:UIControlEventTouchUpInside];
     [loginBut setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [loginBut setImage:[UIImage imageNamed:@"lock"] forState:UIControlStateNormal];
+    [loginBut setImage:[UIImage imageNamed:@"Person_lock"] forState:UIControlStateNormal];
     loginBut.imageEdgeInsets = UIEdgeInsetsMake(0.0, -180, 0.0, 0.0);
     loginBut.titleEdgeInsets = UIEdgeInsetsMake(0.0, -145.0, 0.0, 0.0);
 

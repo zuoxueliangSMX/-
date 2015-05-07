@@ -92,7 +92,7 @@
 //    cell.titleLa.text = zm.zyxName;
 //    cell.introduceLa.text =[NSString stringFromHtml:zm.introduce];
 //    cell.priceLa.text =zm.price ;
-//    cell.accesoryImgv.image =[UIImage imageNamed:@"ico16"];
+//    cell.accesoryImgv.image =[UIImage imageNamed:@"Person_arrow_right"];
     return cell;
     
 }

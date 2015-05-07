@@ -69,7 +69,7 @@
     //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
     [userNameTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *but0 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [but0 setImage:[UIImage imageNamed:@"ren"] forState:UIControlStateNormal];
+    [but0 setImage:[UIImage imageNamed:@"Person_user"] forState:UIControlStateNormal];
     [but0 setFrame:CGRectMake(0, 0, 50, 40)];
     [but0 setUserInteractionEnabled:NO];
     
@@ -98,7 +98,7 @@
     //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
     [LogNmTextF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [but1 setImage:[UIImage imageNamed:@"w"] forState:UIControlStateNormal];
+    [but1 setImage:[UIImage imageNamed:@"Person_tel"] forState:UIControlStateNormal];
     [but1 setBounds:CGRectMake(0, 0, 50, 40)];
     [but1 setUserInteractionEnabled:NO];
     
@@ -127,7 +127,7 @@
     //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
     [emailTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *but2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [but2 setImage:[UIImage imageNamed:@"e"] forState:UIControlStateNormal];
+    [but2 setImage:[UIImage imageNamed:@"Person_e"] forState:UIControlStateNormal];
     [but2 setBounds:CGRectMake(0, 0, 50, 40)];
     [but2 setUserInteractionEnabled:NO];
     
@@ -152,7 +152,7 @@
     [pwdNmTextF setClearButtonMode:UITextFieldViewModeWhileEditing];
     [pwdNmTextF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *pwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [pwdBut setImage:[UIImage imageNamed:@"lock"] forState:UIControlStateNormal];
+    [pwdBut setImage:[UIImage imageNamed:@"Person_lock"] forState:UIControlStateNormal];
     [pwdBut setBounds:CGRectMake(0, 0, 50, 40)];
     [pwdBut setUserInteractionEnabled:NO];
     pwdNmTextF.leftViewMode = UITextFieldViewModeAlways;
@@ -177,7 +177,7 @@
     [sureTf setClearButtonMode:UITextFieldViewModeWhileEditing];
     [sureTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *surepwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [surepwdBut setImage:[UIImage imageNamed:@"lock"] forState:UIControlStateNormal];
+    [surepwdBut setImage:[UIImage imageNamed:@"Person_lock"] forState:UIControlStateNormal];
     [surepwdBut setBounds:CGRectMake(0, 0, 50, 40)];
     [surepwdBut setUserInteractionEnabled:NO];
     sureTf.leftViewMode = UITextFieldViewModeAlways;
@@ -204,7 +204,7 @@
     [valCodeTf setClearButtonMode:UITextFieldViewModeWhileEditing];
     [valCodeTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *codeBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [codeBut setImage:[UIImage imageNamed:@"t"] forState:UIControlStateNormal];
+    [codeBut setImage:[UIImage imageNamed:@"Person_email"] forState:UIControlStateNormal];
     [codeBut setBounds:CGRectMake(0, 0, 50, 40)];
     [codeBut setUserInteractionEnabled:NO];
     valCodeTf.leftViewMode = UITextFieldViewModeAlways;
@@ -253,8 +253,8 @@
     UIButton *protolcBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [protolcBtn setFrame:CGRectMake(30, 265+90, 15, 22)];
     
-    [protolcBtn setImage:[UIImage imageNamed:@"selected.jpg"] forState: UIControlStateNormal];
-    [protolcBtn setImage:[UIImage imageNamed:@"ico1"] forState:UIControlStateSelected];
+    [protolcBtn setImage:[UIImage imageNamed:@"Person_selected"] forState: UIControlStateNormal];
+    [protolcBtn setImage:[UIImage imageNamed:@"Person_selected_btn"] forState:UIControlStateSelected];
     
     
     

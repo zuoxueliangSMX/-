@@ -13,10 +13,11 @@
     if (self = [super init]) {
         self.imgs =[NSMutableArray array];
         for (NSDictionary *img in [dict objectForKey:@"imgs"]) {
-            
+            WEProductImgModel *imgModel =[[WEProductImgModel alloc]initWithDict:img];
+            [self.imgs addObject:imgModel];
         }
-        self.isCollect =[self booleanFromValue:[dict objectForKey:@"isCollect"]];
-        self.message =[self intFromValue:[dict objectForKey:@"message"]];
+        self.isCollect =![[dict objectForKey:@"iscollect"] boolValue];
+        self.message =[[dict objectForKey:@"message"] integerValue];
         self.p_brand =[self stringFromValue:[dict objectForKey:@"p_brand"]];
         self.p_introduce=[self stringFromValue:[dict objectForKey:@"p_introduce"]];
         /**
@@ -28,6 +29,8 @@
         
         for (NSDictionary * more in [dict objectForKey:@"p_more_introduces"]) {
             
+            WEProductModelImgModel *moreModel =[[WEProductModelImgModel alloc]initWithDict:more];
+            [self.p_more_introduces addObject:moreModel];
         }
         self.p_name=[self stringFromValue:[dict objectForKey:@"p_name"]];
         self.p_order_number=[self stringFromValue:[dict objectForKey:@"p_order_number"]];

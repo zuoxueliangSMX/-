@@ -46,7 +46,7 @@
            UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
     
     
-    imgArr = @[@"update",@"advice",@"share",@"exit",];
+    imgArr = @[@"Person_update",@"Person_advice",@"Person_share",@"Person_exit",];
     titleArr =@[@"版本更新",@"意见反馈评分",@"软件分享",@"注销"];
     table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
     

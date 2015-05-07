@@ -106,7 +106,7 @@
    
 }
 - (void)addRightItem{
-    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"setb" highImageName:@"setb" target:self action:@selector(setBtnClick)];
+    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"Navigation_setup" highImageName:@"Navigation_setup" target:self action:@selector(setBtnClick)];
     /**
      *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
      *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
@@ -218,7 +218,7 @@
     
     head = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
    
-   imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"qw"]];
+   imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_smile"]];
     imgv.frame = CGRectMake((head.frame.size.width-200)/4, (head.frame.size.height-60)/2-42, 50, 50);
     [head addSubview:imgv];
     
@@ -235,15 +235,15 @@
     [addresBut addTarget:self action:@selector(addressMangerClick) forControlEvents:UIControlEventTouchUpInside];
     addresBut.titleLabel.font =[UIFont systemFontOfSize:15];
     [addresBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [addresBut setImage:[UIImage imageNamed:@"addres"] forState:UIControlStateNormal];
+    [addresBut setImage:[UIImage imageNamed:@"Person_address"] forState:UIControlStateNormal];
     addresBut.imageEdgeInsets = UIEdgeInsetsMake(0.0, -20, 0.0, 0.0);
     addresBut.titleEdgeInsets = UIEdgeInsetsMake(0.0, -15.0, 0.0, 0.0);
     [head addSubview:addresBut];
     
 
-    UIImageView *imgvbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"qweqwe"]];
+    UIImageView *imgvbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_header_bg"]];
     [head addSubview:imgvbg];
-    [head setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"retertret"]]];
+    [head setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Person_BlackLine"]]];
     [head sendSubviewToBack:imgvbg];
     [imgvbg mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -261,7 +261,7 @@
         lBtn.tag = 98970+i;
         
         UIImageView *img = [[UIImageView alloc] init];
-        NSString *imgName = [NSString stringWithFormat:@"headBtn%d",i+1];
+        NSString *imgName = [NSString stringWithFormat:@"Person_headBtn%d",i+1];
         img.image = [UIImage imageNamed:imgName];
         [lBtn addSubview:img];
         [img mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -295,7 +295,7 @@
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(loginClick) forControlEvents:UIControlEventTouchUpInside];
-    [loginBtn setBackgroundImage:[UIImage imageNamed:@"retertret"] forState:UIControlStateNormal];
+    [loginBtn setBackgroundImage:[UIImage imageNamed:@"Person_BlackLine"] forState:UIControlStateNormal];
     [head addSubview:loginBtn];
     
     
@@ -303,7 +303,7 @@
     [registBtn setTitle:@"注册" forState:UIControlStateNormal];
     [registBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [registBtn addTarget:self action:@selector(registBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [registBtn setBackgroundImage:[UIImage imageNamed:@"retertret"] forState:UIControlStateNormal];
+    [registBtn setBackgroundImage:[UIImage imageNamed:@"Person_BlackLine"] forState:UIControlStateNormal];
     [head addSubview:registBtn];
     
    
@@ -360,7 +360,7 @@
         }
                 cell.accessoryType = UITableViewCellAccessoryDetailButton;
                 [cell.textLabel setText:array1[indexPath.row]];
-                NSString *img = [NSString stringWithFormat:@"section_new%d",indexPath.row+1];
+                NSString *img = [NSString stringWithFormat:@"Person_section_new%ld",indexPath.row+1];
                 [cell.imageView setImage:[UIImage imageNamed:img]];
             
         

@@ -76,7 +76,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
     [userNameTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *but0 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [but0 setImage:[UIImage imageNamed:@"ren"] forState:UIControlStateNormal];
+    [but0 setImage:[UIImage imageNamed:@"Person_user"] forState:UIControlStateNormal];
     [but0 setFrame:CGRectMake(0, 0, 50, 40)];
     [but0 setUserInteractionEnabled:NO];
     
@@ -105,7 +105,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
     [phoneNumTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [but1 setImage:[UIImage imageNamed:@"w"] forState:UIControlStateNormal];
+    [but1 setImage:[UIImage imageNamed:@"Person_tel"] forState:UIControlStateNormal];
     [but1 setBounds:CGRectMake(0, 0, 50, 40)];
     [but1 setUserInteractionEnabled:NO];
     
@@ -134,7 +134,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
     [addressTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *but2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [but2 setImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
+    [but2 setImage:[UIImage imageNamed:@"Person_location"] forState:UIControlStateNormal];
     [but2 setBounds:CGRectMake(0, 0, 50, 40)];
      [but2 setUserInteractionEnabled:NO];
     
@@ -142,7 +142,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     [addressTf setLeftView:but2];
     
     UIButton *butright = [UIButton buttonWithType:UIButtonTypeCustom];
-    [butright setImage:[UIImage imageNamed:@"ico16"] forState:UIControlStateNormal];
+    [butright setImage:[UIImage imageNamed:@"Person_arrow_right"] forState:UIControlStateNormal];
     [butright setBounds:CGRectMake(0, 0, 80, 25)];
       addressTf.rightViewMode = UITextFieldViewModeAlways;
     [addressTf setRightView:butright];
@@ -191,7 +191,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     
     UIButton *pwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [pwdBut setImage:[UIImage imageNamed:@"streetnum"] forState:UIControlStateNormal];
+    [pwdBut setImage:[UIImage imageNamed:@"Person_streetnum"] forState:UIControlStateNormal];
     pwdBut.frame =CGRectMake(CGRectGetMinX(tv.frame)-39, CGRectGetMinY(tv.frame), 50, 40);
     [pwdBut setUserInteractionEnabled:NO];
     [squareView2 addSubview:pwdBut];
@@ -219,7 +219,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     [emadilCodeTf setClearButtonMode:UITextFieldViewModeWhileEditing];
     [emadilCodeTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *surepwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [surepwdBut setImage:[UIImage imageNamed:@"emailnum"] forState:UIControlStateNormal];
+    [surepwdBut setImage:[UIImage imageNamed:@"Person_emailnum"] forState:UIControlStateNormal];
     [surepwdBut setBounds:CGRectMake(0, 0, 50, 40)];
     emadilCodeTf.leftViewMode = UITextFieldViewModeAlways;
     [emadilCodeTf setLeftView:surepwdBut];

@@ -50,7 +50,7 @@
     for (int i = 0; i < kImgCount; i++) {
         UIImageView *imgView =[_imgs objectAtIndex:i];
         WERecommendModel *recommendModel =[recommends objectAtIndex:i];
-        [imgView setWebImgUrl:recommendModel.Imgurl placeHolder:[UIImage imageNamed:@"qweqwe"]];
+        [imgView setWebImgUrl:recommendModel.Imgurl placeHolder:[UIImage imageNamed:@"Person_header_bg"]];
     }
 }
 - (void)setRecommendBgViewBlock:(recommendBgViewBlock)block

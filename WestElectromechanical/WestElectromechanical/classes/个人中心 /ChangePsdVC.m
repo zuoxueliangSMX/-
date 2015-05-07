@@ -57,7 +57,7 @@
     [_oldPsdTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [leftimg setImage: [UIImage imageNamed:@"lock"]];
+    [leftimg setImage: [UIImage imageNamed:@"Person_lock"]];
     _oldPsdTF.leftViewMode = UITextFieldViewModeAlways;
     
     UIImageView *imgv1 = [[UIImageView alloc] init];
@@ -87,7 +87,7 @@
     [NewTF.layer setCornerRadius:5];
     UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [psdleftimg setImage: [UIImage imageNamed:@"lock"]];
+    [psdleftimg setImage: [UIImage imageNamed:@"Person_lock"]];
     NewTF.leftViewMode = UITextFieldViewModeAlways;
     [psdleft addSubview:psdleftimg];
     NewTF.leftView = psdleft;
@@ -119,7 +119,7 @@
     [_surePsdTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
     UIImageView *leftimg2 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [leftimg2 setImage: [UIImage imageNamed:@"lock"]];
+    [leftimg2 setImage: [UIImage imageNamed:@"Person_lock"]];
     _surePsdTF.leftViewMode = UITextFieldViewModeAlways;
     [left2 addSubview:leftimg2];
     _surePsdTF.leftView = left2;

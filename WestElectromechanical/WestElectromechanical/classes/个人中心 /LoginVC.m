@@ -105,7 +105,7 @@ WEHTTPHandler *whanle;
     [_namefi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [leftimg setImage: [UIImage imageNamed:@"ren"]];
+    [leftimg setImage: [UIImage imageNamed:@"Person_user"]];
     _namefi.leftViewMode = UITextFieldViewModeAlways;
     
     [left addSubview:leftimg];
@@ -138,7 +138,7 @@ WEHTTPHandler *whanle;
 
     UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [psdleftimg setImage: [UIImage imageNamed:@"lock"]];
+    [psdleftimg setImage: [UIImage imageNamed:@"Person_lock"]];
     pswfi.leftViewMode = UITextFieldViewModeAlways;
     [psdleft addSubview:psdleftimg];
     pswfi.leftView = psdleft;
@@ -159,8 +159,8 @@ WEHTTPHandler *whanle;
     UIButton *jizhumimaBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [jizhumimaBtn setFrame:CGRectMake(30, CGRectGetMaxY(pswfi.frame)+22, 15, 22)];
     
-    [jizhumimaBtn setImage:[UIImage imageNamed:@"selected.jpg"] forState: UIControlStateNormal];
-    [jizhumimaBtn setImage:[UIImage imageNamed:@"ico1"] forState:UIControlStateSelected];
+    [jizhumimaBtn setImage:[UIImage imageNamed:@"Person_selected"] forState: UIControlStateNormal];
+    [jizhumimaBtn setImage:[UIImage imageNamed:@"Person_selected_btn"] forState:UIControlStateSelected];
     
     
     

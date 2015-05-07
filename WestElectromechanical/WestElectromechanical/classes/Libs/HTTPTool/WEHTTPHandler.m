@@ -13,6 +13,7 @@
 #import "WEHotRecommendModel.h"
 #import "WECategorysModel.h"
 #import "WEHomeInfoModel.h"
+#import "WEProductDetailModel.h"
 @implementation WEHTTPHandler
 #pragma mark -
 #pragma mark - 首页模块
@@ -163,10 +164,11 @@
     NSString *params = [NSString stringWithFormat:@"pid=%@",productId];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
-        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+        WEProductDetailModel *model =[[WEProductDetailModel alloc]initWithDict:json];
+        if (model.message == 0) {
             
             if (success) {
-                success(json);
+                success(model);
             }
         }else{
             if (failed) {
