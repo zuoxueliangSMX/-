@@ -8,8 +8,21 @@
 
 #import "MyCollectionVC.h"
 #import "RDVTabBarController.h"
-@interface MyCollectionVC ()
+#import "UIBarButtonItem+Extension.h"
+#import "UIButton+Extension.h"
+#import "WEProductCollectionCell.h"
+#import "WEHTTPHandler.h"
+#import "AccountHanler.h"
+#import "CollectionM.h"
+#import "JsonToModel.h"
 
+@interface MyCollectionVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>{
+    UIButton *shopingCartBtn,*editBtn;
+
+    WEHTTPHandler *we;
+   }
+@property (nonatomic ,weak)UICollectionView *productCollection;
+@property (nonatomic ,strong) NSMutableArray *arr;
 @end
 
 @implementation MyCollectionVC
@@ -25,15 +38,173 @@
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
 
+- (void)addRightItem{
+    shopingCartBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 30, 30)];
+    shopingCartBtn.backgroundColor = [UIColor clearColor];
+    [shopingCartBtn setBackgroundImage:[UIImage imageNamed:@"headBtn4"] forState:UIControlStateNormal];
+    [shopingCartBtn addTarget:self action:@selector(rigBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    editBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shopingCartBtn.frame)+5, 5, 40, 30)];
+    editBtn.backgroundColor = [UIColor clearColor];
+    [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    
+    [editBtn setTitle:@"取消编辑" forState:UIControlStateSelected];
+    editBtn.titleLabel.font =[UIFont systemFontOfSize:13];
+    [editBtn addTarget:self action:@selector(rigBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+     UIView * view =[[UIView alloc]init];
+    [view addSubview:shopingCartBtn];
+    [view addSubview:editBtn];
+    view.bounds = CGRectMake(0, 0, 80, 40);
+    
+       UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:view];
+    self.navigationItem.rightBarButtonItem = item;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+     we=[[WEHTTPHandler alloc]init];
+   
+    
+    [we executeGetMyCollectionTaskWithUserId:@"1002" withPage:@"2" Success:^(id obj) {
+       
+        _arr = [[NSMutableArray alloc] initWithCapacity:0];
+        
+        NSLog(@"输出我的收藏的%@",_arr);
+        NSDictionary *dic = [obj objectForKey:@"products"];
+        for (NSDictionary *dv in dic) {
+            
+            CollectionM *cm =  [JsonToModel objectFromDictionary:dv className:@"CollectionM"];
+            
+
+            
+            
+            
+            [_arr addObject:cm];
+        }
+    
+    } failed:^(id obj) {
+        
+        
+        
+    }];
+    VIEW_BACKGROUND;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.title = @"我的收藏";
+    [self addRightItem];
+    [self initCollectionView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)initCollectionView
+{
+    UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    UICollectionView *  productCollection=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-44-64) collectionViewLayout:flowLayout];
+    productCollection.dataSource=self;
+    productCollection.delegate=self;
+    [productCollection setBackgroundColor:[UIColor colorFromHexCode:@"f2f2f2"]];
+    
+    [productCollection registerClass:[WEProductCollectionCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
+    [productCollection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    [productCollection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
+    _productCollection =productCollection;
+    [self.view addSubview:productCollection];
+    
+}
+
+#pragma mark -- UICollectionViewDataSource
+
+//定义展示的UICollectionViewCell的个数
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [_arr count];
+}
+
+//定义展示的Section的个数
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+//每个UICollectionView展示的内容
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * CellIdentifier = @"UICollectionViewCell";
+    WEProductCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.backgroundColor =[UIColor whiteColor];
+    CollectionM *cm = [_arr objectAtIndex:indexPath.row];
+    cell.productTitle.text =cm.p_name;
+    cell.productType.text = cm.p_version;
+    
+    cell.productBrand.text =cm.p_brand;
+    return cell;
+}
+
+
+
+#pragma mark --UICollectionViewDelegateFlowLayout
+//定义每个Item 的大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake((SCREEN_WIDTH-30)/2,(SCREEN_WIDTH-30)/2+60);
+}
+
+//定义每个UICollectionView 的 margin
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    
+    return UIEdgeInsetsMake(10,10,10,10);
+}
+
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    
+    return 10;
+    
+}
+//设置每行的间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    
+    return 10;
+}
+
+
+#pragma mark --UICollectionViewDelegate
+
+//UICollectionView被选中时调用的方法
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+//    DLog(@"点击的是----%ld",indexPath.row);
+}
+BOOL  isClick ;
+-(void)rigBtnClick:(UIButton *)btn
+{
+    if ( btn ==editBtn) {
+        isClick = !isClick;
+        
+        if (isClick) {
+            
+//                    [_productCollection setEditing:YES animated:YES];
+            [btn setTitle:@"取消编辑" forState:UIControlStateNormal ];
+            return;
+            
+        }else {
+//                [_productCollection set];
+            [btn setTitle:@"编辑" forState:UIControlStateNormal];
+        }
+        
+  
+    }else if (btn==shopingCartBtn){
+    
+    
+    
+    
+    }
+     }
 
 /*
 #pragma mark - Navigation

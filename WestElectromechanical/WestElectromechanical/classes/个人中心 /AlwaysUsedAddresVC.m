@@ -49,7 +49,7 @@
     [super viewDidLoad];
     self.title =@"常用地址";
    we= [[WEHTTPHandler alloc]init];
-    self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(addClick)];
+    self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
             self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
     UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
     

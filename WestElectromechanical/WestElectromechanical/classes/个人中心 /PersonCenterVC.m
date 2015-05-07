@@ -22,6 +22,7 @@
 #import "AccountHanler.h"
 #import "UIBarButtonItem+Extension.h"
 #import "SheZhiVC.h"
+#import "MyCollectionVC.h"
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 {
@@ -449,13 +450,15 @@
             
         }else if (indexPath.row == 2){
             
-//            if ([SendIFAppDefault shareAppDefault].currentUserId.length==0) {
-//                
-//                ALERT_WARN(@"请先登录");
-//                return;
+            if ([AccountHanler loginState]==0) {
+                
+                ALERT_WARN(@"请先登录");
+                return;
             
-//            }
-//        [self.navigationController pushViewController:[ChangePassVC new] animated:YES];
+            }
+            MyCollectionVC *myfav = [[MyCollectionVC alloc]init];
+        
+       [self.navigationController pushViewController:myfav animated:YES];
         
         }else if (indexPath.row == 3){
 

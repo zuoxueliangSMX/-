@@ -99,7 +99,7 @@
         
         
         
-        UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+5, 20, 150, 30)];
+        UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+15, 20, 150, 30)];
         nameLa.textColor =[UIColor blackColor];
         nameLa.tag =100;
        
