@@ -7,7 +7,6 @@
 //
 
 #import "PersonCenterVC.h"
-//#import "SendIFAppDefault.h"
 #import "AppDelegate.h"
 #import "SDImageCache.h"
 #import "SendIFAPPDefault.h"
@@ -23,6 +22,7 @@
 #import "UIBarButtonItem+Extension.h"
 #import "SheZhiVC.h"
 #import "MyCollectionVC.h"
+#import "GlanceHistoryVC.h"
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 {
@@ -446,8 +446,18 @@
            [self.navigationController pushViewController:chVC animated:YES];
             
         }else if (indexPath.row == 1){
-
+         
+            if ([AccountHanler loginState]==0) {
+                
+                ALERT_WARN(@"请先登录");
+                return;
+                
+            }
             
+            GlanceHistoryVC *gvc = [[GlanceHistoryVC alloc]init];
+            
+            [self.navigationController pushViewController:gvc animated:YES];
+
         }else if (indexPath.row == 2){
             
             if ([AccountHanler loginState]==0) {
