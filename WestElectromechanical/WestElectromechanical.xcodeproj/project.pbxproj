@@ -37,6 +37,7 @@
 		7FE59F081AFB9DF200D8ABA9 /* GlanceHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F061AFB9DF200D8ABA9 /* GlanceHistoryVC.m */; };
 		7FE59F0D1AFB9E8C00D8ABA9 /* GlanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F0B1AFB9E8C00D8ABA9 /* GlanceCell.m */; };
 		7FE59F0E1AFB9E8C00D8ABA9 /* GlanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FE59F0C1AFB9E8C00D8ABA9 /* GlanceCell.xib */; };
+		7FE59F111AFBB24100D8ABA9 /* MarkSheetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F101AFBB24100D8ABA9 /* MarkSheetVC.m */; };
 		7FE643AA1AF7921A000809A4 /* EmailForCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */; };
 		7FE6D47A1AFB40C200CFABE4 /* CollectionM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D4791AFB40C200CFABE4 /* CollectionM.m */; };
 		7FE6D47D1AFB422400CFABE4 /* JsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */; };
@@ -198,6 +199,8 @@
 		7FE59F0A1AFB9E8C00D8ABA9 /* GlanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlanceCell.h; sourceTree = "<group>"; };
 		7FE59F0B1AFB9E8C00D8ABA9 /* GlanceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlanceCell.m; sourceTree = "<group>"; };
 		7FE59F0C1AFB9E8C00D8ABA9 /* GlanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GlanceCell.xib; sourceTree = "<group>"; };
+		7FE59F0F1AFBB24100D8ABA9 /* MarkSheetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkSheetVC.h; sourceTree = "<group>"; };
+		7FE59F101AFBB24100D8ABA9 /* MarkSheetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkSheetVC.m; sourceTree = "<group>"; };
 		7FE643A81AF7921A000809A4 /* EmailForCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailForCodeVC.h; sourceTree = "<group>"; };
 		7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailForCodeVC.m; sourceTree = "<group>"; };
 		7FE6D4781AFB40C200CFABE4 /* CollectionM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionM.h; sourceTree = "<group>"; };
@@ -465,6 +468,8 @@
 				7FE42B341AF9E73000EB923E /* AddAdressVC.m */,
 				7FE4204F1AFA7CA400988846 /* SheZhiVC.h */,
 				7FE420501AFA7CA400988846 /* SheZhiVC.m */,
+				7FE59F0F1AFBB24100D8ABA9 /* MarkSheetVC.h */,
+				7FE59F101AFBB24100D8ABA9 /* MarkSheetVC.m */,
 				7FE59F051AFB9DF200D8ABA9 /* GlanceHistoryVC.h */,
 				7FE59F061AFB9DF200D8ABA9 /* GlanceHistoryVC.m */,
 				7FE59F0A1AFB9E8C00D8ABA9 /* GlanceCell.h */,
@@ -1311,6 +1316,7 @@
 				A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */,
 				A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */,
 				A369CF821AEDC9B1001F3DB7 /* BaseTableViewProtocol.m in Sources */,
+				7FE59F111AFBB24100D8ABA9 /* MarkSheetVC.m in Sources */,
 				A39E9A8A1AFA6E760035A059 /* WEProductCollectionCell.m in Sources */,
 				A369CFB31AEE70C4001F3DB7 /* PinYinForObjc.m in Sources */,
 				A3C248A71AF907C500760C72 /* WENoticeModel.m in Sources */,

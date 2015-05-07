@@ -27,8 +27,9 @@
     [super viewDidLoad];
     
     
-    self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(clearAllClick)];
-    self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(clearAllClick)];
+   
+     self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
 
     
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];

@@ -10,6 +10,7 @@
 #import "RDVTabBarController.h"
 #import "WEHTTPHandler.h"
 #import "AccountHanler.h"
+#import "MarkSheetVC.h"
 
 
 @interface SheZhiVC ()<UITableViewDataSource,UITableViewDelegate>
@@ -39,6 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"设置";
+    
     we= [[WEHTTPHandler alloc]init];
     
            UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
@@ -126,7 +128,62 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
+    switch (indexPath.row) {
+        case 0:
+        {
+        
+        
+         }
+            break;
+            
+        case 1:
+        {
+            
+            if ([AccountHanler loginState]==0) {
+                
+                ALERT_WARN(@"请先登录");
+                return;
+                
+            }
+            MarkSheetVC *mark = [MarkSheetVC alloc];
+            [self.navigationController pushViewController:mark animated:YES];
+            
+        }
+            break;
+            
+        case 2:
+        {
+            
+            
+        }
+            break;
+        case 3:
+        {
+            
+            
+            if ([AccountHanler loginState]==0) {
+                
+                ALERT_WARN(@"未登录");
+                return;
+                
+            }
+                
+                
+             [self.navigationController popViewControllerAnimated:YES];
+            
+                [AccountHanler setLoginState:0];
+                
+                [AccountHanler saveUserId:nil];
+                
+            WARN_ALERT(@"注销成功");
+        }
+            break;
+            
+
+
+        default:
+            break;
+    }
     
     
 }
