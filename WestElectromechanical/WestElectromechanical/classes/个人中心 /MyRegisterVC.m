@@ -49,10 +49,12 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title =@"注册";
     // Do any additional setup after loading the view.
    
      self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
-    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(20, 80, 280, 265)];
+    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(15, 80, SCREEN_WIDTH-30, 265)];
      squareView.backgroundColor = [UIColor whiteColor];
     squareView.layer.cornerRadius =4;
     [self.view addSubview:squareView];
@@ -60,7 +62,7 @@
     BACK_POP
     //用户名
     
-    userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(20, 5, 280, 40)];
+    userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, 40)];
     [userNameTf setBorderStyle:UITextBorderStyleNone];
     userNameTf.textColor = [UIColor blackColor];
     [userNameTf setPlaceholder:@"用户名（4-20个字符）"];
@@ -89,7 +91,7 @@
     
     
     // 手机
-    LogNmTextF = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(userNameTf.frame), 280, 40)];
+    LogNmTextF = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(userNameTf.frame), SCREEN_WIDTH-30, 40)];
     [LogNmTextF setBorderStyle:UITextBorderStyleNone];
     LogNmTextF.textColor = [UIColor blackColor];
     [LogNmTextF setPlaceholder:@"请输入你的手机号"];
@@ -98,7 +100,7 @@
     //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
     [LogNmTextF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [but1 setImage:[UIImage imageNamed:@"Person_tel"] forState:UIControlStateNormal];
+    [but1 setImage:[UIImage imageNamed:@"person_phone"] forState:UIControlStateNormal];
     [but1 setBounds:CGRectMake(0, 0, 50, 40)];
     [but1 setUserInteractionEnabled:NO];
     
@@ -118,7 +120,7 @@
     
     
     // 邮箱
-    emailTf = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(LogNmTextF.frame), 280, 40)];
+    emailTf = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(LogNmTextF.frame), SCREEN_WIDTH-30, 40)];
     [emailTf setBorderStyle:UITextBorderStyleNone];
     emailTf.textColor = [UIColor blackColor];
     [emailTf setPlaceholder:@"邮箱（输入您的常用邮箱）"];
@@ -145,7 +147,7 @@
     
     
     // 密码
-    pwdNmTextF = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(emailTf.frame), 280, 40)];
+    pwdNmTextF = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(emailTf.frame), SCREEN_WIDTH-30, 40)];
     [pwdNmTextF setBorderStyle:UITextBorderStyleNone];
     [pwdNmTextF setSecureTextEntry:YES]; //设置成密码格式
     pwdNmTextF.textColor = [UIColor blackColor];
@@ -170,7 +172,7 @@
 
     
     // sure密码
-    sureTf = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(pwdNmTextF.frame), 280, 40)];
+    sureTf = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(pwdNmTextF.frame), SCREEN_WIDTH-30, 40)];
     [sureTf setBorderStyle:UITextBorderStyleNone];
     [sureTf setSecureTextEntry:YES]; //设置成密码格式
     sureTf.textColor = [UIColor blackColor];
@@ -197,7 +199,7 @@
 
     
     // yan密码
-    valCodeTf = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(sureTf.frame), 220, 40)];
+    valCodeTf = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(sureTf.frame), 220, 40)];
     [valCodeTf setBorderStyle:UITextBorderStyleNone];
     [valCodeTf setSecureTextEntry:YES]; //设置成密码格式
     valCodeTf.textColor = [UIColor blackColor];
@@ -265,7 +267,7 @@
     
     // 注册
     UIButton *loginBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginBut setFrame:CGRectMake(20, 265+130, 280, 40)];
+    [loginBut setFrame:CGRectMake(15, 265+130, SCREEN_WIDTH-30, 40)];
     [loginBut setTitle:@"注册" forState:UIControlStateNormal];
        [loginBut setBackgroundColor:[UIColor pumpkinColor]];
     [loginBut addTarget:self action:@selector(registerBtn) forControlEvents:UIControlEventTouchUpInside];

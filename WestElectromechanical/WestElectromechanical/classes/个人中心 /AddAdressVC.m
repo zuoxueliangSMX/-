@@ -3,7 +3,7 @@
 //  WestElectromechanical
 //
 //  Created by 夏亚峰 on 15/5/6.
-//  Copyright (c) 2015年 zuo. All rights reserved.
+//  Copyright (c) 1515年 zuo. All rights reserved.
 //
 
 #import "AddAdressVC.h"
@@ -50,7 +50,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     we = [[WEHTTPHandler alloc]init];
        self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
-    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(20, 80, 280, 90)];
+    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(15, 80, SCREEN_WIDTH-30, 90)];
     squareView.backgroundColor = [UIColor whiteColor];
     squareView.layer.cornerRadius =4;
     [self.view addSubview:squareView];
@@ -58,7 +58,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
 
     
-    UIView * squareView2 = [[UIView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(squareView.frame)+20, 280, 135)];
+    UIView * squareView2 = [[UIView alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(squareView.frame)+15, SCREEN_WIDTH-30, 130)];
     squareView2.backgroundColor = [UIColor whiteColor];
     squareView2.layer.cornerRadius =4;
     [self.view addSubview:squareView2];
@@ -67,7 +67,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     //收货人姓名
     
-    userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(20, 5, 280, 40)];
+    userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, 40)];
     [userNameTf setBorderStyle:UITextBorderStyleNone];
     userNameTf.textColor = [UIColor blackColor];
     [userNameTf setPlaceholder:@"收货人姓名（4-20个字符）"];
@@ -96,7 +96,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     
     // 手机号
-    phoneNumTF = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(userNameTf.frame), 280, 40)];
+    phoneNumTF = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(userNameTf.frame), SCREEN_WIDTH-30, 40)];
     [phoneNumTF setBorderStyle:UITextBorderStyleNone];
     phoneNumTF.textColor = [UIColor blackColor];
     [phoneNumTF setPlaceholder:@"手机号（11位）"];
@@ -105,7 +105,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
     [phoneNumTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    [but1 setImage:[UIImage imageNamed:@"Person_tel"] forState:UIControlStateNormal];
+    [but1 setImage:[UIImage imageNamed:@"person_phone"] forState:UIControlStateNormal];
     [but1 setBounds:CGRectMake(0, 0, 50, 40)];
     [but1 setUserInteractionEnabled:NO];
     
@@ -114,18 +114,10 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     [phoneNumTF setDelegate:self];
     [squareView addSubview:phoneNumTF];
     
-    UIImageView *imgv1 = [[UIImageView alloc] init];
-    
-    
-    imgv1.backgroundColor = [UIColor appLineColor];
-    imgv1.frame = CGRectMake(10, CGRectGetMaxY(phoneNumTF.frame)+1, squareView.frame.size.width-20, 1);
-    [squareView addSubview:imgv1];
-    
-    
     
     
     // 地域信息
-    addressTf = [[UITextField alloc] initWithFrame:CGRectMake(20, 5, 280, 40)];
+    addressTf = [[UITextField alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, 40)];
     [addressTf setBorderStyle:UITextBorderStyleNone];
     addressTf.textColor = [UIColor blackColor];
     [addressTf setPlaceholder:@"地域信息"];
@@ -159,25 +151,6 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     
     
-    // 街道门牌信息
-//    streetAdressTF = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(addressTf.frame), 280, 40)];
-//    [streetAdressTF setBorderStyle:UITextBorderStyleNone];
-//    streetAdressTF.textColor = [UIColor blackColor];
-//    [streetAdressTF setClearButtonMode:UITextFieldViewModeWhileEditing];
-//    [streetAdressTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-//    UIButton *pwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [pwdBut setImage:[UIImage imageNamed:@"streetnum"] forState:UIControlStateNormal];
-//    [pwdBut setBounds:CGRectMake(0, 0, 50, 40)];
-//    [pwdBut setUserInteractionEnabled:NO];
-//    streetAdressTF.leftViewMode = UITextFieldViewModeAlways;
-//    [streetAdressTF setLeftView:pwdBut];
-//    [streetAdressTF setDelegate:self];
-//    streetAdressTF.returnKeyType=UIReturnKeyGo;//返回键的类型
-//    [streetAdressTF setPlaceholder:@"街道门牌信息"]; //默认显示的字
-//    //    [pwdNmTextF setTextAlignment:NSTextAlignmentCenter];
-//    [squareView2 addSubview:streetAdressTF];
-//    
-    
     
     
   tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(60, CGRectGetMaxY(addressTf.frame)+5, 220, 35)];
@@ -192,7 +165,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     UIButton *pwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
     [pwdBut setImage:[UIImage imageNamed:@"Person_streetnum"] forState:UIControlStateNormal];
-    pwdBut.frame =CGRectMake(CGRectGetMinX(tv.frame)-39, CGRectGetMinY(tv.frame), 50, 40);
+    pwdBut.frame =CGRectMake(CGRectGetMinX(tv.frame)-45, CGRectGetMinY(tv.frame), 50, 40);
     [pwdBut setUserInteractionEnabled:NO];
     [squareView2 addSubview:pwdBut];
 
@@ -213,7 +186,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     
     // 邮政编码
-    emadilCodeTf = [[UITextField alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(tv.frame), 280, 40)];
+    emadilCodeTf = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(tv.frame), SCREEN_WIDTH-30, 40)];
     [emadilCodeTf setBorderStyle:UITextBorderStyleNone];
     emadilCodeTf.textColor = [UIColor blackColor];
     [emadilCodeTf setClearButtonMode:UITextFieldViewModeWhileEditing];
@@ -231,20 +204,11 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     [squareView2 addSubview:emadilCodeTf];
     
     
-    UIImageView *imgv4 = [[UIImageView alloc] init];
-    imgv4.frame = CGRectMake(10, CGRectGetMaxY(emadilCodeTf.frame)+1, squareView.frame.size.width-20, 1);
-    imgv4.backgroundColor = [UIColor appLineColor];
-    [squareView2 addSubview:imgv4];
-    
-    
-    
-    
-    
     
     
       // 保存
     UIButton *loginBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginBut setFrame:CGRectMake(20, 265+90, 280, 40)];
+    [loginBut setFrame:CGRectMake(15, 265+90, SCREEN_WIDTH-30, 40)];
     [loginBut setTitle:@"保存" forState:UIControlStateNormal];
     [loginBut setBackgroundColor:[UIColor pumpkinColor]];
     [loginBut addTarget:self action:@selector(saveBtnclick) forControlEvents:UIControlEventTouchUpInside];

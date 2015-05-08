@@ -28,9 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title =@"设置";
     VIEW_BACKGROUND
-    tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(10, 40,300, 160)];
+    tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(10, 40,SCREEN_WIDTH-20, 160)];
     tv.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     tv.delegate = self;
     
@@ -47,7 +47,7 @@
     
     
     UIButton * commitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [commitBtn setFrame:CGRectMake(18, CGRectGetMaxY(tv.frame)+25, 80, 35)];
+    [commitBtn setFrame:CGRectMake(20, CGRectGetMaxY(tv.frame)+25, 80, 35)];
     [commitBtn.layer setMasksToBounds:YES];
     [commitBtn.layer setCornerRadius:5];
     [commitBtn  setTitle:@"提       交" forState:UIControlStateNormal ];
@@ -59,7 +59,7 @@
     
     
     UIButton * markBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [markBtn setFrame:CGRectMake(CGRectGetMaxX(commitBtn.frame)+100, CGRectGetMaxY(tv.frame)+25, 80, 35)];
+    [markBtn setFrame:CGRectMake(SCREEN_WIDTH-100, CGRectGetMaxY(tv.frame)+25, 80, 35)];
     [markBtn.layer setMasksToBounds:YES];
     [markBtn.layer setCornerRadius:5];
     [markBtn  setTitle:@"评       分" forState:UIControlStateNormal ];

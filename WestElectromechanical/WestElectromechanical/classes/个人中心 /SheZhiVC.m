@@ -11,14 +11,16 @@
 #import "WEHTTPHandler.h"
 #import "AccountHanler.h"
 #import "MarkSheetVC.h"
+#import "TLAlertView.h"
 
 
-@interface SheZhiVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface SheZhiVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     
     WEHTTPHandler *we;
     NSArray *imgArr;
     NSArray *titleArr;
+    TLAlertView *alertView;
     
 }
 
@@ -57,6 +59,26 @@
     [self.view addSubview:table];
     UIView *view =[[UIView alloc]init];
     table.tableFooterView = view;
+    
+    
+    alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"你确定注销用户么？" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
+    
+    [alertView handleCancel:^{
+       
+    }         handleConfirm:^{
+        
+        [AccountHanler setLoginState:0];
+        
+        [AccountHanler saveUserId:nil];
+        
+        WARN_ALERT(@"注销成功");
+        
+        [self.navigationController popViewControllerAnimated:YES];
+
+    }];
+    
+    alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
+   
 
 }
 
@@ -86,7 +108,7 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellidentifer];
     if (cell ==nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer];
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 65)] ;
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 65)] ;
         view.backgroundColor = [UIColor whiteColor];
         cell.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
         
@@ -167,16 +189,11 @@
                 return;
                 
             }
-                
-                
-             [self.navigationController popViewControllerAnimated:YES];
             
-                [AccountHanler setLoginState:0];
+             [alertView show];
                 
-                [AccountHanler saveUserId:nil];
-                
-            WARN_ALERT(@"注销成功");
-        }
+           
+                     }
             break;
             
 
@@ -187,6 +204,8 @@
     
     
 }
+
+
 /*
 #pragma mark - Navigation
 
