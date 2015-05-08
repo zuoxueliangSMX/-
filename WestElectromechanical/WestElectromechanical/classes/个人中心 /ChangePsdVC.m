@@ -36,7 +36,7 @@
     
     self.title =@"修改密码";
     self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
-    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(20, 80, 280, 160)];
+    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(15, 80, SCREEN_WIDTH-30, 160)];
     squareView.backgroundColor = [UIColor whiteColor];
     squareView.layer.cornerRadius =4;
     [self.view addSubview:squareView];
@@ -136,13 +136,13 @@
     
     
     // 确定
-    UIButton *loginBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginBut setFrame:CGRectMake(20, 260, 280, 40)];
-    [loginBut setTitle:@"确定" forState:UIControlStateNormal];
-    [loginBut setBackgroundColor:[UIColor pumpkinColor]];
-    [loginBut addTarget:self action:@selector(sureBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [loginBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.view addSubview:loginBut];
+    UIButton *sureBut = [UIButton buttonWithType:UIButtonTypeCustom];
+    [sureBut setFrame:CGRectMake(20, 260, SCREEN_WIDTH-40, 40)];
+    [sureBut setTitle:@"确定" forState:UIControlStateNormal];
+    [sureBut setBackgroundColor:[UIColor pumpkinColor]];
+    [sureBut addTarget:self action:@selector(sureBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [sureBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:sureBut];
 
 
 }

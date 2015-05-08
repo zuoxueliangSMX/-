@@ -38,7 +38,7 @@
     [super viewDidLoad];
     self.title = @"个人信息";
     self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
-    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(20, 80, 280, 160)];
+    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(15, 80, SCREEN_WIDTH-30, 160)];
     squareView.backgroundColor = [UIColor whiteColor];
     squareView.layer.cornerRadius =4;
     [self.view addSubview:squareView];
@@ -66,8 +66,8 @@
     _namefi.delegate =self;
     [_namefi setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_namefi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
-    UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
+    UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 20, 20)];
     [leftimg setImage: [UIImage imageNamed:@"Person_user"]];
     _namefi.leftViewMode = UITextFieldViewModeAlways;
     
@@ -97,8 +97,8 @@
       [phoneNumTF.layer setMasksToBounds:YES];
     [phoneNumTF.layer setCornerRadius:5];
     phoneNumTF.enabled =NO;
-    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
-    UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
+    UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 20, 20)];
     [psdleftimg setImage: [UIImage imageNamed:@"Person_lock"]];
     phoneNumTF.leftViewMode = UITextFieldViewModeAlways;
     [psdleft addSubview:psdleftimg];
@@ -122,8 +122,8 @@
     _emailTF.delegate =self;
     [_emailTF setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_emailTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
-    UIImageView *leftimg2 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 10, 30, 30)];
+    UIImageView *leftimg2 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 20, 20)];
     [leftimg2 setImage: [UIImage imageNamed:@"Person_email"]];
     _emailTF.leftViewMode = UITextFieldViewModeAlways;
     _emailTF.enabled =NO;

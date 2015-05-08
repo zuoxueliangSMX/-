@@ -87,7 +87,7 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellidentifer];
     if (cell ==nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer];
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 65)] ;
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 65)] ;
         view.backgroundColor = [UIColor whiteColor];
           cell.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
         [cell addSubview:view];
@@ -97,7 +97,7 @@
         nameLa.textColor =[UIColor blackColor];
         nameLa.tag =10;
         nameLa.font =[UIFont systemFontOfSize:12];
-        UILabel *addresLa = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(nameLa.frame), 280, 40)];
+        UILabel *addresLa = [[UILabel alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(nameLa.frame), SCREEN_WIDTH-30, 40)];
         addresLa.textColor =[UIColor darkGrayColor];
         addresLa.font =[UIFont systemFontOfSize:13];
         addresLa.tag =11;

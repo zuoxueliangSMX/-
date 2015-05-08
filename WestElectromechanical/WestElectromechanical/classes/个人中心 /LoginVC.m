@@ -115,8 +115,8 @@ WEHTTPHandler *whanle;
 //    [self.view  addSubview:meiconimg];
     
     
-    _namefi = [[UITextField alloc] initWithFrame:CGRectMake(kGap+10,7*kGap+10, self.view.frame.size.width-2*kGap-30, 50)];
-    _namefi.placeholder = @"       手机/用户名/邮箱";
+    _namefi = [[UITextField alloc] initWithFrame:CGRectMake(15,7*kGap+10, SCREEN_WIDTH-30, 50)];
+    _namefi.placeholder = @"                     手机/用户名/邮箱";
     [_namefi setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     
     _namefi.layer.borderWidth = 1.0;
@@ -129,7 +129,7 @@ WEHTTPHandler *whanle;
     [_namefi setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_namefi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 20, 20)];
     [leftimg setImage: [UIImage imageNamed:@"Person_user"]];
     _namefi.leftViewMode = UITextFieldViewModeAlways;
     
@@ -139,8 +139,8 @@ WEHTTPHandler *whanle;
     
     
     
-    UITextField *pswfi = [[UITextField alloc] initWithFrame:CGRectMake(kGap+10, CGRectGetMaxY(_namefi.frame)+10, self.view.frame.size.width-2*kGap-30, 50)];
-    [pswfi setPlaceholder:@"        密码6至16字符"];
+    UITextField *pswfi = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_namefi.frame)+10, SCREEN_WIDTH-30, 50)];
+    [pswfi setPlaceholder:@"                         密码6至16字符"];
     
     if ( [[SendIFAPPDefault shareAppDefault] mima]!=nil) {
         pswfi.text =  [[SendIFAPPDefault shareAppDefault] mima];
@@ -162,7 +162,7 @@ WEHTTPHandler *whanle;
     [pswfi.layer setCornerRadius:5];
 
     UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+    UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 20, 20)];
     [psdleftimg setImage: [UIImage imageNamed:@"Person_lock"]];
     pswfi.leftViewMode = UITextFieldViewModeAlways;
     [psdleft addSubview:psdleftimg];
@@ -207,7 +207,7 @@ WEHTTPHandler *whanle;
         [forgotBtn setTitle:@"忘记密码>" forState:UIControlStateNormal];
         forgotBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [forgotBtn setBackgroundColor:[UIColor clearColor]];
-        [forgotBtn setFrame:CGRectMake(CGRectGetMaxX(jizhumimaBtn.frame)+90+40, CGRectGetMaxY(pswfi.frame)+20, 100, 22)];
+        [forgotBtn setFrame:CGRectMake(SCREEN_WIDTH-150, CGRectGetMaxY(pswfi.frame)+20, 100, 22)];
     
     
     

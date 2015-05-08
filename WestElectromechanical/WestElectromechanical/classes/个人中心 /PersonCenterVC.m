@@ -100,6 +100,7 @@
         imgv.hidden =NO;
         labbb.hidden = YES;
         addresBut.hidden =YES;
+        textLa.text =@"登陆可以查看会员价哦～";
         
         
     }
@@ -219,10 +220,10 @@
     head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
    
    imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_smile"]];
-    imgv.frame = CGRectMake((head.frame.size.width-200)/4, (head.frame.size.height-60)/2-42, 50, 50);
+    imgv.frame = CGRectMake(SCREEN_WIDTH/4.5, (head.frame.size.height-60)/2-30, 30, 30);
     [head addSubview:imgv];
     
-    textLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame),  (head.frame.size.height-60)/2-42, 190, 50)];
+    textLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+5,  CGRectGetMinY(imgv.frame), 190, 30)];
     textLa.text =@"登陆可以查看会员价哦～";
     textLa.textColor =[UIColor whiteColor];
     [head addSubview:textLa];
@@ -301,7 +302,7 @@
     [head addSubview:loginBtn];
     
     
-    registBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(loginBtn.frame)+40, CGRectGetMaxY(imgv.frame)+10, 85, 30)];
+    registBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-85-55, CGRectGetMaxY(imgv.frame)+10, 85, 30)];
     [registBtn setTitle:@"注册" forState:UIControlStateNormal];
     [registBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [registBtn addTarget:self action:@selector(registBtnClick) forControlEvents:UIControlEventTouchUpInside];
