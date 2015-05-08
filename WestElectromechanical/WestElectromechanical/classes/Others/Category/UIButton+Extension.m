@@ -27,6 +27,31 @@
     return button;
 }
 
++ (UIButton *)buttonWithBgImageName:(NSString *)imageName bgHighImageName:(NSString *)highImageName title:(NSString *)title selectedTitle:(NSString *)selectedTitle target:(id)target action:(SEL)action
+{
+    UIButton *button =[[self alloc] buttonInitWithBgImageName:imageName bgHighImageName:highImageName title:title selectedTitle:selectedTitle target:target action:action];
+    return button;
+}
+
+- (UIButton *)buttonInitWithBgImageName:(NSString *)imageName bgHighImageName:(NSString *)highImageName title:(NSString *)title selectedTitle:(NSString *)selectedTitle target:(id)target action:(SEL)action
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:highImageName] forState:UIControlStateSelected];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitle:selectedTitle forState:UIControlStateSelected];
+    button.titleLabel.font = font(14);
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor orangeColor] forState:UIControlStateSelected];
+    // 设置按钮的尺寸为背景图片的尺寸
+    button.size = button.currentBackgroundImage.size;
+    // 监听按钮点击
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    return button;
+}
+
+
+
 + (UIButton *)addTarget:(id)target WithTitle:(NSString *)title withColor:(UIColor *)color action:(SEL)action{
     return [[self alloc]initTarget:target WithTitle:title withColor:color action:action];
     

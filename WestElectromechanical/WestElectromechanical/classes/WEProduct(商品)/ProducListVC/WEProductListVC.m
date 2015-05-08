@@ -13,6 +13,8 @@
 #import "WEProductCollectionCell.h"
 #import "WEProductTableCell.h"
 #import "WEProductDetailVC.h"
+#import "WEHTTPHandler.h"
+#import "WEProductDetailModel.h"
 @interface WEProductListVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic ,weak)UITableView *productList;
 @property (nonatomic ,weak)UICollectionView *productCollection;
@@ -219,9 +221,19 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 //    DLog(@"点击的是----%ld",indexPath.row);
-    WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
-    detailVC.productId =@"12168005";
-    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    WEHTTPHandler *handler = [[WEHTTPHandler alloc]init];
+    [handler executeGetProductDetailDataWithProductId:@"12168005" withSuccess:^(id obj) {
+        DLog(@"%@",obj);
+        WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
+        detailVC.productId =@"12168005";
+        detailVC.detailModel = (WEProductDetailModel *)obj;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    } withFailed:^(id obj) {
+        DLog(@"%@",obj);
+    }];
+    
+
 }
 
 

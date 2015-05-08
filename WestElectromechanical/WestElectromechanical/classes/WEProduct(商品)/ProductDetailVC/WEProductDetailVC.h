@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WEProductDetailModel.h"
 @interface WEProductDetailVC : UIViewController
-@property (nonatomic ,copy)NSString *productId;
+@property (nonatomic ,copy)NSString * productId;
+@property (nonatomic ,strong)WEProductDetailModel *detailModel;
 @end

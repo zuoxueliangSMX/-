@@ -15,6 +15,7 @@
 #import "WEHTTPHandler.h"
 #import "AccountHanler.h"
 #import "RDVTabBarController.h"
+#import "UIBarButtonItem+Extension.h"
 #define kGap 10
 
 
@@ -47,6 +48,7 @@ WEHTTPHandler *whanle;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    [self addLeftItem];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -54,6 +56,29 @@ WEHTTPHandler *whanle;
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
 
+- (void)backNav:(UIButton*)btn{
+    NSLog(@"返回");
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+
+
+- (void)addLeftItem
+{
+    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted" target:self action:@selector(backNav:)];
+    /**
+     *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
+     *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
+     */
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = -15;
+    self.navigationItem.leftBarButtonItems = @[negativeSpacer, right];
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"用户登录";

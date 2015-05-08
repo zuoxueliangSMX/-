@@ -11,6 +11,10 @@
 @interface UIButton (Extension)
 - (UIButton *)buttonInitWithImageName:(NSString *)imageName highImageName:(NSString *)highImageName target:(id)target action:(SEL)action;
 + (UIButton *)buttonWithImageName:(NSString *)imageName highImageName:(NSString *)highImageName target:(id)target action:(SEL)action;
++ (UIButton *)buttonWithBgImageName:(NSString *)imageName bgHighImageName:(NSString *)highImageName title:(NSString *)title selectedTitle:(NSString *)selectedTitle target:(id)target action:(SEL)action;
+
+- (UIButton *)buttonInitWithBgImageName:(NSString *)imageName bgHighImageName:(NSString *)highImageName title:(NSString *)title selectedTitle:(NSString *)selectedTitle target:(id)target action:(SEL)action;
+
 
 + (UIButton *)addTarget:(id)target WithTitle:(NSString *)title withColor:(UIColor *)color action:(SEL)action;
 - (UIButton *)initTarget:(id)target WithTitle:(NSString *)title withColor:(UIColor *)color action:(SEL)action;

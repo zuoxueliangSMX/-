@@ -44,7 +44,7 @@
    
     UIImageView *imgv;
     
-    UIView *head;
+    UIImageView *head;
     
     UILabel *textLa;
     
@@ -80,7 +80,7 @@
         
         labbb.hidden = NO;
         
-           labbb.text =[AccountHanler userName];
+        labbb.text =[AccountHanler userName];
         NSString *userID =[AccountHanler userId];
         [weh executeGetPersonCenterInfoWithUserId:userID Success:^(id obj) {
             NSString *str = [NSString stringWithFormat:@"您好：%@先生",[obj objectForKey:@"u_name"]];
@@ -128,7 +128,7 @@
     array1 = @[@"查看信息",@"浏览历史",@"我的收藏",@"40025558787"];
     weh = [[WEHTTPHandler alloc]init];
     
-  walert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"登陆成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] ;
+    walert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"登陆成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] ;
     
     [self addUI];
 }
@@ -216,7 +216,7 @@
 
     
     
-    head = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
    
    imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_smile"]];
     imgv.frame = CGRectMake((head.frame.size.width-200)/4, (head.frame.size.height-60)/2-42, 50, 50);
@@ -243,7 +243,8 @@
 
     UIImageView *imgvbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_header_bg"]];
     [head addSubview:imgvbg];
-    [head setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Person_BlackLine"]]];
+    [head setImage:[UIImage imageNamed:@"Person_Btn_bg"]];
+    
     [head sendSubviewToBack:imgvbg];
     [imgvbg mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -263,6 +264,7 @@
         UIImageView *img = [[UIImageView alloc] init];
         NSString *imgName = [NSString stringWithFormat:@"Person_headBtn%d",i+1];
         img.image = [UIImage imageNamed:imgName];
+        img.contentMode = UIViewContentModeScaleAspectFit;
         [lBtn addSubview:img];
         [img mas_makeConstraints:^(MASConstraintMaker *make) {
             
@@ -305,6 +307,7 @@
     [registBtn addTarget:self action:@selector(registBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [registBtn setBackgroundImage:[UIImage imageNamed:@"Person_BlackLine"] forState:UIControlStateNormal];
     [head addSubview:registBtn];
+    head.userInteractionEnabled = YES;
     
    
     UITableView *tabelView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];

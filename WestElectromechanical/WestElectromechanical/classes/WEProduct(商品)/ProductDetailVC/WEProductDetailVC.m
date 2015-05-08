@@ -12,6 +12,10 @@
 #import "HomeHeaderScrollView.h"
 #import "UIButton+Extension.h"
 #import "WEHTTPHandler.h"
+#import "WEProductInfoView.h"
+#import "WEProductDetailInfoCell.h"
+#import "AccountHanler.h"
+#import "LoginVC.h"
 @interface WEProductDetailVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic ,weak)HomeHeaderScrollView *headerView;
 @property (nonatomic ,weak)UITableView *productForm;
@@ -64,15 +68,7 @@
     [self initTableView];
     [self initTableHeaderView];
     [self initTableFooterView];
-    
-    WEHTTPHandler *handler = [[WEHTTPHandler alloc]init];
-    [handler executeGetProductDetailDataWithProductId:_productId withSuccess:^(id obj) {
-        DLog(@"%@",obj);
-    } withFailed:^(id obj) {
-        DLog(@"%@",obj);
-    }];
 
-    
 }
 - (void)initTableView
 {
@@ -80,6 +76,7 @@
     productForm.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64);
     productForm.delegate =self;
     productForm.dataSource =self;
+    productForm.bounces = NO;
     productForm.backgroundColor =[UIColor clearColor];
     [self.view addSubview:productForm];
     _productForm = productForm;
@@ -91,7 +88,47 @@
     headerView.backgroundColor =[UIColor clearColor];
     [self.view addSubview:headerView];
     _headerView = headerView;
+    
+    UIButton * collectionBtn =[UIButton buttonWithBgImageName:@"Product_collectionBtnBg" bgHighImageName:@"Product_collectionBtnBg" title:@"收藏" selectedTitle:@"已收藏" target:self action:@selector(collectionClick:)];
+    collectionBtn.selected = _detailModel.isCollect;
+    collectionBtn.frame = CGRectMake(SCREEN_WIDTH-80, CGRectGetHeight(_headerView.frame)-40, 60, 25);
+    [_headerView addSubview:collectionBtn];
     _productForm.tableHeaderView = _headerView;
+}
+
+- (void)collectionClick:(UIButton *)btn
+{
+    DLog(@"收藏");
+    WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+
+    if ([AccountHanler userId]) {
+        if (btn.selected) {
+            
+            [handler executeDeleteMyCollectionTaskWithUserId:[AccountHanler userId] withProductIds:self.productId Success:^(id obj) {
+                btn.selected = NO;
+            } failed:^(id obj) {
+                
+            }];
+        }else{
+            [handler executeProductCollectionTaskWithProductId:self.productId withUserId:[AccountHanler userId] withSuccess:^(id obj) {
+                btn.selected = YES;
+            } withFailed:^(id obj) {
+                
+            }];
+            
+            
+        }
+
+    }else{
+        
+        LoginVC *loginVC =[[LoginVC alloc]init];
+        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
+    }
+    
+    
 }
 
 - (void)initTableFooterView
@@ -116,21 +153,27 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row<1) {
+        return [WEProductInfoView sizeWithDetailModel:_detailModel].height;
+    }
     return 44;
 }
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    WEProductDetailInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[WEProductDetailInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     }
     if (indexPath.row > 0) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+       cell.textLabel.text = @"更多产品";
+    }else{
+         cell.detailModel =_detailModel;
     }
-    cell.textLabel.text = @"更多产品";
+    
     return cell;
 }
 #pragma mark -
