@@ -23,6 +23,7 @@
 #import "SheZhiVC.h"
 #import "MyCollectionVC.h"
 #import "GlanceHistoryVC.h"
+#import "MyOrderMenuVC.h"
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 {
@@ -176,10 +177,8 @@
 
     
     if (sender.tag == 98970) {
-        
-        
-//        UIActionSheet *act = [[UIActionSheet alloc] initWithTitle:@"咨询建议" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"0851-86889691",@"zjh@kxmy.com", nil];
-//        [act showInView:self.view];
+      
+   
         
     }else if (sender.tag == 98971){
         
@@ -207,6 +206,9 @@
     }
 
     
+    MyOrderMenuVC *mymenu = [[MyOrderMenuVC alloc]init];
+    
+    [self.navigationController pushViewController:mymenu animated:YES];
 }
 
 - (void)addUI
@@ -217,13 +219,17 @@
 
     
     
-    head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, VIEW_WIDETH, 200)];
    
-   imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_smile"]];
-    imgv.frame = CGRectMake(SCREEN_WIDTH/4.5, (head.frame.size.height-60)/2-30, 30, 30);
-    [head addSubview:imgv];
+   
     
-    textLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+5,  CGRectGetMinY(imgv.frame), 190, 30)];
+    textLa = [[UILabel alloc]initWithFrame:CGRectMake((VIEW_WIDETH-190)/2+15,  (head.frame.size.height-60)/2-30, 190, 30)];
+    imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_smile"]];
+    imgv.frame = CGRectMake(CGRectGetMinX(textLa.frame)-35, (head.frame.size.height-60)/2-30, 30, 30);
+    [head addSubview:imgv];
+    if ([AccountHanler loginState]==0) {
+        textLa.frame =CGRectMake((SCREEN_WIDTH-190+40)/2, CGRectGetMinY(imgv.frame), 190, 30);
+    }
     textLa.text =@"登陆可以查看会员价哦～";
     textLa.textColor =[UIColor whiteColor];
     [head addSubview:textLa];
@@ -231,7 +237,7 @@
     
     // 管理地址
      addresBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [addresBut setFrame:CGRectMake(CGRectGetMinX(textLa.frame)+30, CGRectGetMaxY(textLa.frame), 110, 25)];
+    [addresBut setFrame:CGRectMake((SCREEN_WIDTH-110)/2, CGRectGetMaxY(textLa.frame)+15, 110, 25)];
     [addresBut setTitle:@"管理我的地址 >" forState:UIControlStateNormal];
     [addresBut addTarget:self action:@selector(addressMangerClick) forControlEvents:UIControlEventTouchUpInside];
     addresBut.titleLabel.font =[UIFont systemFontOfSize:15];

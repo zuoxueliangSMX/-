@@ -39,6 +39,9 @@
 		7FE59F0D1AFB9E8C00D8ABA9 /* GlanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F0B1AFB9E8C00D8ABA9 /* GlanceCell.m */; };
 		7FE59F0E1AFB9E8C00D8ABA9 /* GlanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FE59F0C1AFB9E8C00D8ABA9 /* GlanceCell.xib */; };
 		7FE59F111AFBB24100D8ABA9 /* MarkSheetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F101AFBB24100D8ABA9 /* MarkSheetVC.m */; };
+		7FE5DDD31AFE0F5000B77986 /* HTHorizontalSelectionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE5DDD01AFE0F5000B77986 /* HTHorizontalSelectionList.m */; };
+		7FE5DDD41AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE5DDD21AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.m */; };
+		7FE5DDD71AFE0FC800B77986 /* MyOrderMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE5DDD61AFE0FC800B77986 /* MyOrderMenuVC.m */; };
 		7FE643AA1AF7921A000809A4 /* EmailForCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */; };
 		7FE6D47A1AFB40C200CFABE4 /* CollectionM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D4791AFB40C200CFABE4 /* CollectionM.m */; };
 		7FE6D47D1AFB422400CFABE4 /* JsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */; };
@@ -211,6 +214,12 @@
 		7FE59F0C1AFB9E8C00D8ABA9 /* GlanceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GlanceCell.xib; sourceTree = "<group>"; };
 		7FE59F0F1AFBB24100D8ABA9 /* MarkSheetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkSheetVC.h; sourceTree = "<group>"; };
 		7FE59F101AFBB24100D8ABA9 /* MarkSheetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkSheetVC.m; sourceTree = "<group>"; };
+		7FE5DDCF1AFE0F5000B77986 /* HTHorizontalSelectionList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTHorizontalSelectionList.h; sourceTree = "<group>"; };
+		7FE5DDD01AFE0F5000B77986 /* HTHorizontalSelectionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTHorizontalSelectionList.m; sourceTree = "<group>"; };
+		7FE5DDD11AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTHorizontalSelectionListScrollView.h; sourceTree = "<group>"; };
+		7FE5DDD21AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTHorizontalSelectionListScrollView.m; sourceTree = "<group>"; };
+		7FE5DDD51AFE0FC800B77986 /* MyOrderMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderMenuVC.h; sourceTree = "<group>"; };
+		7FE5DDD61AFE0FC800B77986 /* MyOrderMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderMenuVC.m; sourceTree = "<group>"; };
 		7FE643A81AF7921A000809A4 /* EmailForCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailForCodeVC.h; sourceTree = "<group>"; };
 		7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailForCodeVC.m; sourceTree = "<group>"; };
 		7FE6D4781AFB40C200CFABE4 /* CollectionM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionM.h; sourceTree = "<group>"; };
@@ -472,6 +481,8 @@
 		7FDEE40B1AF706B200674488 /* 个人中心  */ = {
 			isa = PBXGroup;
 			children = (
+				7FE5DDD51AFE0FC800B77986 /* MyOrderMenuVC.h */,
+				7FE5DDD61AFE0FC800B77986 /* MyOrderMenuVC.m */,
 				7FDEDC181AF764CD00911A02 /* MyRegisterVC.h */,
 				7FDEDC191AF764CD00911A02 /* MyRegisterVC.m */,
 				7FDEDC101AF7541000911A02 /* LoginVC.h */,
@@ -501,6 +512,17 @@
 				7FE59F0C1AFB9E8C00D8ABA9 /* GlanceCell.xib */,
 			);
 			path = "个人中心 ";
+			sourceTree = "<group>";
+		};
+		7FE5DDCE1AFE0F5000B77986 /* HTHorizontalSelectionList */ = {
+			isa = PBXGroup;
+			children = (
+				7FE5DDCF1AFE0F5000B77986 /* HTHorizontalSelectionList.h */,
+				7FE5DDD01AFE0F5000B77986 /* HTHorizontalSelectionList.m */,
+				7FE5DDD11AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.h */,
+				7FE5DDD21AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.m */,
+			);
+			path = HTHorizontalSelectionList;
 			sourceTree = "<group>";
 		};
 		7FE6D4771AFB40C200CFABE4 /* model */ = {
@@ -847,6 +869,7 @@
 		A38A32511AEC033D00F7FE7C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7FE5DDCE1AFE0F5000B77986 /* HTHorizontalSelectionList */,
 				7FE4204C1AFA6E8C00988846 /* GCPlaceholderTextView.h */,
 				7FE4204D1AFA6E8C00988846 /* GCPlaceholderTextView.m */,
 				7F8B1AA31AFA01560085FE2D /* pickView */,
@@ -1383,6 +1406,7 @@
 				7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */,
 				A3C248AA1AF9088A00760C72 /* WERecommendModel.m in Sources */,
 				A3843ECE1AF47A6000FDE84F /* HTTPBaseRequest.m in Sources */,
+				7FE5DDD71AFE0FC800B77986 /* MyOrderMenuVC.m in Sources */,
 				A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */,
 				A3C466F11AF313B300E1604D /* TAAnimatedDotView.m in Sources */,
 				A38A32911AEC0BC100F7FE7C /* WENavitationController.m in Sources */,
@@ -1429,6 +1453,7 @@
 				7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */,
 				A38A32801AEC078400F7FE7C /* WEMineHomeVC.m in Sources */,
 				A3BFB62E1AFBA8C200024BEE /* WEProductDetailVC.m in Sources */,
+				7FE5DDD41AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.m in Sources */,
 				A369CFAF1AEE70C4001F3DB7 /* ChineseToPinyinResource.m in Sources */,
 				A369CF831AEDC9B1001F3DB7 /* BaseViewController.m in Sources */,
 				7F62FF521AFC95AC00A93A87 /* TLAlertView.m in Sources */,
@@ -1461,6 +1486,7 @@
 				7F8B1AAF1AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m in Sources */,
 				A3C248A41AF9074900760C72 /* WEAdModel.m in Sources */,
 				A3843ECC1AF47A6000FDE84F /* AccountHanler.m in Sources */,
+				7FE5DDD31AFE0F5000B77986 /* HTHorizontalSelectionList.m in Sources */,
 				A38A32831AEC07E200F7FE7C /* WESearchHomeVC.m in Sources */,
 				7FDEDC081AF71D6400911A02 /* MASConstraint.m in Sources */,
 				A369CF811AEDC9B1001F3DB7 /* BaseModel.m in Sources */,

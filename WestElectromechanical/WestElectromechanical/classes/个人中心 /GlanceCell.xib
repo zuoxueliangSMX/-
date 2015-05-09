@@ -57,14 +57,108 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="cartBtn" destination="eWG-2U-h9x" id="iFF-9n-VFF"/>
+                <outlet property="changeBtn" destination="Yul-za-nAe" id="v4X-Vd-b84"/>
+                <outlet property="changgeLa" destination="TSc-Us-kuW" id="znt-qz-DPz"/>
                 <outlet property="imgV" destination="Ied-4Y-bIo" id="9dw-ez-f72"/>
                 <outlet property="memberPrice" destination="CAB-kK-5Ju" id="ecP-D2-eqS"/>
+                <outlet property="orderCodeLa" destination="tgZ-9x-04N" id="0gg-Kw-TkD"/>
                 <outlet property="orderNum" destination="lYq-5t-KSl" id="FgM-vl-sMD"/>
+                <outlet property="orderTimeLa" destination="Dyu-bl-HPY" id="Yau-X1-aBE"/>
                 <outlet property="priceLa" destination="lpp-w5-5U6" id="ir3-yc-5rk"/>
                 <outlet property="styleBrand" destination="zrJ-sY-Xtr" id="Pqq-V2-s94"/>
                 <outlet property="titleLa" destination="Qrx-Wf-4or" id="KPh-lR-2W2"/>
+                <outlet property="totalPriceLa" destination="mTK-ix-aor" id="DKO-EP-FAo"/>
             </connections>
-            <point key="canvasLocation" x="353" y="240.5"/>
+            <point key="canvasLocation" x="152" y="64.5"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="z5y-kE-bSr" customClass="GlanceCell">
+            <rect key="frame" x="0.0" y="-1" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z5y-kE-bSr" id="abv-xz-JWW">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kt5-bb-F9M">
+                        <rect key="frame" x="0.0" y="45" width="108" height="109"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aj-iJ-VrJ">
+                        <rect key="frame" x="109" y="50" width="211" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKB-Ke-auY">
+                        <rect key="frame" x="109" y="74" width="211" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdj-Mb-HT8">
+                        <rect key="frame" x="109" y="107" width="211" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzQ-A2-jWq">
+                        <rect key="frame" x="109" y="133" width="60" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9N-AR-diL">
+                        <rect key="frame" x="177" y="133" width="60" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.87667692549999998" green="0.7459640837" blue="0.1601069259" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgZ-9x-04N">
+                        <rect key="frame" x="8" y="0.0" width="204" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyu-bl-HPY">
+                        <rect key="frame" x="8" y="22" width="312" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-Us-kuW">
+                        <rect key="frame" x="236" y="0.0" width="84" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.36585159930990052" green="0.44687691750040837" blue="0.78454466540404044" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTK-ix-aor">
+                        <rect key="frame" x="14" y="170" width="149" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.87667692549999998" green="0.5855498012861019" blue="0.11487893829361667" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yul-za-nAe">
+                        <rect key="frame" x="229" y="157" width="78" height="34"/>
+                        <color key="backgroundColor" red="0.87667692549999998" green="0.55249659522625905" blue="0.12394748066353502" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="changeBtn" destination="Yul-za-nAe" id="G2y-N7-4aK"/>
+                <outlet property="changgeLa" destination="TSc-Us-kuW" id="0W1-uG-y1O"/>
+                <outlet property="imgV" destination="kt5-bb-F9M" id="n3D-07-hpi"/>
+                <outlet property="memberPrice" destination="l9N-AR-diL" id="nqb-5I-oGR"/>
+                <outlet property="orderCodeLa" destination="tgZ-9x-04N" id="c17-Tg-ClA"/>
+                <outlet property="orderNum" destination="qKB-Ke-auY" id="nYc-BW-drW"/>
+                <outlet property="orderTimeLa" destination="Dyu-bl-HPY" id="Tb9-rK-QRD"/>
+                <outlet property="priceLa" destination="lzQ-A2-jWq" id="JEB-GH-JAy"/>
+                <outlet property="styleBrand" destination="cdj-Mb-HT8" id="ax0-6P-3T3"/>
+                <outlet property="titleLa" destination="7aj-iJ-VrJ" id="Drn-Q9-HzC"/>
+                <outlet property="totalPriceLa" destination="mTK-ix-aor" id="BIL-mC-cEa"/>
+            </connections>
+            <point key="canvasLocation" x="262" y="264"/>
         </tableViewCell>
     </objects>
 </document>
