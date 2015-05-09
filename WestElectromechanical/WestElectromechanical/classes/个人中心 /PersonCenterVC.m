@@ -174,39 +174,25 @@
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString:email]];
 }
 - (void)headBtnClick:(UIButton*)sender{
-
+  MyOrderMenuVC *mymenu = [[MyOrderMenuVC alloc]init];
     
     if (sender.tag == 98970) {
-      
+      mymenu.selectedItem =1;
    
         
     }else if (sender.tag == 98971){
-        
-//        ManagerPushMessVC *mvc = [[ManagerPushMessVC alloc] init];
-//        [self.navigationController pushViewController:mvc animated:YES];
+      mymenu.selectedItem =2;
     
     }else if (sender.tag == 98972){
        
-//        if ([SendIFAppDefault shareAppDefault].currentUserId.length==0) {
-//            
-//            ALERT_WARN(@"请先登录");
-//            return;
-        
-//        }
-//        MyFavVC *fav= [[MyFavVC alloc] init];
-//        [self.navigationController pushViewController:fav animated:YES];
-    
+     mymenu.selectedItem =0;
     }else if (sender.tag == 98973){
         
-//        ALERT_WARN(@"敬请期待!");
-//        return;
-//        
-//        CardVoucherVC *cavc = [[CardVoucherVC alloc] initWithNibName:nil bundle:nil];
-//        [self.navigationController pushViewController:cavc animated:YES];
+    mymenu.selectedItem =3;
     }
 
     
-    MyOrderMenuVC *mymenu = [[MyOrderMenuVC alloc]init];
+  
     
     [self.navigationController pushViewController:mymenu animated:YES];
 }

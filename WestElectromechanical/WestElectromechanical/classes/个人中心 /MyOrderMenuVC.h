@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MyOrderMenuVC : UIViewController
-
+@property(nonatomic)NSInteger selectedItem;
 @end

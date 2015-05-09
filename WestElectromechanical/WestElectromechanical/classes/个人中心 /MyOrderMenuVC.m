@@ -49,7 +49,10 @@
     [self.selectionList setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
     [self.selectionList setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
-
+    
+    self.selectionList.selectedButtonIndex =self.selectedItem;
+    
+    
     //添加竖线
     for (int i =1; i<4; i++) {
         UILabel *veticalLineLa= [[UILabel alloc]initWithFrame:CGRectMake(VIEW_WIDETH/4*i, 5, 1, 30)];
