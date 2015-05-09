@@ -10,7 +10,7 @@
 #import "GCPlaceholderTextView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "AccountHanler.h"
-
+#import "RDVTabBarController.h"
 @interface MarkSheetVC ()<UITextViewDelegate >
 {
     
@@ -25,6 +25,17 @@
 @end
 
 @implementation MarkSheetVC
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
