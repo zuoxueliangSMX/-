@@ -9,6 +9,7 @@
 #import "WESearchHomeVC.h"
 #import "WEHTTPHandler.h"
 #import "WEHotRecommendModel.h"
+#import "WEProductListVC.h"
 @interface WESearchHomeVC ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic ,weak)UISearchBar *mySearchBar;
@@ -43,7 +44,7 @@
     _mySearchBar = mySearchBar;
     _searchTable = searchTable;
     searchTable.tableHeaderView = mySearchBar;
-    [self initNetData:@"上海"];
+    [self initNetData:@"北京"];
 }
 
 /**
@@ -55,7 +56,7 @@
         DLog(@"WESearchHomeVC--->%@",obj);
         _hotRecommendModel = (WEHotRecommendModel *)obj;
         [_searchTable reloadData];
-        //        [self initProductDetailData:@"12168005"];
+        [self initSearchProductContent:@"通电"];
     } withFailed:^(id obj) {
         DLog(@"WESearchHomeVC--->%@",obj);
     }];
@@ -63,6 +64,30 @@
 }
 
 
+/**
+ *  根据内容搜索
+ */
+- (void)initSearchProductContent:(NSString *)content
+{
+    WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+    __weak WESearchHomeVC *bSelf = self;
+    [handler executeGetSearchDataWithSearchProductName:content withSuccess:^(id obj) {
+        DLog(@"%@",obj);
+        WEProductListVC *productListVC =[[WEProductListVC alloc]init];
+        productListVC.products = (WEProductsModel *)obj;
+        [bSelf.navigationController pushViewController:productListVC animated:YES];
+    } withFailed:^(id obj) {
+        DLog(@"%@",obj);
+
+    }];
+//    [handler executeGetSearchDataWithSearchContent:content withSuccess:^(id obj) {
+//        DLog(@"WESearchHomeVC--->%@",obj);
+//        [self initProductCommentList:@"12168005"];
+//    } withFailed:^(id obj) {
+//        DLog(@"WESearchHomeVC--->%@",obj);
+//    }];
+    
+}
 /**
  *  根据内容搜索
  */

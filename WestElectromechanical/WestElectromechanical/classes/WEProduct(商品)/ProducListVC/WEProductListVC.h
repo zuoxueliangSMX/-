@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WEProductsModel.h"
 @interface WEProductListVC : UIViewController
+@property (nonatomic ,strong)WEProductsModel *products;
 
 @end

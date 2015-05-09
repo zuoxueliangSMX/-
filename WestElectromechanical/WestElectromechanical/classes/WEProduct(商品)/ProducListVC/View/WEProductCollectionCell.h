@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WEProductSingleModel.h"
 @interface WEProductCollectionCell : UICollectionViewCell
+
+@property (nonatomic ,strong)WEProductSingleModel *singleModel;
+
 /**
  *  产品图片
  */
@@ -25,6 +28,9 @@
  *  型号
  */
 @property (nonatomic ,weak)UILabel *productType;
+
+@property (nonatomic ,weak)UILabel *productOriPrice;
+@property (nonatomic ,weak)UILabel *prodcutSalePrice;
 /**
  删除按钮
  **/

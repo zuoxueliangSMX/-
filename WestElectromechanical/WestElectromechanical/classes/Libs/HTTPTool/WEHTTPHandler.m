@@ -14,6 +14,7 @@
 #import "WECategorysModel.h"
 #import "WEHomeInfoModel.h"
 #import "WEProductDetailModel.h"
+#import "WEProductsModel.h"
 @implementation WEHTTPHandler
 #pragma mark -
 #pragma mark - 首页模块
@@ -148,6 +149,45 @@
         }
     }];
 
+}
+/**
+ *  搜索商品名字
+ */
+
+- (void)executeGetSearchDataWithSearchProductName:(NSString *)productName
+                                  withSuccess:(SuccessBlock)success
+                                   withFailed:(FailedBlock)failed
+{
+    [AlertUtil showAlertWithText:@"获取搜索数据"];
+    NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"name=%@",productName];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+        WEProductsModel *productsModel =[[WEProductsModel alloc]initWithDict:json];
+        if ([productsModel.message integerValue]== 0) {
+            
+            if (productsModel.products.count>0) {
+                if (success) {
+                    success(productsModel);
+                }
+            }else{
+                [AlertUtil showAlertWithText:@"未搜索到你所需要的商品"];
+            }
+            
+        }else{
+            [AlertUtil showAlertWithText:@"搜索出错"];
+            if (failed) {
+                failed(nil);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
 }
 
 #pragma mark -

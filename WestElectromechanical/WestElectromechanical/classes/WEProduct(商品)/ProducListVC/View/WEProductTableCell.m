@@ -8,8 +8,16 @@
 
 #import "WEProductTableCell.h"
 #import "UIButton+Extension.h"
+#import "UIImageView+WebCacheImg.h"
 @interface WEProductTableCell()
-
+@property (nonatomic ,weak)UIImageView *productImg;
+@property (nonatomic ,weak)UILabel *productTitle;
+@property (nonatomic ,weak)UILabel *productOrder;
+@property (nonatomic ,weak)UILabel *productType;
+@property (nonatomic ,weak)UILabel *productBrand;
+@property (nonatomic ,weak)UILabel *productPrice;
+@property (nonatomic ,weak)UILabel *productSalePrice;
+@property (nonatomic ,weak)UIButton *acrtBtn;
 @end
 @implementation WEProductTableCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -71,7 +79,7 @@
         productOriPrice.backgroundColor =[UIColor clearColor];
         [bgView addSubview:productOriPrice];
         productOriPrice.text =@"￥ 32.6";
-        _productType = productType;
+        _productPrice = productOriPrice;
         
         
         UILabel *productDiscountPrice =[[UILabel alloc]init];
@@ -82,7 +90,7 @@
         productDiscountPrice.backgroundColor =[UIColor clearColor];
         productDiscountPrice.text =@"￥ 18.6";
         [bgView addSubview:productDiscountPrice];
-        _productType = productType;
+        _productSalePrice = productDiscountPrice;
         
         
         UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:@selector(addProductCart:)];
@@ -94,6 +102,20 @@
     return self;
 }
 
+
+- (void)setSingleModel:(WEProductSingleModel *)singleModel
+{
+    _singleModel = singleModel;
+    self.productTitle.text = singleModel.p_name;
+    self.productType.text =  singleModel.p_version;
+    self.productBrand.text = singleModel.p_brand;
+    self.productOrder.text = singleModel.p_order_num;
+
+    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    self.productPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
+    self.productSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
+    
+}
 
 - (void)addProductCart:(UIButton *)btn
 {

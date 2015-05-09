@@ -62,6 +62,8 @@
 		A369CFB41AEE70C4001F3DB7 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CFAB1AEE70C4001F3DB7 /* PinyinHelper.m */; };
 		A369CFB51AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = A369CFAC1AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt */; };
 		A369CFB81AEE713B001F3DB7 /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CFB71AEE713B001F3DB7 /* ChineseInclude.m */; };
+		A37359141AFDE47700484A59 /* WEProductsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A37359131AFDE47700484A59 /* WEProductsModel.m */; };
+		A37359171AFDE49300484A59 /* WEProductSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A37359161AFDE49300484A59 /* WEProductSingleModel.m */; };
 		A37F75601AF3DF040054B677 /* WECartHomeCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A37F755F1AF3DF040054B677 /* WECartHomeCellBottomView.m */; };
 		A3843ECC1AF47A6000FDE84F /* AccountHanler.m in Sources */ = {isa = PBXBuildFile; fileRef = A3843EC41AF47A6000FDE84F /* AccountHanler.m */; };
 		A3843ECD1AF47A6000FDE84F /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A3843EC61AF47A6000FDE84F /* UserDefaultsUtils.m */; };
@@ -249,6 +251,10 @@
 		A369CFAC1AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
 		A369CFB61AEE713B001F3DB7 /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
 		A369CFB71AEE713B001F3DB7 /* ChineseInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseInclude.m; sourceTree = "<group>"; };
+		A37359121AFDE47700484A59 /* WEProductsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductsModel.h; sourceTree = "<group>"; };
+		A37359131AFDE47700484A59 /* WEProductsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductsModel.m; sourceTree = "<group>"; };
+		A37359151AFDE49300484A59 /* WEProductSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductSingleModel.h; sourceTree = "<group>"; };
+		A37359161AFDE49300484A59 /* WEProductSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductSingleModel.m; sourceTree = "<group>"; };
 		A37D720A9818131CA3C9CC92 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37F755E1AF3DF040054B677 /* WECartHomeCellBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartHomeCellBottomView.h; sourceTree = "<group>"; };
 		A37F755F1AF3DF040054B677 /* WECartHomeCellBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartHomeCellBottomView.m; sourceTree = "<group>"; };
@@ -584,6 +590,17 @@
 				A369CFAC1AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt */,
 			);
 			path = PinYin;
+			sourceTree = "<group>";
+		};
+		A37359111AFDE44A00484A59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A37359121AFDE47700484A59 /* WEProductsModel.h */,
+				A37359131AFDE47700484A59 /* WEProductsModel.m */,
+				A37359151AFDE49300484A59 /* WEProductSingleModel.h */,
+				A37359161AFDE49300484A59 /* WEProductSingleModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A3843EC21AF47A6000FDE84F /* AccountTool */ = {
@@ -1060,6 +1077,7 @@
 		A3C2CC7C1AFA4AC10087BDED /* ProducListVC */ = {
 			isa = PBXGroup;
 			children = (
+				A37359111AFDE44A00484A59 /* Model */,
 				A3C2CC7E1AFA4AC10087BDED /* View */,
 				A3C2CC7F1AFA4AD40087BDED /* WEProductListVC.h */,
 				A3C2CC801AFA4AD40087BDED /* WEProductListVC.m */,
@@ -1285,6 +1303,7 @@
 				A3C466E31AF30B3C00E1604D /* WEHomeBottomScrollView.m in Sources */,
 				7FE59F0D1AFB9E8C00D8ABA9 /* GlanceCell.m in Sources */,
 				7FDEDC0E1AF71D6400911A02 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				A37359141AFDE47700484A59 /* WEProductsModel.m in Sources */,
 				A3C2CC811AFA4AD40087BDED /* WEProductListVC.m in Sources */,
 				7FE42B351AF9E73000EB923E /* AddAdressVC.m in Sources */,
 				A38851B91AED2DD40019D6E5 /* ImagePlayerView.m in Sources */,
@@ -1292,6 +1311,7 @@
 				A38A327A1AEC075500F7FE7C /* WECategoryHomeVC.m in Sources */,
 				7FE420511AFA7CA400988846 /* SheZhiVC.m in Sources */,
 				7FE6D47D1AFB422400CFABE4 /* JsonToModel.m in Sources */,
+				A37359171AFDE49300484A59 /* WEProductSingleModel.m in Sources */,
 				A38A326B1AEC043B00F7FE7C /* AppDelegate.m in Sources */,
 				A32D858F1AFBBA3500BC0CB0 /* WEProductModelImgModel.m in Sources */,
 				A3C466F31AF313B300E1604D /* TAPageControl.m in Sources */,

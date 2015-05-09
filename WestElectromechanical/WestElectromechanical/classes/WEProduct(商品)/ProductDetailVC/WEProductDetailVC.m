@@ -16,6 +16,7 @@
 #import "WEProductDetailInfoCell.h"
 #import "AccountHanler.h"
 #import "LoginVC.h"
+#import "WEAdModel.h"
 @interface WEProductDetailVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic ,weak)HomeHeaderScrollView *headerView;
 @property (nonatomic ,weak)UITableView *productForm;
@@ -73,7 +74,7 @@
 - (void)initTableView
 {
     UITableView *productForm =[[UITableView alloc]init];
-    productForm.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64);
+    productForm.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     productForm.delegate =self;
     productForm.dataSource =self;
     productForm.bounces = NO;
@@ -94,6 +95,26 @@
     collectionBtn.frame = CGRectMake(SCREEN_WIDTH-80, CGRectGetHeight(_headerView.frame)-40, 60, 25);
     [_headerView addSubview:collectionBtn];
     _productForm.tableHeaderView = _headerView;
+    
+    NSMutableArray *temArray =[NSMutableArray array];
+    UIImage * PlaceholderImage = [UIImage imageNamed:@"Home_Middle_04"];
+    NSInteger index = 1;
+    for (WEProductImgModel *adModel in _detailModel.imgs) {
+        //网络图片
+        //***********************//
+        //key pic = 地址 NSString
+        //key title = 显示的标题 NSString
+        //key isLoc = 是否本地图片 Bool
+        //key placeholderImage = 网络图片加载失败时显示的图片 UIImage
+        //***********************//
+        NSString *picTag =[NSString stringWithFormat:@"PIC%ld",index];
+        DLog(@"%@",adModel.imgurl);
+
+        DLog(@"%@",[NSDictionary dictionaryWithObjects:@[adModel.imgurl,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]);
+        [temArray addObject:[NSDictionary dictionaryWithObjects:@[adModel.imgurl,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]];
+    }
+    headerView.imageURLs = temArray;
+    [headerView.imgPlayerView upDate];
 }
 
 - (void)collectionClick:(UIButton *)btn

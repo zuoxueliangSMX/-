@@ -8,6 +8,7 @@
 
 #import "WEProductCollectionCell.h"
 #import "UIButton+Extension.h"
+#import "UIImageView+WebCacheImg.h"
 @interface WEProductCollectionCell()
 
 @end
@@ -35,9 +36,7 @@
 //        [_deleteBu addTarget:self action:@selector(deleteClick) forControlEvents:UIControlEventTouchUpInside];
         [productImg addSubview:_deleteBu];
  
-        
-        
-        
+
         UILabel *productTitle =[[UILabel alloc]init];
         productTitle.frame =CGRectMake(  CGRectGetMinX(productImg.frame),CGRectGetMaxY(productImg.frame)+5,frame.size.width-10,18);
         productTitle.numberOfLines =1;
@@ -69,9 +68,7 @@
         productOriPrice.textColor =[UIColor redColor];
         productOriPrice.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productOriPrice];
-        productOriPrice.text =@"￥ 32.6";
-
-        _productType = productType;
+        _productOriPrice = productOriPrice;
         
         UILabel *productDiscountPrice =[[UILabel alloc]init];
         productDiscountPrice.frame =CGRectMake(  CGRectGetMaxX(productOriPrice.frame)+5,CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3,16);
@@ -79,9 +76,8 @@
         productDiscountPrice.font =font(10);
         productDiscountPrice.textColor =[UIColor appLineColor];
         productDiscountPrice.backgroundColor =[UIColor clearColor];
-        productDiscountPrice.text =@"￥ 18.6";
         [self.contentView addSubview:productDiscountPrice];
-        _productType = productType;
+        _prodcutSalePrice = productDiscountPrice;
         
         
         UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:@selector(addCart:)];
@@ -89,6 +85,21 @@
         [self.contentView addSubview:btn];
     }
     return self;
+}
+
+
+- (void)setSingleModel:(WEProductSingleModel *)singleModel
+{
+    _singleModel = singleModel;
+    
+    self.productTitle.text = singleModel.p_name;
+    self.productType.text =  singleModel.p_version;
+    self.productBrand.text = singleModel.p_brand;
+//    self.productOrder.text = singleModel.p_order_num;
+    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    self.productOriPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
+    self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
+    
 }
 
 - (void)addCart:(UIButton *)btn

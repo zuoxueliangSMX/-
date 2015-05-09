@@ -15,6 +15,7 @@
 #import "WEProductDetailVC.h"
 #import "WEHTTPHandler.h"
 #import "WEProductDetailModel.h"
+#import "WEProductSingleModel.h"
 @interface WEProductListVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic ,weak)UITableView *productList;
 @property (nonatomic ,weak)UICollectionView *productCollection;
@@ -22,7 +23,13 @@
 @end
 
 @implementation WEProductListVC
-
+- (instancetype)init
+{
+    if (self =[super init]) {
+        _products =[[WEProductsModel alloc]initWithDict:@{}];
+    }
+    return self;
+}
 #pragma mark -
 #pragma mark - pop和push控制器时的操作
 - (void)viewWillAppear:(BOOL)animated {
@@ -129,7 +136,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return _products.products.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -143,10 +150,8 @@
         cell = [[WEProductTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
-    cell.productTitle.text = @"黄金钻头";
-    cell.productType.text = @"ZH-85";
-    cell.productBrand.text =@"西门子";
-    cell.productOrder.text = @"西域订货号：MAS294";
+    WEProductSingleModel *singleModel =_products.products[indexPath.row];
+    cell.singleModel = singleModel;
 //    cell.backgroundColor =[UIColor redColor];
     
     return cell;
@@ -164,7 +169,7 @@
 //定义展示的UICollectionViewCell的个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20;
+    return _products.products.count;
 }
 
 //定义展示的Section的个数
@@ -179,9 +184,7 @@
     static NSString * CellIdentifier = @"UICollectionViewCell";
     WEProductCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.backgroundColor =[UIColor whiteColor];
-    cell.productTitle.text = @"黄金钻头";
-    cell.productType.text = @"ZH-85";
-    cell.productBrand.text =@"西门子";
+    cell.singleModel =_products.products[indexPath.row];
     return cell;
 }
 
@@ -223,10 +226,10 @@
 //    DLog(@"点击的是----%ld",indexPath.row);
     
     WEHTTPHandler *handler = [[WEHTTPHandler alloc]init];
-    [handler executeGetProductDetailDataWithProductId:@"12168005" withSuccess:^(id obj) {
+    [handler executeGetProductDetailDataWithProductId:[_products.products[indexPath.row] pid] withSuccess:^(id obj) {
         DLog(@"%@",obj);
         WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
-        detailVC.productId =@"12168005";
+        detailVC.productId =[_products.products[indexPath.row] pid];
         detailVC.detailModel = (WEProductDetailModel *)obj;
         [self.navigationController pushViewController:detailVC animated:YES];
     } withFailed:^(id obj) {

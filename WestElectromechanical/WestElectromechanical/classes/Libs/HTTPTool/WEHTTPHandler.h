@@ -42,7 +42,13 @@
 - (void)executeGetSearchDataWithSearchContent:(NSString *)content
                                   withSuccess:(SuccessBlock)success
                                    withFailed:(FailedBlock)failed;
+/**
+ *  搜索商品名字
+ */
 
+- (void)executeGetSearchDataWithSearchProductName:(NSString *)productName
+                                      withSuccess:(SuccessBlock)success
+                                       withFailed:(FailedBlock)failed;
 
 #pragma mark -
 #pragma mark - 产品详情
