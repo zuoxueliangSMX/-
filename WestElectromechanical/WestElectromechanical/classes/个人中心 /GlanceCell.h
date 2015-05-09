@@ -21,4 +21,20 @@
 @property (weak, nonatomic) IBOutlet UIButton *cartBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imgV;
 
+
+
+//我的订单里面属性
+
+//订单号
+@property (weak, nonatomic) IBOutlet UILabel *orderCodeLa;
+//订单时间
+@property (weak, nonatomic) IBOutlet UILabel *orderTimeLa;
+//会变换名称的label   待付款 待收货等等
+@property (weak, nonatomic) IBOutlet UILabel *changgeLa;
+//总价
+@property (weak, nonatomic) IBOutlet UILabel *totalPriceLa;
+//会变换名称的label   立即支付 确认收货等等
+@property (weak, nonatomic) IBOutlet UIButton *changeBtn;
+
+
 @end
