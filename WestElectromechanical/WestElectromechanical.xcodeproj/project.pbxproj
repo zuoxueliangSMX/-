@@ -64,6 +64,9 @@
 		A369CFB81AEE713B001F3DB7 /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CFB71AEE713B001F3DB7 /* ChineseInclude.m */; };
 		A37359141AFDE47700484A59 /* WEProductsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A37359131AFDE47700484A59 /* WEProductsModel.m */; };
 		A37359171AFDE49300484A59 /* WEProductSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A37359161AFDE49300484A59 /* WEProductSingleModel.m */; };
+		A37359261AFDFECA00484A59 /* WEThirdCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A37359251AFDFECA00484A59 /* WEThirdCategoryVC.m */; };
+		A373592C1AFDFF1F00484A59 /* WEBaseCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A373592B1AFDFF1F00484A59 /* WEBaseCategoryVC.m */; };
+		A373592F1AFE26D700484A59 /* WESecondCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A373592E1AFE26D700484A59 /* WESecondCategoryVC.m */; };
 		A37F75601AF3DF040054B677 /* WECartHomeCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A37F755F1AF3DF040054B677 /* WECartHomeCellBottomView.m */; };
 		A3843ECC1AF47A6000FDE84F /* AccountHanler.m in Sources */ = {isa = PBXBuildFile; fileRef = A3843EC41AF47A6000FDE84F /* AccountHanler.m */; };
 		A3843ECD1AF47A6000FDE84F /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A3843EC61AF47A6000FDE84F /* UserDefaultsUtils.m */; };
@@ -255,6 +258,12 @@
 		A37359131AFDE47700484A59 /* WEProductsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductsModel.m; sourceTree = "<group>"; };
 		A37359151AFDE49300484A59 /* WEProductSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductSingleModel.h; sourceTree = "<group>"; };
 		A37359161AFDE49300484A59 /* WEProductSingleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductSingleModel.m; sourceTree = "<group>"; };
+		A37359241AFDFECA00484A59 /* WEThirdCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEThirdCategoryVC.h; sourceTree = "<group>"; };
+		A37359251AFDFECA00484A59 /* WEThirdCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEThirdCategoryVC.m; sourceTree = "<group>"; };
+		A373592A1AFDFF1F00484A59 /* WEBaseCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEBaseCategoryVC.h; sourceTree = "<group>"; };
+		A373592B1AFDFF1F00484A59 /* WEBaseCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEBaseCategoryVC.m; sourceTree = "<group>"; };
+		A373592D1AFE26D700484A59 /* WESecondCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WESecondCategoryVC.h; sourceTree = "<group>"; };
+		A373592E1AFE26D700484A59 /* WESecondCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WESecondCategoryVC.m; sourceTree = "<group>"; };
 		A37D720A9818131CA3C9CC92 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37F755E1AF3DF040054B677 /* WECartHomeCellBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartHomeCellBottomView.h; sourceTree = "<group>"; };
 		A37F755F1AF3DF040054B677 /* WECartHomeCellBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartHomeCellBottomView.m; sourceTree = "<group>"; };
@@ -603,6 +612,81 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A37359181AFDFE6000484A59 /* WESecondCategoryVC(二级分类页面) */ = {
+			isa = PBXGroup;
+			children = (
+				A37359191AFDFE6000484A59 /* Model */,
+				A373591A1AFDFE6000484A59 /* View */,
+				A373592D1AFE26D700484A59 /* WESecondCategoryVC.h */,
+				A373592E1AFE26D700484A59 /* WESecondCategoryVC.m */,
+			);
+			path = "WESecondCategoryVC(二级分类页面)";
+			sourceTree = "<group>";
+		};
+		A37359191AFDFE6000484A59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A373591A1AFDFE6000484A59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A373591E1AFDFE9000484A59 /* WEThirdCategoryVC(三级分类页面) */ = {
+			isa = PBXGroup;
+			children = (
+				A373591F1AFDFE9000484A59 /* Model */,
+				A37359201AFDFE9000484A59 /* View */,
+				A37359241AFDFECA00484A59 /* WEThirdCategoryVC.h */,
+				A37359251AFDFECA00484A59 /* WEThirdCategoryVC.m */,
+			);
+			path = "WEThirdCategoryVC(三级分类页面)";
+			sourceTree = "<group>";
+		};
+		A373591F1AFDFE9000484A59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A37359201AFDFE9000484A59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A37359271AFDFF0A00484A59 /* WEBaseCategory(分类基类) */ = {
+			isa = PBXGroup;
+			children = (
+				A37359281AFDFF0A00484A59 /* Model */,
+				A37359291AFDFF0A00484A59 /* View */,
+				A373592A1AFDFF1F00484A59 /* WEBaseCategoryVC.h */,
+				A373592B1AFDFF1F00484A59 /* WEBaseCategoryVC.m */,
+			);
+			path = "WEBaseCategory(分类基类)";
+			sourceTree = "<group>";
+		};
+		A37359281AFDFF0A00484A59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A37359291AFDFF0A00484A59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A3843EC21AF47A6000FDE84F /* AccountTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -859,6 +943,9 @@
 		A38A325A1AEC033D00F7FE7C /* WECategory(分类) */ = {
 			isa = PBXGroup;
 			children = (
+				A37359271AFDFF0A00484A59 /* WEBaseCategory(分类基类) */,
+				A373591E1AFDFE9000484A59 /* WEThirdCategoryVC(三级分类页面) */,
+				A37359181AFDFE6000484A59 /* WESecondCategoryVC(二级分类页面) */,
 				A38A325B1AEC033D00F7FE7C /* WECategorytHomeVC(分类首页) */,
 			);
 			path = "WECategory(分类)";
@@ -1196,7 +1283,7 @@
 				TargetAttributes = {
 					A38A320C1AEBE98800F7FE7C = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = X2UUA2T8CV;
+						DevelopmentTeam = U5G96G2R7X;
 					};
 					A38A32251AEBE98800F7FE7C = {
 						CreatedOnToolsVersion = 6.3;
@@ -1313,6 +1400,7 @@
 				7FE6D47D1AFB422400CFABE4 /* JsonToModel.m in Sources */,
 				A37359171AFDE49300484A59 /* WEProductSingleModel.m in Sources */,
 				A38A326B1AEC043B00F7FE7C /* AppDelegate.m in Sources */,
+				A37359261AFDFECA00484A59 /* WEThirdCategoryVC.m in Sources */,
 				A32D858F1AFBBA3500BC0CB0 /* WEProductModelImgModel.m in Sources */,
 				A3C466F31AF313B300E1604D /* TAPageControl.m in Sources */,
 				7FE59F081AFB9DF200D8ABA9 /* GlanceHistoryVC.m in Sources */,
@@ -1347,6 +1435,7 @@
 				A3883D121AF9A27400EC2CEA /* WECategorysModel.m in Sources */,
 				A3BFB6311AFBB6E600024BEE /* WEProductDetailModel.m in Sources */,
 				A38A328C1AEC083900F7FE7C /* RDVTabBarController.m in Sources */,
+				A373592F1AFE26D700484A59 /* WESecondCategoryVC.m in Sources */,
 				A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */,
 				A38A328D1AEC083900F7FE7C /* RDVTabBarItem.m in Sources */,
 				7F8B1AB21AFA01560085FE2D /* PAPickView.m in Sources */,
@@ -1375,6 +1464,7 @@
 				A38A32831AEC07E200F7FE7C /* WESearchHomeVC.m in Sources */,
 				7FDEDC081AF71D6400911A02 /* MASConstraint.m in Sources */,
 				A369CF811AEDC9B1001F3DB7 /* BaseModel.m in Sources */,
+				A373592C1AFDFF1F00484A59 /* WEBaseCategoryVC.m in Sources */,
 				A38851B31AED2C7F0019D6E5 /* WEHomeScrollView.m in Sources */,
 				A3C48FB31AEFD00D001D9717 /* WECartHomeCell.m in Sources */,
 				A3C48FB61AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m in Sources */,

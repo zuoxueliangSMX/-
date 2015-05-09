@@ -9,6 +9,10 @@
 #import "WECategoryHomeVC.h"
 #import "WECategoryHomeCell.h"
 #import "WEHTTPHandler.h"
+#import "WESecondCategoryVC.h"
+#import "WECategorysModel.h"
+#import "UIImageView+WebCacheImg.h"
+#import "WECategorySingleModel.h"
 @interface WECategoryHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 /**
  *  分类的tableview
@@ -26,6 +30,8 @@
  *  cell图片数组
  */
 @property (nonatomic ,strong)NSArray *headers;
+
+@property (nonatomic ,strong)WECategorysModel *categorys;
 @end
 
 @implementation WECategoryHomeVC
@@ -39,6 +45,7 @@
     categoryView.backgroundColor =[UIColor clearColor];
     categoryView.separatorInset = UIEdgeInsetsMake(0,10, 0, 10);
     [self.view addSubview:categoryView];
+    _categoryTable = categoryView;
     
     categoryView.tableFooterView =[[UIView alloc]init];
     _menuTitles = [NSArray arrayWithObjects:@"工具 | 工具耗材",@"量刃具 | 机床附件| 润滑胶粘",@"物业 | 清洁办公|照明",@"物料搬运 | 存储|包材",@"紧固件 | 密封件|五金件",@"焊接 | 磨料磨具",@"工业检测 | 仪表",@"泵 | 阀门 | 管件", nil];
@@ -58,15 +65,15 @@
     WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
     [handler executeGetFirstCategoryTaskWithSuccess:^(id obj) {
         DLog(@"WECategoryHomeVC---json->%@",obj);
+        _categorys = (WECategorysModel *)obj;
+        [_categoryTable reloadData];
         
-        [self initFirstCategoryList:@"1000005"];
     } WithFailed:^(id obj) {
         DLog(@"WECategoryHomeVC---error->%@",obj);
     }];
 
 }
-
-
+//     [self initFirstCategoryList:@"1000005"];
 /**
  *  产品二级分类列表
  */
@@ -74,10 +81,24 @@
 {
     
     WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
-    [handler executeGetFirstCategoryTaskWithSuccess:^(id obj) {
-        DLog(@"WECategoryHomeVC---json->%@",obj);
+    __weak WECategoryHomeVC *bSelf = self;
+    
+    [handler executeGetSecondCategoryTaskWithCategory:categroyId Success:^(id obj) {
+        WESecondCategoryVC *secondCategoryVC =[[WESecondCategoryVC alloc]init];
+        secondCategoryVC.leftModel = (WECategorysModel *)obj;
+        WECategorysModel *categorysModel =(WECategorysModel *)obj;
+        WECategorySingleModel *singleModel =categorysModel.types[0];
+        WEHTTPHandler *secondhandler =[[WEHTTPHandler alloc]init];
+        
+        [secondhandler executeGetSecondCategoryTaskWithCategory:singleModel.t_id Success:^(id obj) {
+            secondCategoryVC.rightModel = (WECategorysModel *)obj;
+            [bSelf.navigationController pushViewController:secondCategoryVC animated:YES];
+            
+        } WithFailed:^(id obj) {
+            
+        }];
     } WithFailed:^(id obj) {
-        DLog(@"WECategoryHomeVC---error->%@",obj);
+        
     }];
     
 }
@@ -104,7 +125,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return _menuTitles.count;
+    return _categorys.types.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -118,9 +139,9 @@
         cell = [[WECategoryHomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.contentLabel.text = _contentTitles[indexPath.row];
-    cell.titleLabel.text = _menuTitles[indexPath.row];
-    [cell.cateImg setImage:[UIImage imageNamed:_headers[indexPath.row]]];
+    cell.titleLabel.text = [_categorys.types[indexPath.row] t_name];
+    cell.contentLabel.text = _menuTitles[indexPath.row%_menuTitles.count];
+    [cell.cateImg setWebImgUrl:[_categorys.types[indexPath.row] t_imgurl] placeHolder:[UIImage imageNamed:_headers[indexPath.row%_headers.count]]];
     
     return cell;
 }
@@ -128,6 +149,10 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    [self initFirstCategoryList:[_categorys.types[indexPath.row] t_name]];
+    
 }
 
 

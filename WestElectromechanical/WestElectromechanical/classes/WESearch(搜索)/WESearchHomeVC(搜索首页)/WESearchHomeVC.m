@@ -80,13 +80,6 @@
         DLog(@"%@",obj);
 
     }];
-//    [handler executeGetSearchDataWithSearchContent:content withSuccess:^(id obj) {
-//        DLog(@"WESearchHomeVC--->%@",obj);
-//        [self initProductCommentList:@"12168005"];
-//    } withFailed:^(id obj) {
-//        DLog(@"WESearchHomeVC--->%@",obj);
-//    }];
-    
 }
 /**
  *  根据内容搜索
@@ -279,6 +272,8 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self initSearchProductContent:[_hotRecommendModel.infos[indexPath.row] name]];
 }
 
 

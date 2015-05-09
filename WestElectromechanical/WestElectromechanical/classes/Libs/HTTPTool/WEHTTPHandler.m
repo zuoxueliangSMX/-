@@ -127,17 +127,24 @@
                                   withSuccess:(SuccessBlock)success
                                    withFailed:(FailedBlock)failed
 {
-    [AlertUtil showAlertWithText:@"获取搜索数据"];
+    [AlertUtil showAlertWithText:@"获取分类商品数据"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
     NSString *params = [NSString stringWithFormat:@"t_id=%@",content];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
-        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+        WEProductsModel *productsModel =[[WEProductsModel alloc]initWithDict:json];
+        if ([productsModel.message integerValue]== 0) {
             
-            if (success) {
-                success(json);
+            if (productsModel.products.count>0) {
+                if (success) {
+                    success(productsModel);
+                }
+            }else{
+                [AlertUtil showAlertWithText:@"该分类下没有商品"];
             }
+            
         }else{
+            [AlertUtil showAlertWithText:@"获取分类商品数据出错"];
             if (failed) {
                 failed(nil);
             }
@@ -150,6 +157,8 @@
     }];
 
 }
+
+
 /**
  *  搜索商品名字
  */
@@ -363,10 +372,11 @@
     NSString *params = [NSString stringWithFormat:@"t_id=%@",categoryId];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
-        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+        WECategorysModel *categorysModel =[[WECategorysModel alloc]initWithDict:json];
+        if (categorysModel.message == 0) {
             
             if (success) {
-                success(json);
+                success(categorysModel);
             }
         }else{
             if (failed) {
