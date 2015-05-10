@@ -61,25 +61,7 @@
     table.tableFooterView = view;
     
     
-    alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"你确定注销用户么？" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
     
-    [alertView handleCancel:^{
-       
-    }         handleConfirm:^{
-        
-        [AccountHanler setLoginState:0];
-        
-        [AccountHanler saveUserId:nil];
-        
-        WARN_ALERT(@"注销成功");
-        
-        [self.navigationController popViewControllerAnimated:YES];
-
-    }];
-    
-    alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
-   
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -189,6 +171,27 @@
                 return;
                 
             }
+            
+            alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"你确定注销用户么？" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
+            
+
+            [alertView handleCancel:^{
+                
+            }         handleConfirm:^{
+                
+                [AccountHanler setLoginState:0];
+                
+                [AccountHanler saveUserId:nil];
+                
+                WARN_ALERT(@"注销成功");
+                
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }];
+            
+            alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
+            
+
             
              [alertView show];
                 

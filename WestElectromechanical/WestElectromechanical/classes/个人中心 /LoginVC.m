@@ -56,28 +56,28 @@ WEHTTPHandler *whanle;
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
 
-- (void)backNav:(UIButton*)btn{
-    NSLog(@"返回");
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
-}
+//- (void)backNav:(UIButton*)btn{
+//    NSLog(@"返回");
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        
+//    }];
+//}
 
 
 
 - (void)addLeftItem
 {
-    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted" target:self action:@selector(backNav:)];
+//    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted" target:self action:@selector(backNav:)];
     /**
      *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
      *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
      */
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
-                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                       target:nil action:nil];
-    negativeSpacer.width = -15;
-    self.navigationItem.leftBarButtonItems = @[negativeSpacer, right];
-
+//    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+//                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+//                                       target:nil action:nil];
+//    negativeSpacer.width = -15;
+//    self.navigationItem.leftBarButtonItems = @[negativeSpacer, right];
+//
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -106,15 +106,6 @@ WEHTTPHandler *whanle;
    
      
     
-
-//    
-//     UIImageView *meiconimg = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-50)/2, 7*kGap, 50, 50)];
-//    
-//    
-////    meiconimg.image = [UIImage   imageNamed:@"header"];
-//    [self.view  addSubview:meiconimg];
-    
-    
     _namefi = [[UITextField alloc] initWithFrame:CGRectMake(15,7*kGap+10, SCREEN_WIDTH-30, 50)];
     _namefi.placeholder = @"                     手机/用户名/邮箱";
     [_namefi setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
@@ -142,8 +133,8 @@ WEHTTPHandler *whanle;
     UITextField *pswfi = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_namefi.frame)+10, SCREEN_WIDTH-30, 50)];
     [pswfi setPlaceholder:@"                         密码6至16字符"];
     
-    if ( [[SendIFAPPDefault shareAppDefault] mima]!=nil) {
-        pswfi.text =  [[SendIFAPPDefault shareAppDefault] mima];
+    if ( [AccountHanler userCode]!=nil) {
+        pswfi.text =  [AccountHanler userCode];
         
         _namefi.text = [[SendIFAPPDefault shareAppDefault] loginName];
 
@@ -193,7 +184,7 @@ WEHTTPHandler *whanle;
     [jizhumimaBtn addTarget:self action:@selector(jizhumimaBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    if ([[SendIFAPPDefault shareAppDefault] mima].length>0) {
+    if ([AccountHanler userCode].length>0) {
         jizhumimaBtn.selected = YES;
          isClick = YES;
         
@@ -285,40 +276,6 @@ WEHTTPHandler *whanle;
     
     
     
-    
-    
-    
-   
-//        NSDictionary *accountLogin = @{@"login":self.namefi.text,
-//                                       @"pass":[self.loginPass.text md5]
-//                                       
-//                                       };
-//        
-//        
-//        [HttpManager userLoginWithDataInfo:@{@"consumer":accountLogin} subKey:@"consumer" result:^(NSArray *result) {
-//            
-//            
-//            NSString *userID = [result objectAtIndex:0];
-//            NSString *login= [result objectAtIndex:1];
-//            
-//            [[SendIFAPPDefault shareAppDefault] setCurrentUserID:userID];
-//            [[SendIFAPPDefault shareAppDefault] setLoginState:@"1"];
-//            [[SendIFAPPDefault shareAppDefault] setLoginName:login];
-//            
-//            AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-//            
-//            
-//            
-//            
-//            TabbarController *controller = [[TabbarController alloc] init];
-//            
-//            [UIApplication sharedApplication].idleTimerDisabled = NO;
-//            [app.window setRootViewController:controller];
-//            
-//            [alert  setTitle:@"登陆成功"];
-//            [alert show];
-//            
-//        }];
     }
 
     
@@ -346,7 +303,7 @@ WEHTTPHandler *whanle;
         
         btn.selected  =YES;
     
-        [[SendIFAPPDefault shareAppDefault]setMima:self.loginPass.text ];
+        [AccountHanler saveUserCode:self.loginPass.text ];
 
 
 
@@ -358,7 +315,7 @@ WEHTTPHandler *whanle;
         btn.selected = NO;
     
     
-        [[SendIFAPPDefault shareAppDefault]setMima:@""];
+       [AccountHanler saveUserCode:@""];
         
     }
 

@@ -24,6 +24,21 @@
 {
     [UserDefaultsUtils saveValue:userId forKey:ACCOUNT_USER_ID];
 }
+/**
+ *  用户密码
+ */
+
++ (NSString *)userCode{
+
+    return [UserDefaultsUtils valueWithKey:ACCOUNT_USER_CODE];;
+}
++ (void)saveUserCode:(NSString *)userCode
+{
+    [UserDefaultsUtils saveValue:userCode forKey:ACCOUNT_USER_CODE];
+
+
+}
+
 
 /**
  *  token验证号

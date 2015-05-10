@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 static NSString * const ACCOUNT_USER_ID = @"uid";
+
+static NSString * const ACCOUNT_USER_CODE = @"code";
 static NSString * const ACCOUNT_TOKEN_ID = @"tokenid";
 static NSString * const ACCOUNT_USER_NAME = @"U_name";
 static NSString * const ACCOUNT_IS_IDENTIFICATION = @"is_identification";
@@ -24,6 +26,16 @@ static NSString * const ACCOUNT_IS_IDENTIFICATION = @"is_identification";
 @property (nonatomic ,copy)NSString * userId;
 + (NSString *)userId;
 + (void)saveUserId:(NSString *)userId;
+
+
+
+/**
+ *  用户密码
+ */
+@property (nonatomic ,copy)NSString *userCode;
++ (NSString *)userCode;
++ (void)saveUserCode:(NSString *)userCode;
+
 
 /**
  *  token验证号
