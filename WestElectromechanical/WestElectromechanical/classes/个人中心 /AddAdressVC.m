@@ -257,7 +257,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
 {
     
     if (self.am) {
-        [we  executeUpdateAdressTaskWithUserId:@"4516" withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:streetAdressTF.text withPostalcode:emadilCodeTf.text withPhone:nil withAdressHandleId:self.am.a_id Success:^(id obj) {
+        [we  executeUpdateAdressTaskWithUserId:@"4516" withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:@"世界经济" withPostalcode:emadilCodeTf.text withPhone:@"0398-2963733" withAdressHandleId:self.am.a_id Success:^(id obj) {
             
             DLog(@"输出我的修改地址信息%@",obj);
             

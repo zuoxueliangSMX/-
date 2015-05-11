@@ -16,6 +16,7 @@
 #import "WEHTTPHandler.h"
 #import "WEProductDetailModel.h"
 #import "WEProductSingleModel.h"
+#import "WEProductHandler.h"
 @interface WEProductListVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic ,weak)UITableView *productList;
 @property (nonatomic ,weak)UICollectionView *productCollection;
@@ -226,12 +227,21 @@
 //    DLog(@"点击的是----%ld",indexPath.row);
     
     WEHTTPHandler *handler = [[WEHTTPHandler alloc]init];
+    WEProductSingleModel *singleModel =_products.products[indexPath.row];
     [handler executeGetProductDetailDataWithProductId:[_products.products[indexPath.row] pid] withSuccess:^(id obj) {
         DLog(@"%@",obj);
-        WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
-        detailVC.productId =[_products.products[indexPath.row] pid];
-        detailVC.detailModel = (WEProductDetailModel *)obj;
-        [self.navigationController pushViewController:detailVC animated:YES];
+        WEProductDetailModel *detailModel = (WEProductDetailModel *)obj;
+        WEProductHandler *productHandler =[[WEProductHandler alloc]init];
+        [productHandler addProductSingleModels:@[singleModel] success:^(id obj) {
+            DLog(@"插入成功");
+            WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
+            detailVC.productId =singleModel.pid;
+            detailVC.detailModel = detailModel;
+            [self.navigationController pushViewController:detailVC animated:YES];
+        } faileBlock:^(id obj) {
+            
+        }];
+        
     } withFailed:^(id obj) {
         DLog(@"%@",obj);
     }];

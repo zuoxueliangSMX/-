@@ -56,7 +56,7 @@
         DLog(@"WESearchHomeVC--->%@",obj);
         _hotRecommendModel = (WEHotRecommendModel *)obj;
         [_searchTable reloadData];
-        [self initSearchProductContent:@"通电"];
+        
     } withFailed:^(id obj) {
         DLog(@"WESearchHomeVC--->%@",obj);
     }];
@@ -217,11 +217,8 @@
 //}
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-//    if ([_mySearchBar.text isEqualToString:[AccountHanler nickname]]||[_mySearchBar.text isEqualToString:[AccountHanler account]]) {
-//        [AlertUtil showAlertWithText:@"亲，不能搜索自己哦！"];
-//        return;
-//    }
-//    [self searchContent];
+    [self initSearchProductContent:@"通电"];
+    [searchBar resignFirstResponder];
 }
 
 

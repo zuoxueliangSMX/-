@@ -10,6 +10,8 @@
 
 #import "FMDatabaseAdditions.h"
 
+
+
 static NSLock *lock = nil;
 
 @implementation BaseDao
@@ -341,7 +343,7 @@ static NSLock *lock = nil;
             for (id fieldName in fields) {
                 NSObject * val = [result objectForColumnName:fieldName];
                 if (![val isKindOfClass:[NSNull class]]) {
-//                    DLog(@"%@---%@",fieldName,val);
+                    //DLog(@"%@---%@",fieldName,val);
                     [newEntity setFieldValue:fieldName value:val];
                 }
                 
@@ -353,6 +355,33 @@ static NSLock *lock = nil;
         [self close];
     }
     return entities;
+}
+
+
+- (NSArray *)selectWithSqlContent:(NSString *)sql selectStart:(BOOL)selectStart{
+    NSString * sqlStr = nil;
+    Class entityType = [self getClassModel];
+    
+    if (selectStart) {
+        sqlStr = sql;
+        entityType = [SelectModel class];
+    }
+    else{
+        sqlStr = [NSString stringWithFormat:@"SELECT * FROM '%@' WHERE %@",self.tableName, sql];
+        
+    }
+    return [self executeQueryOnlyWithSQL:entityType withArgumentsInArray:nil sqlContent:sqlStr];
+   
+}
+
+- (NSArray *)selectSortWithSqlContent:(NSString *)sql selectStart:(BOOL)selectStart{
+    NSString * sqlStr = [NSString stringWithFormat:@"SELECT * FROM '%@' %@",self.tableName, sql];
+    
+    if (selectStart) {
+        sqlStr = sql;
+    }
+    
+    return [self executeQueryOnlyWithSQL:[self getClassModel] withArgumentsInArray:nil sqlContent:sqlStr];
 }
 
 

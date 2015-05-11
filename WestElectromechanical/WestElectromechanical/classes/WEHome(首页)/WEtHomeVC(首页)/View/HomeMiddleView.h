@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ATLabel.h"
 typedef void(^homeMiddleViewBlock) (NSInteger index);
+typedef void(^homeMiddleViewAdLabelBlock) (NSInteger index);
 @interface HomeMiddleView : UIView
 {
     __strong homeMiddleViewBlock _block;
+    __strong homeMiddleViewAdLabelBlock _adblock;
 }
+@property (nonatomic ,weak)ATLabel *adLabel;
 - (void)setHomeMiddleVieBlock:(homeMiddleViewBlock)block;
+- (void)setHomeMiddleViewAdLabelBlock:(homeMiddleViewAdLabelBlock)block;
+
 @end

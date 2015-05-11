@@ -151,4 +151,19 @@
 }
 
 
+//将date时间戳转变成时间字符串
+//@paaram   date            用于转换的时间
+//@param    formatString    时间格式(yyyy-MM-dd HH:mm:ss)
+//@return   NSString        返回字字符如（2012－8－8 11:11:11）
++ (NSString *)getDateStringWithDate:(NSDate *)date
+                         DateFormat:(NSString *)formatString
+{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:formatString];
+    NSString *dateString = [dateFormat stringFromDate:date];
+    DLog(@"date: %@", dateString);
+    return dateString;
+}
+
+
 @end

@@ -2,7 +2,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "BaseModel.h"
+#import "SelectModel.h"
 
 #import "RTDatabaseHelper.h"
 
@@ -201,6 +201,25 @@
 
 - (NSArray *)executeQuery:(Class) entityType withArgumentsInArray:(NSArray *)value_t sqlWhere:(NSString *)sql;
 - (NSArray *)executeQuery:(Class) entityType  fields:(NSArray *)field_t value:(NSArray *)value_t isand:(BOOL)isAnd;
+
+/**
+ *   *  用纯sql语句进行复杂的查询
+ *
+ *  @param sql SELECT * FROM TABLE WHERE 后面部分
+ *  @param selectStart 是否是select 开头的语句
+ *
+ *  @return <#return value description#>
+ */
+- (NSArray *)selectWithSqlContent:(NSString *)sql  selectStart:(BOOL)selectStart;
+/**
+ *  排序查找
+ *
+ *  @param sql         <#sql description#>
+ *  @param selectStart <#selectStart description#>
+ *
+ *  @return <#return value description#>
+ */
+- (NSArray *)selectSortWithSqlContent:(NSString *)sql selectStart:(BOOL)selectStart;
 
 - (NSArray *)executeQueryOnlyWithSQL:(Class) entityType withArgumentsInArray:(NSArray *)value_t sqlContent:(NSString *)sql;
 

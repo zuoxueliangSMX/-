@@ -20,7 +20,7 @@
         return [(NSString *)value integerValue];
     }
     else {
-        return 0;
+        
     }
     
     return 0;
@@ -86,6 +86,23 @@
     return nil;
 }
 
+- (NSString *)stringFromValue:(NSObject *)value defaultValue: (NSString *) def{
+    if ([value isKindOfClass:[NSString class]])
+    {
+        return (NSString *)value;
+    }
+    else if ([value isKindOfClass:[NSNumber class]])
+    {
+        return [(NSNumber *)value stringValue];
+    }
+    else if ([value  isKindOfClass:[NSNull class]] || value == nil)
+    {
+        return def;
+    }
+ 
+    return nil;
+}
+
 - (BOOL) booleanFromValue:(NSObject *)value
 {
     if ([value isKindOfClass:[NSNumber class]])
@@ -134,10 +151,9 @@
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         [df setFormatterBehavior:NSDateFormatterBehavior10_4];
         [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-        [df setDateFormat:@"yyyy-MM-dd"];
+        [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         
         NSDate *result = [df dateFromString:(NSString *)value];
-        
         return  result;;
     }
     else {

@@ -21,12 +21,12 @@
         [self addSubview:headerView];
         _headerView = headerView;
         
-        HomeMiddleView *middleView =[[HomeMiddleView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headerView.frame), SCREEN_WIDTH, img.size.height+10)];
+        HomeMiddleView *middleView =[[HomeMiddleView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headerView.frame), SCREEN_WIDTH, img.size.height+30)];
         middleView.backgroundColor =[UIColor clearColor];
         [self addSubview:middleView];
         _middleView = middleView;
         
-        WEHomeBottomScrollView *bottomView =[[WEHomeBottomScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_middleView.frame)+5, self.frame.size.width, (SCREEN_HEIGHT-64-49-10-img.size.height)*0.6)];
+        WEHomeBottomScrollView *bottomView =[[WEHomeBottomScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_middleView.frame)+5, self.frame.size.width, (SCREEN_HEIGHT-64-49-30-img.size.height)*0.6)];
         [self addSubview:bottomView];
         _bottomView = bottomView;
         
