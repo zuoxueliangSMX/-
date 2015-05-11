@@ -45,6 +45,8 @@
 		7FE643AA1AF7921A000809A4 /* EmailForCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */; };
 		7FE6D47A1AFB40C200CFABE4 /* CollectionM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D4791AFB40C200CFABE4 /* CollectionM.m */; };
 		7FE6D47D1AFB422400CFABE4 /* JsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */; };
+		7FE73D8D1B003DE4004559D4 /* MyOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE73D8C1B003DE4004559D4 /* MyOrderDetailVC.m */; };
+		7FE73D901B009AFA004559D4 /* AddressM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE73D8F1B009AFA004559D4 /* AddressM.m */; };
 		9D0E523495E67FFBE6F2714B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37D720A9818131CA3C9CC92 /* libPods.a */; };
 		A32D858C1AFBB9B600BC0CB0 /* WEProductImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D858B1AFBB9B600BC0CB0 /* WEProductImgModel.m */; };
 		A32D858F1AFBBA3500BC0CB0 /* WEProductModelImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D858E1AFBBA3500BC0CB0 /* WEProductModelImgModel.m */; };
@@ -226,6 +228,10 @@
 		7FE6D4791AFB40C200CFABE4 /* CollectionM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionM.m; sourceTree = "<group>"; };
 		7FE6D47B1AFB422400CFABE4 /* JsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonToModel.h; sourceTree = "<group>"; };
 		7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonToModel.m; sourceTree = "<group>"; };
+		7FE73D8B1B003DE4004559D4 /* MyOrderDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderDetailVC.h; sourceTree = "<group>"; };
+		7FE73D8C1B003DE4004559D4 /* MyOrderDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderDetailVC.m; sourceTree = "<group>"; };
+		7FE73D8E1B009AFA004559D4 /* AddressM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressM.h; sourceTree = "<group>"; };
+		7FE73D8F1B009AFA004559D4 /* AddressM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressM.m; sourceTree = "<group>"; };
 		A32D858A1AFBB9B600BC0CB0 /* WEProductImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductImgModel.h; sourceTree = "<group>"; };
 		A32D858B1AFBB9B600BC0CB0 /* WEProductImgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductImgModel.m; sourceTree = "<group>"; };
 		A32D858D1AFBBA3500BC0CB0 /* WEProductModelImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductModelImgModel.h; sourceTree = "<group>"; };
@@ -483,6 +489,8 @@
 			children = (
 				7FE5DDD51AFE0FC800B77986 /* MyOrderMenuVC.h */,
 				7FE5DDD61AFE0FC800B77986 /* MyOrderMenuVC.m */,
+				7FE73D8B1B003DE4004559D4 /* MyOrderDetailVC.h */,
+				7FE73D8C1B003DE4004559D4 /* MyOrderDetailVC.m */,
 				7FDEDC181AF764CD00911A02 /* MyRegisterVC.h */,
 				7FDEDC191AF764CD00911A02 /* MyRegisterVC.m */,
 				7FDEDC101AF7541000911A02 /* LoginVC.h */,
@@ -532,6 +540,8 @@
 				7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */,
 				7FE6D4781AFB40C200CFABE4 /* CollectionM.h */,
 				7FE6D4791AFB40C200CFABE4 /* CollectionM.m */,
+				7FE73D8E1B009AFA004559D4 /* AddressM.h */,
+				7FE73D8F1B009AFA004559D4 /* AddressM.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1431,6 +1441,7 @@
 				7FDEDC0C1AF71D6400911A02 /* MASViewConstraint.m in Sources */,
 				A3BFB6251AFB9EC400024BEE /* WEProductTableCell.m in Sources */,
 				7FE6D47A1AFB40C200CFABE4 /* CollectionM.m in Sources */,
+				7FE73D901B009AFA004559D4 /* AddressM.m in Sources */,
 				A369CF841AEDC9B1001F3DB7 /* RTDatabaseHelper.m in Sources */,
 				A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */,
 				7F8B1AB01AFA01560085FE2D /* UIButton+Button.m in Sources */,
@@ -1486,6 +1497,7 @@
 				7F8B1AAF1AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.m in Sources */,
 				A3C248A41AF9074900760C72 /* WEAdModel.m in Sources */,
 				A3843ECC1AF47A6000FDE84F /* AccountHanler.m in Sources */,
+				7FE73D8D1B003DE4004559D4 /* MyOrderDetailVC.m in Sources */,
 				7FE5DDD31AFE0F5000B77986 /* HTHorizontalSelectionList.m in Sources */,
 				A38A32831AEC07E200F7FE7C /* WESearchHomeVC.m in Sources */,
 				7FDEDC081AF71D6400911A02 /* MASConstraint.m in Sources */,

@@ -37,4 +37,20 @@
 @property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 
 
+
+//我的订单详情:
+//headview
+
+@property (weak, nonatomic) IBOutlet UILabel *CompletedLa;
+@property (weak, nonatomic) IBOutlet UILabel *WaitComentLa;
+
+@property (weak, nonatomic) IBOutlet UILabel *NameAndPhoneLa;
+@property (weak, nonatomic) IBOutlet UILabel *addressLa;
+//footview
+@property (weak, nonatomic) IBOutlet UILabel *totalCountLa;
+@property (weak, nonatomic) IBOutlet UILabel *goodsPriceLa;
+@property (weak, nonatomic) IBOutlet UILabel *freightageLa;
+@property (weak, nonatomic) IBOutlet UILabel *subtractFeeLa;
+@property (weak, nonatomic) IBOutlet UILabel *goodsTotalPriceLa;
+
 @end
