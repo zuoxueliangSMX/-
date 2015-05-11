@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddressM.h"
 
 @interface AddAdressVC : UIViewController
+@property(nonatomic,strong)AddressM *am;
 
 @end

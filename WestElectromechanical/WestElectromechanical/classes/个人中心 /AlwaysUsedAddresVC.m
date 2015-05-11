@@ -11,11 +11,14 @@
 #import "RDVTabBarController.h"
 #import "WEHTTPHandler.h"
 #import "AccountHanler.h"
+#import "JsonToModel.h"
+#import "AddressM.h"
 @interface AlwaysUsedAddresVC ()<UITableViewDataSource,UITableViewDelegate>
 {
 
     WEHTTPHandler *we;
-
+    UITableView *table;
+    NSMutableArray *muarr;
 }
 @end
 
@@ -29,8 +32,19 @@
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
     
     
-    [we executeGetAdressListTaskWithUserId:[AccountHanler userId] Success:^(id obj) {
-        DLog(@"输出%@",obj);
+    [we executeGetAdressListTaskWithUserId:@"4516" Success:^(id obj) {
+        
+        
+        muarr = [[NSMutableArray alloc]initWithCapacity:0];
+             NSDictionary *dic = [obj objectForKey:@"address"];
+        for (NSDictionary *dv in dic) {
+            
+            AddressM *am =  [JsonToModel objectFromDictionary:dv className:@"AddressM"];
+            [muarr addObject:am];
+            [table reloadData];
+        }
+         DLog(@"输出我的%@",muarr);
+
     } failed:^(id obj) {
         
     }];
@@ -51,7 +65,7 @@
    we= [[WEHTTPHandler alloc]init];
     self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addClick)];
             self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
-    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+    table = [[UITableView alloc] initWithFrame:CGRectMake(0, 10,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
     
     
     table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
@@ -77,7 +91,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
-    return 4;
+    return [muarr count];
 }
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -106,12 +120,14 @@
         [view addSubview:nameLa];
         
     }
+    
+    AddressM *adm =[muarr objectAtIndex:indexPath.row];
     UILabel *nameLa =(UILabel*)[cell viewWithTag:10];
-    nameLa.text =@"刘先生";
+    nameLa.text =adm.u_name;
     
     UILabel*addresLa  = (UILabel*)[cell viewWithTag:11];
     
-    addresLa.text = @"的拉萨河；看过；是个；死啊霍林郭勒看撒韩国进口纱公开撒娇是法式风格撒过";
+    addresLa.text = adm.a_address;
     
     
     return cell;
@@ -120,11 +136,60 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
-        
-        
+     AddressM *adm =[muarr objectAtIndex:indexPath.row];
+ 
+    
+    AddAdressVC *add  =[[AddAdressVC alloc]init];
+    add.am =adm;
+    [self.navigationController pushViewController:add animated:YES];
+  
    
 }
+
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView
+
+           editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    
+    
+    
+    return  UITableViewCellEditingStyleDelete;
+    
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    
+    if (editingStyle==UITableViewCellEditingStyleDelete) {
+        
+        AddressM *adm =[muarr objectAtIndex:indexPath.row];
+        
+        [we executeDeleteAdressTaskWithUserId:@"4516" withAdressHandleId:adm.a_id Success:^(id obj) {
+        
+        } failed:^(id obj) {
+        
+        }];
+    
+//        [SendIFPushDao  deletePUsh:pm.ID];
+//        _muarr = [SendIFPushDao getAllpushInfos];
+        
+        [self viewWillAppear:YES];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        
+        
+        
+//        [table reloadData];
+    }
+    
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -139,7 +204,6 @@
 
 
 }
-
 
 
 /*

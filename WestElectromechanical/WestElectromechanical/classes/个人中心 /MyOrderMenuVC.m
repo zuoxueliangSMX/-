@@ -10,6 +10,7 @@
 #import "HTHorizontalSelectionList.h"
 #import "GlanceCell.h"
 #import "RDVTabBarController.h"
+#import "MyOrderDetailVC.h"
 @interface MyOrderMenuVC ()<HTHorizontalSelectionListDelegate,HTHorizontalSelectionListDataSource,UITableViewDelegate,UITableViewDataSource>{
 
     
@@ -45,9 +46,9 @@
     [self addTopNavBar];
     self.title = @"我的订单";
   
-
+  VIEW_BACKGROUND
     
-    _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height-64) style:UITableViewStylePlain];
     _table.delegate =self;
     _table.dataSource =self;
     [self.view addSubview:_table];
@@ -134,7 +135,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 200;
+    return 230;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -150,7 +151,21 @@
         
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:1];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        cell.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
+               UIView *cellBgview = [[UIView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 219)];
         
+        cellBgview.backgroundColor = SET_COLOR(246.0, 246.0, 246.0);
+        [cell insertSubview:cellBgview atIndex:0];
+       
+        
+        UIImageView *lineimgv2 = [[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(cell.orderTimeLa.frame)+10,  SCREEN_WIDTH-20, 1)];
+        lineimgv2.backgroundColor =[UIColor appLineColor];
+        [cellBgview addSubview:lineimgv2];
+        
+        UIImageView *lineimgv1 = [[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(cell.priceLa.frame)+21,  SCREEN_WIDTH-20, 1)];
+        lineimgv1.backgroundColor =[UIColor appLineColor];
+        [cellBgview addSubview:lineimgv1];
+
     }
     
     //    ZyxM *zm = [zyxArr objectAtIndex:indexPath.row];
@@ -187,16 +202,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    //    FreeLineDetailVC *free =[[FreeLineDetailVC alloc]init];
-    //
-    //
-    //    ZyxM*zm = [zyxArr objectAtIndex:indexPath.row];
-    //    free.zm =zm;
-    //
-    //
-    //    [self.navigationController pushViewController:free animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    MyOrderDetailVC *orderDetail = [[MyOrderDetailVC alloc]init];
     
+    [self.navigationController pushViewController:orderDetail animated:YES];
     
 }
 

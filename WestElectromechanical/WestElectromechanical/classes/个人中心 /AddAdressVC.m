@@ -48,6 +48,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title =@"添加地址";
     we = [[WEHTTPHandler alloc]init];
        self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
     UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(15, 80, SCREEN_WIDTH-30, 90)];
@@ -230,6 +231,21 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     _pickView =pick;
     [self.view addSubview:pick];
     
+    
+    
+    //  添加地址和修改地址  由于界面一样   写在了一个类里
+    
+    if (self.am) {
+        self.title =@"修改地址";
+        
+        userNameTf.text =self.am.u_name;
+        phoneNumTF.text =self.am.mobile;
+        addressTf.text =self.am.a_address;
+        streetAdressTF.text =self.am.doorplate;
+        emadilCodeTf.text =self.am.postalcode;
+        
+    }
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -239,14 +255,31 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
 
 -(void)saveBtnclick
 {
+    
+    if (self.am) {
+        [we  executeUpdateAdressTaskWithUserId:@"4516" withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:streetAdressTF.text withPostalcode:emadilCodeTf.text withPhone:nil withAdressHandleId:self.am.a_id Success:^(id obj) {
+            
+            DLog(@"输出我的修改地址信息%@",obj);
+            
 
-    [we executeAddAdressTaskWithUserId:[AccountHanler userId] withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:tv.text withPostalcode:emadilCodeTf.text withPhone:phoneNumTF.text Success:^(id obj) {
+            
+            
+        } failed:^(id obj) {
+        
+            
+            
+        }];
+        
+    }else{
+        
+
+    [we executeAddAdressTaskWithUserId:[AccountHanler userId] withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:@"小胡同" withPostalcode:emadilCodeTf.text withPhone:phoneNumTF.text Success:^(id obj) {
         
         DLog(@"输出保存地址是否成功%@",obj);
     } failed:^(id obj) {
-        
+     DLog(@"输出保存地址是否成功%@",obj);   
     }];
-
+    }
 }
 -(void)locationBtnClick
 {
