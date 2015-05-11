@@ -166,7 +166,7 @@
         //key isLoc = 是否本地图片 Bool
         //key placeholderImage = 网络图片加载失败时显示的图片 UIImage
         //***********************//
-        NSString *picTag =[NSString stringWithFormat:@"PIC%ld",index];
+        NSString *picTag =[NSString stringWithFormat:@"PIC%ld",(long)index];
         DLog(@"%@",[NSDictionary dictionaryWithObjects:@[adModel.pic,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]);
         DLog(@"%@",adModel.pic);
         [temArray addObject:[NSDictionary dictionaryWithObjects:@[adModel.pic,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]];
