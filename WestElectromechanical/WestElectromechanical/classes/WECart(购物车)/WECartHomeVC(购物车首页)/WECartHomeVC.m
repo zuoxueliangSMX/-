@@ -28,6 +28,7 @@
  *  购物车TableView
  */
 @property (nonatomic ,weak)UITableView *cartTable;
+@property (nonatomic ,strong)WECartsModel *cartsModel;
 
 @end
 
@@ -40,14 +41,8 @@
     [we executeGetCartListTaskWithUserId:@"15472" withPage:@"1" Success:^(id obj) {
     
         DLog(@"输出我的购物车里面的数据%@",obj);
-        
-        NSDictionary *dic = [obj objectForKey:@"products"];
-        for (NSDictionary *dv in dic) {
-            
-            MyCartM *mcm =  [JsonToModel objectFromDictionary:dv className:@"MyCartM"];
-            [arr addObject:mcm];
-            [self.cartTable reloadData];
-        }
+        _cartsModel = (WECartsModel *)obj;
+        [self.cartTable reloadData];
 
         
     } failed:^(id obj) {
@@ -82,7 +77,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return [arr count];
+    return _cartsModel.products.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -97,8 +92,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-       MyCartM *mcm = [arr objectAtIndex:indexPath.row];
-    
+       MyCartM *mcm = [_cartsModel.products objectAtIndex:indexPath.row];
+    DLog(@"mycarrt-------->%ld",indexPath.row);
+    DLog(@"mycarrt-------->%@",mcm);
+    DLog(@"mycarrt-------->%@",[NSString stringWithFormat:@"型号:%@ 品牌:%@",mcm.p_version,mcm.p_brand]);
     cell.wbgv.middleview.priceLabel.text =mcm.p_price;
 //
     cell.wbgv.middleview.versionBrandLa.text =[NSString stringWithFormat:@"型号:%@ 品牌:%@",mcm.p_version,mcm.p_brand];

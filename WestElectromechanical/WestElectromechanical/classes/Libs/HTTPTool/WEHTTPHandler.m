@@ -298,7 +298,7 @@
 }
 
 /**
- *  产品加入购物车
+ *  8.获取产品评论列表
  */
 - (void)executeGetProductCommentListTaskWithProductId:(NSString *)productId
                                           withSuccess:(SuccessBlock)success
@@ -887,6 +887,8 @@
     
 }
 
+#pragma mark -
+#pragma mark - 购物车
 /**
  *  25.购物车列表数据
  */
@@ -901,14 +903,16 @@
     NSString *params = [NSString stringWithFormat:@"uid=%@&page=%@",userId,page];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
-        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+        
+        WECartsModel *cartsModel=[[WECartsModel alloc]initWithDict:json];
+        if ([cartsModel.message integerValue]== 0) {
             
             if (success) {
-                success(json);
+                success(cartsModel);
             }
         }else{
             if (failed) {
-                failed(nil);
+                failed(cartsModel);
             }
         }
     } withFailure:^(NSError *error) {

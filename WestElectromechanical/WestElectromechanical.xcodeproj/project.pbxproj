@@ -35,7 +35,6 @@
 		7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B71AF8519D00D98006 /* MyCollectionVC.m */; };
 		7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BA1AF8649100D98006 /* ChangePsdVC.m */; };
 		7FE556BE1AF8A1F700D98006 /* NSString+val.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BD1AF8A1F700D98006 /* NSString+val.m */; };
-		7FE55E221B023AE500A1DBC0 /* MyCartM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE55E211B023AE500A1DBC0 /* MyCartM.m */; };
 		7FE59F081AFB9DF200D8ABA9 /* GlanceHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F061AFB9DF200D8ABA9 /* GlanceHistoryVC.m */; };
 		7FE59F0D1AFB9E8C00D8ABA9 /* GlanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F0B1AFB9E8C00D8ABA9 /* GlanceCell.m */; };
 		7FE59F0E1AFB9E8C00D8ABA9 /* GlanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FE59F0C1AFB9E8C00D8ABA9 /* GlanceCell.xib */; };
@@ -103,6 +102,8 @@
 		A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32971AEC11E700F7FE7C /* ViewController.m */; };
 		A39E9A871AFA6AD80035A059 /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E9A861AFA6AD80035A059 /* UIButton+Extension.m */; };
 		A39E9A8A1AFA6E760035A059 /* WEProductCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E9A891AFA6E760035A059 /* WEProductCollectionCell.m */; };
+		A3ADC4301B024B0600B00FD2 /* MyCartM.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC42F1B024B0600B00FD2 /* MyCartM.m */; };
+		A3ADC4331B024B2500B00FD2 /* WECartsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC4321B024B2500B00FD2 /* WECartsModel.m */; };
 		A3ADFDB21B00E9700029795A /* ATLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADFDB11B00E9700029795A /* ATLabel.m */; };
 		A3ADFDB91B00F4570029795A /* WEHomeAdDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADFDB81B00F4570029795A /* WEHomeAdDetailVC.m */; };
 		A3ADFDC81B0100050029795A /* WEProductDao.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADFDC41B0100050029795A /* WEProductDao.m */; };
@@ -215,8 +216,6 @@
 		7FE556BA1AF8649100D98006 /* ChangePsdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePsdVC.m; sourceTree = "<group>"; };
 		7FE556BC1AF8A1F700D98006 /* NSString+val.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+val.h"; sourceTree = "<group>"; };
 		7FE556BD1AF8A1F700D98006 /* NSString+val.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+val.m"; sourceTree = "<group>"; };
-		7FE55E201B023AE500A1DBC0 /* MyCartM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCartM.h; sourceTree = "<group>"; };
-		7FE55E211B023AE500A1DBC0 /* MyCartM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCartM.m; sourceTree = "<group>"; };
 		7FE59F051AFB9DF200D8ABA9 /* GlanceHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlanceHistoryVC.h; sourceTree = "<group>"; };
 		7FE59F061AFB9DF200D8ABA9 /* GlanceHistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlanceHistoryVC.m; sourceTree = "<group>"; };
 		7FE59F0A1AFB9E8C00D8ABA9 /* GlanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlanceCell.h; sourceTree = "<group>"; };
@@ -349,6 +348,10 @@
 		A39E9A861AFA6AD80035A059 /* UIButton+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		A39E9A881AFA6E760035A059 /* WEProductCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductCollectionCell.h; sourceTree = "<group>"; };
 		A39E9A891AFA6E760035A059 /* WEProductCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductCollectionCell.m; sourceTree = "<group>"; };
+		A3ADC42E1B024B0600B00FD2 /* MyCartM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCartM.h; sourceTree = "<group>"; };
+		A3ADC42F1B024B0600B00FD2 /* MyCartM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCartM.m; sourceTree = "<group>"; };
+		A3ADC4311B024B2500B00FD2 /* WECartsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartsModel.h; sourceTree = "<group>"; };
+		A3ADC4321B024B2500B00FD2 /* WECartsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartsModel.m; sourceTree = "<group>"; };
 		A3ADFDB01B00E9700029795A /* ATLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLabel.h; sourceTree = "<group>"; };
 		A3ADFDB11B00E9700029795A /* ATLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLabel.m; sourceTree = "<group>"; };
 		A3ADFDB71B00F4570029795A /* WEHomeAdDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeAdDetailVC.h; sourceTree = "<group>"; };
@@ -560,8 +563,6 @@
 				7FE6D4791AFB40C200CFABE4 /* CollectionM.m */,
 				7FE73D8E1B009AFA004559D4 /* AddressM.h */,
 				7FE73D8F1B009AFA004559D4 /* AddressM.m */,
-				7FE55E201B023AE500A1DBC0 /* MyCartM.h */,
-				7FE55E211B023AE500A1DBC0 /* MyCartM.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -958,6 +959,7 @@
 		A38A32591AEC033D00F7FE7C /* WECartHomeVC(购物车首页) */ = {
 			isa = PBXGroup;
 			children = (
+				A3ADC42D1B024B0600B00FD2 /* Model */,
 				A3C48FB01AEFCFFC001D9717 /* View */,
 				A38A327B1AEC076600F7FE7C /* WECartHomeVC.h */,
 				A38A327C1AEC076600F7FE7C /* WECartHomeVC.m */,
@@ -1098,6 +1100,17 @@
 				A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		A3ADC42D1B024B0600B00FD2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A3ADC42E1B024B0600B00FD2 /* MyCartM.h */,
+				A3ADC42F1B024B0600B00FD2 /* MyCartM.m */,
+				A3ADC4311B024B2500B00FD2 /* WECartsModel.h */,
+				A3ADC4321B024B2500B00FD2 /* WECartsModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A3ADFDAF1B00E9700029795A /* ATLabel */ = {
@@ -1486,7 +1499,6 @@
 				A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */,
 				A3C466E31AF30B3C00E1604D /* WEHomeBottomScrollView.m in Sources */,
 				7FE59F0D1AFB9E8C00D8ABA9 /* GlanceCell.m in Sources */,
-				7FE55E221B023AE500A1DBC0 /* MyCartM.m in Sources */,
 				7FDEDC0E1AF71D6400911A02 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				A37359141AFDE47700484A59 /* WEProductsModel.m in Sources */,
 				A3C2CC811AFA4AD40087BDED /* WEProductListVC.m in Sources */,
@@ -1536,6 +1548,7 @@
 				A369CFAF1AEE70C4001F3DB7 /* ChineseToPinyinResource.m in Sources */,
 				7F62FF521AFC95AC00A93A87 /* TLAlertView.m in Sources */,
 				A3883D121AF9A27400EC2CEA /* WECategorysModel.m in Sources */,
+				A3ADC4331B024B2500B00FD2 /* WECartsModel.m in Sources */,
 				A3BFB6311AFBB6E600024BEE /* WEProductDetailModel.m in Sources */,
 				A38A328C1AEC083900F7FE7C /* RDVTabBarController.m in Sources */,
 				A373592F1AFE26D700484A59 /* WESecondCategoryVC.m in Sources */,
@@ -1581,6 +1594,7 @@
 				A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */,
 				A3883D111AF9A27400EC2CEA /* WECategorySingleModel.m in Sources */,
 				7FE42B321AF9AF5A00EB923E /* AlwaysUsedAddresVC.m in Sources */,
+				A3ADC4301B024B0600B00FD2 /* MyCartM.m in Sources */,
 				7FDEDC0A1AF71D6400911A02 /* MASLayoutConstraint.m in Sources */,
 				A38851A81AED0AE40019D6E5 /* WELocationManager.m in Sources */,
 				A3C466E61AF30D4300E1604D /* WERecommendBgView.m in Sources */,

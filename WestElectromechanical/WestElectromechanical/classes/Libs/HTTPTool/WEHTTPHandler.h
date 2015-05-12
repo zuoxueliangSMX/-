@@ -7,7 +7,7 @@
 //
 
 #import "BaseHandler.h"
-
+#import "WECartsModel.h"
 @interface WEHTTPHandler : BaseHandler
 
 #pragma mark -
@@ -77,7 +77,7 @@
 
 
 /**
- *  8.产品加入购物车
+ *  8.获取产品评论列表
  */
 - (void)executeGetProductCommentListTaskWithProductId:(NSString *)productId
                                           withSuccess:(SuccessBlock)success
