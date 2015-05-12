@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WECartHomeCellBottomView.h"
 
 @interface WECartHomeCellBackgroudView : UIView
+@property(nonatomic,strong)WECartHomeCellBottomView *bottomView;
 
 @end

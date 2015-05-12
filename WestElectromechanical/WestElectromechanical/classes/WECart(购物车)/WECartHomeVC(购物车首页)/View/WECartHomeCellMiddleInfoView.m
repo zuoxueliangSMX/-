@@ -28,7 +28,7 @@
         
         UIImageView *productImg =[[UIImageView alloc]init];
         productImg.frame =CGRectMake(CGRectGetMaxX(chooseBtn.frame)+10,frame.size.height * 0.5-40,80, 80);
-        productImg.backgroundColor =[UIColor redColor];
+        [productImg setImage:[UIImage imageNamed:@"Product_Placeholder"]];
         [self addSubview:productImg];
         
         

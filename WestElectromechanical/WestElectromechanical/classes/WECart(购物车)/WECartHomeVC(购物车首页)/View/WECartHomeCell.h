@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WECartHomeCellBackgroudView.h"
 
 @interface WECartHomeCell : UITableViewCell
+@property(nonatomic,strong) WECartHomeCellBackgroudView*wbgv;
 
 @end

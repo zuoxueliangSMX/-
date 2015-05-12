@@ -8,7 +8,6 @@
 
 #import "WECartHomeCellBackgroudView.h"
 #import "WECartHomeCellMiddleInfoView.h"
-#import "WECartHomeCellBottomView.h"
 #define kCellMargin 3
 @interface WECartHomeCellBackgroudView()
 @end
@@ -37,9 +36,9 @@
         line2.backgroundColor =[UIColor lightGrayColor];
         [self addSubview:line2];
         
-        WECartHomeCellBottomView *bottomView =[[WECartHomeCellBottomView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(line2.frame)+kCellMargin, SCREEN_WIDTH, 35)];
-        bottomView.backgroundColor =[UIColor redColor];
-        [self addSubview:bottomView];
+        _bottomView =[[WECartHomeCellBottomView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(line2.frame)+kCellMargin, SCREEN_WIDTH, 35)];
+      
+        [self addSubview:_bottomView];
     }
     return self;
 }

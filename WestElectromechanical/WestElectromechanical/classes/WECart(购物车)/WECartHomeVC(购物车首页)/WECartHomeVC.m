@@ -9,6 +9,13 @@
 #import "WECartHomeVC.h"
 #import "WECartHomeCell.h"
 @interface WECartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
+{
+
+   int _num;
+    UILabel *totalPriceLa;
+    UITextField *numTF;
+    UITableView *cartTable;
+}
 /**
  *  购物车TableView
  */
@@ -26,7 +33,7 @@
 
 -(void)initCartTable
 {   //新加的注释
-    UITableView *cartTable =[[UITableView alloc]init];
+    cartTable =[[UITableView alloc]init];
     cartTable.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-44);
     cartTable.delegate =self;
     cartTable.dataSource =self;
@@ -54,7 +61,11 @@
     if(cell == nil) {
         cell = [[WECartHomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+    cell.wbgv.bottomView.jineLa.text =@"金额: ¥198";
+      numTF=cell.wbgv.bottomView.numTF;
+    [cell.wbgv.bottomView.leftBtn addTarget:self action:@selector(plusClick) forControlEvents:UIControlEventTouchUpInside];
+    [cell.wbgv.bottomView.rigBtn addTarget:self action:@selector(cutClick) forControlEvents:UIControlEventTouchUpInside];
+
     return cell;
 }
 #pragma mark -
@@ -62,7 +73,7 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
@@ -71,6 +82,35 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+//加建的btn的方法
+-(void)plusClick
+
+{
+    
+    
+    int i  = [numTF.text  intValue];
+    i++;
+    NSString *str = [NSString stringWithFormat:@"%d",i];
+    numTF.text = str;
+    NSLog(@"输出这个数字%@",numTF.text);
+
+   
+    
+}
+-(void)cutClick
+{
+    
+    
+    int i  = [numTF.text  intValue];
+    i--;
+    NSString *str = [NSString stringWithFormat:@"%d",i];
+    numTF.text = str;
+    if ([numTF.text  intValue]<=0) {
+        numTF.text=@"1";
+    }
+    
+  }
 /*
 #pragma mark - Navigation
 
