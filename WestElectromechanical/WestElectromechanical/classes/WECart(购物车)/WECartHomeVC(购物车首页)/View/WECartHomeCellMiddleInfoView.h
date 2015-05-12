@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface WECartHomeCellMiddleInfoView : UIView
+@property(nonatomic,strong)UIButton *chooseBtn;
+@property(nonatomic,strong)UIImageView *productImg;
+@property(nonatomic,strong)UILabel *productLabel;
+@property(nonatomic,strong)UILabel *productCartIdLabel;
+@property(nonatomic,strong)UILabel *versionBrandLa;
+@property(nonatomic,strong)UILabel *priceLabel;
 
 @end

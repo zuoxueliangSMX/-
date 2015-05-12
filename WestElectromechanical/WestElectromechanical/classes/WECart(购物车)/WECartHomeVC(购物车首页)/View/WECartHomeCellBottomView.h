@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void (^cartHomeCellBottomCutBlock)(NSInteger tfNum,UITextField *numTf);
-typedef void (^cartHomeCellBottomPlusBlock)(NSInteger tfNum,UITextField *numTf);
+typedef void (^cartHomeCellBottomCutBlock)(NSInteger tfNum,UITextField *numTf,UILabel *totalPriceLa);
+typedef void (^cartHomeCellBottomPlusBlock)(NSInteger tfNum,UITextField *numTf,UILabel *totalPriceLa);
 
 @interface WECartHomeCellBottomView : UIView
 {

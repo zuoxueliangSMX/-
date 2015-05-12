@@ -16,7 +16,7 @@
 {
     if (self =[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        _wbgv =[[WECartHomeCellBackgroudView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160)];
+        _wbgv =[[WECartHomeCellBackgroudView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
         [self.contentView addSubview:_wbgv];
     }
     

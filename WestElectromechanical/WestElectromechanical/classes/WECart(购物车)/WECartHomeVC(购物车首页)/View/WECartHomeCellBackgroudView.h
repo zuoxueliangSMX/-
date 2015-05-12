@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "WECartHomeCellBottomView.h"
+#import "WECartHomeCellMiddleInfoView.h"
 
 @interface WECartHomeCellBackgroudView : UIView
 @property(nonatomic,strong)WECartHomeCellBottomView *bottomView;
+@property(nonatomic,strong)WECartHomeCellMiddleInfoView *middleview;
 
 @end

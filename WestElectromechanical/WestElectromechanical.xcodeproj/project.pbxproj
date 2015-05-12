@@ -35,6 +35,7 @@
 		7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B71AF8519D00D98006 /* MyCollectionVC.m */; };
 		7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BA1AF8649100D98006 /* ChangePsdVC.m */; };
 		7FE556BE1AF8A1F700D98006 /* NSString+val.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BD1AF8A1F700D98006 /* NSString+val.m */; };
+		7FE55E221B023AE500A1DBC0 /* MyCartM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE55E211B023AE500A1DBC0 /* MyCartM.m */; };
 		7FE59F081AFB9DF200D8ABA9 /* GlanceHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F061AFB9DF200D8ABA9 /* GlanceHistoryVC.m */; };
 		7FE59F0D1AFB9E8C00D8ABA9 /* GlanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F0B1AFB9E8C00D8ABA9 /* GlanceCell.m */; };
 		7FE59F0E1AFB9E8C00D8ABA9 /* GlanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FE59F0C1AFB9E8C00D8ABA9 /* GlanceCell.xib */; };
@@ -214,6 +215,8 @@
 		7FE556BA1AF8649100D98006 /* ChangePsdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePsdVC.m; sourceTree = "<group>"; };
 		7FE556BC1AF8A1F700D98006 /* NSString+val.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+val.h"; sourceTree = "<group>"; };
 		7FE556BD1AF8A1F700D98006 /* NSString+val.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+val.m"; sourceTree = "<group>"; };
+		7FE55E201B023AE500A1DBC0 /* MyCartM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCartM.h; sourceTree = "<group>"; };
+		7FE55E211B023AE500A1DBC0 /* MyCartM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCartM.m; sourceTree = "<group>"; };
 		7FE59F051AFB9DF200D8ABA9 /* GlanceHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlanceHistoryVC.h; sourceTree = "<group>"; };
 		7FE59F061AFB9DF200D8ABA9 /* GlanceHistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlanceHistoryVC.m; sourceTree = "<group>"; };
 		7FE59F0A1AFB9E8C00D8ABA9 /* GlanceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlanceCell.h; sourceTree = "<group>"; };
@@ -557,6 +560,8 @@
 				7FE6D4791AFB40C200CFABE4 /* CollectionM.m */,
 				7FE73D8E1B009AFA004559D4 /* AddressM.h */,
 				7FE73D8F1B009AFA004559D4 /* AddressM.m */,
+				7FE55E201B023AE500A1DBC0 /* MyCartM.h */,
+				7FE55E211B023AE500A1DBC0 /* MyCartM.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1481,6 +1486,7 @@
 				A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */,
 				A3C466E31AF30B3C00E1604D /* WEHomeBottomScrollView.m in Sources */,
 				7FE59F0D1AFB9E8C00D8ABA9 /* GlanceCell.m in Sources */,
+				7FE55E221B023AE500A1DBC0 /* MyCartM.m in Sources */,
 				7FDEDC0E1AF71D6400911A02 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				A37359141AFDE47700484A59 /* WEProductsModel.m in Sources */,
 				A3C2CC811AFA4AD40087BDED /* WEProductListVC.m in Sources */,

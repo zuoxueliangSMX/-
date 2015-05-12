@@ -8,13 +8,21 @@
 
 #import "WECartHomeVC.h"
 #import "WECartHomeCell.h"
+#import "WEHTTPHandler.h"
+#import "JsonToModel.h"
+#import "MyCartM.h"
 @interface WECartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 {
 
    int _num;
     UILabel *totalPriceLa;
-    UITextField *numTF;
+    UITextField *qnumTF;
     UITableView *cartTable;
+    NSString *str;
+    WEHTTPHandler *we;
+    NSMutableArray *arr;
+    
+    
 }
 /**
  *  购物车TableView
@@ -25,9 +33,35 @@
 
 @implementation WECartHomeVC
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [we executeGetCartListTaskWithUserId:@"15472" withPage:@"1" Success:^(id obj) {
+    
+        DLog(@"输出我的购物车里面的数据%@",obj);
+        
+        NSDictionary *dic = [obj objectForKey:@"products"];
+        for (NSDictionary *dv in dic) {
+            
+            MyCartM *mcm =  [JsonToModel objectFromDictionary:dv className:@"MyCartM"];
+            [arr addObject:mcm];
+            [self.cartTable reloadData];
+        }
+
+        
+    } failed:^(id obj) {
+        
+    }];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    we = [[WEHTTPHandler alloc]init];
+    
+    arr = [[NSMutableArray alloc] initWithCapacity:0];
+    
+   
     [self initCartTable];
 }
 
@@ -48,7 +82,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [arr count];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -62,26 +96,58 @@
         cell = [[WECartHomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.wbgv.bottomView.jineLa.text =@"金额: ¥198";
-      numTF=cell.wbgv.bottomView.numTF;
+    
+       MyCartM *mcm = [arr objectAtIndex:indexPath.row];
+    
+    cell.wbgv.middleview.priceLabel.text =mcm.p_price;
+//
+    cell.wbgv.middleview.versionBrandLa.text =[NSString stringWithFormat:@"型号:%@ 品牌:%@",mcm.p_version,mcm.p_brand];
+//
+    cell.wbgv.middleview.productLabel.text =mcm.p_name;
+//
+    cell.wbgv.middleview.productCartIdLabel.text =mcm.p_order_num;
+//
+  
     __weak WECartHomeCell *bCell =(WECartHomeCell *)[tableView cellForRowAtIndexPath:indexPath];
-    [cell.wbgv.bottomView setCartHomeCellBottomCutBlock:^(NSInteger tfNum,UITextField *numTf) {
-        DLog(@"%ld",tfNum);
+    [cell.wbgv.bottomView setCartHomeCellBottomCutBlock:^(NSInteger tfNum,UITextField *numTf,UILabel*jineLa) {
+        DLog(@"%ld",(long)tfNum);
+        
         tfNum--;
-        NSString *str = [NSString stringWithFormat:@"%ld",tfNum];\
+        
+        if (tfNum<0) {
+            tfNum=0;
+        }
+        str = [NSString stringWithFormat:@"%ld",(long)tfNum];\
         DLog(@"%@",str);
+        
         numTf.text =str;
-    }];
-    [cell.wbgv.bottomView setCartHomeCellBottomPlusBlock:^(NSInteger tfNum,UITextField *numTf) {
-        DLog(@"%ld",tfNum);
-
+        jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*800];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cartTable reloadData];
+        });
+        
+        }];
+    
+    
+    [cell.wbgv.bottomView setCartHomeCellBottomPlusBlock:^(NSInteger tfNum,UITextField *numTf,UILabel*jineLa) {
+        DLog(@"%ld",(long)tfNum);
+       
         tfNum++;
-        DLog(@"%ld",tfNum);
+     
 
-        NSString *str = [NSString stringWithFormat:@"%ld",tfNum];
+        str = [NSString stringWithFormat:@"%ld",(long)tfNum];
         DLog(@"%@",str);
-
+ 
         numTf.text =str;
+        jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*800];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cartTable reloadData];
+            
+            
+        });
+        
+
     }];
 
     return cell;
@@ -101,34 +167,7 @@
 }
 
 
-//加建的btn的方法
--(void)plusClick
 
-{
-    
-    
-    int i  = [numTF.text  intValue];
-    i++;
-    NSString *str = [NSString stringWithFormat:@"%d",i];
-    numTF.text = str;
-    NSLog(@"输出这个数字%@",numTF.text);
-
-   
-    
-}
--(void)cutClick
-{
-    
-    
-    int i  = [numTF.text  intValue];
-    i--;
-    NSString *str = [NSString stringWithFormat:@"%d",i];
-    numTF.text = str;
-    if ([numTF.text  intValue]<=0) {
-        numTF.text=@"1";
-    }
-    
-  }
 /*
 #pragma mark - Navigation
 
