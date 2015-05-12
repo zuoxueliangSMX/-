@@ -114,7 +114,10 @@
         [temArray addObject:[NSDictionary dictionaryWithObjects:@[adModel.imgurl,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]];
     }
     headerView.imageURLs = temArray;
-    [headerView.imgPlayerView upDate];
+    if (temArray.count >0) {
+        [headerView.imgPlayerView upDate];
+
+    }
 }
 
 - (void)collectionClick:(UIButton *)btn

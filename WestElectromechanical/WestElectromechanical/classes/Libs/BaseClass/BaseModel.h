@@ -30,6 +30,15 @@
 - (NSDate *)dateFromValue:(NSObject *)value;
 - (BOOL) booleanFromValue:(NSObject *)value;
 - (NSString *)stringFromValue:(NSObject *)value;
+/**
+ *  增加model返回默认值的处理方法
+ *
+ *  @param value <#value description#>
+ *  @param def   如果为空，返回默认值
+ *
+ *  @return <#return value description#>
+ */
+- (NSString *)stringFromValue:(NSObject *)value defaultValue: (NSString *) def;
 - (NSInteger)intFromValue:(NSObject *)value;
 - (CGFloat)floatFromValue:(NSObject *)value;
 - (NSDictionary *)dictionaryFromValue:(NSObject *)value;

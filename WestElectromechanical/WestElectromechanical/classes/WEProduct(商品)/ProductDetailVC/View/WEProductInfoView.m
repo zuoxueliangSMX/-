@@ -24,7 +24,7 @@
     if (self = [super initWithFrame:frame]) {
 
         UILabel *prodcutName =[[UILabel alloc]init];
-        prodcutName.numberOfLines =1;
+        prodcutName.numberOfLines =0;
         prodcutName.font =font(16);
         prodcutName.backgroundColor =[UIColor clearColor];
         [self addSubview:prodcutName];
@@ -65,7 +65,7 @@
         _line = line;
         
         UILabel *productIntroduce =[[UILabel alloc]init];
-        productIntroduce.numberOfLines =1;
+        productIntroduce.numberOfLines =0;
         productIntroduce.font =font(16);
         productIntroduce.backgroundColor =[UIColor clearColor];
         

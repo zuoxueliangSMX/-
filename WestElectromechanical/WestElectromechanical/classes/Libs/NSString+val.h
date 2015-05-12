@@ -27,5 +27,11 @@
 //判断邮箱
 + (BOOL)isValidateEmail:(NSString *)Email;
 + (NSString *)filterMark:(NSString *)html;
+//将date时间戳转变成时间字符串
+//@paaram   date            用于转换的时间
+//@param    formatString    时间格式(yyyy-MM-dd HH:mm:ss)
+//@return   NSString        返回字字符如（2012－8－8 11:11:11）
++ (NSString *)getDateStringWithDate:(NSDate *)date
+                         DateFormat:(NSString *)formatString;
 
 @end

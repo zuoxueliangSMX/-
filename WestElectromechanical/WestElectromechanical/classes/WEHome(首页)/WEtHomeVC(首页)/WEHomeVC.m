@@ -18,6 +18,8 @@
 #import "WEHomeInfoModel.h"
 #import "AppDelegate.h"
 #import "WEProductListVC.h"
+#import "WEProductDetailVC.h"
+#import "WEHomeAdDetailVC.h"
 @interface WEHomeVC ()
 @property (nonatomic ,strong)NSMutableArray *imgurls;
 @property (nonatomic ,weak)WEHomeScrollView *homeScroll;
@@ -102,6 +104,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     __weak WEHomeVC *bSelf =self;
     WEHomeScrollView *scrollView =[[WEHomeScrollView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49)];
+    scrollView.userInteractionEnabled = YES;
     scrollView.backgroundColor =[UIColor clearColor];
     scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT-64-49);
     scrollView.bounces = NO;
@@ -110,6 +113,15 @@
     [self.view addSubview:scrollView];
     [scrollView.bottomView setHomeBottomScrollViewBlock:^(NSInteger bgTag, NSInteger imgTag) {
         DLog(@"%ld    -----    %ld",bgTag,imgTag);
+        DLog(@"%@------%@-----%@",[_homeInfoModel.recommends[bgTag*4+imgTag] p_id],[_homeInfoModel.recommends[bgTag*4+imgTag] contentid],[_homeInfoModel.recommends[bgTag*4+imgTag] Imgurl]);
+        [bSelf getProductDetailInfo:[_homeInfoModel.recommends[bgTag*4+imgTag] p_id]];
+    }];
+
+    [scrollView.middleView setHomeMiddleViewAdLabelBlock:^(NSInteger index) {
+        DLog(@"%@",[_homeInfoModel.nocices[index-1000] n_name]);
+        WEHomeAdDetailVC *adDetailVC =[[WEHomeAdDetailVC alloc]init];
+        adDetailVC.noticeContent =[_homeInfoModel.nocices[index-1000] n_name];
+        [bSelf.navigationController pushViewController:adDetailVC animated:YES];
     }];
     [scrollView.middleView setHomeMiddleVieBlock:^(NSInteger index) {
         if (index == 0) {
@@ -144,10 +156,21 @@
         _homeInfoModel = (WEHomeInfoModel *)obj;
 //        [self initAdData:@"1"];
         [bSelf showADInfo];
+        [bSelf showMiddleAdLabelInfo];
         [bSelf showRecommendsInfo];
     } withFailed:^(id obj) {
         DLog(@"homeVC--error-->%@",obj);
     }];
+}
+- (void)showMiddleAdLabelInfo
+{
+    NSMutableArray *tem =[NSMutableArray array];
+    for (int i = 0; i < _homeInfoModel.nocices.count; i++) {
+        WENoticeModel *noticeModel =_homeInfoModel.nocices[i];
+        [tem addObject:noticeModel.n_name];
+    }
+    [_homeScroll.middleView.adLabel animateWithWords:tem forDuration:3.0];
+
 }
 - (void)showRecommendsInfo
 {
@@ -166,7 +189,7 @@
         //key isLoc = 是否本地图片 Bool
         //key placeholderImage = 网络图片加载失败时显示的图片 UIImage
         //***********************//
-        NSString *picTag =[NSString stringWithFormat:@"PIC%ld",index];
+        NSString *picTag =[NSString stringWithFormat:@"PIC%ld",(long)index];
         DLog(@"%@",[NSDictionary dictionaryWithObjects:@[adModel.pic,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]);
         DLog(@"%@",adModel.pic);
         [temArray addObject:[NSDictionary dictionaryWithObjects:@[adModel.pic,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]];
@@ -174,6 +197,22 @@
     _homeScroll.headerView.imageURLs = temArray;
      [_homeScroll.headerView.imgPlayerView upDate];
 }
+
+
+- (void)getProductDetailInfo:(NSString *)productId
+{
+    WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+    [handler executeGetProductDetailDataWithProductId:productId withSuccess:^(id obj) {
+        DLog(@"%@",obj);
+        WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
+        detailVC.productId =productId;
+        detailVC.detailModel = (WEProductDetailModel *)obj;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    } withFailed:^(id obj) {
+        
+    }];
+}
+
 
 
 - (void)initAdData:(NSString *)AdId
