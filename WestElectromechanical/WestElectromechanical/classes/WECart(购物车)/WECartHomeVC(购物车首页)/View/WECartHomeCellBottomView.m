@@ -20,7 +20,7 @@
         [self addSubview:shuliangLa];
         
 _leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shuliangLa.frame)+10, 0, 30, 30)];
-//    [leftBtn setBackgroundImage:[UIImage imageNamed:@"ordermin"] forState:UIControlStateNormal];
+    [_leftBtn setBackgroundImage:[UIImage imageNamed:@"ordermin"] forState:UIControlStateNormal];
         _leftBtn.backgroundColor = [UIColor greenSeaColor];
     _leftBtn.tag = 7707;
     [self addSubview:_leftBtn];
@@ -38,20 +38,42 @@ _leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shuliangLa.f
     _rigBtn.tag = 7708;
         _rigBtn.backgroundColor = [UIColor greenSeaColor];
 
-//    [rigBtn setBackgroundImage:[UIImage imageNamed:@"orderplus"] forState:UIControlStateNormal];
+    [_rigBtn setBackgroundImage:[UIImage imageNamed:@"orderplus"] forState:UIControlStateNormal];
     [self addSubview:_rigBtn];
         
-        _jineLa  = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_rigBtn.frame)+20, 0, 100, 30)];
+    _jineLa  = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_rigBtn.frame)+20, 0, 100, 30)];
 
-        _jineLa.textColor = [UIColor orangeColor];
-        _jineLa.font = [UIFont systemFontOfSize:14];
-        [self addSubview:_jineLa];
-   
+    _jineLa.textColor = [UIColor orangeColor];
+    _jineLa.font = [UIFont systemFontOfSize:14];
+    [self addSubview:_jineLa];
+    [ _leftBtn addTarget:self action:@selector(cutClick) forControlEvents:UIControlEventTouchUpInside];
+    [_rigBtn addTarget:self action:@selector(plusClick) forControlEvents:UIControlEventTouchUpInside];
         
 }
 
 
     return self;
+}
+
+- (void)setCartHomeCellBottomCutBlock:(cartHomeCellBottomCutBlock)block
+{
+    _cutBlock = block;
+}
+- (void)setCartHomeCellBottomPlusBlock:(cartHomeCellBottomPlusBlock)block
+{
+    _plusBlock = block;
+}
+- (void)plusClick
+{
+    if (_plusBlock) {
+        _plusBlock([_numTF.text integerValue],_numTF);
+    }
+}
+- (void)cutClick
+{
+    if (_cutBlock) {
+        _cutBlock([_numTF.text integerValue],_numTF);
+    }
 }
 
 @end

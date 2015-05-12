@@ -60,11 +60,29 @@
     WECartHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil) {
         cell = [[WECartHomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.wbgv.bottomView.jineLa.text =@"金额: ¥198";
       numTF=cell.wbgv.bottomView.numTF;
-    [cell.wbgv.bottomView.leftBtn addTarget:self action:@selector(plusClick) forControlEvents:UIControlEventTouchUpInside];
-    [cell.wbgv.bottomView.rigBtn addTarget:self action:@selector(cutClick) forControlEvents:UIControlEventTouchUpInside];
+    __weak WECartHomeCell *bCell =(WECartHomeCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell.wbgv.bottomView setCartHomeCellBottomCutBlock:^(NSInteger tfNum,UITextField *numTf) {
+        DLog(@"%ld",tfNum);
+        tfNum--;
+        NSString *str = [NSString stringWithFormat:@"%ld",tfNum];\
+        DLog(@"%@",str);
+        numTf.text =str;
+    }];
+    [cell.wbgv.bottomView setCartHomeCellBottomPlusBlock:^(NSInteger tfNum,UITextField *numTf) {
+        DLog(@"%ld",tfNum);
+
+        tfNum++;
+        DLog(@"%ld",tfNum);
+
+        NSString *str = [NSString stringWithFormat:@"%ld",tfNum];
+        DLog(@"%@",str);
+
+        numTf.text =str;
+    }];
 
     return cell;
 }

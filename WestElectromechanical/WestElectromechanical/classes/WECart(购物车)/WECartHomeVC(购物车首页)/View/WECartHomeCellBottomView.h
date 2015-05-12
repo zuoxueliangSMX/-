@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^cartHomeCellBottomCutBlock)(NSInteger tfNum,UITextField *numTf);
+typedef void (^cartHomeCellBottomPlusBlock)(NSInteger tfNum,UITextField *numTf);
 
 @interface WECartHomeCellBottomView : UIView
+{
+    __strong cartHomeCellBottomCutBlock _cutBlock;
+    __strong cartHomeCellBottomPlusBlock _plusBlock;
+
+}
 @property(nonatomic,strong)UIButton *rigBtn;
 @property(nonatomic,strong)UIButton *leftBtn;
 @property(nonatomic,strong) UITextField  *numTF;
 @property(nonatomic,strong)UILabel *jineLa;
+- (void)setCartHomeCellBottomCutBlock:(cartHomeCellBottomCutBlock)block;
+- (void)setCartHomeCellBottomPlusBlock:(cartHomeCellBottomPlusBlock)block;
+
 @end
