@@ -11,23 +11,26 @@
 #import "WEHTTPHandler.h"
 #import "JsonToModel.h"
 #import "MyCartM.h"
+#import "UIImageView+WebCacheImg.h"
 @interface WECartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 {
 
    int _num;
     UILabel *totalPriceLa;
     UITextField *qnumTF;
-    UITableView *cartTable;
-    NSString *str;
+       NSString *str;
     WEHTTPHandler *we;
     NSMutableArray *arr;
+    
+    BOOL isClick;
+
     
     
 }
 /**
  *  购物车TableView
  */
-@property (nonatomic ,weak)UITableView *cartTable;
+@property (nonatomic ,strong)UITableView *cartTable;
 @property (nonatomic ,strong)WECartsModel *cartsModel;
 
 @end
@@ -62,14 +65,14 @@
 
 -(void)initCartTable
 {   //新加的注释
-    cartTable =[[UITableView alloc]init];
-    cartTable.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-44);
-    cartTable.delegate =self;
-    cartTable.dataSource =self;
-    cartTable.backgroundColor =[UIColor clearColor];
-    [self.view addSubview:cartTable];
-    cartTable.tableFooterView =[[UIView alloc]init];
-    _cartTable = cartTable;
+    _cartTable =[[UITableView alloc]init];
+    _cartTable.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-44);
+    _cartTable.delegate =self;
+    _cartTable.dataSource =self;
+    _cartTable.backgroundColor =[UIColor clearColor];
+    [self.view addSubview:_cartTable];
+    _cartTable.tableFooterView =[[UIView alloc]init];
+   
 
 }
 
@@ -92,20 +95,55 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-       MyCartM *mcm = [_cartsModel.products objectAtIndex:indexPath.row];
-    DLog(@"mycarrt-------->%ld",indexPath.row);
-    DLog(@"mycarrt-------->%@",mcm);
-    DLog(@"mycarrt-------->%@",[NSString stringWithFormat:@"型号:%@ 品牌:%@",mcm.p_version,mcm.p_brand]);
-    cell.wbgv.middleview.priceLabel.text =mcm.p_price;
-//
+    MyCartM *mcm = [_cartsModel.products objectAtIndex:indexPath.row];
+    cell.wbgv.middleview.priceLabel.text =[NSString stringWithFormat:@"¥ %@",mcm.p_price];
+
     cell.wbgv.middleview.versionBrandLa.text =[NSString stringWithFormat:@"型号:%@ 品牌:%@",mcm.p_version,mcm.p_brand];
-//
+
     cell.wbgv.middleview.productLabel.text =mcm.p_name;
-//
-    cell.wbgv.middleview.productCartIdLabel.text =mcm.p_order_num;
-//
-  
-    __weak WECartHomeCell *bCell =(WECartHomeCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.wbgv.middleview.productCartIdLabel.text =[NSString stringWithFormat:@"西域订货号:%@ ",mcm.p_order_num];
+    
+    
+    NSString *path = [NSString stringWithFormat:@"%@%@",kWEImgUrl,mcm.p_imgurl];
+    
+  [cell.wbgv setCartdeleteBlock:^(UIView *moveView, UIImageView *productImg, UIButton *chooseBtn) {
+     
+      
+      
+      isClick = !isClick;
+      
+      if (isClick) {
+          
+        
+          chooseBtn.frame =CGRectMake(10, 110*0.5-5, 20, 20);
+          
+          moveView.frame =CGRectMake(40, 110 * 0.5-50, SCREEN_WIDTH, 110);
+          
+          
+          
+          
+      }else{
+          
+          
+         
+          moveView.frame =CGRectMake(0, 110 * 0.5-50, SCREEN_WIDTH, 110);
+ 
+          
+          
+      }
+
+     
+
+      
+      
+  } ];
+    
+    DLog(@"输出这个路径%@",path);
+    [ cell.wbgv.middleview.productImg  setWebImgUrl:path placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+
+   
+    
+    
     [cell.wbgv.bottomView setCartHomeCellBottomCutBlock:^(NSInteger tfNum,UITextField *numTf,UILabel*jineLa) {
         DLog(@"%ld",(long)tfNum);
         
@@ -114,13 +152,13 @@
         if (tfNum<0) {
             tfNum=0;
         }
-        str = [NSString stringWithFormat:@"%ld",(long)tfNum];\
+        str = [NSString stringWithFormat:@"%ld",(long)tfNum];
         DLog(@"%@",str);
         
         numTf.text =str;
         jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*800];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [cartTable reloadData];
+            [_cartTable reloadData];
         });
         
         }];
@@ -139,7 +177,7 @@
         jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*800];
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            [cartTable reloadData];
+            [_cartTable reloadData];
             
             
         });
@@ -162,17 +200,4 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

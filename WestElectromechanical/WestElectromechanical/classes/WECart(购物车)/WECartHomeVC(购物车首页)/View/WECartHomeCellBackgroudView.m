@@ -9,12 +9,14 @@
 #import "WECartHomeCellBackgroudView.h"
 #define kCellMargin 3
 @interface WECartHomeCellBackgroudView()
+{
+    }
 @end
 @implementation WECartHomeCellBackgroudView
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        UIButton *deleteBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+        deleteBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         deleteBtn.frame =CGRectMake(SCREEN_WIDTH - 60, kCellMargin, 50, 20);
         [deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
         [deleteBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -41,9 +43,22 @@
     }
     return self;
 }
+- (void)setCartdeleteBlock:(cartHomeDeleteBtnBlock)deleteBtnBlock
+{
+    _deleteBtnBlock =deleteBtnBlock;
+
+}
+
+
 - (void)deleteCartInfo:(UIButton *)btn
 {
     
+   
+    
+    if (_deleteBtnBlock) {
+        _deleteBtnBlock(_middleview.moveView,_middleview.productImg,_middleview.chooseBtn);
+    }
+
 }
 /*
 // Only override drawRect: if you perform custom drawing.
