@@ -15,5 +15,7 @@
 @property(nonatomic,strong)UILabel *productCartIdLabel;
 @property(nonatomic,strong)UILabel *versionBrandLa;
 @property(nonatomic,strong)UILabel *priceLabel;
+@property(nonatomic,strong)UIView  *moveView;
+
 
 @end
