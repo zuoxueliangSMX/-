@@ -150,7 +150,7 @@
 /**
  *  27.删除购物车里单个产品
  */
-#define API_DELETECARTPRODUCT @"/json_deletecartproduct.php"
+#define API_DELETECARTPRODUCT @"/json_shoppingdelete.php"
 
 
 
