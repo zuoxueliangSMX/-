@@ -12,6 +12,7 @@
 #import "JsonToModel.h"
 #import "MyCartM.h"
 #import "UIImageView+WebCacheImg.h"
+#import "AccountHanler.h"
 @interface WECartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 {
 
@@ -22,7 +23,6 @@
     WEHTTPHandler *we;
     NSMutableArray *arr;
     
-    BOOL isClick;
 
     
     
@@ -106,37 +106,33 @@
     
     NSString *path = [NSString stringWithFormat:@"%@%@",kWEImgUrl,mcm.p_imgurl];
     
-  [cell.wbgv setCartdeleteBlock:^(UIView *moveView, UIImageView *productImg, UIButton *chooseBtn) {
+  [cell.wbgv setCartdeleteBlock:^(BOOL deleteNoOrYes) {
      
       
-      
-      isClick = !isClick;
-      
-      if (isClick) {
+      if (deleteNoOrYes==YES) {
           
-        
-          chooseBtn.frame =CGRectMake(10, 110*0.5-5, 20, 20);
-          
-          moveView.frame =CGRectMake(40, 110 * 0.5-50, SCREEN_WIDTH, 110);
-          
-          
-          
-          
-      }else{
-          
-          
-         
-          moveView.frame =CGRectMake(0, 110 * 0.5-50, SCREEN_WIDTH, 110);
- 
-          
+          [we executeDeleteCartProductTaskWithUserId:@"15472" withProductId:mcm.p_id Success:^(id obj) {
+              
+              DLog(@"输出删除是否成功的信息%@",obj);
+              
+          } failed:^(id obj) {
+           
+              
+              
+          }];
           
       }
-
      
 
       
       
   } ];
+    
+//    [cell.wbgv.middleview cartchooseBlock:^(UIButton *chooseBtn) {
+//      
+//        
+//        
+//    }];
     
     DLog(@"输出这个路径%@",path);
     [ cell.wbgv.middleview.productImg  setWebImgUrl:path placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];

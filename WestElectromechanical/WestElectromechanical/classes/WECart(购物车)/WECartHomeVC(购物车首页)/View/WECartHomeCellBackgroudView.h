@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WECartHomeCellBottomView.h"
 #import "WECartHomeCellMiddleInfoView.h"
-typedef void (^cartHomeDeleteBtnBlock)(UIView *moveView,UIImageView *productImg,UIButton *chooseBtn);
+typedef void (^cartHomeDeleteBtnBlock)(BOOL deleteNoOrYes);
 
 @interface WECartHomeCellBackgroudView : UIView{
     
@@ -21,8 +21,8 @@ typedef void (^cartHomeDeleteBtnBlock)(UIView *moveView,UIImageView *productImg,
 }
 @property(nonatomic,strong)WECartHomeCellBottomView *bottomView;
 @property(nonatomic,strong)WECartHomeCellMiddleInfoView *middleview;
-
 - (void)setCartdeleteBlock:(cartHomeDeleteBtnBlock)deleteBtnBlock;
+
 
 
 @end

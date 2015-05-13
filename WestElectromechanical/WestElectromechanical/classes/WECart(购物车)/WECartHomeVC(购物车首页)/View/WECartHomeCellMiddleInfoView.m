@@ -8,6 +8,11 @@
 
 #import "WECartHomeCellMiddleInfoView.h"
 @interface WECartHomeCellMiddleInfoView()
+{
+    BOOL isClick;
+
+    
+}
 /**
  *  选择btn
  */
@@ -18,9 +23,9 @@
 {
     if (self = [super initWithFrame:frame]) {
         _chooseBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-        _chooseBtn.frame =CGRectMake(0, frame.size.height*0.5-5, 0, 20);
-        [_chooseBtn setImage:[UIImage imageNamed:@"appleDot"] forState:UIControlStateNormal];
-        [_chooseBtn setImage:[UIImage imageNamed:@"currentAppleDot"] forState:UIControlStateSelected];
+        _chooseBtn.frame =CGRectMake(10, frame.size.height*0.5-5, 20, 20);
+        [_chooseBtn setImage:[UIImage imageNamed:@"cart_notChose"] forState:UIControlStateNormal];
+        [_chooseBtn setImage:[UIImage imageNamed:@"cart_choseed"] forState:UIControlStateSelected];
         [_chooseBtn setBackgroundColor:[UIColor clearColor]];
         [_chooseBtn addTarget:self action:@selector(chooseClick:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -29,14 +34,14 @@
         
         
         
-            _moveView =  [[UIView alloc]init];
-             _moveView .frame =CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-        
-            [self addSubview:_moveView ];
+//            _moveView =  [[UIView alloc]init];
+//             _moveView .frame =CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+//        
+//            [self addSubview:_moveView ];
         _productImg =[[UIImageView alloc]init];
-        _productImg.frame =CGRectMake(10,frame.size.height * 0.5-50,80, 80);
+        _productImg.frame =CGRectMake(CGRectGetMaxX(_chooseBtn.frame)+10,frame.size.height * 0.5-50,80, 80);
         [_productImg setImage:[UIImage imageNamed:@"Product_Placeholder"]];
-        [_moveView addSubview:_productImg];
+        [self addSubview:_productImg];
         
         
         _productLabel =[[UILabel alloc]init];
@@ -45,7 +50,7 @@
         _productLabel.font =[UIFont systemFontOfSize:12.0];
         _productLabel.textColor =[UIColor darkGrayColor];
         _productLabel.backgroundColor =[UIColor clearColor];
-        [_moveView addSubview:_productLabel];
+        [self addSubview:_productLabel];
         
         
         _productCartIdLabel =[[UILabel alloc]init];
@@ -54,7 +59,7 @@
         _productCartIdLabel.font =[UIFont systemFontOfSize:12.0];
         _productCartIdLabel.textColor =[UIColor lightGrayColor];
         _productCartIdLabel.backgroundColor =[UIColor clearColor];
-        [_moveView addSubview:_productCartIdLabel];
+        [self addSubview:_productCartIdLabel];
         
         
         _versionBrandLa =[[UILabel alloc]init];
@@ -64,7 +69,7 @@
         _versionBrandLa.text =@"hdjkslkadsldkl";
         _versionBrandLa.textColor =[UIColor lightGrayColor];
         _versionBrandLa.backgroundColor =[UIColor clearColor];
-        [_moveView addSubview:_versionBrandLa];
+        [self addSubview:_versionBrandLa];
         
         
         _priceLabel =[[UILabel alloc]init];
@@ -73,14 +78,42 @@
         _priceLabel.font =[UIFont systemFontOfSize:12.0];
         _priceLabel.textColor =[UIColor redColor];
         _priceLabel.backgroundColor =[UIColor clearColor];
-        [_moveView addSubview:_priceLabel];
+        [self addSubview:_priceLabel];
     }
     return self;
 }
 
 
+
+- (void)cartchooseBlock:(cartchooseBtnBlock)chooseBtnBlock
+{
+    _chooseBtnBlock =chooseBtnBlock;
+
+
+}
 - (void)chooseClick:(UIButton *)btn{
     
+    
+    
+    isClick = !isClick;
+    
+    if (isClick) {
+        
+        
+        btn.selected =YES;
+        self.deleteNoOrYes =YES;
+        
+        
+    }else{
+        
+        
+          btn.selected = NO;
+        
+         self.deleteNoOrYes =NO;
+        
+        
+    }
+
 }
 
 /*

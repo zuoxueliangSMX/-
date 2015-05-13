@@ -147,6 +147,12 @@
 */
 #define API_UPDATECARTPRODUCTCOUNT @"/json_shoppingnumber.php"
 
+/**
+ *  27.删除购物车里单个产品
+ */
+#define API_DELETECARTPRODUCT @"/json_deletecartproduct.php"
+
+
 
 
 

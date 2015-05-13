@@ -9,8 +9,7 @@
 #import "WECartHomeCellBackgroudView.h"
 #define kCellMargin 3
 @interface WECartHomeCellBackgroudView()
-{
-    }
+
 @end
 @implementation WECartHomeCellBackgroudView
 - (instancetype)initWithFrame:(CGRect)frame
@@ -53,12 +52,9 @@
 - (void)deleteCartInfo:(UIButton *)btn
 {
     
-   
+    _deleteBtnBlock(_middleview.deleteNoOrYes);
     
-    if (_deleteBtnBlock) {
-        _deleteBtnBlock(_middleview.moveView,_middleview.productImg,_middleview.chooseBtn);
-    }
-
+   
 }
 /*
 // Only override drawRect: if you perform custom drawing.

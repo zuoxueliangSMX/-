@@ -957,7 +957,39 @@
     }];
     
 }
+/**
+ *  27.删除购物车里的产品
+ */
+- (void)executeDeleteCartProductTaskWithUserId:(NSString *)userId
+                                 withProductId:(NSString *)productId
+                                       Success:(SuccessBlock)success
+                                        failed:(FailedBlock)failed
+{
+    [AlertUtil showAlertWithText:@"删除购物车里的产品"];
 
+    NSString *url =[BaseHandler requestUrlWithUrl:API_DELETECARTPRODUCT WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&pid=%@",userId,productId];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(json);
+            }
+        }else{
+            if (failed) {
+                failed(nil);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+
+
+}
 
 
 

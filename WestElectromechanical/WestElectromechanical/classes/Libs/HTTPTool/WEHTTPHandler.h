@@ -235,4 +235,12 @@
                                             withNum:(NSString *)count
                                             Success:(SuccessBlock)success
                                              failed:(FailedBlock)failed;
+/**
+ *  27.删除购物车里的产品
+ */
+- (void)executeDeleteCartProductTaskWithUserId:(NSString *)userId
+                                      withProductId:(NSString *)productId
+                                            Success:(SuccessBlock)success
+                                             failed:(FailedBlock)failed;
+
 @end
