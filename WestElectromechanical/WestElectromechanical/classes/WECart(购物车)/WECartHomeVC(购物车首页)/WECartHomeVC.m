@@ -22,10 +22,8 @@
        NSString *str;
     WEHTTPHandler *we;
   __block  NSMutableArray *arr;
-    
 
-    
-    
+    CGFloat _totalPrice;
 }
 /**
  *  购物车TableView
@@ -109,55 +107,52 @@
   [cell.wbgv setCartdeleteBlock:^(BOOL deleteNoOrYes) {
      
       
-      if (deleteNoOrYes==YES) {
+      [we executeDeleteCartProductTaskWithUserId:@"15472" withProductId:mcm.p_id Success:^(id obj) {
           
-          [we executeDeleteCartProductTaskWithUserId:@"15472" withProductId:mcm.p_id Success:^(id obj) {
-              
-              DLog(@"输出删除是否成功的信息%@",obj);
-              if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
-                  WARN_ALERT(@"删除成功");
-              }
-             
-              
-              dispatch_async(dispatch_get_main_queue(), ^{
-                  [self viewWillAppear:YES];
-                  
-                  
-              });
-
-              
-          } failed:^(id obj) {
-           
-              
-              
-          }];
+          DLog(@"输出删除是否成功的信息%@",obj);
+          if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+              WARN_ALERT(@"删除成功");
+          }
           
-      }
-     
-
+          
+          dispatch_async(dispatch_get_main_queue(), ^{
+              [self viewWillAppear:YES];
+              
+              
+          });
+          
+          
+      } failed:^(id obj) {
+          
+          
+          
+      }];
       
       
   } ];
     
    //  选中的的产品  
-    
+    __weak WECartHomeCell *bCell = cell;
    [ cell.wbgv.middleview setChosesBlock:^(UIButton *chooseBtn){
      
        int row2 = [tableView indexPathForCell:((WECartHomeCell*)[[chooseBtn superview]superview])].row;
        
        MyCartM *cm =  [_cartsModel.products objectAtIndex:row2];
        if (chooseBtn.selected) {
-          [arr   addObject:cm.p_price];
+//           _totalPrice +=[*[cm.p_price intValue ]];
+           _totalPrice +=([bCell.wbgv.bottomView.numTF.text  intValue]*[cm.p_price intValue]);
            
 
        }else{
-           [arr removeObject:cm.p_price];
+           
+            _totalPrice -=([bCell.wbgv.bottomView.numTF.text  intValue]*[cm.p_price intValue]);
+//           [arr removeObject:cm.p_price];
            
        }
        
-       DLog(@"输出数组里面的对象有几个%d",arr.count);
+       DLog(@"输出数组里面的对象有几个%0.2f",_totalPrice);
        
-        } ];
+    }];
     
     
     
