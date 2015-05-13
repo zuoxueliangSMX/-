@@ -75,7 +75,7 @@
 
 - (void)initNetData:(NSInteger)page
 {
-    [we executeGetMyCollectionTaskWithUserId:[AccountHanler userId] withPage:[NSString stringWithFormat:@"%ld",page] Success:^(id obj) {
+    [we executeGetMyCollectionTaskWithUserId:[AccountHanler userId] withPage:[NSString stringWithFormat:@"%d",page] Success:^(id obj) {
         
         
         NSLog(@"输出我的收藏的%@",_arr);

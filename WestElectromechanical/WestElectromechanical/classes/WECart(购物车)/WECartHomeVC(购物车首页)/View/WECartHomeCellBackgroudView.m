@@ -18,7 +18,7 @@
         deleteBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         deleteBtn.frame =CGRectMake(SCREEN_WIDTH - 60, kCellMargin, 50, 20);
         [deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
-        [deleteBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [deleteBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         deleteBtn.titleLabel.font = font(16);
         [deleteBtn setBackgroundColor:[UIColor clearColor]];
         [deleteBtn addTarget:self action:@selector(deleteCartInfo:) forControlEvents:UIControlEventTouchUpInside];

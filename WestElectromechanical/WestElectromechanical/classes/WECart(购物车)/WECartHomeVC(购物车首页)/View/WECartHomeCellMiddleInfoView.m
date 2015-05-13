@@ -28,16 +28,12 @@
         [_chooseBtn setImage:[UIImage imageNamed:@"cart_choseed"] forState:UIControlStateSelected];
         [_chooseBtn setBackgroundColor:[UIColor clearColor]];
         [_chooseBtn addTarget:self action:@selector(chooseClick:) forControlEvents:UIControlEventTouchUpInside];
-        
         [self addSubview:_chooseBtn];
         
         
         
         
-//            _moveView =  [[UIView alloc]init];
-//             _moveView .frame =CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-//        
-//            [self addSubview:_moveView ];
+
         _productImg =[[UIImageView alloc]init];
         _productImg.frame =CGRectMake(CGRectGetMaxX(_chooseBtn.frame)+10,frame.size.height * 0.5-50,80, 80);
         [_productImg setImage:[UIImage imageNamed:@"Product_Placeholder"]];
@@ -83,14 +79,13 @@
     return self;
 }
 
-
-
-- (void)cartchooseBlock:(cartchooseBtnBlock)chooseBtnBlock
+- (void)setChosesBlock:(cartChoeseBlock)chosesBlock
 {
-    _chooseBtnBlock =chooseBtnBlock;
-
+    _chosesBlock =chosesBlock;
 
 }
+
+
 - (void)chooseClick:(UIButton *)btn{
     
     
@@ -114,6 +109,9 @@
         
     }
 
+    _chosesBlock(_chooseBtn);
+
+    
 }
 
 /*

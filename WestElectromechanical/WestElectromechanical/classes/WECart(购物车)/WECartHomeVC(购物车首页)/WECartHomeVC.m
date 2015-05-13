@@ -21,7 +21,7 @@
     UITextField *qnumTF;
        NSString *str;
     WEHTTPHandler *we;
-    NSMutableArray *arr;
+  __block  NSMutableArray *arr;
     
 
     
@@ -114,6 +114,17 @@
           [we executeDeleteCartProductTaskWithUserId:@"15472" withProductId:mcm.p_id Success:^(id obj) {
               
               DLog(@"输出删除是否成功的信息%@",obj);
+              if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+                  WARN_ALERT(@"删除成功");
+              }
+             
+              
+              dispatch_async(dispatch_get_main_queue(), ^{
+                  [self viewWillAppear:YES];
+                  
+                  
+              });
+
               
           } failed:^(id obj) {
            
@@ -128,11 +139,31 @@
       
   } ];
     
-//    [cell.wbgv.middleview cartchooseBlock:^(UIButton *chooseBtn) {
-//      
-//        
-//        
-//    }];
+   //  选中的的产品  
+    
+   [ cell.wbgv.middleview setChosesBlock:^(UIButton *chooseBtn){
+     
+       int row2 = [tableView indexPathForCell:((WECartHomeCell*)[[chooseBtn superview]superview])].row;
+       
+       MyCartM *cm =  [_cartsModel.products objectAtIndex:row2];
+       if (chooseBtn.selected) {
+          [arr   addObject:cm.p_price];
+           
+
+       }else{
+           [arr removeObject:cm.p_price];
+           
+       }
+       
+       DLog(@"输出数组里面的对象有几个%d",arr.count);
+       
+        } ];
+    
+    
+    
+    
+    
+    
     
     DLog(@"输出这个路径%@",path);
     [ cell.wbgv.middleview.productImg  setWebImgUrl:path placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
@@ -152,7 +183,7 @@
         DLog(@"%@",str);
         
         numTf.text =str;
-        jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*800];
+        jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*[mcm.p_price intValue ]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [_cartTable reloadData];
         });
@@ -170,7 +201,7 @@
         DLog(@"%@",str);
  
         numTf.text =str;
-        jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*800];
+        jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*[mcm.p_price intValue]];
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [_cartTable reloadData];
