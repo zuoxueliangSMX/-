@@ -17,8 +17,13 @@
 #import "AccountHanler.h"
 #import "LoginVC.h"
 #import "WEAdModel.h"
-@interface WEProductDetailVC ()<UITableViewDataSource,UITableViewDelegate>
+#import "WEProdcutCommentListVC.h"
+@interface WEProductDetailVC ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
+{
+    CGFloat _height;
+}
 @property (nonatomic ,weak)HomeHeaderScrollView *headerView;
+@property (nonatomic ,weak)UIWebView *aWebView;
 @property (nonatomic ,weak)UITableView *productForm;
 
 @end
@@ -66,15 +71,99 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     self.title = @"商品详情";
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self initWebView];
+
+}
+- (void)initWebView
+{
+    UIWebView *webView =[[UIWebView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    webView.delegate = self;
+    
+    [self.view addSubview:webView];
+    _aWebView = webView;
+    [self loadHtml:_detailModel.p_introduce];
+}
+- (void)loadHtml:(NSString *)htmlStr
+{
+    //[_webView loadHTMLString:htmlStr baseURL:nil];
+    
+    /**
+     *  修改htmlstr  添加viewport
+     */
+    //    if([htmlStr rangeOfString:@"viewport"].location == NSNotFound)
+    //    {
+    //          NSMutableString *htmlStr = [NSMutableString stringWithString:[_descriptionArray objectAtIndex:selectedButtonIndex];
+    //        NSString*  htmlStrUpdate = [NSString stringWithFormat:@"<html><meta name=\"viewport\" content=\"width=320, height=10, user-scalable=yes, initial-scale=2.5, maximum-scale=5.0, minimun-scale=0.1\"><head></head><body>%@</body></html>",htmlStr];
+    
+    [_aWebView setScalesPageToFit:NO];
+    NSString *htmlStr1 = [NSString stringWithFormat:@"<html><body>%@<script type=\"text/javascript\">for(var i = 0;i<document.images.length;++i){document.images[i].style.width = %f;document.images[i].style.height = %f/document.images[i].width*document.images[i].height;}</script>",htmlStr,self.view.bounds.size.width-20,self.view.bounds.size.width-20];
+    
+    
+    [_aWebView loadHTMLString:htmlStr1 baseURL:[NSURL URLWithString:@"http://www.ehsy.com"]];
+    //    }
+    //    else
+    //    {
+    //        [_webView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:@"http://115.29.178.110/"]];
+    //    }
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+    //        //设置缩放
+    //修改服务器页面的meta的值
+    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=320, initial-scale=1.0, minimum-scale=1.0, maximum-scale=6.0, user-scalable=yes"];
+    [webView stringByEvaluatingJavaScriptFromString:meta];
+    ////
+    //给网页增加utf-8编码
+    [webView stringByEvaluatingJavaScriptFromString:
+     @"var tagHead =document.documentElement.firstChild;"
+     "var tagMeta = document.createElement(\"meta\");"
+     "tagMeta.setAttribute(\"http-equiv\", \"Content-Type\");"
+     "tagMeta.setAttribute(\"content\", \"text/html; charset=utf-8\");"
+     "var tagHeadAdd = tagHead.appendChild(tagMeta);"];
+    //
+    //        //给网页增加css样式
+    [webView stringByEvaluatingJavaScriptFromString:
+     @"var tagHead =document.documentElement.firstChild;"
+     "var tagStyle = document.createElement(\"style\");"
+     "tagStyle.setAttribute(\"type\", \"text/css\");"
+     "tagStyle.appendChild(document.createTextNode(\"BODY{padding: 5pt 5pt}\"));"
+     "var tagHeadAdd = tagHead.appendChild(tagStyle);"];
+    
+    ;
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementsByTagName('img')[0].style.maxWidth = '%f';document.getElementsByTagName('img')[0].style.width = '%f';document.getElementsByTagName('img')[0].width = '%f';",self.view.bounds.size.width-20,self.view.bounds.size.width-20,self.view.bounds.size.width-20]];
+    //    [webView stringByEvaluatingJavaScriptFromString:html];
+    //    [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
+    /**
+     *  stq
+     此处设置广告图和WEB
+     */
+    //    [self setADImgAfterLoadHtml];
+    
+    
+    CGRect frame = webView.frame;
+    int old_height = frame.size.height;
+    frame.size = CGSizeMake(SCREEN_WIDTH, 0);
+    webView.frame = frame;
+    float content_height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"] floatValue];
+    frame = webView.frame;
+    frame.size = CGSizeMake(SCREEN_WIDTH, content_height + 20);
+    webView.frame = frame;
+    DLog(@"SIZES - %i - %i",old_height + 4,(int) frame.size.height);
+    _height = frame.size.height;
+    _aWebView.delegate = nil;
+    [_aWebView removeFromSuperview];
     [self initTableView];
     [self initTableHeaderView];
     [self initTableFooterView];
-
 }
 - (void)initTableView
 {
     UITableView *productForm =[[UITableView alloc]init];
-    productForm.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    productForm.frame =CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
     productForm.delegate =self;
     productForm.dataSource =self;
     productForm.bounces = NO;
@@ -178,7 +267,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row<1) {
-        return [WEProductInfoView sizeWithDetailModel:_detailModel].height;
+        return [WEProductInfoView sizeWithDetailModel:_detailModel].height+_height+10;
     }
     return 44;
 }
@@ -194,7 +283,11 @@
     if (indexPath.row > 0) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
        cell.textLabel.text = @"更多产品";
+        if (indexPath.row ==2) {
+            cell.textLabel.text = @"商品评论";
+        }
     }else{
+        cell.height = _height;
          cell.detailModel =_detailModel;
     }
     
@@ -204,6 +297,13 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 1) {
+        
+    }else if (indexPath.row == 2){
+        WEProdcutCommentListVC *commentListVC =[[WEProdcutCommentListVC alloc]init];
+        commentListVC.productId =_productId;
+        [self.navigationController pushViewController:commentListVC animated:YES];
+    }
 }
 
 

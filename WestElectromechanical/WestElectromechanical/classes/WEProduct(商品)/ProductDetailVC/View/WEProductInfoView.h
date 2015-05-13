@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WEProductDetailModel.h"
 @interface WEProductInfoView : UIView
+@property (nonatomic ,assign)CGFloat height;
 @property (nonatomic ,strong)WEProductDetailModel *detailModel;
 + (CGSize)sizeWithDetailModel:(WEProductDetailModel *)model;
 @end

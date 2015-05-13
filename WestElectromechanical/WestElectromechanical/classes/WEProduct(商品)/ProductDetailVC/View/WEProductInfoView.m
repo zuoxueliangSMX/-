@@ -9,13 +9,13 @@
 #import "WEProductInfoView.h"
 #define kLeftMargin 10
 #define kTopMargin 5
-@interface WEProductInfoView()
+@interface WEProductInfoView()<UIWebViewDelegate>
 @property (nonatomic ,weak)UILabel *prodcutName;
 @property (nonatomic ,weak)UILabel *prodictPrice;
 @property (nonatomic ,weak)UILabel *productOriType;
 @property (nonatomic ,weak)UILabel *productBrand;
 @property (nonatomic ,weak)UILabel *productOrderId;
-@property (nonatomic ,weak)UILabel *productIntroduce;
+@property (nonatomic ,weak)UIWebView *productIntroduce;
 @property (nonatomic ,weak)UILabel *line;
 @end
 @implementation WEProductInfoView
@@ -64,13 +64,7 @@
         [self addSubview:line];
         _line = line;
         
-        UILabel *productIntroduce =[[UILabel alloc]init];
-        productIntroduce.numberOfLines =0;
-        productIntroduce.font =font(16);
-        productIntroduce.backgroundColor =[UIColor clearColor];
         
-        [self addSubview:productIntroduce];
-        _productIntroduce = productIntroduce;
 
     }
     return self;
@@ -97,7 +91,7 @@
     CGSize brandSize = [brand boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
     CGSize orderNumberSize = [orderNumber boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
     
-    CGSize introduceSize = [introduce boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
+//    CGSize introduceSize = [introduce boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
 
     
     self.prodcutName.text =name;
@@ -105,7 +99,7 @@
     self.productOriType.text =type;
     self.productBrand.text = brand;
     self.productOrderId.text = orderNumber;
-    self.productIntroduce.text = introduce;
+
     self.prodcutName.frame = CGRectMake(kLeftMargin, kTopMargin, nameSize.width, nameSize.height);
     
     self.prodictPrice.frame = CGRectMake(kLeftMargin, CGRectGetMaxY(_prodcutName.frame) + kTopMargin, priceSize.width, priceSize.height);
@@ -118,8 +112,81 @@
     
     self.line.frame = CGRectMake(kLeftMargin, CGRectGetMaxY(self.productOrderId.frame)+kTopMargin, contentW, 0.5);
     
-    self.productIntroduce.frame = CGRectMake(kLeftMargin, CGRectGetMaxY(_productOrderId.frame) + 2*kTopMargin, introduceSize.width, introduceSize.height);
+    
+    UIWebView *productIntroduce =[[UIWebView alloc]initWithFrame:CGRectMake(kLeftMargin, CGRectGetMaxY(_productOrderId.frame) + 2*kTopMargin, SCREEN_WIDTH, _height)];
+    productIntroduce.backgroundColor =[UIColor redColor];
+    productIntroduce.delegate = self;
+    productIntroduce.scrollView.bounces = NO;
+    productIntroduce.scrollView.showsHorizontalScrollIndicator = NO;
+    productIntroduce.scrollView.showsVerticalScrollIndicator = NO;
+    [self addSubview:productIntroduce];
+    _productIntroduce = productIntroduce;
+    [self loadHtml:introduce];
+    
 }
+
+
+- (void)loadHtml:(NSString *)htmlStr
+{
+    //[_webView loadHTMLString:htmlStr baseURL:nil];
+    
+    /**
+     *  修改htmlstr  添加viewport
+     */
+    //    if([htmlStr rangeOfString:@"viewport"].location == NSNotFound)
+    //    {
+    //          NSMutableString *htmlStr = [NSMutableString stringWithString:[_descriptionArray objectAtIndex:selectedButtonIndex];
+    //        NSString*  htmlStrUpdate = [NSString stringWithFormat:@"<html><meta name=\"viewport\" content=\"width=320, height=10, user-scalable=yes, initial-scale=2.5, maximum-scale=5.0, minimun-scale=0.1\"><head></head><body>%@</body></html>",htmlStr];
+    
+    [self.productIntroduce setScalesPageToFit:NO];
+    NSString *htmlStr1 = [NSString stringWithFormat:@"<html><body>%@<script type=\"text/javascript\">for(var i = 0;i<document.images.length;++i){document.images[i].style.width = %f;document.images[i].style.height = %f/document.images[i].width*document.images[i].height;}</script>",htmlStr,self.bounds.size.width-20,self.bounds.size.width-20];
+    
+    [self.productIntroduce loadHTMLString:htmlStr1 baseURL:[NSURL URLWithString:@"http://www.ehsy.com"]];
+
+    //    }
+    //    else
+    //    {
+    //        [_webView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:@"http://115.29.178.110/"]];
+    //    }
+    
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+    //        //设置缩放
+    //修改服务器页面的meta的值
+    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=320, initial-scale=1.0, minimum-scale=1.0, maximum-scale=6.0, user-scalable=yes"];
+    [webView stringByEvaluatingJavaScriptFromString:meta];
+    ////
+    //给网页增加utf-8编码
+    [webView stringByEvaluatingJavaScriptFromString:
+     @"var tagHead =document.documentElement.firstChild;"
+     "var tagMeta = document.createElement(\"meta\");"
+     "tagMeta.setAttribute(\"http-equiv\", \"Content-Type\");"
+     "tagMeta.setAttribute(\"content\", \"text/html; charset=utf-8\");"
+     "var tagHeadAdd = tagHead.appendChild(tagMeta);"];
+    //
+    //        //给网页增加css样式
+    [webView stringByEvaluatingJavaScriptFromString:
+     @"var tagHead =document.documentElement.firstChild;"
+     "var tagStyle = document.createElement(\"style\");"
+     "tagStyle.setAttribute(\"type\", \"text/css\");"
+     "tagStyle.appendChild(document.createTextNode(\"BODY{padding: 5pt 5pt}\"));"
+     "var tagHeadAdd = tagHead.appendChild(tagStyle);"];
+    
+    ;
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementsByTagName('img')[0].style.maxWidth = '%f';document.getElementsByTagName('img')[0].style.width = '%f';document.getElementsByTagName('img')[0].width = '%f';",self.bounds.size.width-20,self.bounds.size.width-20,self.bounds.size.width-20]];
+    //    [webView stringByEvaluatingJavaScriptFromString:html];
+    //    [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
+    /**
+     *  stq
+     此处设置广告图和WEB
+     */
+    //    [self setADImgAfterLoadHtml];
+    
+}
+
+
 
 
 + (CGSize)sizeWithDetailModel:(WEProductDetailModel *)model
@@ -150,7 +217,7 @@
     NSString *type =[NSString stringWithFormat:@"原始型号 : %@",model.p_model];
     NSString *brand =[NSString stringWithFormat:@"品牌 : %@",model.p_brand];
     NSString *orderNumber =[NSString stringWithFormat:@"西域订货号 : %@",model.p_order_number];
-    NSString *introduce =[NSString stringWithFormat:@"%@",model.p_introduce];
+//    NSString *introduce =[NSString stringWithFormat:@"%@",model.p_introduce];
     
     CGSize typeSize = [type boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
     CGSize nameSize = [name boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
@@ -158,9 +225,9 @@
     CGSize brandSize = [brand boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
     CGSize orderNumberSize = [orderNumber boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
     
-    CGSize introduceSize = [introduce boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
+//    CGSize introduceSize = [introduce boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
     
-    height = 6*kTopMargin+nameSize.height+priceSize.height+typeSize.height+brandSize.height+orderNumberSize.height+priceSize.height+introduceSize.height;
+    height = 6*kTopMargin+nameSize.height+priceSize.height+typeSize.height+brandSize.height+orderNumberSize.height+priceSize.height;
     return CGSizeMake(SCREEN_WIDTH, height);
     
 }

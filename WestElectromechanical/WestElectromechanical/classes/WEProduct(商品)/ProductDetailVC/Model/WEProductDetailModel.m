@@ -7,6 +7,7 @@
 //
 
 #import "WEProductDetailModel.h"
+#import "NSString+Base64.h"
 @implementation WEProductDetailModel
 - (instancetype)initWithDict:(NSDictionary *)dict
 {
@@ -19,7 +20,7 @@
         self.isCollect =![[dict objectForKey:@"iscollect"] boolValue];
         self.message =[[dict objectForKey:@"message"] integerValue];
         self.p_brand =[self stringFromValue:[dict objectForKey:@"p_brand"]];
-        self.p_introduce=[self stringFromValue:[dict objectForKey:@"p_introduce"]];
+        self.p_introduce=[self stringFromValue:[[dict objectForKey:@"p_introduce"] base64DecodedString]];
         /**
          *  评论条数
          */

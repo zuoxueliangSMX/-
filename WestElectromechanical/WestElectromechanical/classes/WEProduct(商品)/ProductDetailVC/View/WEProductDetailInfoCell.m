@@ -26,7 +26,8 @@
 - (void)setDetailModel:(WEProductDetailModel *)detailModel
 {
     _detailModel = detailModel;
-    _infoView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [WEProductInfoView sizeWithDetailModel:detailModel].height);
+    _infoView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [WEProductInfoView sizeWithDetailModel:detailModel].height+_height);
+    _infoView.height = _height;
     _infoView.detailModel = detailModel;
 
     

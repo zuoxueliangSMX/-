@@ -12,7 +12,7 @@
 - (instancetype)initWithDict:(NSDictionary *)dict
 {
     if (self = [super init]) {
-        self.imgurl =[NSString stringWithFormat:@"%@%@",kWEImgUrl,[self stringFromValue:[dict objectForKey:@"imgurl"]]];;
+        self.imgurl =[NSString stringWithFormat:@"%@%@",kWEProductImgUrl,[self stringFromValue:[dict objectForKey:@"imgurl"]]];;
     }
     return self;
 }

@@ -100,10 +100,13 @@
 		A38A32911AEC0BC100F7FE7C /* WENavitationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32901AEC0BC100F7FE7C /* WENavitationController.m */; };
 		A38A32951AEC0CB000F7FE7C /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */; };
 		A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32971AEC11E700F7FE7C /* ViewController.m */; };
+		A39659551B025897006BAEFA /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A39659541B025897006BAEFA /* NSString+Base64.m */; };
+		A39659581B0259F8006BAEFA /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A39659571B0259F8006BAEFA /* NSData+Base64.m */; };
 		A39E9A871AFA6AD80035A059 /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E9A861AFA6AD80035A059 /* UIButton+Extension.m */; };
 		A39E9A8A1AFA6E760035A059 /* WEProductCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E9A891AFA6E760035A059 /* WEProductCollectionCell.m */; };
 		A3ADC4301B024B0600B00FD2 /* MyCartM.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC42F1B024B0600B00FD2 /* MyCartM.m */; };
 		A3ADC4331B024B2500B00FD2 /* WECartsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC4321B024B2500B00FD2 /* WECartsModel.m */; };
+		A3ADC4391B02521E00B00FD2 /* WEProdcutCommentListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC4381B02521E00B00FD2 /* WEProdcutCommentListVC.m */; };
 		A3ADFDB21B00E9700029795A /* ATLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADFDB11B00E9700029795A /* ATLabel.m */; };
 		A3ADFDB91B00F4570029795A /* WEHomeAdDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADFDB81B00F4570029795A /* WEHomeAdDetailVC.m */; };
 		A3ADFDC81B0100050029795A /* WEProductDao.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADFDC41B0100050029795A /* WEProductDao.m */; };
@@ -344,6 +347,10 @@
 		A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
 		A38A32961AEC11E700F7FE7C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A38A32971AEC11E700F7FE7C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A39659531B025897006BAEFA /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		A39659541B025897006BAEFA /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
+		A39659561B0259F8006BAEFA /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		A39659571B0259F8006BAEFA /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		A39E9A851AFA6AD80035A059 /* UIButton+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
 		A39E9A861AFA6AD80035A059 /* UIButton+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		A39E9A881AFA6E760035A059 /* WEProductCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductCollectionCell.h; sourceTree = "<group>"; };
@@ -352,6 +359,8 @@
 		A3ADC42F1B024B0600B00FD2 /* MyCartM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCartM.m; sourceTree = "<group>"; };
 		A3ADC4311B024B2500B00FD2 /* WECartsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartsModel.h; sourceTree = "<group>"; };
 		A3ADC4321B024B2500B00FD2 /* WECartsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartsModel.m; sourceTree = "<group>"; };
+		A3ADC4371B02521E00B00FD2 /* WEProdcutCommentListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProdcutCommentListVC.h; sourceTree = "<group>"; };
+		A3ADC4381B02521E00B00FD2 /* WEProdcutCommentListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProdcutCommentListVC.m; sourceTree = "<group>"; };
 		A3ADFDB01B00E9700029795A /* ATLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLabel.h; sourceTree = "<group>"; };
 		A3ADFDB11B00E9700029795A /* ATLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLabel.m; sourceTree = "<group>"; };
 		A3ADFDB71B00F4570029795A /* WEHomeAdDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeAdDetailVC.h; sourceTree = "<group>"; };
@@ -1113,6 +1122,31 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A3ADC4341B02520100B00FD2 /* ProductCommentListVC */ = {
+			isa = PBXGroup;
+			children = (
+				A3ADC4351B02520100B00FD2 /* Model */,
+				A3ADC4361B02520100B00FD2 /* View */,
+				A3ADC4371B02521E00B00FD2 /* WEProdcutCommentListVC.h */,
+				A3ADC4381B02521E00B00FD2 /* WEProdcutCommentListVC.m */,
+			);
+			path = ProductCommentListVC;
+			sourceTree = "<group>";
+		};
+		A3ADC4351B02520100B00FD2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A3ADC4361B02520100B00FD2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A3ADFDAF1B00E9700029795A /* ATLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1244,6 +1278,7 @@
 		A3C248AB1AF91DA000760C72 /* WEProduct(商品) */ = {
 			isa = PBXGroup;
 			children = (
+				A3ADC4341B02520100B00FD2 /* ProductCommentListVC */,
 				A3BFB6261AFBA66B00024BEE /* ProductDetailVC */,
 				A3C2CC7C1AFA4AC10087BDED /* ProducListVC */,
 			);
@@ -1253,6 +1288,10 @@
 		A3C2A82F1AEC9518001DC327 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A39659561B0259F8006BAEFA /* NSData+Base64.h */,
+				A39659571B0259F8006BAEFA /* NSData+Base64.m */,
+				A39659531B025897006BAEFA /* NSString+Base64.h */,
+				A39659541B025897006BAEFA /* NSString+Base64.m */,
 				A38851BE1AED36C40019D6E5 /* UIImageView+WebCacheImg.h */,
 				A38851BF1AED36C40019D6E5 /* UIImageView+WebCacheImg.m */,
 				A3C2A83B1AEC9BF6001DC327 /* UIImage+Extension.h */,
@@ -1483,6 +1522,7 @@
 			files = (
 				7FE556B51AF84C8C00D98006 /* CheckPersonInFoVC.m in Sources */,
 				A3ADFDDF1B010AC10029795A /* BaseViewController.m in Sources */,
+				A3ADC4391B02521E00B00FD2 /* WEProdcutCommentListVC.m in Sources */,
 				A3C466F21AF313B300E1604D /* TADotView.m in Sources */,
 				7FDEDC1A1AF764CD00911A02 /* MyRegisterVC.m in Sources */,
 				A369CFB41AEE70C4001F3DB7 /* PinyinHelper.m in Sources */,
@@ -1557,6 +1597,7 @@
 				A38A328D1AEC083900F7FE7C /* RDVTabBarItem.m in Sources */,
 				7F8B1AB21AFA01560085FE2D /* PAPickView.m in Sources */,
 				A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */,
+				A39659581B0259F8006BAEFA /* NSData+Base64.m in Sources */,
 				A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */,
 				7FE59F111AFBB24100D8ABA9 /* MarkSheetVC.m in Sources */,
 				A3ADFDDA1B010AC10029795A /* BaseDao.m in Sources */,
@@ -1570,6 +1611,7 @@
 				7FE4204E1AFA6E8C00988846 /* GCPlaceholderTextView.m in Sources */,
 				A38A32741AEC06C900F7FE7C /* WEHomeVC.m in Sources */,
 				A3ADFDE01B010AC10029795A /* RTDatabaseHelper.m in Sources */,
+				A39659551B025897006BAEFA /* NSString+Base64.m in Sources */,
 				A3C16D571AFDAFAA00004721 /* WEProductDetailInfoCell.m in Sources */,
 				A369CFB81AEE713B001F3DB7 /* ChineseInclude.m in Sources */,
 				A3843EDB1AF48D5C00FDE84F /* WEHTTPHandler.m in Sources */,

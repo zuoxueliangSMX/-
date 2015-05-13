@@ -10,6 +10,7 @@
 #import "WEProductDetailModel.h"
 #import "WEProductInfoView.h"
 @interface WEProductDetailInfoCell : UITableViewCell
+@property (nonatomic ,assign)CGFloat height;
 @property (nonatomic ,strong)WEProductDetailModel *detailModel;
 @property (nonatomic ,weak)WEProductInfoView *infoView;
 @end

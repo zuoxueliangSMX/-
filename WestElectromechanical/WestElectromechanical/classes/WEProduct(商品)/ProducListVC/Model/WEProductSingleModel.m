@@ -13,7 +13,7 @@
 {
     if (self = [super init]) {
         self.p_brand =[self stringFromValue:[dict objectForKey:@"p_brand"]];
-        self.p_imgurl=[NSString stringWithFormat:@"%@%@",kWEImgUrl,[self stringFromValue:[dict objectForKey:@"p_imgurl"]]];
+        self.p_imgurl=[NSString stringWithFormat:@"%@%@",kWEProductImgUrl,[self stringFromValue:[dict objectForKey:@"p_imgurl"]]];
         self.p_name=[self stringFromValue:[dict objectForKey:@"p_name"]];
         self.p_order_num=[self stringFromValue:[dict objectForKey:@"p_order_num"]];
         self.p_price=[self stringFromValue:[dict objectForKey:@"p_price"]];
