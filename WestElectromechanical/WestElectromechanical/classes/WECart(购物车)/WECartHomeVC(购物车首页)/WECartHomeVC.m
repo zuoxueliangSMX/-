@@ -139,7 +139,7 @@
       
   } ];
     
-   //  选中的的产品  
+   //  选中的的产品
     
    [ cell.wbgv.middleview setChosesBlock:^(UIButton *chooseBtn){
      
