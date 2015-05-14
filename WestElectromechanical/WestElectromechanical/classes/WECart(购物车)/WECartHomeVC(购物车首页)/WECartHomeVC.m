@@ -13,6 +13,7 @@
 #import "MyCartM.h"
 #import "UIImageView+WebCacheImg.h"
 #import "AccountHanler.h"
+#import "UIButton+Extension.h"
 @interface WECartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 {
 
@@ -24,6 +25,9 @@
   __block  NSMutableArray *arr;
 
     CGFloat _totalPrice;
+    
+    
+    BOOL isClick;
 }
 /**
  *  购物车TableView
@@ -59,6 +63,50 @@
     
    
     [self initCartTable];
+    [self  initBottomView];
+}
+
+- (void)initBottomView
+{
+    UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_cartTable.frame), SCREEN_WIDTH, 44)];
+    
+    UIButton *ALLBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+    ALLBtn.frame =CGRectMake(10, 10, 20, 20);
+    [ALLBtn setImage:[UIImage imageNamed:@"cart_notChose"] forState:UIControlStateNormal];
+    [ALLBtn setImage:[UIImage imageNamed:@"cart_choseed"] forState:UIControlStateSelected];
+    [ALLBtn setBackgroundColor:[UIColor clearColor]];
+    [ALLBtn addTarget:self action:@selector(ALLchooseClic:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:ALLBtn];
+    UILabel *allLa=  [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ALLBtn.frame), 10, 40, 20)];
+    allLa.font = [UIFont systemFontOfSize:14];
+    allLa.text = @"全选";
+    allLa.textColor  =[UIColor  darkGrayColor];
+    [view addSubview:allLa];
+    
+    
+    UILabel *totalCountLa=  [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(allLa.frame)+10, 5, 70, 17)];
+    totalCountLa.font = [UIFont systemFontOfSize:14];
+    totalCountLa.text = @"总计";
+    totalCountLa.textColor  =[UIColor  lightGrayColor];
+    [view addSubview:totalCountLa];
+    
+    
+    UILabel *allPriceLa=  [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(allLa.frame)+10, CGRectGetMaxY(allLa.frame)-4, 70, 17)];
+    allPriceLa.font = [UIFont systemFontOfSize:14];
+    allPriceLa.text = @"总金额";
+    allPriceLa.textColor  =[UIColor  lightGrayColor];
+    [view addSubview:allPriceLa];
+    
+    
+    
+    UIButton *btn =[[UIButton alloc]initTarget:self WithTitle:@"去结算" withColor:[UIColor whiteColor] action:@selector(instantPayClick:)];
+    
+    [btn  setBackgroundColor:[UIColor  redColor]];
+    
+    btn.frame = CGRectMake(SCREEN_WIDTH-btn.size.width, 0, 70, 44);
+    [view addSubview:btn];
+    [self.view addSubview:view];
+    
 }
 
 -(void)initCartTable
@@ -100,7 +148,8 @@
 
     cell.wbgv.middleview.productLabel.text =mcm.p_name;
     cell.wbgv.middleview.productCartIdLabel.text =[NSString stringWithFormat:@"西域订货号:%@ ",mcm.p_order_num];
-    
+    cell.wbgv.bottomView.jineLa.text =[NSString stringWithFormat:@"金额:%0.2f ",[mcm.p_num floatValue]*[mcm.p_price  floatValue]];
+;
     
     NSString *path = [NSString stringWithFormat:@"%@%@",kWEImgUrl,mcm.p_imgurl];
     
@@ -141,12 +190,12 @@
        MyCartM *cm =  [_cartsModel.products objectAtIndex:row2];
        if (chooseBtn.selected) {
 
-           _totalPrice +=([bCell.wbgv.bottomView.numTF.text  intValue]*[cm.p_price intValue]);
+           _totalPrice +=([bCell.wbgv.bottomView.numTF.text  floatValue]*[cm.p_price floatValue]);
            
 
        }else{
            
-            _totalPrice -=([bCell.wbgv.bottomView.numTF.text  intValue]*[cm.p_price intValue]);
+            _totalPrice -=([bCell.wbgv.bottomView.numTF.text  floatValue]*[cm.p_price floatValue]);
 
            
        }
@@ -172,14 +221,20 @@
         
         tfNum--;
         
-        if (tfNum<0) {
-            tfNum=0;
+        if (tfNum<=0) {
+            tfNum=1;
         }
         str = [NSString stringWithFormat:@"%ld",(long)tfNum];
         DLog(@"%@",str);
         
         numTf.text =str;
-        jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*[mcm.p_price intValue ]];
+        [we executeUpdateCartProductCountTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id withNum:@"2" Success:^(id obj) {
+            
+        } failed:^(id obj) {
+            
+        }];
+
+        jineLa.text=[NSString stringWithFormat:@"金额:%0.2f",[str  floatValue]*[mcm.p_price floatValue ]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [_cartTable reloadData];
         });
@@ -197,8 +252,16 @@
         DLog(@"%@",str);
  
         numTf.text =str;
-        jineLa.text=[NSString stringWithFormat:@"金额:%d",[str  intValue]*[mcm.p_price intValue]];
+        [we executeUpdateCartProductCountTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id withNum:@"2" Success:^(id obj) {
+            
+        } failed:^(id obj) {
+            
+        }];
+        jineLa.text=[NSString stringWithFormat:@"金额:%0.2f",[str  floatValue]*[mcm.p_price floatValue]];
 
+        
+        
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [_cartTable reloadData];
             
@@ -222,5 +285,33 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)instantPayClick:(UIButton*)btn
+{
+
+
+}
+
+-(void)ALLchooseClic :(UIButton*)btn
+{
+    isClick = !isClick;
+    
+    if (isClick) {
+        
+        
+        btn.selected =YES;
+       
+        
+        
+    }else{
+        
+        
+        btn.selected = NO;
+        
+        
+        
+    }
+
+
 }
 @end
