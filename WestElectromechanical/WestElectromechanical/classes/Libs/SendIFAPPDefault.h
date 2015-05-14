@@ -24,6 +24,12 @@
 #define NECK_NAME  @"neckname"
 #define APP_VERSION @"appversion"
 
+
+
+#define ADDRESS @"address"
+#define RECIVE_NAME @"recive_name"
+#define RECIVE_PHONE @"recive_phone"
+
 #define MIMA @"mima"
 
 
@@ -49,6 +55,27 @@
 //登录名
 - (void)setLoginName:(NSString *)name;
 - (NSString *)loginName;
+
+
+/**
+ *  接受人手机号
+ */
+-(NSString *)recivePhone;
+-(void)setRecivePhone:(NSString *)phone;
+
+
+/**
+ *  地址
+ */
+-(NSString *)addres;
+-(void)setaddres:(NSString *)addres;
+
+
+/**
+ *  收货人姓名
+ */
+-(NSString *)reciveName;
+-(void)setreciveName:(NSString *)reciveName;
 
 
 

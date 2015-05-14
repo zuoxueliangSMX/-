@@ -105,6 +105,53 @@
     return [UserDefaultsUtils valueWithKey:MOBILE_PHONE];
 }
 
+/**
+ *  接受人手机号
+ */
++(NSString *)recivePhone
+{
+
+ return [UserDefaultsUtils valueWithKey:RECIVE_PHONE];
+}
++(void)setRecivePhone:(NSString *)phone
+{
+ [UserDefaultsUtils saveValue:phone forKey:RECIVE_PHONE];
+
+}
+
+
+
+/**
+ *  地址
+ */
++(NSString *)addres
+{
+    return [UserDefaultsUtils valueWithKey:ADDRESS];
+
+}
++(void)setaddres:(NSString *)addres{
+
+    [UserDefaultsUtils saveValue:addres forKey:ADDRESS];
+
+
+}
+
+/**
+ *  收货人姓名
+ */
++(NSString *)reciveName
+{
+
+ return [UserDefaultsUtils valueWithKey:RECIVE_NAME];
+}
++(void)setreciveName:(NSString *)reciveName
+{
+    [UserDefaultsUtils saveValue:reciveName forKey:RECIVE_NAME];
+
+
+}
+
+
 +(void)saveAccountOtherInfo:(NSDictionary *)infoDict
 {
     [AccountHanler saveIsIdentification:[infoDict objectForKey:ACCOUNT_IS_IDENTIFICATION]];

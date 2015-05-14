@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AlwaysUsedAddresVC : UIViewController
+@property(nonatomic,strong)NSString *identiferStr;
 
 @end

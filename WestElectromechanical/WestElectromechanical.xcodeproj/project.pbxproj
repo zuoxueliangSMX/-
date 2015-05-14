@@ -27,6 +27,8 @@
 		7FDEDC1A1AF764CD00911A02 /* MyRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDC191AF764CD00911A02 /* MyRegisterVC.m */; };
 		7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FDEDC1B1AF77A1900911A02 /* Images.xcassets */; };
 		7FDEE40E1AF706B200674488 /* PersonCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEE40D1AF706B200674488 /* PersonCenterVC.m */; };
+		7FE18B411B04A111004552B1 /* CommitOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE18B401B04A111004552B1 /* CommitOrderVC.m */; };
+		7FE2C9B51B050250005C1FE9 /* ClaimInvoiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2C9B41B050250005C1FE9 /* ClaimInvoiceVC.m */; };
 		7FE4204E1AFA6E8C00988846 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4204D1AFA6E8C00988846 /* GCPlaceholderTextView.m */; };
 		7FE420511AFA7CA400988846 /* SheZhiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE420501AFA7CA400988846 /* SheZhiVC.m */; };
 		7FE42B321AF9AF5A00EB923E /* AlwaysUsedAddresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */; };
@@ -203,6 +205,10 @@
 		7FDEDC1B1AF77A1900911A02 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7FDEE40C1AF706B200674488 /* PersonCenterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCenterVC.h; sourceTree = "<group>"; };
 		7FDEE40D1AF706B200674488 /* PersonCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterVC.m; sourceTree = "<group>"; };
+		7FE18B3F1B04A111004552B1 /* CommitOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitOrderVC.h; sourceTree = "<group>"; };
+		7FE18B401B04A111004552B1 /* CommitOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitOrderVC.m; sourceTree = "<group>"; };
+		7FE2C9B31B050250005C1FE9 /* ClaimInvoiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimInvoiceVC.h; sourceTree = "<group>"; };
+		7FE2C9B41B050250005C1FE9 /* ClaimInvoiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimInvoiceVC.m; sourceTree = "<group>"; };
 		7FE4204C1AFA6E8C00988846 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
 		7FE4204D1AFA6E8C00988846 /* GCPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPlaceholderTextView.m; sourceTree = "<group>"; };
 		7FE4204F1AFA7CA400988846 /* SheZhiVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SheZhiVC.h; sourceTree = "<group>"; };
@@ -972,6 +978,10 @@
 				A3C48FB01AEFCFFC001D9717 /* View */,
 				A38A327B1AEC076600F7FE7C /* WECartHomeVC.h */,
 				A38A327C1AEC076600F7FE7C /* WECartHomeVC.m */,
+				7FE18B3F1B04A111004552B1 /* CommitOrderVC.h */,
+				7FE18B401B04A111004552B1 /* CommitOrderVC.m */,
+				7FE2C9B31B050250005C1FE9 /* ClaimInvoiceVC.h */,
+				7FE2C9B41B050250005C1FE9 /* ClaimInvoiceVC.m */,
 			);
 			path = "WECartHomeVC(购物车首页)";
 			sourceTree = "<group>";
@@ -1560,6 +1570,7 @@
 				A3BFB6251AFB9EC400024BEE /* WEProductTableCell.m in Sources */,
 				7FE6D47A1AFB40C200CFABE4 /* CollectionM.m in Sources */,
 				A3ADFDDB1B010AC10029795A /* BaseEntity.m in Sources */,
+				7FE18B411B04A111004552B1 /* CommitOrderVC.m in Sources */,
 				7FE73D901B009AFA004559D4 /* AddressM.m in Sources */,
 				A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */,
 				7F8B1AB01AFA01560085FE2D /* UIButton+Button.m in Sources */,
@@ -1639,6 +1650,7 @@
 				A3ADC4301B024B0600B00FD2 /* MyCartM.m in Sources */,
 				7FDEDC0A1AF71D6400911A02 /* MASLayoutConstraint.m in Sources */,
 				A38851A81AED0AE40019D6E5 /* WELocationManager.m in Sources */,
+				7FE2C9B51B050250005C1FE9 /* ClaimInvoiceVC.m in Sources */,
 				A3C466E61AF30D4300E1604D /* WERecommendBgView.m in Sources */,
 				A3C48FB91AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m in Sources */,
 				A3843ED21AF47B5D00FDE84F /* AlertUtil.m in Sources */,

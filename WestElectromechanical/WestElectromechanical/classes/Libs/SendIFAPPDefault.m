@@ -78,6 +78,65 @@
     return [self.defaults stringForKey:CURRENT_USER_ID];
 
 }
+
+
+/**
+ *  接受人手机号
+ */
+-(NSString *)recivePhone
+{
+    
+    return [self.defaults stringForKey:RECIVE_PHONE];
+}
+-(void)setRecivePhone:(NSString *)phone
+{
+    [self.defaults setObject:phone forKey:RECIVE_PHONE];
+    [self.defaults synchronize];
+    
+}
+
+
+
+/**
+ *  地址
+ */
+-(NSString *)addres
+{
+     return [self.defaults stringForKey:ADDRESS];
+    
+}
+-(void)setaddres:(NSString *)addres{
+    
+    [self.defaults setObject:addres forKey:ADDRESS];
+    [self.defaults synchronize];
+    
+    
+}
+
+/**
+ *  收货人姓名
+ */
+-(NSString *)reciveName
+{
+    
+    return [self.defaults stringForKey:RECIVE_NAME];
+
+}
+-(void)setreciveName:(NSString *)reciveName
+{
+    [self.defaults setObject:reciveName forKey:RECIVE_NAME];
+    [self.defaults synchronize];
+    
+
+    
+    
+}
+
+
+
+
+
+
 #pragma mark -
 //登录状态
 - (void)setLoginState:(NSString *)state{

@@ -13,6 +13,8 @@
 #import "AccountHanler.h"
 #import "JsonToModel.h"
 #import "AddressM.h"
+
+#import "SendIFAPPDefault.h"
 @interface AlwaysUsedAddresVC ()<UITableViewDataSource,UITableViewDelegate>
 {
 
@@ -32,7 +34,7 @@
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
     
     
-    [we executeGetAdressListTaskWithUserId:@"4516" Success:^(id obj) {
+    [we executeGetAdressListTaskWithUserId:[AccountHanler  userId] Success:^(id obj) {
         
         
         muarr = [[NSMutableArray alloc]initWithCapacity:0];
@@ -136,13 +138,32 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-     AddressM *adm =[muarr objectAtIndex:indexPath.row];
+      AddressM *adm =[muarr objectAtIndex:indexPath.row];
+    
+    
+    if (self.identiferStr) {
+        
+        
+//        [[SendIFAPPDefault shareAppDefault] setRecivePhone:adm.mobile];
+//        [[SendIFAPPDefault shareAppDefault] setreciveName:adm.u_name];
+//        [[SendIFAPPDefault shareAppDefault] setaddres:adm.a_address];
+
+        [AccountHanler setreciveName:adm.u_name];
+        [AccountHanler setRecivePhone:adm.mobile];
+        [AccountHanler setaddres:adm.a_address];
+        
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        
+    }else{
+   
  
     
     AddAdressVC *add  =[[AddAdressVC alloc]init];
     add.am =adm;
-    [self.navigationController pushViewController:add animated:YES];
-  
+        [self.navigationController pushViewController:add animated:YES];}
+    
    
 }
 

@@ -14,6 +14,7 @@
 #import "UIImageView+WebCacheImg.h"
 #import "AccountHanler.h"
 #import "UIButton+Extension.h"
+#import "CommitOrderVC.h"
 @interface WECartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 {
 
@@ -289,7 +290,9 @@
 -(void)instantPayClick:(UIButton*)btn
 {
 
-
+    CommitOrderVC *myorder =[[CommitOrderVC alloc]init];
+    
+    [self.navigationController pushViewController:myorder animated:YES];
 }
 
 -(void)ALLchooseClic :(UIButton*)btn

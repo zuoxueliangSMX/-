@@ -17,6 +17,9 @@ static NSString * const ACCOUNT_IS_IDENTIFICATION = @"is_identification";
 
 #define LOGIN_STATE @"login_state"
 #define MOBILE_PHONE @"mobilephone"
+#define ADDRESS @"address"
+#define RECIVE_NAME @"recive_name"
+#define RECIVE_PHONE @"recive_phone"
 
 @interface AccountHanler : NSObject
 
@@ -69,6 +72,25 @@ static NSString * const ACCOUNT_IS_IDENTIFICATION = @"is_identification";
 +(NSString *)mobilePhone;
 +(void)setMobilePhone:(NSString *)phone;
 
+/**
+ *  接受人手机号
+ */
++(NSString *)recivePhone;
++(void)setRecivePhone:(NSString *)phone;
+
+
+/**
+ *  地址
+ */
++(NSString *)addres;
++(void)setaddres:(NSString *)addres;
+
+
+/**
+ *  收货人姓名
+ */
++(NSString *)reciveName;
++(void)setreciveName:(NSString *)reciveName;
 
 
 +(void)deleteAccount;
