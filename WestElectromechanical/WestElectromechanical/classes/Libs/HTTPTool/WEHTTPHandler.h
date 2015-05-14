@@ -8,6 +8,7 @@
 
 #import "BaseHandler.h"
 #import "WECartsModel.h"
+#import "WEProductComments.h"
 @interface WEHTTPHandler : BaseHandler
 
 #pragma mark -

@@ -98,10 +98,10 @@
     //        NSString*  htmlStrUpdate = [NSString stringWithFormat:@"<html><meta name=\"viewport\" content=\"width=320, height=10, user-scalable=yes, initial-scale=2.5, maximum-scale=5.0, minimun-scale=0.1\"><head></head><body>%@</body></html>",htmlStr];
     
     [_aWebView setScalesPageToFit:NO];
-    NSString *htmlStr1 = [NSString stringWithFormat:@"<html><body>%@<script type=\"text/javascript\">for(var i = 0;i<document.images.length;++i){document.images[i].style.width = %f;document.images[i].style.height = %f/document.images[i].width*document.images[i].height;}</script>",htmlStr,self.view.bounds.size.width-20,self.view.bounds.size.width-20];
+    NSString *htmlStr1 = [NSString stringWithFormat:@"<html><body>%@<script type=\"text/javascript\">for(var i = 0;i<document.images.length;++i){document.images[i].style.width = %f;document.images[i].style.height = %f/document.images[i].width*document.images[i].height;}</script>",htmlStr,self.view.bounds.size.width,self.view.bounds.size.width];
     
     
-    [_aWebView loadHTMLString:htmlStr1 baseURL:[NSURL URLWithString:@"http://www.ehsy.com"]];
+    [_aWebView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:@"http://www.ehsy.com"]];
     //    }
     //    else
     //    {
@@ -114,7 +114,7 @@
     
     //        //设置缩放
     //修改服务器页面的meta的值
-    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=320, initial-scale=1.0, minimum-scale=1.0, maximum-scale=6.0, user-scalable=yes"];
+    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=6.0, user-scalable=yes",SCREEN_WIDTH];
     [webView stringByEvaluatingJavaScriptFromString:meta];
     ////
     //给网页增加utf-8编码
@@ -134,7 +134,7 @@
      "var tagHeadAdd = tagHead.appendChild(tagStyle);"];
     
     ;
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementsByTagName('img')[0].style.maxWidth = '%f';document.getElementsByTagName('img')[0].style.width = '%f';document.getElementsByTagName('img')[0].width = '%f';",self.view.bounds.size.width-20,self.view.bounds.size.width-20,self.view.bounds.size.width-20]];
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementsByTagName('img')[0].style.maxWidth = '%f';document.getElementsByTagName('img')[0].style.width = '%f';document.getElementsByTagName('img')[0].width = '%f';",self.view.bounds.size.width,self.view.bounds.size.width,self.view.bounds.size.width]];
     //    [webView stringByEvaluatingJavaScriptFromString:html];
     //    [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
     /**
@@ -153,7 +153,7 @@
     frame.size = CGSizeMake(SCREEN_WIDTH, content_height + 20);
     webView.frame = frame;
     DLog(@"SIZES - %i - %i",old_height + 4,(int) frame.size.height);
-    _height = frame.size.height;
+    _height = webView.scrollView.contentSize.height;
     _aWebView.delegate = nil;
     [_aWebView removeFromSuperview];
     [self initTableView];
@@ -301,7 +301,8 @@
         
     }else if (indexPath.row == 2){
         WEProdcutCommentListVC *commentListVC =[[WEProdcutCommentListVC alloc]init];
-        commentListVC.productId =_productId;
+//        commentListVC.productId =_productId;
+        commentListVC.productId = @"228508";
         [self.navigationController pushViewController:commentListVC animated:YES];
     }
 }

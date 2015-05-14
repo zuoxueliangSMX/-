@@ -309,10 +309,11 @@
     NSString *params = [NSString stringWithFormat:@"pid=%@",productId];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
-        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+        WEProductComments *comments =[[WEProductComments alloc]initWithDict:json];
+        if ([comments.message integerValue]== 0) {
             
             if (success) {
-                success(json);
+                success(comments);
             }
         }else{
             if (failed) {

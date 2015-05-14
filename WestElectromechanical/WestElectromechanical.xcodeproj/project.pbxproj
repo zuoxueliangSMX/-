@@ -124,6 +124,12 @@
 		A3BFB6251AFB9EC400024BEE /* WEProductTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BFB6241AFB9EC400024BEE /* WEProductTableCell.m */; };
 		A3BFB62E1AFBA8C200024BEE /* WEProductDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BFB62D1AFBA8C200024BEE /* WEProductDetailVC.m */; };
 		A3BFB6311AFBB6E600024BEE /* WEProductDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BFB6301AFBB6E600024BEE /* WEProductDetailModel.m */; };
+		A3C0AFB21B04F14D008F6900 /* WEProductCommentFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C0AFB11B04F14D008F6900 /* WEProductCommentFrame.m */; };
+		A3C0AFB51B04F15D008F6900 /* WEProductCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C0AFB41B04F15D008F6900 /* WEProductCommentModel.m */; };
+		A3C0AFB81B04F179008F6900 /* WEProductComments.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C0AFB71B04F179008F6900 /* WEProductComments.m */; };
+		A3C0AFBB1B04F357008F6900 /* WEProductPicsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C0AFBA1B04F357008F6900 /* WEProductPicsModel.m */; };
+		A3C0AFBE1B04F566008F6900 /* WEProductCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C0AFBD1B04F566008F6900 /* WEProductCommentCell.m */; };
+		A3C0AFC11B04FAE3008F6900 /* CommentImgListView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C0AFC01B04FAE3008F6900 /* CommentImgListView.m */; };
 		A3C16D571AFDAFAA00004721 /* WEProductDetailInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C16D541AFDAFAA00004721 /* WEProductDetailInfoCell.m */; };
 		A3C16D581AFDAFAA00004721 /* WEProductInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C16D561AFDAFAA00004721 /* WEProductInfoView.m */; };
 		A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2488F1AF8FA1600760C72 /* WEHotRecommendModel.m */; };
@@ -397,6 +403,18 @@
 		A3BFB62D1AFBA8C200024BEE /* WEProductDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductDetailVC.m; sourceTree = "<group>"; };
 		A3BFB62F1AFBB6E600024BEE /* WEProductDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductDetailModel.h; sourceTree = "<group>"; };
 		A3BFB6301AFBB6E600024BEE /* WEProductDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductDetailModel.m; sourceTree = "<group>"; };
+		A3C0AFB01B04F14D008F6900 /* WEProductCommentFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductCommentFrame.h; sourceTree = "<group>"; };
+		A3C0AFB11B04F14D008F6900 /* WEProductCommentFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductCommentFrame.m; sourceTree = "<group>"; };
+		A3C0AFB31B04F15D008F6900 /* WEProductCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductCommentModel.h; sourceTree = "<group>"; };
+		A3C0AFB41B04F15D008F6900 /* WEProductCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductCommentModel.m; sourceTree = "<group>"; };
+		A3C0AFB61B04F179008F6900 /* WEProductComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductComments.h; sourceTree = "<group>"; };
+		A3C0AFB71B04F179008F6900 /* WEProductComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductComments.m; sourceTree = "<group>"; };
+		A3C0AFB91B04F357008F6900 /* WEProductPicsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductPicsModel.h; sourceTree = "<group>"; };
+		A3C0AFBA1B04F357008F6900 /* WEProductPicsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductPicsModel.m; sourceTree = "<group>"; };
+		A3C0AFBC1B04F566008F6900 /* WEProductCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductCommentCell.h; sourceTree = "<group>"; };
+		A3C0AFBD1B04F566008F6900 /* WEProductCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductCommentCell.m; sourceTree = "<group>"; };
+		A3C0AFBF1B04FAE3008F6900 /* CommentImgListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentImgListView.h; sourceTree = "<group>"; };
+		A3C0AFC01B04FAE3008F6900 /* CommentImgListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentImgListView.m; sourceTree = "<group>"; };
 		A3C16D531AFDAFAA00004721 /* WEProductDetailInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductDetailInfoCell.h; sourceTree = "<group>"; };
 		A3C16D541AFDAFAA00004721 /* WEProductDetailInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductDetailInfoCell.m; sourceTree = "<group>"; };
 		A3C16D551AFDAFAA00004721 /* WEProductInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductInfoView.h; sourceTree = "<group>"; };
@@ -1146,6 +1164,14 @@
 		A3ADC4351B02520100B00FD2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A3C0AFB01B04F14D008F6900 /* WEProductCommentFrame.h */,
+				A3C0AFB11B04F14D008F6900 /* WEProductCommentFrame.m */,
+				A3C0AFB31B04F15D008F6900 /* WEProductCommentModel.h */,
+				A3C0AFB41B04F15D008F6900 /* WEProductCommentModel.m */,
+				A3C0AFB91B04F357008F6900 /* WEProductPicsModel.h */,
+				A3C0AFBA1B04F357008F6900 /* WEProductPicsModel.m */,
+				A3C0AFB61B04F179008F6900 /* WEProductComments.h */,
+				A3C0AFB71B04F179008F6900 /* WEProductComments.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1153,6 +1179,10 @@
 		A3ADC4361B02520100B00FD2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3C0AFBF1B04FAE3008F6900 /* CommentImgListView.h */,
+				A3C0AFC01B04FAE3008F6900 /* CommentImgListView.m */,
+				A3C0AFBC1B04F566008F6900 /* WEProductCommentCell.h */,
+				A3C0AFBD1B04F566008F6900 /* WEProductCommentCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1576,6 +1606,7 @@
 				7F8B1AB01AFA01560085FE2D /* UIButton+Button.m in Sources */,
 				7FDEDC071AF71D6400911A02 /* MASCompositeConstraint.m in Sources */,
 				A3843ECD1AF47A6000FDE84F /* UserDefaultsUtils.m in Sources */,
+				A3C0AFB81B04F179008F6900 /* WEProductComments.m in Sources */,
 				A38851C01AED36C40019D6E5 /* UIImageView+WebCacheImg.m in Sources */,
 				7FDEDC091AF71D6400911A02 /* MASConstraintMaker.m in Sources */,
 				A38A32951AEC0CB000F7FE7C /* UIColor+FlatUI.m in Sources */,
@@ -1587,6 +1618,7 @@
 				A38851BA1AED2DD40019D6E5 /* SMPageControl.m in Sources */,
 				A3ADFDE31B010C3E0029795A /* SelectModel.m in Sources */,
 				7FDEDC0F1AF71D6400911A02 /* View+MASAdditions.m in Sources */,
+				A3C0AFBE1B04F566008F6900 /* WEProductCommentCell.m in Sources */,
 				A38851BD1AED2DF80019D6E5 /* HomeHeaderScrollView.m in Sources */,
 				A39E9A871AFA6AD80035A059 /* UIButton+Extension.m in Sources */,
 				7FE556BE1AF8A1F700D98006 /* NSString+val.m in Sources */,
@@ -1599,6 +1631,8 @@
 				A369CFAF1AEE70C4001F3DB7 /* ChineseToPinyinResource.m in Sources */,
 				7F62FF521AFC95AC00A93A87 /* TLAlertView.m in Sources */,
 				A3883D121AF9A27400EC2CEA /* WECategorysModel.m in Sources */,
+				A3C0AFBB1B04F357008F6900 /* WEProductPicsModel.m in Sources */,
+				A3C0AFC11B04FAE3008F6900 /* CommentImgListView.m in Sources */,
 				A3ADC4331B024B2500B00FD2 /* WECartsModel.m in Sources */,
 				A3BFB6311AFBB6E600024BEE /* WEProductDetailModel.m in Sources */,
 				A38A328C1AEC083900F7FE7C /* RDVTabBarController.m in Sources */,
@@ -1636,10 +1670,12 @@
 				7FE5DDD31AFE0F5000B77986 /* HTHorizontalSelectionList.m in Sources */,
 				A38A32831AEC07E200F7FE7C /* WESearchHomeVC.m in Sources */,
 				7FDEDC081AF71D6400911A02 /* MASConstraint.m in Sources */,
+				A3C0AFB51B04F15D008F6900 /* WEProductCommentModel.m in Sources */,
 				A373592C1AFDFF1F00484A59 /* WEBaseCategoryVC.m in Sources */,
 				A38851B31AED2C7F0019D6E5 /* WEHomeScrollView.m in Sources */,
 				A3C48FB31AEFD00D001D9717 /* WECartHomeCell.m in Sources */,
 				A3C48FB61AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m in Sources */,
+				A3C0AFB21B04F14D008F6900 /* WEProductCommentFrame.m in Sources */,
 				7FDEDC0B1AF71D6400911A02 /* MASViewAttribute.m in Sources */,
 				A369CFB01AEE70C4001F3DB7 /* HanyuPinyinOutputFormat.m in Sources */,
 				7F8B1AB11AFA01560085FE2D /* PALocation.m in Sources */,
