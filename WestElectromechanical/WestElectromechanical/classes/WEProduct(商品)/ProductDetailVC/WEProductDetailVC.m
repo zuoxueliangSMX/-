@@ -301,7 +301,8 @@
         
     }else if (indexPath.row == 2){
         WEProdcutCommentListVC *commentListVC =[[WEProdcutCommentListVC alloc]init];
-        commentListVC.productId =_productId;
+//        commentListVC.productId =_productId;
+        commentListVC.productId = @"228508";
         [self.navigationController pushViewController:commentListVC animated:YES];
     }
 }

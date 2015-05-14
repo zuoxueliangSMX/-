@@ -9,8 +9,10 @@
 #import "WEProdcutCommentListVC.h"
 #import "RDVTabBarController.h"
 #import "WEHTTPHandler.h"
+#import "WEProductCommentCell.h"
 @interface WEProdcutCommentListVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic ,weak)UITableView *commentList;
+@property (nonatomic ,strong)WEProductComments *comments;
 @end
 
 @implementation WEProdcutCommentListVC
@@ -28,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title =@"评价详情";
     // Do any additional setup after loading the view.
     self.view.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     [self initCommentList];
@@ -39,6 +42,9 @@
 {
     WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
     [handler executeGetProductCommentListTaskWithProductId:self.productId withSuccess:^(id obj) {
+        _comments = (WEProductComments *)obj;
+        
+        [_commentList reloadData];
         DLog(@"GetProductCommentList-------->%@",obj);
     } withFailed:^(id obj) {
         DLog(@"GetProductCommentList-----error--->%@",obj);
@@ -53,6 +59,8 @@
     commentList.delegate =self;
     commentList.dataSource =self;
     commentList.backgroundColor =[UIColor clearColor];
+    commentList.separatorStyle = UITableViewCellSelectionStyleNone;
+
     [self.view addSubview:commentList];
     commentList.tableFooterView =[[UIView alloc]init];
     _commentList = commentList;
@@ -61,20 +69,24 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _comments.comments.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return [_comments.comments[indexPath.row] commentHeight];
 }
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    WEProductCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[WEProductCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.textLabel.text =[NSString stringWithFormat:@"%ld",indexPath.row];
+//    cell.textLabel.text =[NSString stringWithFormat:@"%ld",indexPath.row];
+    cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
+
+    cell.commentFrame =_comments.comments[indexPath.row];
     
     return cell;
 }
