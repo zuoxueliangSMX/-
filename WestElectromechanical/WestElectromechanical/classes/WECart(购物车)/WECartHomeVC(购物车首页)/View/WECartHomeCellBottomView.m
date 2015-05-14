@@ -32,7 +32,7 @@
     _numTF = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_leftBtn.frame), 0, 40, 30)];
     _numTF.layer.borderWidth = 1;
     _numTF.layer.borderColor = SET_COLOR(168.f, 174.f, 178.f).CGColor;
-    _numTF.text = @"0";
+    _numTF.text = @"1";
     
     _numTF.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_numTF];
