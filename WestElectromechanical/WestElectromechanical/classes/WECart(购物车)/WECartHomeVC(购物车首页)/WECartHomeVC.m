@@ -44,7 +44,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [we executeGetCartListTaskWithUserId:@"15472" withPage:@"1" Success:^(id obj) {
+    [we executeGetCartListTaskWithUserId:[AccountHanler userId] withPage:@"1" Success:^(id obj) {
     
         DLog(@"输出我的购物车里面的数据%@",obj);
         _cartsModel = (WECartsModel *)obj;

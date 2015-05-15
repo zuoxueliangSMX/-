@@ -144,10 +144,6 @@
     if (self.identiferStr) {
         
         
-//        [[SendIFAPPDefault shareAppDefault] setRecivePhone:adm.mobile];
-//        [[SendIFAPPDefault shareAppDefault] setreciveName:adm.u_name];
-//        [[SendIFAPPDefault shareAppDefault] setaddres:adm.a_address];
-
         [AccountHanler setreciveName:adm.u_name];
         [AccountHanler setRecivePhone:adm.mobile];
         [AccountHanler setaddres:adm.a_address];

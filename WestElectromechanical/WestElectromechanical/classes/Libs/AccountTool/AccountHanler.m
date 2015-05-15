@@ -152,6 +152,56 @@
 }
 
 
+/**
+ *  发票类型
+ */
++(NSString *)invoiceStyle
+{
+
+return [UserDefaultsUtils valueWithKey:INVOICESTYLE];
+
+}
++(void)setInvoiceStyle:(NSString *)invoiceStyle
+{
+    [UserDefaultsUtils saveValue:invoiceStyle forKey:INVOICESTYLE];
+
+
+}
+
+
+/**
+ *  发票抬头
+ */
++(NSString *)invoiceHead
+
+{
+return [UserDefaultsUtils valueWithKey:INVOICEHEADE];
+
+}
++(void)setInvoiceHead:(NSString *)invoiceHead
+{
+
+  [UserDefaultsUtils saveValue:invoiceHead forKey:INVOICEHEADE];
+}
+
+
+/**
+ *  发票地址
+ */
++(NSString *)invoiceAdress
+{
+
+return [UserDefaultsUtils valueWithKey:INVOICEADRESS];
+}
++(void)setInvoiceAdress:(NSString *)invoiceAdress
+{
+[UserDefaultsUtils saveValue:invoiceAdress forKey:INVOICEADRESS];
+
+}
+
+
+
+
 +(void)saveAccountOtherInfo:(NSDictionary *)infoDict
 {
     [AccountHanler saveIsIdentification:[infoDict objectForKey:ACCOUNT_IS_IDENTIFICATION]];

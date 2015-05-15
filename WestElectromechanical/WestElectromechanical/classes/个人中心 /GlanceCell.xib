@@ -449,10 +449,10 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="tEe-gc-EkM"/>
-                        <exclude reference="pGC-Af-wDc"/>
                         <exclude reference="bcs-dU-U9m"/>
+                        <exclude reference="pGC-Af-wDc"/>
                         <exclude reference="ssB-cF-0jU"/>
+                        <exclude reference="tEe-gc-EkM"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

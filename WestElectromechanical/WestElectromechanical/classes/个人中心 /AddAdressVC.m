@@ -258,7 +258,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
     if (self.am) {
 
-        [we  executeUpdateAdressTaskWithUserId:@"4516" withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:@"世界经济" withPostalcode:emadilCodeTf.text withPhone:@"0398-2963733" withAdressHandleId:self.am.a_id Success:^(id obj) {
+        [we  executeUpdateAdressTaskWithUserId:[AccountHanler userId] withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:tv.text withPostalcode:emadilCodeTf.text withPhone:@"0398-2963733" withAdressHandleId:self.am.a_id Success:^(id obj) {
 
             
             DLog(@"输出我的修改地址信息%@",obj);
@@ -275,12 +275,17 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     }else{
         
 
-    [we executeAddAdressTaskWithUserId:[AccountHanler userId] withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:@"小胡同" withPostalcode:emadilCodeTf.text withPhone:phoneNumTF.text Success:^(id obj) {
+    [we executeAddAdressTaskWithUserId:[AccountHanler userId] withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:tv.text withPostalcode:emadilCodeTf.text withPhone:phoneNumTF.text Success:^(id obj) {
         
         DLog(@"输出保存地址是否成功%@",obj);
+        
+        
+        if ([[obj  objectForKey:@"message"] isEqualToString:@"0"]) {
+            WARN_ALERT(@"保存成功");
+        }
+      
     } failed:^(id obj) {
-     DLog(@"输出保存地址是否成功%@",obj);   
-    }];
+        }];
     }
 }
 -(void)locationBtnClick

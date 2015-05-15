@@ -47,6 +47,7 @@
 		7FE643AA1AF7921A000809A4 /* EmailForCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */; };
 		7FE6D47A1AFB40C200CFABE4 /* CollectionM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D4791AFB40C200CFABE4 /* CollectionM.m */; };
 		7FE6D47D1AFB422400CFABE4 /* JsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */; };
+		7FE70D971B05CA0D00830EF6 /* CartOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE70D961B05CA0D00830EF6 /* CartOrderDetailVC.m */; };
 		7FE73D8D1B003DE4004559D4 /* MyOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE73D8C1B003DE4004559D4 /* MyOrderDetailVC.m */; };
 		7FE73D901B009AFA004559D4 /* AddressM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE73D8F1B009AFA004559D4 /* AddressM.m */; };
 		9D0E523495E67FFBE6F2714B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37D720A9818131CA3C9CC92 /* libPods.a */; };
@@ -250,6 +251,8 @@
 		7FE6D4791AFB40C200CFABE4 /* CollectionM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionM.m; sourceTree = "<group>"; };
 		7FE6D47B1AFB422400CFABE4 /* JsonToModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonToModel.h; sourceTree = "<group>"; };
 		7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonToModel.m; sourceTree = "<group>"; };
+		7FE70D951B05CA0D00830EF6 /* CartOrderDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartOrderDetailVC.h; sourceTree = "<group>"; };
+		7FE70D961B05CA0D00830EF6 /* CartOrderDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartOrderDetailVC.m; sourceTree = "<group>"; };
 		7FE73D8B1B003DE4004559D4 /* MyOrderDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderDetailVC.h; sourceTree = "<group>"; };
 		7FE73D8C1B003DE4004559D4 /* MyOrderDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderDetailVC.m; sourceTree = "<group>"; };
 		7FE73D8E1B009AFA004559D4 /* AddressM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressM.h; sourceTree = "<group>"; };
@@ -1000,6 +1003,8 @@
 				7FE18B401B04A111004552B1 /* CommitOrderVC.m */,
 				7FE2C9B31B050250005C1FE9 /* ClaimInvoiceVC.h */,
 				7FE2C9B41B050250005C1FE9 /* ClaimInvoiceVC.m */,
+				7FE70D951B05CA0D00830EF6 /* CartOrderDetailVC.h */,
+				7FE70D961B05CA0D00830EF6 /* CartOrderDetailVC.m */,
 			);
 			path = "WECartHomeVC(购物车首页)";
 			sourceTree = "<group>";
@@ -1656,6 +1661,7 @@
 				7FE4204E1AFA6E8C00988846 /* GCPlaceholderTextView.m in Sources */,
 				A38A32741AEC06C900F7FE7C /* WEHomeVC.m in Sources */,
 				A3ADFDE01B010AC10029795A /* RTDatabaseHelper.m in Sources */,
+				7FE70D971B05CA0D00830EF6 /* CartOrderDetailVC.m in Sources */,
 				A39659551B025897006BAEFA /* NSString+Base64.m in Sources */,
 				A3C16D571AFDAFAA00004721 /* WEProductDetailInfoCell.m in Sources */,
 				A369CFB81AEE713B001F3DB7 /* ChineseInclude.m in Sources */,

@@ -52,6 +52,7 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"POST"];
     
+    DLog(@"输出这个狗日的数据吧%@",paramsStr);
     [request setHTTPBody:[paramsStr dataUsingEncoding:NSUTF8StringEncoding]];
    
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];

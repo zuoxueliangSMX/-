@@ -21,6 +21,10 @@ static NSString * const ACCOUNT_IS_IDENTIFICATION = @"is_identification";
 #define RECIVE_NAME @"recive_name"
 #define RECIVE_PHONE @"recive_phone"
 
+#define INVOICESTYLE @"invoice_style"
+#define INVOICEHEADE @"invoice_heade"
+#define INVOICEADRESS @"invoice_adress"
+
 @interface AccountHanler : NSObject
 
 /**
@@ -91,6 +95,32 @@ static NSString * const ACCOUNT_IS_IDENTIFICATION = @"is_identification";
  */
 +(NSString *)reciveName;
 +(void)setreciveName:(NSString *)reciveName;
+
+
+
+
+
+
+/**
+ *  发票类型
+ */
++(NSString *)invoiceStyle;
++(void)setInvoiceStyle:(NSString *)invoiceStyle;
+
+
+/**
+ *  发票抬头
+ */
++(NSString *)invoiceHead;
++(void)setInvoiceHead:(NSString *)invoiceHead;
+
+
+/**
+ *  发票地址
+ */
++(NSString *)invoiceAdress;
++(void)setInvoiceAdress:(NSString *)invoiceAdress;
+
 
 
 +(void)deleteAccount;

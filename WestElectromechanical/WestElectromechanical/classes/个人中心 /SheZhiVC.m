@@ -179,9 +179,19 @@
                 
             }         handleConfirm:^{
                 
+                [AccountHanler setInvoiceAdress:nil];
+                [AccountHanler setInvoiceHead:nil];
+                [AccountHanler setInvoiceStyle:nil];
+                
                 [AccountHanler setLoginState:0];
                 
                 [AccountHanler saveUserId:nil];
+                
+                [AccountHanler setreciveName:nil];
+                [AccountHanler setRecivePhone:nil];
+                [AccountHanler setaddres:nil];
+                
+
                 
                 WARN_ALERT(@"注销成功");
                 

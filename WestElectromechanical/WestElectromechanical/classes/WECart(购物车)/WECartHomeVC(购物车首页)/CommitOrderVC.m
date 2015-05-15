@@ -14,6 +14,8 @@
 #import "AlwaysUsedAddresVC.h"
 #import "SendIFAPPDefault.h"
 #import "ClaimInvoiceVC.h"
+#import "UIButton+Extension.h"
+#import "CartOrderDetailVC.h"
 
 
 @interface CommitOrderVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
@@ -45,7 +47,7 @@
     
     we= [[WEHTTPHandler alloc]init];
     
-    _table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+    _table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT-100) style:UITableViewStylePlain];
     _table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
     
     self.view.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
@@ -54,7 +56,7 @@
     _table.dataSource =self;
     [self.view addSubview:_table];
     [self addFoot];
-
+    [self initBottomView];
    
 
 }
@@ -63,9 +65,9 @@
 {
     
    
-    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, VIEW_WIDETH, 150)];
+    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, VIEW_WIDETH, 130)];
     GlanceCell *footCell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:4];
-    footCell.frame = CGRectMake(0, 10, SCREEN_WIDTH, 140);
+    footCell.frame = CGRectMake(0, 0, SCREEN_WIDTH, 130);
     [footCell.layer setCornerRadius:4];
     footCell.backgroundColor = [UIColor whiteColor];
     footCell.backgroundColor = [UIColor whiteColor];
@@ -74,9 +76,6 @@
     footCell.subtractFeeLa.text =@"减免运费: 30";
     
     
-    UIImageView *lineimgv2 = [[UIImageView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(footCell.subtractFeeLa.frame)+6,  footCell.frame.size.width-40, 1)];
-    lineimgv2.backgroundColor =[UIColor appLineColor];
-    [footCell addSubview:lineimgv2];
     
     [footView addSubview:footCell];
     
@@ -100,12 +99,29 @@
             break;
         case 2:
         {
+            
+            if ([AccountHanler   reciveName].length==0) {
+                
+                return 55;
+                
+            }else{
+
             return 105;
+            }
         }
+             break;
         case 3:
         {
-            return 105;
+            if ( [AccountHanler invoiceHead].length==0) {
+                return 55;
+            }else{
+            
+                return 105;}
+            
+           
+
         }
+             break;
         case 4:
         {
             return 35;
@@ -141,11 +157,13 @@
         switch (indexPath.row) {
             case 0:
             {
-                UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 250, 25)];
+                UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, 250, 25)];
                 nameLa.textColor =[UIColor blackColor];
                 nameLa.font = [UIFont systemFontOfSize:12];
                 nameLa.textColor = [UIColor  lightGrayColor];
                 nameLa.tag =100;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+
                 [view addSubview:nameLa];
             
             }
@@ -169,7 +187,6 @@
             case 2:
             {
                 UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 150, 20)];
-                titleLa.text =@"收货地址";
                 titleLa.tag =103;
                 UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLa.frame), 180, 20)];
                 nameLa.font= [UIFont systemFontOfSize:14];
@@ -198,21 +215,21 @@
             case 3:
             {
                 UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 150, 20)];
-                titleLa.text =@"索要发票";
                 titleLa.tag =107;
                 titleLa.font= [UIFont systemFontOfSize:14];
                 
                 UILabel *invoiceLa = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLa.frame)+3, 150, 20)];
+                invoiceLa.tag =108;
                 invoiceLa.font =[UIFont systemFontOfSize:14];
                 
                 invoiceLa.textColor =[UIColor lightGrayColor];
                 UILabel *invoiceHeadLa = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(invoiceLa.frame)+3, 150, 20)];
                 invoiceHeadLa.textColor =[UIColor lightGrayColor];
-                
+                invoiceHeadLa.tag =109;
                 invoiceHeadLa.font =[UIFont systemFontOfSize:14];
                 UILabel *addresLa = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(invoiceHeadLa.frame)+3,150, 20 )];
                 addresLa.textColor =[UIColor lightGrayColor];
-                
+                addresLa.tag=110;
                 addresLa.font =[UIFont systemFontOfSize:14];
                 
                 [view  addSubview:titleLa];
@@ -280,16 +297,14 @@
               phoneLa.text = [AccountHanler recivePhone];
 
             
-            //            NSString *lininfo = [NSString stringWithFormat:@"%@",[[SendIFAPPDefault shareAppDefault]contactStr]];
+                       
             
             
-            
-            
-            //            wenbenLa.text =lininfo;
-            //            if ([[SendIFAPPDefault shareAppDefault]contactStr].length==0) {
-            //                cell.textLabel.text = @"请选择联系人:";
-            //                wenbenLa.text =@"";
-            //            }
+            if ([AccountHanler   reciveName].length==0) {
+                
+                view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 50);
+                
+            }
    
             
         }
@@ -297,23 +312,31 @@
         case 3:
         {
               view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 100);
-//            //            NSString *lininfo = [NSString stringWithFormat:@"%@",[[SendIFAPPDefault shareAppDefault]contactStr]];
-//            UILabel*wenbenLa = (UILabel*)[cell  viewWithTag:100];
-//            wenbenLa.numberOfLines = 3;
-//            //            wenbenLa.text =lininfo;
-//            wenbenLa.font= [UIFont systemFontOfSize:15];
             
+            
+            UILabel *titleLa = (UILabel*)[view viewWithTag:107];
+            UILabel *invoiceStyleLa = (UILabel*)[view viewWithTag:108];
+            UILabel *invoiceAddresLa = (UILabel*)[view viewWithTag:109];
+            UILabel *invoiceHeadLa = (UILabel*)[view viewWithTag:110];
+            titleLa.text =@"索要发票";
+            
+            
+            invoiceStyleLa.text =[AccountHanler invoiceStyle];
+            invoiceAddresLa.text = [AccountHanler invoiceAdress];
+            invoiceHeadLa.text = [AccountHanler invoiceHead];
+            
+
             
             
          
             
             
-//            cell.textLabel.font = [UIFont systemFontOfSize:15];
-//            cell.textLabel.text = @"联系人:";
-//                        if ([[SendIFAPPDefault shareAppDefault]contactStr].length==0) {
-//                            cell.textLabel.text = @"请选择联系人:";
-//                            wenbenLa.text =@"";
-//                        }
+
+                        if ([AccountHanler   invoiceHead].length==0) {
+                          
+                            view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 50);
+
+                        }
 
             
            
@@ -321,7 +344,7 @@
         }
             break;
         case 4:
-        {
+        {    view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 30);
             UILabel *nameLa = (UILabel*)[view viewWithTag:111];
 
             nameLa.text =@"支付宝";
@@ -350,7 +373,9 @@
             break;
         case 1:
         {
-            
+            CartOrderDetailVC *caod = [[CartOrderDetailVC alloc]init];
+            [self.navigationController pushViewController:caod animated:YES];
+
         }
             break;
         case 2:
@@ -372,8 +397,7 @@
             break;
         case 4:
         {
-            
-        }
+                   }
             break;
 
 
@@ -390,15 +414,44 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    
+    return YES;
 }
-*/
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+    
+}
+
+- (void)initBottomView
+{
+    UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_table.frame), SCREEN_WIDTH, 44)];
+    view.backgroundColor = [UIColor whiteColor];
+        UILabel *allPriceLa=  [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 70, 20)];
+    allPriceLa.font = [UIFont systemFontOfSize:14];
+    allPriceLa.text = @"总金额";
+    allPriceLa.textColor  =[UIColor  lightGrayColor];
+    [view addSubview:allPriceLa];
+    
+    
+    
+    UIButton *btn =[[UIButton alloc]initTarget:self WithTitle:@"提交订单" withColor:[UIColor whiteColor] action:@selector(payClick:)];
+    
+    [btn  setBackgroundColor:[UIColor  redColor]];
+    
+    btn.frame = CGRectMake(SCREEN_WIDTH-btn.size.width, 0, 70, 44);
+    [view addSubview:btn];
+    [self.view addSubview:view];
+    
+}
+-(void)payClick:(UIButton*)btn
+{
+
+    
+
+}
 @end
