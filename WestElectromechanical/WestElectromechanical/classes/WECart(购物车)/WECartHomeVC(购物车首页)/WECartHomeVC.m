@@ -152,7 +152,6 @@
     cell.wbgv.bottomView.jineLa.text =[NSString stringWithFormat:@"金额:%0.2f ",[mcm.p_num floatValue]*[mcm.p_price  floatValue]];
 ;
     
-    NSString *path = [NSString stringWithFormat:@"%@%@",kWEImgUrl,mcm.p_imgurl];
     
   [cell.wbgv setCartdeleteBlock:^(BOOL deleteNoOrYes) {
      
@@ -211,7 +210,9 @@
     
     
     
+       NSString *path = [NSString stringWithFormat:@"%@%@",kWEImgUrl,mcm.p_imgurl];
     DLog(@"输出这个路径%@",path);
+
     [ cell.wbgv.middleview.productImg  setWebImgUrl:path placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
 
    

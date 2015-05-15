@@ -15,6 +15,8 @@
 #import "AccountHanler.h"
 #import "CollectionM.h"
 #import "JsonToModel.h"
+#import "NSString+Base64.h"
+#import "UIImageView+WebCacheImg.h"
 
 @interface MyCollectionVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>{
     UIButton *shopingCartBtn,*editBtn,*deleteBtn;
@@ -78,7 +80,7 @@
     [we executeGetMyCollectionTaskWithUserId:[AccountHanler userId] withPage:[NSString stringWithFormat:@"%d",page] Success:^(id obj) {
         
         
-        NSLog(@"输出我的收藏的%@",_arr);
+      
         NSDictionary *dic = [obj objectForKey:@"products"];
         for (NSDictionary *dv in dic) {
             
@@ -86,7 +88,7 @@
             [_arr addObject:cm];
             [self.productCollection reloadData];
         }
-        
+          NSLog(@"输出我的收藏的%@",_arr);
     } failed:^(id obj) {
         
         
@@ -129,6 +131,7 @@
     return 1;
 }
 
+
 //每个UICollectionView展示的内容
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -136,13 +139,23 @@
     WEProductCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.backgroundColor =[UIColor whiteColor];
     CollectionM *cm = [_arr objectAtIndex:indexPath.row];
-    cell.productTitle.text =cm.p_name;
+    
+   
+    cell.productTitle.text = [cm.p_name  base64DecodedString];
     cell.productType.text = cm.p_version;
     
     cell.productBrand.text =cm.p_brand;
     cell.deleteBu.tag=[indexPath row]+1;
-    deleteBtn =cell.deleteBu;
+//    cell.productOriPrice.text =cm.p_price;
+//    cell.prodcutSalePrice.text =cm.p_v_price;
     
+     NSString *path = [NSString stringWithFormat:@"%@/%@",kWEProductImgUrl,cm.p_imgurl];
+    
+    DLog(@"输出我的路径%@",path);
+    [ cell.productImg  setWebImgUrl:path placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+
+    
+    deleteBtn =cell.deleteBu;
     [deleteBtn addTarget:self action:@selector(deleteClick:) forControlEvents:UIControlEventTouchUpInside];
     
 

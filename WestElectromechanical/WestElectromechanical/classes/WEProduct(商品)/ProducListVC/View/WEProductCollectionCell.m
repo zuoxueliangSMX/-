@@ -19,7 +19,7 @@
         
         UIImageView *productImg =[[UIImageView alloc]init];
         productImg.frame =CGRectMake(5,5,frame.size.width-10, frame.size.width-10);
-        [productImg setImage:[UIImage imageNamed:@"Product_Placeholder"]];
+//        [productImg setImage:[UIImage imageNamed:@"Product_Placeholder"]];
         productImg.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productImg];
         productImg.userInteractionEnabled=YES;
@@ -40,7 +40,7 @@
         UILabel *productTitle =[[UILabel alloc]init];
         productTitle.frame =CGRectMake(  CGRectGetMinX(productImg.frame),CGRectGetMaxY(productImg.frame)+5,frame.size.width-10,18);
         productTitle.numberOfLines =1;
-        productTitle.font =font(16);
+        productTitle.font =font(13);
         productTitle.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productTitle];
         _productTitle = productTitle;
@@ -48,7 +48,8 @@
         UILabel *productBrand =[[UILabel alloc]init];
         productBrand.frame =CGRectMake(  CGRectGetMinX(productImg.frame),CGRectGetMaxY(productTitle.frame)+5,(frame.size.width-15)/2.0,16);
         productBrand.numberOfLines =1;
-        productBrand.font =font(14);
+        productBrand.font =font(10);
+        productBrand.textColor = [UIColor lightGrayColor];
         productBrand.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productBrand];
         _productBrand = productBrand;
@@ -56,7 +57,8 @@
         UILabel *productType =[[UILabel alloc]init];
         productType.frame =CGRectMake(  CGRectGetMaxX(productBrand.frame)+5,CGRectGetMaxY(productTitle.frame)+5,(frame.size.width-15)/2,16);
         productType.numberOfLines =1;
-        productType.font =font(14);
+        productType.font =font(10);
+          productType.textColor = [UIColor lightGrayColor];
         productType.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productType];
         _productType = productType;
@@ -64,8 +66,8 @@
         UILabel *productOriPrice =[[UILabel alloc]init];
         productOriPrice.frame =CGRectMake(  CGRectGetMinX(productBrand.frame)+5,CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3,16);
         productOriPrice.numberOfLines =1;
-        productOriPrice.font =font(12);
-        productOriPrice.textColor =[UIColor redColor];
+        productOriPrice.font =font(10);
+               productOriPrice.textColor =[UIColor redColor];
         productOriPrice.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productOriPrice];
         _productOriPrice = productOriPrice;
@@ -87,20 +89,20 @@
     return self;
 }
 
-
-- (void)setSingleModel:(WEProductSingleModel *)singleModel
-{
-    _singleModel = singleModel;
-    
-    self.productTitle.text = singleModel.p_name;
-    self.productType.text =  singleModel.p_version;
-    self.productBrand.text = singleModel.p_brand;
-//    self.productOrder.text = singleModel.p_order_num;
-    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
-    self.productOriPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
-    self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
-    
-}
+//
+//- (void)setSingleModel:(WEProductSingleModel *)singleModel
+//{
+//    _singleModel = singleModel;
+//    
+//    self.productTitle.text = singleModel.p_name;
+//    self.productType.text =  singleModel.p_version;
+//    self.productBrand.text = singleModel.p_brand;
+////    self.productOrder.text = singleModel.p_order_num;
+//    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+//    self.productOriPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
+//    self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
+//    
+//}
 
 - (void)addCart:(UIButton *)btn
 {

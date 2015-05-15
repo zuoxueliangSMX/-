@@ -15,5 +15,7 @@
 @property(nonatomic,strong)NSString *p_price;
 @property(nonatomic,strong)NSString *p_v_price;
 @property(nonatomic,strong)NSString *p_version;
+@property(nonatomic,strong)NSString *p_imgurl;
+@property(nonatomic,strong)NSString *dis_price;
 
 @end
