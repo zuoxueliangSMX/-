@@ -149,6 +149,7 @@
     WEProductTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil) {
         cell = [[WEProductTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     WEProductSingleModel *singleModel =_products.products[indexPath.row];
@@ -161,6 +162,9 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    WEProductSingleModel *singleModel =_products.products[indexPath.row];
+    [self getProductDeatilData:singleModel];
 }
 
 
@@ -226,9 +230,17 @@
 {
 //    DLog(@"点击的是----%ld",indexPath.row);
     
-    WEHTTPHandler *handler = [[WEHTTPHandler alloc]init];
+    
     WEProductSingleModel *singleModel =_products.products[indexPath.row];
-    [handler executeGetProductDetailDataWithProductId:[_products.products[indexPath.row] pid] withSuccess:^(id obj) {
+    [self getProductDeatilData:singleModel];
+    
+
+}
+
+- (void)getProductDeatilData:(WEProductSingleModel *)singleModel
+{
+    WEHTTPHandler *handler = [[WEHTTPHandler alloc]init];
+    [handler executeGetProductDetailDataWithProductId:singleModel.pid withSuccess:^(id obj) {
         DLog(@"%@",obj);
         WEProductDetailModel *detailModel = (WEProductDetailModel *)obj;
         WEProductHandler *productHandler =[[WEProductHandler alloc]init];
@@ -245,7 +257,6 @@
     } withFailed:^(id obj) {
         DLog(@"%@",obj);
     }];
-    
 
 }
 

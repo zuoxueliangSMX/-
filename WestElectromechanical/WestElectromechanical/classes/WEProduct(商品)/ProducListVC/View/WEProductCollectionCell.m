@@ -20,22 +20,8 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        
-        
-        
-        
-        
-        [[NSNotificationCenter
-          defaultCenter] addObserver: self
-         
-         selector:
-         @selector(acceptShow)
-         
-         name:
-         @"acceptShow"
-         
-         object:
-         nil];
+        [[NSNotificationCenter defaultCenter] addObserver: self
+         selector:@selector(acceptShow) name:@"acceptShow" object:nil];
 
         UIImageView *productImg =[[UIImageView alloc]init];
         productImg.frame =CGRectMake(5,5,frame.size.width-10, frame.size.width-10);
@@ -109,20 +95,20 @@
     return self;
 }
 
-//
-//- (void)setSingleModel:(WEProductSingleModel *)singleModel
-//{
-//    _singleModel = singleModel;
-//    
-//    self.productTitle.text = singleModel.p_name;
-//    self.productType.text =  singleModel.p_version;
-//    self.productBrand.text = singleModel.p_brand;
-////    self.productOrder.text = singleModel.p_order_num;
-//    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
-//    self.productOriPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
-//    self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
-//    
-//}
+
+- (void)setSingleModel:(WEProductSingleModel *)singleModel
+{
+    _singleModel = singleModel;
+    
+    self.productTitle.text = singleModel.p_name;
+    self.productType.text =  singleModel.p_version;
+    self.productBrand.text = singleModel.p_brand;
+//    self.productOrder.text = singleModel.p_order_num;
+    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    self.productOriPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
+    self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
+    
+}
 
 - (void)addCart:(UIButton *)btn
 {

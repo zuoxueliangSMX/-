@@ -30,6 +30,7 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
+    self.title = @"优惠公告";
     UILabel *adLabel =[[UILabel alloc]init];
     adLabel.frame =CGRectMake(  0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
     adLabel.text = _noticeContent;

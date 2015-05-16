@@ -19,7 +19,7 @@
     if (self = [super initWithFrame:frame]) {
         
         UIButton *ALLBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-        ALLBtn.frame =CGRectMake(10, 10, 20, 20);
+        ALLBtn.frame =CGRectMake(10, 15, 20, 20);
         [ALLBtn setImage:[UIImage imageNamed:@"cart_notChose"] forState:UIControlStateNormal];
         [ALLBtn setImage:[UIImage imageNamed:@"cart_choseed"] forState:UIControlStateSelected];
         [ALLBtn setBackgroundColor:[UIColor clearColor]];
@@ -27,7 +27,7 @@
         [self addSubview:ALLBtn];
         _allButton = ALLBtn;
         
-        UILabel *allLa=  [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ALLBtn.frame), 10, 40, 20)];
+        UILabel *allLa=  [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ALLBtn.frame), 15, 30, 20)];
         allLa.font = [UIFont systemFontOfSize:14];
         allLa.text = @"全选";
         allLa.textColor  =[UIColor  darkGrayColor];
@@ -53,7 +53,7 @@
         clearingBtn.titleLabel.font = font(16);
         [clearingBtn  setBackgroundColor:[UIColor  redColor]];
         
-        clearingBtn.frame = CGRectMake(SCREEN_WIDTH-clearingBtn.size.width, 0, 70, 44);
+        clearingBtn.frame = CGRectMake(SCREEN_WIDTH-clearingBtn.size.width, 3, 70, 44);
         [self addSubview:clearingBtn];
 
     }

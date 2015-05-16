@@ -22,9 +22,9 @@
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:color forState:UIControlStateNormal];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    button.layer.cornerRadius = 5;
-    button.layer.borderColor =[UIColor lightGrayColor].CGColor;
-    button.layer.borderWidth =0.5;
+//    button.layer.cornerRadius = 5;
+//    button.layer.borderColor =[UIColor lightGrayColor].CGColor;
+//    button.layer.borderWidth =0.5;
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
     return item;
