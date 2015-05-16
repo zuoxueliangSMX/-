@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "WECartHomeCellBackgroudView.h"
-
 @interface WECartHomeCell : UITableViewCell
-@property(nonatomic,strong) WECartHomeCellBackgroudView*wbgv;
+@property (nonatomic ,strong)MyCartM *myCartModel;
+@property (nonatomic ,weak)WECartHomeCellBackgroudView *bgView;
 
 @end

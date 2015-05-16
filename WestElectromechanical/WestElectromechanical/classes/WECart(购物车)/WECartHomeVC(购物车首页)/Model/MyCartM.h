@@ -17,5 +17,7 @@
 @property(nonatomic,copy)NSString *p_version;
 @property(nonatomic,copy)NSString *p_name;
 @property(nonatomic,copy)NSString *p_num;
+@property (nonatomic ,assign)BOOL isDeleteNoOrYes;
+@property (nonatomic ,assign)BOOL isChoose;//是否被选中
 - (instancetype)initWithDict:(NSDictionary *)dict;
 @end
