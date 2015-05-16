@@ -53,8 +53,8 @@
 		9D0E523495E67FFBE6F2714B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37D720A9818131CA3C9CC92 /* libPods.a */; };
 		A32D858C1AFBB9B600BC0CB0 /* WEProductImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D858B1AFBB9B600BC0CB0 /* WEProductImgModel.m */; };
 		A32D858F1AFBBA3500BC0CB0 /* WEProductModelImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D858E1AFBBA3500BC0CB0 /* WEProductModelImgModel.m */; };
+		A36888371B077C3D00DEE1D9 /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = A36888361B077C3D00DEE1D9 /* citydict.plist */; };
 		A369CF4C1AEDBF20001F3DB7 /* WEHomeCityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CF4B1AEDBF20001F3DB7 /* WEHomeCityVC.m */; };
-		A369CF971AEE6CDD001F3DB7 /* citydict.plist in Resources */ = {isa = PBXBuildFile; fileRef = A369CF961AEE6CDD001F3DB7 /* citydict.plist */; };
 		A369CFAF1AEE70C4001F3DB7 /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CFA01AEE70C4001F3DB7 /* ChineseToPinyinResource.m */; };
 		A369CFB01AEE70C4001F3DB7 /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CFA21AEE70C4001F3DB7 /* HanyuPinyinOutputFormat.m */; };
 		A369CFB11AEE70C4001F3DB7 /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CFA41AEE70C4001F3DB7 /* NSString+PinYin4Cocoa.m */; };
@@ -262,9 +262,9 @@
 		A32D858B1AFBB9B600BC0CB0 /* WEProductImgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductImgModel.m; sourceTree = "<group>"; };
 		A32D858D1AFBBA3500BC0CB0 /* WEProductModelImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductModelImgModel.h; sourceTree = "<group>"; };
 		A32D858E1AFBBA3500BC0CB0 /* WEProductModelImgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductModelImgModel.m; sourceTree = "<group>"; };
+		A36888361B077C3D00DEE1D9 /* citydict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = citydict.plist; sourceTree = "<group>"; };
 		A369CF4A1AEDBF20001F3DB7 /* WEHomeCityVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeCityVC.h; sourceTree = "<group>"; };
 		A369CF4B1AEDBF20001F3DB7 /* WEHomeCityVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEHomeCityVC.m; sourceTree = "<group>"; };
-		A369CF961AEE6CDD001F3DB7 /* citydict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = citydict.plist; sourceTree = "<group>"; };
 		A369CF9F1AEE70C4001F3DB7 /* ChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyinResource.h; sourceTree = "<group>"; };
 		A369CFA01AEE70C4001F3DB7 /* ChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyinResource.m; sourceTree = "<group>"; };
 		A369CFA11AEE70C4001F3DB7 /* HanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
@@ -624,6 +624,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A36888341B077C3D00DEE1D9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A36888351B077C3D00DEE1D9 /* File */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A36888351B077C3D00DEE1D9 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				A36888361B077C3D00DEE1D9 /* citydict.plist */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
 		A369CF491AEDBF07001F3DB7 /* WEHomeCityVC(城市定位) */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,12 +911,12 @@
 				7FDEDC141AF7549C00911A02 /* SendIFAPPDefault.m */,
 				7FDEDC151AF7549C00911A02 /* SendIFAPPSeting.plist */,
 				A38A32521AEC033D00F7FE7C /* Others */,
-				A38A32531AEC033D00F7FE7C /* Resource */,
 				A38A32571AEC033D00F7FE7C /* Utils */,
 				A3C248AB1AF91DA000760C72 /* WEProduct(商品) */,
 				A38A32581AEC033D00F7FE7C /* WECart(购物车) */,
 				A38A325A1AEC033D00F7FE7C /* WECategory(分类) */,
 				A38A325C1AEC033D00F7FE7C /* WEHome(首页) */,
+				A36888341B077C3D00DEE1D9 /* Resource */,
 				A38A325E1AEC033D00F7FE7C /* WELeadPage(引导页) */,
 				A38A32601AEC033D00F7FE7C /* WEMine(我的) */,
 				A38A32621AEC033D00F7FE7C /* WESearch(搜索) */,
@@ -942,38 +958,6 @@
 				A38A32971AEC11E700F7FE7C /* ViewController.m */,
 			);
 			path = Others;
-			sourceTree = "<group>";
-		};
-		A38A32531AEC033D00F7FE7C /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				A38A32541AEC033D00F7FE7C /* File */,
-				A38A32551AEC033D00F7FE7C /* PNG */,
-				A38A32561AEC033D00F7FE7C /* Voice */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
-		A38A32541AEC033D00F7FE7C /* File */ = {
-			isa = PBXGroup;
-			children = (
-				A369CF961AEE6CDD001F3DB7 /* citydict.plist */,
-			);
-			path = File;
-			sourceTree = "<group>";
-		};
-		A38A32551AEC033D00F7FE7C /* PNG */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PNG;
-			sourceTree = "<group>";
-		};
-		A38A32561AEC033D00F7FE7C /* Voice */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Voice;
 			sourceTree = "<group>";
 		};
 		A38A32571AEC033D00F7FE7C /* Utils */ = {
@@ -1514,10 +1498,10 @@
 			files = (
 				A38A321C1AEBE98800F7FE7C /* Main.storyboard in Resources */,
 				7FE59F0E1AFB9E8C00D8ABA9 /* GlanceCell.xib in Resources */,
-				A369CF971AEE6CDD001F3DB7 /* citydict.plist in Resources */,
 				A38A32211AEBE98800F7FE7C /* LaunchScreen.xib in Resources */,
 				7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */,
 				A3883D821AFA186D00EC2CEA /* area.plist in Resources */,
+				A36888371B077C3D00DEE1D9 /* citydict.plist in Resources */,
 				7FDEDC171AF7549C00911A02 /* SendIFAPPSeting.plist in Resources */,
 				A369CFB51AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt in Resources */,
 			);

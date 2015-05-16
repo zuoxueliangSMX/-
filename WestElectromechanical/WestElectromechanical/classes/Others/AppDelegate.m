@@ -25,10 +25,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [self setUpConfig];
     [self loadingVC];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+/**
+ *  设置配置文件
+ */
+- (void)setUpConfig
+{
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kHomeCityKey]) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"上海" forKey:kHomeCityKey];
+    }
+    
+}
+
 - (void)loadingVC
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

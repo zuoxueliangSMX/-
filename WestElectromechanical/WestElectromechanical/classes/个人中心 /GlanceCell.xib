@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -263,7 +263,7 @@
                 <outlet property="titleLa" destination="7aj-iJ-VrJ" id="Drn-Q9-HzC"/>
                 <outlet property="totalPriceLa" destination="mTK-ix-aor" id="BIL-mC-cEa"/>
             </connections>
-            <point key="canvasLocation" x="-297" y="438"/>
+            <point key="canvasLocation" x="46" y="459"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="145" id="GRf-pc-dSA" customClass="GlanceCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
@@ -338,7 +338,7 @@
                 <outlet property="orderTimeLa" destination="TuG-MC-hXs" id="zgL-ev-hyg"/>
                 <outlet property="totalPriceLa" destination="mTK-ix-aor" id="8io-th-aGc"/>
             </connections>
-            <point key="canvasLocation" x="141" y="408.5"/>
+            <point key="canvasLocation" x="64" y="227.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="138" id="rYF-6b-LpT" customClass="GlanceCell">
             <rect key="frame" x="0.0" y="0.0" width="319" height="138"/>
@@ -409,7 +409,7 @@
                 <outlet property="totalCountLa" destination="8wk-37-Ryj" id="f85-Ay-PGf"/>
                 <outlet property="totalPriceLa" destination="mTK-ix-aor" id="4eo-lG-qT3"/>
             </connections>
-            <point key="canvasLocation" x="-45.5" y="649"/>
+            <point key="canvasLocation" x="45.5" y="689"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="138" id="ifN-Rw-bPn" customClass="GlanceCell">
             <rect key="frame" x="0.0" y="0.0" width="319" height="138"/>

@@ -249,6 +249,12 @@
     listTable.delegate =self;
     listTable.dataSource =self;
     listTable.backgroundColor =[UIColor clearColor];
+    //设置索引列文本的颜色
+    listTable.sectionIndexColor = [UIColor blackColor];
+    listTable.sectionIndexBackgroundColor=[UIColor clearColor];
+    listTable.sectionIndexTrackingBackgroundColor=[UIColor clearColor];
+    listTable.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
     [self.view addSubview:listTable];
     _listTable =listTable;
     _listTable.tableFooterView =[[UIView alloc]init];
@@ -315,7 +321,7 @@
 //searchBar进行搜索
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    _searchResults = [[NSMutableArray alloc]init];
+    [_searchResults removeAllObjects];
     if (_mySearchBar.text.length>0&&![ChineseInclude isIncludeChineseInString:_mySearchBar.text]) {
         for (int i=0; i<_searchData.count; i++) {
             BOOL isAdd =NO;
@@ -403,7 +409,7 @@
         UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
         view.backgroundColor =[UIColor colorFromHexCode:@"#ebebeb"];
         UILabel *sectionLabel =[[UILabel alloc]init];
-        sectionLabel.frame =CGRectMake(  10,0,15,20);
+        sectionLabel.frame =CGRectMake(  10,0,SCREEN_WIDTH-20,20);
         sectionLabel.numberOfLines =1;
         sectionLabel.font =font(15);
         sectionLabel.textColor =[UIColor colorFromHexCode:@"#999999"];
@@ -469,9 +475,16 @@
         cell.selectionStyle =UITableViewCellSelectionStyleNone;
 //        cell.accessoryType  =UITableViewCellAccessoryDisclosureIndicator;
     }
-    if (indexPath.section<1) {
-        cell.textLabel.text =@"上海";
-    }else cell.textLabel.text = [[_cities objectForKey:[_keys objectAtIndex:indexPath.section-1]] objectAtIndex:indexPath.row];
+    
+    if (tableView == self.listTable) {
+        if (indexPath.section<1) {
+            cell.textLabel.text =@"上海";
+        }else cell.textLabel.text = [[_cities objectForKey:[_keys objectAtIndex:indexPath.section-1]] objectAtIndex:indexPath.row];
+    }else{
+        cell.textLabel.text =_searchResults[indexPath.row];
+    }
+    
+   
     
     return cell;
 }
@@ -489,12 +502,15 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *city;
-    if (indexPath.section<1) {
-        city = @"上海";
-    }else {
-        city = [[_cities objectForKey:[_keys objectAtIndex:indexPath.section-1]] objectAtIndex:indexPath.row];
-    }
+    UITableViewCell *cell =[tableView cellForRowAtIndexPath:indexPath];
+    NSString *city = cell.textLabel.text;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:city forKey:kHomeCityKey];
+//    if (indexPath.section<1) {
+//        city = @"上海";
+//    }else {
+//        city = [[_cities objectForKey:[_keys objectAtIndex:indexPath.section-1]] objectAtIndex:indexPath.row];
+//    }
     if (_block) {
         _block(city);
     }

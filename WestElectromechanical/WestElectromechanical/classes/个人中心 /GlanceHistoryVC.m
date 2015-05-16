@@ -105,7 +105,7 @@
    
     [ cell.imgV  setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
 
-    
+    cell.imgV.contentMode =UIViewContentModeCenter;
     [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
     return cell;
     

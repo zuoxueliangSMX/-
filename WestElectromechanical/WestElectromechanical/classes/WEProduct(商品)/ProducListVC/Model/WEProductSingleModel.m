@@ -8,13 +8,14 @@
 
 #import "WEProductSingleModel.h"
 #import "NSString+val.h"
+#import "NSString+Base64.h"
 @implementation WEProductSingleModel
 - (instancetype)initWithDict:(NSDictionary *)dict
 {
     if (self = [super init]) {
         self.p_brand =[self stringFromValue:[dict objectForKey:@"p_brand"]];
         self.p_imgurl=[NSString stringWithFormat:@"%@/%@",kWEProductImgUrl,[self stringFromValue:[dict objectForKey:@"p_imgurl"]]];
-        self.p_name=[self stringFromValue:[dict objectForKey:@"p_name"]];
+        self.p_name=[[self stringFromValue:[dict objectForKey:@"p_name"]] base64DecodedString];
         self.p_order_num=[self stringFromValue:[dict objectForKey:@"p_order_num"]];
         self.p_price=[self stringFromValue:[dict objectForKey:@"p_price"]];
         self.p_v_price=[self stringFromValue:[dict objectForKey:@"p_v_price"]];

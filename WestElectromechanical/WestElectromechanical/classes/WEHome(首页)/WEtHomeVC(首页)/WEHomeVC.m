@@ -20,6 +20,7 @@
 #import "WEProductListVC.h"
 #import "WEProductDetailVC.h"
 #import "WEHomeAdDetailVC.h"
+#import "UIBarButtonItem+Extension.h"
 @interface WEHomeVC ()
 @property (nonatomic ,strong)NSMutableArray *imgurls;
 @property (nonatomic ,weak)WEHomeScrollView *homeScroll;
@@ -75,7 +76,10 @@
 
 - (void)setLeftItems
 {
-    UIBarButtonItem *right = [UIBarButtonItem addTarget:self WithTitle:[[NSUserDefaults standardUserDefaults] objectForKey:kHomeCityKey] withColor:[UIColor redColor] action:@selector(cityLocationClick:)];
+    UIBarButtonItem *right =[UIBarButtonItem
+                              itemWithImageName:@"Navigation_arrow_down"
+                              withTitle:[[[NSUserDefaults standardUserDefaults] objectForKey:kHomeCityKey] substringToIndex:2]
+                          highImageName:@"Navigation_arrow_down" withHighTitle:[[[NSUserDefaults standardUserDefaults] objectForKey:kHomeCityKey] substringToIndex:2] target:self action:@selector(cityLocationClick:)];
     /**
      *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
      *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
@@ -83,7 +87,7 @@
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
-    negativeSpacer.width = -15;
+    negativeSpacer.width = -5;
     self.navigationItem.leftBarButtonItems = @[negativeSpacer, right];
 
 }
@@ -92,6 +96,12 @@
     DLog(@"城市定位");
     WEHomeCityVC *homeCityVC =[[WEHomeCityVC alloc]init];
 //    WENavitationController *homeCity =[[WENavitationController alloc]initWithRootViewController:homeCity];
+    __weak WEHomeVC *bSelf = self;
+    [homeCityVC setHomeCityBlock:^(NSString *city) {
+//        NSString *cityStr =[city substringToIndex:2];
+        bSelf.navigationItem.leftBarButtonItems =nil;
+        [bSelf setLeftItems];
+    }];
     [self.navigationController pushViewController:homeCityVC animated:YES];
     
 }
@@ -137,10 +147,10 @@
     
     WELocationManager *mgr =[WELocationManager sharedWELocationManager];
     [mgr getLocationCity:^(NSString *cityString) {
-        [bSelf setLeftItems];
     }];
     
-    
+    [self setLeftItems];
+
     [self initNetData:@"北京"];
 }
 
