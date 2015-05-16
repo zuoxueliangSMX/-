@@ -72,6 +72,9 @@
 
 - (void)instantPayClick:(UIButton *)btn
 {
+    if (_clearingBlcok) {
+        _clearingBlcok();
+    }
     
 }
 - (void)ALLchooseClic:(UIButton *)btn
