@@ -54,6 +54,20 @@
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
     [self addRightItem];
+    [we executeGetCartListTaskWithUserId:[AccountHanler userId] withPage:@"1" Success:^(id obj) {
+        
+        DLog(@"输出我的购物车里面的数据%@",obj);
+        _cartsModel = (WECartsModel *)obj;
+        [self.cartTable reloadData];
+        _totalPrice = 0.00;
+        _totalProduc = 0;
+        _bottomView.allButton.selected = NO;
+        [self setBottomData:_bottomView];
+        
+        
+    } failed:^(id obj) {
+        
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -92,16 +106,7 @@
     [self initCartTable];
     [self  initBottomView];
     
-    [we executeGetCartListTaskWithUserId:[AccountHanler userId] withPage:@"1" Success:^(id obj) {
-        
-        DLog(@"输出我的购物车里面的数据%@",obj);
-        _cartsModel = (WECartsModel *)obj;
-        [self.cartTable reloadData];
-        
-        
-    } failed:^(id obj) {
-        
-    }];
+
 }
 
 - (void)initBottomView
@@ -251,37 +256,20 @@
                         _totalProduc -= [myCartModel.p_num integerValue];
                         
                         [bSelf setBottomData:_bottomView];
-                        [_cartsModel.products removeObjectAtIndex:indexPath.row];
-                        [_cartTable reloadData];
                         
                     }
+                    [_cartsModel.products removeObjectAtIndex:indexPath.row];
+                    [_cartTable reloadData];
                 }
                 
                 } failed:^(id obj) {
-                    
-                    
-                    
+ 
                 }];
 
         }];
         
         alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
-        
-        
-        
         [alertView show];
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         }];
     
@@ -307,24 +295,6 @@
        }
        
        [bSelf setBottomData:_bottomView];
-//       _bottomView.totalCountLa.text =[NSString stringWithFormat:@"总计商品：%ld",_totalProduc];
-//       _bottomView.allPriceLa.text =[NSString stringWithFormat:@"总金额：￥%.2f",_totalPrice];
-//       
-//       NSMutableAttributedString *totalCountLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.totalCountLa.text];
-//       
-//       NSRange totalCountLaRange = NSMakeRange(5, [totalCountLa length]-5);
-//       
-//       [totalCountLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:totalCountLaRange];
-//       [_bottomView.totalCountLa setAttributedText:totalCountLa];
-//       
-//       NSMutableAttributedString *allPriceLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.allPriceLa.text];
-//       
-//       NSRange allPriceLaRange = NSMakeRange(4, [allPriceLa length]-4);
-//       
-//       [allPriceLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:allPriceLaRange];
-//       
-//       [_bottomView.allPriceLa setAttributedText:allPriceLa];
-       
 
        bCell.myCartModel = cm;
        
@@ -371,23 +341,7 @@
                     _totalProduc --;
                     _totalPrice -= [cm.p_price floatValue];
                     [bSelf setBottomData:_bottomView];
-//                    _bottomView.totalCountLa.text =[NSString stringWithFormat:@"总计商品：%ld",_totalProduc];
-//                    _bottomView.allPriceLa.text =[NSString stringWithFormat:@"总金额：￥%.2f",_totalPrice];
-//                    
-//                    NSMutableAttributedString *totalCountLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.totalCountLa.text];
-//                    
-//                    NSRange totalCountLaRange = NSMakeRange(5, [totalCountLa length]-5);
-//                    
-//                    [totalCountLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:totalCountLaRange];
-//                    [_bottomView.totalCountLa setAttributedText:totalCountLa];
-//                    
-//                    NSMutableAttributedString *allPriceLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.allPriceLa.text];
-//                    
-//                    NSRange allPriceLaRange = NSMakeRange(4, [allPriceLa length]-4);
-//                    
-//                    [allPriceLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:allPriceLaRange];
-//                    
-//                    [_bottomView.allPriceLa setAttributedText:allPriceLa];
+
 
                 }
                 
@@ -420,23 +374,6 @@
                     _totalPrice += [cm.p_price floatValue];
                     
                     [bSelf setBottomData:_bottomView];
-//                    _bottomView.totalCountLa.text =[NSString stringWithFormat:@"总计商品：%ld",_totalProduc];
-//                    _bottomView.allPriceLa.text =[NSString stringWithFormat:@"总金额：￥%.2f",_totalPrice];
-//                    
-//                    NSMutableAttributedString *totalCountLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.totalCountLa.text];
-//                    
-//                    NSRange totalCountLaRange = NSMakeRange(5, [totalCountLa length]-5);
-//                    
-//                    [totalCountLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:totalCountLaRange];
-//                    [_bottomView.totalCountLa setAttributedText:totalCountLa];
-//                    
-//                    NSMutableAttributedString *allPriceLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.allPriceLa.text];
-//                    
-//                    NSRange allPriceLaRange = NSMakeRange(4, [allPriceLa length]-4);
-//                    
-//                    [allPriceLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:allPriceLaRange];
-//                    
-//                    [_bottomView.allPriceLa setAttributedText:allPriceLa];
 
                 }
 

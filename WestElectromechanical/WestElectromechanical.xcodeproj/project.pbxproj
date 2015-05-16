@@ -169,8 +169,8 @@
 
 /* Begin PBXFileReference section */
 		2BAB02AEF7A18EC6E0E34F4A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		7F0CF6931B07B2F300E0BF57 /* WECartHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WECartHomeVC.h; path = ../WECartHomeVC.h; sourceTree = "<group>"; };
-		7F0CF6941B07B2F300E0BF57 /* WECartHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WECartHomeVC.m; path = ../WECartHomeVC.m; sourceTree = "<group>"; };
+		7F0CF6931B07B2F300E0BF57 /* WECartHomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartHomeVC.h; sourceTree = "<group>"; };
+		7F0CF6941B07B2F300E0BF57 /* WECartHomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartHomeVC.m; sourceTree = "<group>"; };
 		7F62FF501AFC95AC00A93A87 /* TLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAlertView.h; sourceTree = "<group>"; };
 		7F62FF511AFC95AC00A93A87 /* TLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAlertView.m; sourceTree = "<group>"; };
 		7F8B1AA61AFA01560085FE2D /* UIBarButtonItem+BarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+BarButtonItem.h"; sourceTree = "<group>"; };
@@ -984,6 +984,8 @@
 			children = (
 				A3ADC42D1B024B0600B00FD2 /* Model */,
 				A3C48FB01AEFCFFC001D9717 /* View */,
+				7F0CF6931B07B2F300E0BF57 /* WECartHomeVC.h */,
+				7F0CF6941B07B2F300E0BF57 /* WECartHomeVC.m */,
 				7FE18B3F1B04A111004552B1 /* CommitOrderVC.h */,
 				7FE18B401B04A111004552B1 /* CommitOrderVC.m */,
 				7FE2C9B31B050250005C1FE9 /* ClaimInvoiceVC.h */,
@@ -1396,8 +1398,6 @@
 		A3C48FB01AEFCFFC001D9717 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7F0CF6931B07B2F300E0BF57 /* WECartHomeVC.h */,
-				7F0CF6941B07B2F300E0BF57 /* WECartHomeVC.m */,
 				A3C48FB11AEFD00D001D9717 /* WECartHomeCell.h */,
 				A3C48FB21AEFD00D001D9717 /* WECartHomeCell.m */,
 				A3C48FB41AEFD0B8001D9717 /* WECartHomeCellBackgroudView.h */,
