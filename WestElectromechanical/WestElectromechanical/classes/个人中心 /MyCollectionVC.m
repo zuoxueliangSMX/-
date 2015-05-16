@@ -17,6 +17,7 @@
 #import "JsonToModel.h"
 #import "NSString+Base64.h"
 #import "UIImageView+WebCacheImg.h"
+#import "WECartHomeVC.h"
 
 @interface MyCollectionVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>{
     UIButton *shopingCartBtn,*editBtn,*deleteBtn;
@@ -33,6 +34,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    
+    [self initNetData:1];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -44,13 +48,13 @@
     shopingCartBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 25, 25)];
     shopingCartBtn.backgroundColor = [UIColor clearColor];
     [shopingCartBtn setBackgroundImage:[UIImage imageNamed:@"Navitation_Cart"] forState:UIControlStateNormal];
-    [shopingCartBtn addTarget:self action:@selector(rigBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [shopingCartBtn addTarget:self action:@selector(shopingCartClick:) forControlEvents:UIControlEventTouchUpInside];
     editBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shopingCartBtn.frame)+5, 5, 50, 30)];
     editBtn.backgroundColor = [UIColor clearColor];
     [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
     
-    [editBtn setTitle:@"取消编辑" forState:UIControlStateSelected];
-    editBtn.titleLabel.font =[UIFont systemFontOfSize:12];
+    [editBtn setTitle:@"取消" forState:UIControlStateSelected];
+    editBtn.titleLabel.font =[UIFont systemFontOfSize:15];
     [editBtn addTarget:self action:@selector(rigBtnClick:) forControlEvents:UIControlEventTouchUpInside];
      UIView * view =[[UIView alloc]init];
     [view addSubview:shopingCartBtn];
@@ -71,8 +75,7 @@
     self.title = @"我的收藏";
     [self addRightItem];
     [self initCollectionView];
-    [self initNetData:1];
-    }
+        }
 
 
 - (void)initNetData:(NSInteger)page
@@ -146,12 +149,13 @@
     
     cell.productBrand.text =cm.p_brand;
     cell.deleteBu.tag=[indexPath row]+1;
-//    cell.productOriPrice.text =cm.p_price;
-//    cell.prodcutSalePrice.text =cm.p_v_price;
+    
+    cell.productOriPrice.text =[NSString stringWithFormat:@"¥%@",cm.p_v_price];
+    cell.prodcutSalePrice.text =[NSString stringWithFormat:@"¥%@",cm.p_price];
     
      NSString *path = [NSString stringWithFormat:@"%@/%@",kWEProductImgUrl,cm.p_imgurl];
     
-    DLog(@"输出我的路径%@",path);
+   
     [ cell.productImg  setWebImgUrl:path placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
 
     
@@ -198,23 +202,31 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    DLog(@"点击的是----%ld",indexPath.row);
+    DLog(@"点击的是----%d",indexPath.row);
 }
 BOOL  isClick ;
 -(void)rigBtnClick:(UIButton *)btn
 {
+    
+    
+    [[NSNotificationCenter
+      defaultCenter] postNotificationName:@"acceptShow"
+     
+     object:self];
+
     if ( btn ==editBtn) {
         isClick = !isClick;
         
         if (isClick) {
             
-            deleteBtn.hidden=NO;
-            [btn setTitle:@"取消编辑" forState:UIControlStateNormal ];
+            
+            
+            [btn setTitle:@"取消" forState:UIControlStateNormal ];
             return;
             
+            
         }else {
-//                [_productCollection set];
-            deleteBtn.hidden =YES;
+            
             [btn setTitle:@"编辑" forState:UIControlStateNormal];
         }
         
@@ -239,25 +251,39 @@ BOOL  isClick ;
     
         CollectionM  *cm =[_arr objectAtIndex: row];
     
-     [we  executeDeleteMyCollectionTaskWithUserId:@"1002" withProductIds:cm.p_id Success:^(id obj) {
+    
+        [_arr removeObject:cm];
+     [we  executeDeleteMyCollectionTaskWithUserId:[AccountHanler userId] withProductIds:cm.p_id Success:^(id obj) {
           DLog(@"删除%@",obj);
          if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
-            [self.productCollection reloadData];
-             WARN_ALERT(@"删除成功");
-         }
+           
+           
+
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 [self.productCollection reloadData];
+                 WARN_ALERT(@"删除成功");
+
+                 
+             });
+             
+           
+            
+
+
+             
+                      }
      } failed:^(id obj) {
          
      }];
 
 }
-/*
-#pragma mark - Navigation
+-(void)shopingCartClick:(UIButton*)btn
+{
+    
+    WECartHomeVC * wc = [[WECartHomeVC alloc]init];
+    [self.navigationController pushViewController:wc animated:YES];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 @end
