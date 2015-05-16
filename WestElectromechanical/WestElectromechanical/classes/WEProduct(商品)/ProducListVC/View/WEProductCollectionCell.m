@@ -10,6 +10,10 @@
 #import "UIButton+Extension.h"
 #import "UIImageView+WebCacheImg.h"
 @interface WEProductCollectionCell()
+{
+
+    BOOL isClick;
+}
 
 @end
 @implementation WEProductCollectionCell
@@ -17,6 +21,22 @@
 {
     if (self = [super initWithFrame:frame]) {
         
+        
+        
+        
+        
+        [[NSNotificationCenter
+          defaultCenter] addObserver: self
+         
+         selector:
+         @selector(acceptShow)
+         
+         name:
+         @"acceptShow"
+         
+         object:
+         nil];
+
         UIImageView *productImg =[[UIImageView alloc]init];
         productImg.frame =CGRectMake(5,5,frame.size.width-10, frame.size.width-10);
 //        [productImg setImage:[UIImage imageNamed:@"Product_Placeholder"]];
@@ -108,5 +128,22 @@
 {
     DLog(@"添加到购物车");
 }
+
+-(void)acceptShow{
+
+    isClick =!isClick;
+    
+    if (isClick) {
+         self.deleteBu.hidden =NO;
+    }else{
+    
+     self.deleteBu.hidden =YES;
+    
+    
+    }
+   
+
+}
+
 
 @end

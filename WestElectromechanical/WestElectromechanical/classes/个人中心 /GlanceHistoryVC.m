@@ -11,6 +11,8 @@
 #import "WEProductHandler.h"
 #import "UIImageView+WebCacheImg.h"
 #import "RDVTabBarController.h"
+#import "NSString+Base64.h"
+
 @interface GlanceHistoryVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     
@@ -94,13 +96,15 @@
         
     }
     WEProductSingleModel *singleModel =_totalHistoryProducts[indexPath.row];
-    [cell.imgV setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
-    cell.titleLa.text=singleModel.p_name;
+    cell.titleLa.text=[singleModel.p_name base64DecodedString];
     cell.orderNum.text =singleModel.p_order_num;
-    cell.styleBrand.text =singleModel.p_brand;
-    cell.priceLa.text =singleModel.p_price;
-    cell.memberPrice.text =singleModel.p_v_price;
-//    cell.cartBtn.image= [UIImage imageNamed:@"Product_AddCart"];
+     cell.styleBrand.text=  [NSString stringWithFormat:@"型号:%@  品牌:%@",singleModel.p_version,singleModel.p_brand];
+    
+    cell.priceLa.text =[NSString stringWithFormat:@"¥%@",singleModel.p_price];
+    cell.memberPrice.text =[NSString stringWithFormat:@"会员价:%@",singleModel.p_v_price];
+   
+    [ cell.imgV  setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+
     
     [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
     return cell;
@@ -109,14 +113,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-//    FreeLineDetailVC *free =[[FreeLineDetailVC alloc]init];
-//    
-//    
-//    ZyxM*zm = [zyxArr objectAtIndex:indexPath.row];
-//    free.zm =zm;
-//    
-//    
-//    [self.navigationController pushViewController:free animated:YES];
+
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
