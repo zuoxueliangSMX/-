@@ -16,6 +16,9 @@
 #import "UIButton+Extension.h"
 #import "CommitOrderVC.h"
 #import "WECartBottomView.h"
+#import "UIBarButtonItem+Extension.h"
+#import "RDVTabBarController.h"
+#import "AppDelegate.h"
 @interface WECartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 {
 
@@ -43,22 +46,50 @@
 
 @implementation WECartHomeVC
 
-
+#pragma mark -
+#pragma mark - pop和push控制器时的操作
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+    [self addRightItem];
     [we executeGetCartListTaskWithUserId:[AccountHanler userId] withPage:@"1" Success:^(id obj) {
-    
+        
         DLog(@"输出我的购物车里面的数据%@",obj);
         _cartsModel = (WECartsModel *)obj;
         [self.cartTable reloadData];
-
+        
         
     } failed:^(id obj) {
         
     }];
-    
+
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+- (void)addRightItem{
+   
+   UIBarButtonItem *right = [UIBarButtonItem itemWithImageName:@"Navigation_Add" highImageName:@"Navigation_Add" target:self action:@selector(changeCategory:)];
+    /**
+     *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
+     *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
+     */
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = -5;
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, right];
+}
+- (void)changeCategory:(UIButton*)btn{
+    NSLog(@"添加好友");
+    AppDelegate *delegate =(AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.tabBarController.selectedIndex =2;
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -66,7 +97,6 @@
     we = [[WEHTTPHandler alloc]init];
     
     arr = [[NSMutableArray alloc] initWithCapacity:0];
-    
    
     [self initCartTable];
     [self  initBottomView];
@@ -77,10 +107,9 @@
     
     WECartBottomView *bottomView =[[WECartBottomView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_cartTable.frame), SCREEN_WIDTH, 50)];
     bottomView.backgroundColor = [UIColor whiteColor];
-    
+    __weak WECartHomeVC *bSelf = self;
     __weak WECartBottomView *weekBottomView = bottomView;
     [bottomView setCartBottomViewAllChooseBlock:^(BOOL isSelected) {
-       
         _totalPrice =0.00;
         _totalProduc = 0;
         if (isSelected) {
@@ -117,6 +146,12 @@
         
     }];
      [bottomView setCartBottomViewClearingBlock:^{
+         
+         if (_totalProduc>0) {
+             CommitOrderVC *myorder =[[CommitOrderVC alloc]init];
+             
+             [self.navigationController pushViewController:myorder animated:YES];
+         }
         
     }];
     [self.view addSubview:bottomView];
@@ -392,34 +427,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)instantPayClick:(UIButton*)btn
-{
-
-    CommitOrderVC *myorder =[[CommitOrderVC alloc]init];
-    
-    [self.navigationController pushViewController:myorder animated:YES];
-}
-
--(void)ALLchooseClic :(UIButton*)btn
-{
-    isClick = !isClick;
-    
-    if (isClick) {
-        
-        
-        btn.selected =YES;
-       
-        
-        
-    }else{
-        
-        
-        btn.selected = NO;
-        
-        
-        
-    }
 
 
-}
+
 @end
