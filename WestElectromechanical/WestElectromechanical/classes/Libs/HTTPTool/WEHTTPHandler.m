@@ -935,7 +935,7 @@
                                              failed:(FailedBlock)failed
 {
     
-    [AlertUtil showAlertWithText:@"获取购物车列表"];
+    [AlertUtil showAlertWithText:@"修改购物车里单个产品购买数量"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_UPDATECARTPRODUCTCOUNT WithPath:@""];
     NSString *params = [NSString stringWithFormat:@"uid=%@&pid=%@&num=%@",userId,productId,count];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
