@@ -68,6 +68,7 @@
 		A37359261AFDFECA00484A59 /* WEThirdCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A37359251AFDFECA00484A59 /* WEThirdCategoryVC.m */; };
 		A373592C1AFDFF1F00484A59 /* WEBaseCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A373592B1AFDFF1F00484A59 /* WEBaseCategoryVC.m */; };
 		A373592F1AFE26D700484A59 /* WESecondCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A373592E1AFE26D700484A59 /* WESecondCategoryVC.m */; };
+		A37641B81B072A3600F5E75F /* WECartBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A37641B71B072A3600F5E75F /* WECartBottomView.m */; };
 		A37F75601AF3DF040054B677 /* WECartHomeCellBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = A37F755F1AF3DF040054B677 /* WECartHomeCellBottomView.m */; };
 		A3843ECC1AF47A6000FDE84F /* AccountHanler.m in Sources */ = {isa = PBXBuildFile; fileRef = A3843EC41AF47A6000FDE84F /* AccountHanler.m */; };
 		A3843ECD1AF47A6000FDE84F /* UserDefaultsUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A3843EC61AF47A6000FDE84F /* UserDefaultsUtils.m */; };
@@ -290,6 +291,8 @@
 		A373592B1AFDFF1F00484A59 /* WEBaseCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEBaseCategoryVC.m; sourceTree = "<group>"; };
 		A373592D1AFE26D700484A59 /* WESecondCategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WESecondCategoryVC.h; sourceTree = "<group>"; };
 		A373592E1AFE26D700484A59 /* WESecondCategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WESecondCategoryVC.m; sourceTree = "<group>"; };
+		A37641B61B072A3600F5E75F /* WECartBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartBottomView.h; sourceTree = "<group>"; };
+		A37641B71B072A3600F5E75F /* WECartBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartBottomView.m; sourceTree = "<group>"; };
 		A37D720A9818131CA3C9CC92 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37F755E1AF3DF040054B677 /* WECartHomeCellBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartHomeCellBottomView.h; sourceTree = "<group>"; };
 		A37F755F1AF3DF040054B677 /* WECartHomeCellBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartHomeCellBottomView.m; sourceTree = "<group>"; };
@@ -1419,6 +1422,8 @@
 				A3C48FB81AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m */,
 				A37F755E1AF3DF040054B677 /* WECartHomeCellBottomView.h */,
 				A37F755F1AF3DF040054B677 /* WECartHomeCellBottomView.m */,
+				A37641B61B072A3600F5E75F /* WECartBottomView.h */,
+				A37641B71B072A3600F5E75F /* WECartBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1614,6 +1619,7 @@
 				A3C0AFB81B04F179008F6900 /* WEProductComments.m in Sources */,
 				A38851C01AED36C40019D6E5 /* UIImageView+WebCacheImg.m in Sources */,
 				7FDEDC091AF71D6400911A02 /* MASConstraintMaker.m in Sources */,
+				A37641B81B072A3600F5E75F /* WECartBottomView.m in Sources */,
 				A38A32951AEC0CB000F7FE7C /* UIColor+FlatUI.m in Sources */,
 				A32D858C1AFBB9B600BC0CB0 /* WEProductImgModel.m in Sources */,
 				A3ADFDB91B00F4570029795A /* WEHomeAdDetailVC.m in Sources */,

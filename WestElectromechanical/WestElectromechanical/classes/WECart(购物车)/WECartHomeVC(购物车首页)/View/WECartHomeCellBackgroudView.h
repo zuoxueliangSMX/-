@@ -9,18 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "WECartHomeCellBottomView.h"
 #import "WECartHomeCellMiddleInfoView.h"
-typedef void (^cartHomeDeleteBtnBlock)(BOOL deleteNoOrYes);
 
-@interface WECartHomeCellBackgroudView : UIView{
-    
+typedef void (^cartHomeDeleteBtnBlock)(void);
 
-    UIButton *deleteBtn;
-    
-     __strong cartHomeDeleteBtnBlock _deleteBtnBlock;
-
+@interface WECartHomeCellBackgroudView : UIView
+{
+    __strong cartHomeDeleteBtnBlock _deleteBtnBlock;
 }
-@property(nonatomic,strong)WECartHomeCellBottomView *bottomView;
-@property(nonatomic,strong)WECartHomeCellMiddleInfoView *middleview;
+@property (nonatomic ,strong)MyCartM *myCartModel;
+@property(nonatomic,weak)WECartHomeCellBottomView *bottomView;
+@property(nonatomic,weak)WECartHomeCellMiddleInfoView *middleview;
 - (void)setCartdeleteBlock:(cartHomeDeleteBtnBlock)deleteBtnBlock;
 
 

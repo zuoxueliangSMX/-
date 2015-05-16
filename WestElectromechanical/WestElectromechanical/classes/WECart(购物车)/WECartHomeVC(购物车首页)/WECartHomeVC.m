@@ -15,13 +15,13 @@
 #import "AccountHanler.h"
 #import "UIButton+Extension.h"
 #import "CommitOrderVC.h"
+#import "WECartBottomView.h"
 @interface WECartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 {
 
    int _num;
     UILabel *totalPriceLa;
     UITextField *qnumTF;
-       NSString *str;
     WEHTTPHandler *we;
   __block  NSMutableArray *arr;
 
@@ -33,7 +33,9 @@
 /**
  *  购物车TableView
  */
+@property (nonatomic ,weak)WECartBottomView *bottomView;
 @property (nonatomic ,strong)UITableView *cartTable;
+
 @property (nonatomic ,strong)WECartsModel *cartsModel;
 
 @end
@@ -58,6 +60,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     we = [[WEHTTPHandler alloc]init];
     
     arr = [[NSMutableArray alloc] initWithCapacity:0];
@@ -69,45 +73,57 @@
 
 - (void)initBottomView
 {
-    UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_cartTable.frame), SCREEN_WIDTH, 44)];
     
-    UIButton *ALLBtn =[UIButton buttonWithType:UIButtonTypeCustom];
-    ALLBtn.frame =CGRectMake(10, 10, 20, 20);
-    [ALLBtn setImage:[UIImage imageNamed:@"cart_notChose"] forState:UIControlStateNormal];
-    [ALLBtn setImage:[UIImage imageNamed:@"cart_choseed"] forState:UIControlStateSelected];
-    [ALLBtn setBackgroundColor:[UIColor clearColor]];
-    [ALLBtn addTarget:self action:@selector(ALLchooseClic:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:ALLBtn];
-    UILabel *allLa=  [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(ALLBtn.frame), 10, 40, 20)];
-    allLa.font = [UIFont systemFontOfSize:14];
-    allLa.text = @"全选";
-    allLa.textColor  =[UIColor  darkGrayColor];
-    [view addSubview:allLa];
+    WECartBottomView *bottomView =[[WECartBottomView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_cartTable.frame), SCREEN_WIDTH, 50)];
+    bottomView.backgroundColor = [UIColor whiteColor];
     
-    
-    UILabel *totalCountLa=  [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(allLa.frame)+10, 5, 70, 17)];
-    totalCountLa.font = [UIFont systemFontOfSize:14];
-    totalCountLa.text = @"总计";
-    totalCountLa.textColor  =[UIColor  lightGrayColor];
-    [view addSubview:totalCountLa];
-    
-    
-    UILabel *allPriceLa=  [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(allLa.frame)+10, CGRectGetMaxY(allLa.frame)-4, 70, 17)];
-    allPriceLa.font = [UIFont systemFontOfSize:14];
-    allPriceLa.text = @"总金额";
-    allPriceLa.textColor  =[UIColor  lightGrayColor];
-    [view addSubview:allPriceLa];
-    
-    
-    
-    UIButton *btn =[[UIButton alloc]initTarget:self WithTitle:@"去结算" withColor:[UIColor whiteColor] action:@selector(instantPayClick:)];
-    
-    [btn  setBackgroundColor:[UIColor  redColor]];
-    
-    btn.frame = CGRectMake(SCREEN_WIDTH-btn.size.width, 0, 70, 44);
-    [view addSubview:btn];
-    [self.view addSubview:view];
-    
+    __weak WECartBottomView *weekBottomView = bottomView;
+    [bottomView setCartBottomViewAllChooseBlock:^(BOOL isSelected) {
+       
+        if (isSelected) {
+            for (MyCartM *myCartModel in _cartsModel.products) {
+                myCartModel.isChoose = NO;
+                
+
+            }
+            weekBottomView.totalCountLa.text =@"总计商品：0";
+            weekBottomView.allPriceLa.text =@"总金额：￥0";
+            [_cartTable reloadData];
+        }else{
+        
+            NSInteger productCount =0;
+            CGFloat  productPrice =0.00;
+            for (MyCartM *myCartModel in _cartsModel.products) {
+                myCartModel.isChoose = YES;
+                productCount +=[myCartModel.p_num integerValue];
+                productPrice += [myCartModel.p_num integerValue]*[myCartModel.p_price floatValue];
+            }
+            weekBottomView.totalCountLa.text =[NSString stringWithFormat:@"总计商品：%ld",productCount];
+            weekBottomView.allPriceLa.text =[NSString stringWithFormat:@"总金额：￥%.2f",productPrice];
+
+            NSMutableAttributedString *totalCountLa = [[NSMutableAttributedString alloc] initWithString:weekBottomView.totalCountLa.text];
+            
+            NSRange totalCountLaRange = NSMakeRange(5, [totalCountLa length]-5);
+
+            [totalCountLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:totalCountLaRange];
+            [weekBottomView.totalCountLa setAttributedText:totalCountLa];
+            
+            NSMutableAttributedString *allPriceLa = [[NSMutableAttributedString alloc] initWithString:weekBottomView.allPriceLa.text];
+            
+            NSRange allPriceLaRange = NSMakeRange(4, [allPriceLa length]-4);
+            
+            [allPriceLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:allPriceLaRange];
+ 
+            [weekBottomView.allPriceLa setAttributedText:allPriceLa];
+            [_cartTable reloadData];
+        }
+    }];
+     [bottomView setCartBottomViewClearingBlock:^{
+        
+    }];
+    [self.view addSubview:bottomView];
+    _bottomView = bottomView;
+       
 }
 
 -(void)initCartTable
@@ -116,6 +132,8 @@
     _cartTable.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-44);
     _cartTable.delegate =self;
     _cartTable.dataSource =self;
+    _cartTable.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
+    _cartTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     _cartTable.backgroundColor =[UIColor clearColor];
     [self.view addSubview:_cartTable];
     _cartTable.tableFooterView =[[UIView alloc]init];
@@ -131,7 +149,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return 185;
 }
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -139,137 +157,115 @@
     WECartHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil) {
         cell = [[WECartHomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     MyCartM *mcm = [_cartsModel.products objectAtIndex:indexPath.row];
-    cell.wbgv.middleview.priceLabel.text =[NSString stringWithFormat:@"¥ %@",mcm.p_price];
-
-    cell.wbgv.middleview.versionBrandLa.text =[NSString stringWithFormat:@"型号:%@ 品牌:%@",mcm.p_version,mcm.p_brand];
-
-    cell.wbgv.middleview.productLabel.text =mcm.p_name;
-    cell.wbgv.middleview.productCartIdLabel.text =[NSString stringWithFormat:@"西域订货号:%@ ",mcm.p_order_num];
-    cell.wbgv.bottomView.jineLa.text =[NSString stringWithFormat:@"金额:%0.2f ",[mcm.p_num floatValue]*[mcm.p_price  floatValue]];
-;
+    cell.myCartModel = mcm;
     
+    [cell.bgView setCartdeleteBlock:^{
+        
+        [we executeDeleteCartProductTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id Success:^(id obj) {
+            
+            DLog(@"输出删除是否成功的信息%@",obj);
+            if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+                WARN_ALERT(@"删除成功");
+                [_cartsModel.products removeObjectAtIndex:indexPath.row];
+                [_cartTable reloadData];
+            }
+            
+        } failed:^(id obj) {
+            
+            
+            
+        }];
+        
+    }];
     
-  [cell.wbgv setCartdeleteBlock:^(BOOL deleteNoOrYes) {
-     
-      
-      [we executeDeleteCartProductTaskWithUserId:@"15472" withProductId:mcm.p_id Success:^(id obj) {
-          
-          DLog(@"输出删除是否成功的信息%@",obj);
-          if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
-              WARN_ALERT(@"删除成功");
-          }
-          
-          
-          dispatch_async(dispatch_get_main_queue(), ^{
-              [self viewWillAppear:YES];
-              
-              
-          });
-          
-          
-      } failed:^(id obj) {
-          
-          
-          
-      }];
-      
-      
-  } ];
     
    //  选中的的产品
     __weak WECartHomeCell *bCell = cell;
 
-   [ cell.wbgv.middleview setChosesBlock:^(UIButton *chooseBtn){
+   [ cell.bgView.middleview setChosesBlock:^(UIButton *chooseBtn){
      
-       int row2 = [tableView indexPathForCell:((WECartHomeCell*)[[chooseBtn superview]superview])].row;
+       NSInteger row2 = [tableView indexPathForCell:((WECartHomeCell*)[[chooseBtn superview]superview])].row;
        
-       MyCartM *cm =  [_cartsModel.products objectAtIndex:row2];
-       if (chooseBtn.selected) {
-
-           _totalPrice +=([bCell.wbgv.bottomView.numTF.text  floatValue]*[cm.p_price floatValue]);
-           
-
+       MyCartM *cm =  [_cartsModel.products objectAtIndex:indexPath.row];
+       if (cm.isChoose) {
+           cm.isChoose = NO;
+//           _totalPrice -=([bCell.bgView.bottomView.numTF.text  floatValue]*[cm.p_price floatValue]);
        }else{
-           
-            _totalPrice -=([bCell.wbgv.bottomView.numTF.text  floatValue]*[cm.p_price floatValue]);
+           cm.isChoose = YES;
+//           _totalPrice +=([bCell.bgView.bottomView.numTF.text  floatValue]*[cm.p_price floatValue]);
+       }
+       bCell.myCartModel = cm;
+       
+       NSInteger count = 0;
+       for (MyCartM * model in _cartsModel.products) {
+           if (model.isChoose == YES) {
+               count++;
+           }
+       }
+       
+       
+       if (count == _cartsModel.products.count) {
+           _bottomView.allButton.selected = YES;
+       }else{
+           _bottomView.allButton.selected = NO;
 
-           
        }
        
        DLog(@"输出数组里面的对象有几个%0.2f",_totalPrice);
        
     }];
     
-    
-    
-    
-    
-    
-    
-       NSString *path = [NSString stringWithFormat:@"%@%@",kWEImgUrl,mcm.p_imgurl];
-    DLog(@"输出这个路径%@",path);
-
-    [ cell.wbgv.middleview.productImg  setWebImgUrl:path placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
 
    
     
     
-    [cell.wbgv.bottomView setCartHomeCellBottomCutBlock:^(NSInteger tfNum,UITextField *numTf,UILabel*jineLa) {
-        DLog(@"%ld",(long)tfNum);
-        
-        tfNum--;
-        
-        if (tfNum<=0) {
-            tfNum=1;
-        }
-        str = [NSString stringWithFormat:@"%ld",(long)tfNum];
-        DLog(@"%@",str);
-        
-        numTf.text =str;
-        [we executeUpdateCartProductCountTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id withNum:@"2" Success:^(id obj) {
-            
-        } failed:^(id obj) {
-            
-        }];
-
-        jineLa.text=[NSString stringWithFormat:@"金额:%0.2f",[str  floatValue]*[mcm.p_price floatValue ]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_cartTable reloadData];
-        });
-        
-        }];
+    [cell.bgView.bottomView setCartHomeCellBottomCutBlock:^(NSInteger tfNum,UILabel *numTf,UILabel*jineLa) {
+//        DLog(@"%ld",(long)tfNum);
+//        
+//        tfNum--;
+//        
+//        if (tfNum<=0) {
+//            tfNum=1;
+//            return ;
+//        }
+//        str = [NSString stringWithFormat:@"%ld",(long)tfNum];
+//        DLog(@"%@",str);
+//        
+//        numTf.text =str;
+//        [we executeUpdateCartProductCountTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id withNum:@"2" Success:^(id obj) {
+//            
+//        } failed:^(id obj) {
+//            
+//        }];
+//
+//        jineLa.text=[NSString stringWithFormat:@"金额:%0.2f",[str  floatValue]*[mcm.p_price floatValue ]];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [_cartTable reloadData];
+//        });
+//        
+//        
+    }];
     
     
-    [cell.wbgv.bottomView setCartHomeCellBottomPlusBlock:^(NSInteger tfNum,UITextField *numTf,UILabel*jineLa) {
-        DLog(@"%ld",(long)tfNum);
-       
-        tfNum++;
-     
-
-        str = [NSString stringWithFormat:@"%ld",(long)tfNum];
-        DLog(@"%@",str);
- 
-        numTf.text =str;
-        [we executeUpdateCartProductCountTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id withNum:@"2" Success:^(id obj) {
-            
-        } failed:^(id obj) {
-            
-        }];
-        jineLa.text=[NSString stringWithFormat:@"金额:%0.2f",[str  floatValue]*[mcm.p_price floatValue]];
-
-        
-        
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [_cartTable reloadData];
-            
-            
-        });
-        
+    [cell.bgView.bottomView setCartHomeCellBottomPlusBlock:^(NSInteger tfNum,UILabel *numTf,UILabel*jineLa) {
+//        DLog(@"%ld",(long)tfNum);
+//       
+//        tfNum++;
+//        str = [NSString stringWithFormat:@"%ld",(long)tfNum];
+//        DLog(@"%@",str);
+// 
+//        numTf.text =str;
+//        [we executeUpdateCartProductCountTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id withNum:str Success:^(id obj) {
+//            
+//        } failed:^(id obj) {
+//            
+//        }];
+//        jineLa.text=[NSString stringWithFormat:@"金额:%0.2f",[str  floatValue]*[mcm.p_price floatValue]];
 
     }];
 

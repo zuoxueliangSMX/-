@@ -7,7 +7,12 @@
 //
 
 #import "WECartHomeCellBottomView.h"
-
+@interface WECartHomeCellBottomView()
+@property(nonatomic,weak)UIButton *rigBtn;
+@property(nonatomic,weak)UIButton *leftBtn;
+@property(nonatomic,weak)UILabel  *numTF;
+@property(nonatomic,weak)UILabel *jineLa;
+@end
 @implementation WECartHomeCellBottomView
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -19,47 +24,59 @@
         shuliangLa.font = [UIFont systemFontOfSize:14];
         [self addSubview:shuliangLa];
         
-    _leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shuliangLa.frame)+10, 0, 30, 30)];
-//    [_leftBtn setBackgroundImage:[UIImage imageNamed:@"cart_cut"] forState:UIControlStateNormal];
-       
-        [_leftBtn setTitle:@"-" forState:UIControlStateNormal];
-          _leftBtn.layer.borderColor =[UIColor lightGrayColor].CGColor;
-         [_leftBtn.layer  setBorderWidth:1.0];
-         [_leftBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-       _leftBtn.tag = 7707;
-    [self addSubview:_leftBtn];
+     
+        UIButton * leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shuliangLa.frame)+10, 0, 30, 30)];
+        [leftBtn setTitle:@"-" forState:UIControlStateNormal];
+          leftBtn.layer.borderColor =[UIColor lightGrayColor].CGColor;
+         [leftBtn.layer  setBorderWidth:1.0];
+         [leftBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        leftBtn.tag = 7707;
+        [self addSubview:leftBtn];
+        _leftBtn = leftBtn;
     
-    _numTF = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_leftBtn.frame), 0, 40, 30)];
-    _numTF.layer.borderWidth = 1;
-    _numTF.layer.borderColor = SET_COLOR(168.f, 174.f, 178.f).CGColor;
-    _numTF.text = @"1";
+   
+        UILabel *numTF = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_leftBtn.frame), 0, 40, 30)];
+        numTF.layer.borderWidth = 1;
+        numTF.layer.borderColor = SET_COLOR(168.f, 174.f, 178.f).CGColor;
+        numTF.text = @"1";
+        numTF.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:numTF];
+        _numTF = numTF;
     
-    _numTF.textAlignment = NSTextAlignmentCenter;
-    [self addSubview:_numTF];
     
-    _rigBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_numTF.frame), 0, 30, 30)];
-    _rigBtn.tag = 7708;
-        [_rigBtn.layer  setBorderWidth:1.0];
-        _rigBtn.layer.borderColor =[UIColor lightGrayColor].CGColor;
-        [_rigBtn setTitle:@"+" forState:UIControlStateNormal];
-        [_rigBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-         _rigBtn.titleLabel.textColor = [UIColor darkGrayColor];
-//    [_rigBtn setBackgroundImage:[UIImage imageNamed:@"cart_plus"] forState:UIControlStateNormal];
-    [self addSubview:_rigBtn];
+        UIButton * rigBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_numTF.frame), 0, 30, 30)];
+        rigBtn.tag = 7708;
+   
+        [rigBtn.layer  setBorderWidth:1.0];
+        rigBtn.layer.borderColor =[UIColor lightGrayColor].CGColor;
+        [rigBtn setTitle:@"+" forState:UIControlStateNormal];
+        [rigBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+         rigBtn.titleLabel.textColor = [UIColor darkGrayColor];
+        [self addSubview:rigBtn];
+        _rigBtn = rigBtn;
         
-    _jineLa  = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_rigBtn.frame)+20, 0, 100, 30)];
-
-    _jineLa.textColor = [UIColor orangeColor];
-    _jineLa.font = [UIFont systemFontOfSize:14];
-        _jineLa.text =@"金额：0";
-    [self addSubview:_jineLa];
-    [ _leftBtn addTarget:self action:@selector(cutClick) forControlEvents:UIControlEventTouchUpInside];
-    [_rigBtn addTarget:self action:@selector(plusClick) forControlEvents:UIControlEventTouchUpInside];
+        UILabel * jineLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_rigBtn.frame)+20, 0, 100, 30)];
+        jineLa.textColor = [UIColor orangeColor];
+        jineLa.font = [UIFont systemFontOfSize:14];
+        jineLa.text =@"金额：";
+        [self addSubview:jineLa];
+        _jineLa = jineLa;
+        
+        [ _leftBtn addTarget:self action:@selector(cutClick) forControlEvents:UIControlEventTouchUpInside];
+        [_rigBtn addTarget:self action:@selector(plusClick) forControlEvents:UIControlEventTouchUpInside];
         
 }
 
 
     return self;
+}
+
+- (void)setMyCartModel:(MyCartM *)myCartModel
+{
+    _myCartModel = myCartModel;
+    
+    _jineLa.text =[NSString stringWithFormat:@"金额:%0.2f ",[myCartModel.p_num floatValue]*[myCartModel.p_price  floatValue]];
+    _numTF.text =[NSString stringWithFormat:@"%ld",[myCartModel.p_num integerValue]];
 }
 
 - (void)setCartHomeCellBottomCutBlock:(cartHomeCellBottomCutBlock)block

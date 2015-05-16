@@ -7,21 +7,28 @@
 //
 
 #import "WECartHomeCell.h"
-#import "WECartHomeCellBackgroudView.h"
 @interface WECartHomeCell()
-@property (nonatomic ,weak)WECartHomeCellBackgroudView *bgView;
 @end
 @implementation WECartHomeCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self =[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        _wbgv =[[WECartHomeCellBackgroudView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
-        [self.contentView addSubview:_wbgv];
+        WECartHomeCellBackgroudView * wbgv =[[WECartHomeCellBackgroudView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
+        wbgv.backgroundColor =[UIColor whiteColor];
+        [self.contentView addSubview:wbgv];
+        _bgView = wbgv;
     }
     
     return self;
 }
+
+- (void)setMyCartModel:(MyCartM *)myCartModel
+{
+    _myCartModel = myCartModel;
+    _bgView.myCartModel = myCartModel;
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

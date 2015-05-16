@@ -7,22 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyCartM.h"
 typedef void (^cartChoeseBlock)(UIButton *btn);
-
 @interface WECartHomeCellMiddleInfoView : UIView
 {
 __strong cartChoeseBlock _chosesBlock;
 
 }
+@property (nonatomic ,strong)MyCartM *myCartModel;
 
-@property(nonatomic,strong)UIButton *chooseBtn;
-@property(nonatomic,strong)UIImageView *productImg;
-@property(nonatomic,strong)UILabel *productLabel;
-@property(nonatomic,strong)UILabel *productCartIdLabel;
-@property(nonatomic,strong)UILabel *versionBrandLa;
-@property(nonatomic,strong)UILabel *priceLabel;
-@property(nonatomic,strong)UIView  *moveView;
-@property(nonatomic)BOOL deleteNoOrYes;
 - (void)setChosesBlock:(cartChoeseBlock)chosesBlock;
 
 
