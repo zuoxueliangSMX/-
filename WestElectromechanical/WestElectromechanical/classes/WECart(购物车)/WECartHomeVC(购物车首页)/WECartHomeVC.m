@@ -19,6 +19,7 @@
 #import "UIBarButtonItem+Extension.h"
 #import "RDVTabBarController.h"
 #import "AppDelegate.h"
+#import "TLAlertView.h"
 @interface WECartHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 {
 
@@ -30,6 +31,7 @@
 
     CGFloat _totalPrice;
     NSInteger _totalProduc;
+    TLAlertView *alertView;
     
     
     BOOL isClick;
@@ -54,7 +56,7 @@
     [self addRightItem];
     [we executeGetCartListTaskWithUserId:[AccountHanler userId] withPage:@"1" Success:^(id obj) {
         
-        DLog(@"输出我的购物车里面的数据%@",obj);
+       
         _cartsModel = (WECartsModel *)obj;
         [self.cartTable reloadData];
         
@@ -100,6 +102,7 @@
    
     [self initCartTable];
     [self  initBottomView];
+    
 }
 
 - (void)initBottomView
@@ -126,7 +129,7 @@
             }
             [_cartTable reloadData];
         }
-        weekBottomView.totalCountLa.text =[NSString stringWithFormat:@"总计商品：%ld",_totalProduc];
+        weekBottomView.totalCountLa.text =[NSString stringWithFormat:@"总计商品：%d",_totalProduc];
         weekBottomView.allPriceLa.text =[NSString stringWithFormat:@"总金额：￥%.2f",_totalPrice];
         NSMutableAttributedString *totalCountLa = [[NSMutableAttributedString alloc] initWithString:weekBottomView.totalCountLa.text];
         
@@ -142,15 +145,27 @@
         [allPriceLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:allPriceLaRange];
         
         [weekBottomView.allPriceLa setAttributedText:allPriceLa];
-
+       
         
     }];
+    
+   
      [bottomView setCartBottomViewClearingBlock:^{
          
+         NSMutableArray * mu = [[NSMutableArray alloc]init];
          if (_totalProduc>0) {
-             CommitOrderVC *myorder =[[CommitOrderVC alloc]init];
              
-             [self.navigationController pushViewController:myorder animated:YES];
+             for (MyCartM *mc in _cartsModel.products) {
+                 if (mc.isChoose==YES) {
+                     [mu addObject:mc];
+ 
+                 }
+            }
+             
+             
+             CommitOrderVC *myorder =[[CommitOrderVC alloc]init];
+             myorder.selectedMu =mu;
+        [self.navigationController pushViewController:myorder animated:YES];
          }
         
     }];
@@ -203,52 +218,91 @@
     
     [cell.bgView setCartdeleteBlock:^{
         
-        [we executeDeleteCartProductTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id Success:^(id obj) {
+        
+        alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"你确定删除么？" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
+
+        
+        [alertView handleCancel:^{
             
-            DLog(@"输出删除是否成功的信息%@",obj);
-            if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
-//                WARN_ALERT(@"删除成功");
-
+        }         handleConfirm:^{
+            
+            
+            
+            
+            [we executeDeleteCartProductTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id Success:^(id obj) {
                 
-                MyCartM *myCartModel = [_cartsModel.products objectAtIndex:indexPath.row];
-                cell.myCartModel = myCartModel;
                 
-                if (myCartModel.isChoose == YES) {
-
-                    _totalPrice -= [myCartModel.p_price floatValue]*[myCartModel.p_num integerValue];
-                    _totalProduc -= [myCartModel.p_num integerValue];
-                    _bottomView.totalCountLa.text =[NSString stringWithFormat:@"总计商品：%ld",_totalProduc];
-                    _bottomView.allPriceLa.text =[NSString stringWithFormat:@"总金额：￥%.2f",_totalPrice];
+                if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+                   
                     
-                    NSMutableAttributedString *totalCountLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.totalCountLa.text];
                     
-                    NSRange totalCountLaRange = NSMakeRange(5, [totalCountLa length]-5);
+                    MyCartM *myCartModel = [_cartsModel.products objectAtIndex:indexPath.row];
+                    cell.myCartModel = myCartModel;
                     
-                    [totalCountLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:totalCountLaRange];
-                    [_bottomView.totalCountLa setAttributedText:totalCountLa];
+                    if (myCartModel.isChoose == YES) {
+                        
+                        _totalPrice -= [myCartModel.p_price floatValue]*[myCartModel.p_num integerValue];
+                        _totalProduc -= [myCartModel.p_num integerValue];
+                        _bottomView.totalCountLa.text =[NSString stringWithFormat:@"总计商品：%d",_totalProduc];
+                        _bottomView.allPriceLa.text =[NSString stringWithFormat:@"总金额：￥%.2f",_totalPrice];
+                        
+                        NSMutableAttributedString *totalCountLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.totalCountLa.text];
+                        
+                        NSRange totalCountLaRange = NSMakeRange(5, [totalCountLa length]-5);
+                        
+                        [totalCountLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:totalCountLaRange];
+                        [_bottomView.totalCountLa setAttributedText:totalCountLa];
+                        
+                        NSMutableAttributedString *allPriceLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.allPriceLa.text];
+                        
+                        NSRange allPriceLaRange = NSMakeRange(4, [allPriceLa length]-4);
+                        
+                        [allPriceLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:allPriceLaRange];
+                        
+                        [_bottomView.allPriceLa setAttributedText:allPriceLa];
+                        
+                    }
                     
-                    NSMutableAttributedString *allPriceLa = [[NSMutableAttributedString alloc] initWithString:_bottomView.allPriceLa.text];
-                    
-                    NSRange allPriceLaRange = NSMakeRange(4, [allPriceLa length]-4);
-                    
-                    [allPriceLa addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:allPriceLaRange];
-                    
-                    [_bottomView.allPriceLa setAttributedText:allPriceLa];
+                    [_cartsModel.products removeObjectAtIndex:indexPath.row];
+                    [_cartTable reloadData];
+                     WARN_ALERT(@"删除成功");
                     
                 }
                 
-                [_cartsModel.products removeObjectAtIndex:indexPath.row];
-                [_cartTable reloadData];
+            } failed:^(id obj) {
+                
+                
+                
+            }];
+            
 
-            }
             
-        } failed:^(id obj) {
             
+            
+          
             
             
         }];
         
-    }];
+        alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
+        
+        
+        
+        [alertView show];
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        }];
     
     /**
      *  选中和反选产品

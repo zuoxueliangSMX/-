@@ -82,13 +82,14 @@
     if (_allChooseBlcok) {
         _allChooseBlcok(btn.selected);
 
-        if (btn.selected == YES) {
-            btn.selected = NO;
-        }else{
-            btn.selected = YES;
-
-        }
+           }
+    if (btn.selected == YES) {
+        btn.selected = NO;
+    }else{
+        btn.selected = YES;
+        
     }
+
 }
 /*
 // Only override drawRect: if you perform custom drawing.

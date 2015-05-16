@@ -16,6 +16,8 @@
 #import "ClaimInvoiceVC.h"
 #import "UIButton+Extension.h"
 #import "CartOrderDetailVC.h"
+#import "MyCartM.h"
+#import "UIImageView+WebCacheImg.h"
 
 
 @interface CommitOrderVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
@@ -58,6 +60,8 @@
     [self addFoot];
     [self initBottomView];
    
+    
+    
 
 }
 
@@ -170,15 +174,18 @@
                 break;
             case 1:
             {
-                UIImageView *imgv =[[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 55, 55)];
-                imgv.tag =101;
-                imgv.backgroundColor =[UIColor   blueColor];
-                UIImageView *imgv2 =[[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+5, 5, 55, 55)];
-                imgv2.backgroundColor =[UIColor   blueColor];
-                imgv2.tag =102;
                 
-                [view addSubview:imgv];
-                [view addSubview:imgv2];
+                for (int i=0; i<self.selectedMu.count; i++) {
+                 
+                    
+                    
+                    UIImageView *imgv =[[UIImageView alloc]initWithFrame:CGRectMake(10+i*55, 5, 55, 55)];
+                    
+                    imgv.tag =101+i;
+                   
+                    [view addSubview:imgv];
+                }
+                
                 
 
                 
@@ -273,12 +280,28 @@
         case 1:
         { view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 65);
             
-            
-            UIImageView *imgv = (UIImageView*)[view viewWithTag:101];
-             UIImageView *imgv2 = (UIImageView*)[view viewWithTag:102];
-            imgv.image = [UIImage imageNamed:@"Product_Placeholder"];
-            imgv2.image = [UIImage imageNamed:@"Product_Placeholder"];
-                 }
+            for (int i=0; i<self.selectedMu.count; i++) {
+                
+                 UIImageView *imgv = (UIImageView*)[view viewWithTag:101+i];
+                
+                
+                MyCartM *mc =  [self.selectedMu  objectAtIndex:i];
+                
+                NSString *path = [NSString stringWithFormat:@"%@/%@",kWEProductImgUrl,mc.p_imgurl];
+                [ imgv  setWebImgUrl:path placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+                if (i ==4) {
+                    UIImageView *imgv5=(UIImageView*)[view viewWithTag:105];
+                    imgv5.frame=CGRectMake(10+i*55, 28, 55, 55/5);
+                    imgv5.image =[UIImage imageNamed:@"apostrophe"];
+                }
+                DLog(@"输出我们的选中的产品的模型有几个%@",mc.p_imgurl);
+                
+
+ 
+              
+            }
+           
+                           }
             break;
         case 2:
         {

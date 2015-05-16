@@ -63,7 +63,6 @@
 - (void)deleteCartInfo:(UIButton *)btn
 {
     if (_deleteBtnBlock) {
-//        _deleteBtnBlock(_middleview.deleteNoOrYes);
         _deleteBtnBlock();
     }
 }

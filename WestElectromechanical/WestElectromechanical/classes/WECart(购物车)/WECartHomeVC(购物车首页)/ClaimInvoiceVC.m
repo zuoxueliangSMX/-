@@ -96,93 +96,6 @@
     
     
     
-//    // 地域信息
-//    addressTf = [[UITextField alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, 40)];
-//    [addressTf setBorderStyle:UITextBorderStyleNone];
-//    addressTf.textColor = [UIColor blackColor];
-//    [addressTf setPlaceholder:@"地域信息"];
-//    [addressTf setKeyboardType:UIKeyboardTypeDefault];
-//    [addressTf setClearButtonMode:UITextFieldViewModeWhileEditing];
-//    //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
-//    [addressTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-//    UIButton *but2 = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [but2 setImage:[UIImage imageNamed:@"Person_location"] forState:UIControlStateNormal];
-//    [but2 setBounds:CGRectMake(0, 0, 50, 40)];
-//    [but2 setUserInteractionEnabled:NO];
-//    
-//    addressTf.leftViewMode = UITextFieldViewModeAlways;
-//    [addressTf setLeftView:but2];
-//    
-//    UIButton *butright = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [butright setImage:[UIImage imageNamed:@"Person_arrow_right"] forState:UIControlStateNormal];
-//    [butright setBounds:CGRectMake(0, 0, 80, 25)];
-//    addressTf.rightViewMode = UITextFieldViewModeAlways;
-//    [addressTf setRightView:butright];
-//    [butright addTarget:self action:@selector(locationBtnClick) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [addressTf setDelegate:self];
-//    [squareView addSubview:addressTf];
-//    
-//    UIImageView *imgv2 = [[UIImageView alloc] init];
-//    imgv2.frame = CGRectMake(10, CGRectGetMaxY(addressTf.frame)+1, squareView.frame.size.width-20, 1);
-//    imgv2.backgroundColor = [UIColor appLineColor];
-//    [squareView addSubview:imgv2];
-//    
-//    
-//    
-//    
-//    
-//    
-//    tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(60, CGRectGetMaxY(addressTf.frame)+5, 220, 35)];
-//    tv.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-//    tv.delegate = self;
-//    
-//    tv.keyboardType = UIKeyboardTypeDefault;
-//    tv.placeholder=@"街道门牌信息";
-//    tv.autoresizingMask =  UIViewAutoresizingFlexibleHeight;
-//    tv.scrollEnabled = YES;//是否可以拖动
-//    
-//    
-//    UIButton *pwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [pwdBut setImage:[UIImage imageNamed:@"Person_streetnum"] forState:UIControlStateNormal];
-//    pwdBut.frame =CGRectMake(CGRectGetMinX(tv.frame)-45, CGRectGetMinY(tv.frame), 50, 40);
-//    [pwdBut setUserInteractionEnabled:NO];
-//    [squareView addSubview:pwdBut];
-//    
-//    
-//    tv.font= [UIFont systemFontOfSize:17];
-//    tv.layer.borderColor = [UIColor whiteColor].CGColor;
-//    
-//    tv.layer.borderWidth =0.8;
-//    
-//    [squareView addSubview:tv];
-//    
-//    
-//    UIImageView *imgv3 = [[UIImageView alloc] init];
-//    imgv3.frame = CGRectMake(10, CGRectGetMaxY(tv.frame)+1, squareView.frame.size.width-20, 1);
-//    imgv3.backgroundColor = [UIColor appLineColor];
-//    [squareView addSubview:imgv3];
-//    
-//    
-//    
-//    // 邮政编码
-//    emadilCodeTf = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(tv.frame), SCREEN_WIDTH-30, 40)];
-//    [emadilCodeTf setBorderStyle:UITextBorderStyleNone];
-//    emadilCodeTf.textColor = [UIColor blackColor];
-//    [emadilCodeTf setClearButtonMode:UITextFieldViewModeWhileEditing];
-//    [emadilCodeTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-//    UIButton *surepwdBut = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [surepwdBut setImage:[UIImage imageNamed:@"Person_emailnum"] forState:UIControlStateNormal];
-//    [surepwdBut setBounds:CGRectMake(0, 0, 50, 40)];
-//    emadilCodeTf.leftViewMode = UITextFieldViewModeAlways;
-//    [emadilCodeTf setLeftView:surepwdBut];
-//    [surepwdBut setUserInteractionEnabled:NO];
-//    [emadilCodeTf setDelegate:self];
-//    emadilCodeTf.returnKeyType=UIReturnKeyGo;//返回键的类型
-//    [emadilCodeTf setPlaceholder:@"邮政编码"]; //默认显示的字
-//    //    [pwdNmTextF setTextAlignment:NSTextAlignmentCenter];
-//    [squareView addSubview:emadilCodeTf];
-//    
     NSArray * titileArr =@[@"无须发票",@"普票",@"增值发票"];
     for (int i =0; i <3; i++) {
         
@@ -264,6 +177,7 @@
         if (invoiceHeadeTf.text.length==0||invoidceAddressTf.text.length==0) {
             
             WARN_ALERT(@"检查你的输入");
+            return;
         }
         
         

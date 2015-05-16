@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CommitOrderVC : UIViewController
+@property(nonatomic,strong)NSMutableArray *selectedMu;
 
 @end
