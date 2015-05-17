@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CartOrderDetailVC : UIViewController
+@property(nonatomic,strong)NSMutableArray *Mu;
 
 @end

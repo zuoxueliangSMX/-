@@ -157,6 +157,7 @@
              
              CommitOrderVC *myorder =[[CommitOrderVC alloc]init];
              myorder.selectedMu =mu;
+             myorder.totalP =_totalPrice;
         [self.navigationController pushViewController:myorder animated:YES];
 
          }

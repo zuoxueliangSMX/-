@@ -10,5 +10,6 @@
 
 @interface CommitOrderVC : UIViewController
 @property(nonatomic,strong)NSMutableArray *selectedMu;
+@property(nonatomic)float totalP;
 
 @end
