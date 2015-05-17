@@ -15,6 +15,7 @@
 #import "WEHomeInfoModel.h"
 #import "WEProductDetailModel.h"
 #import "WEProductsModel.h"
+#import "MyOrderModel.h"
 @implementation WEHTTPHandler
 #pragma mark -
 #pragma mark - 首页模块
@@ -988,6 +989,43 @@
             failed(error);
         }
     }];
+
+
+}
+
+/**
+ *  29.订单查询接口地址
+ */
+- (void)executeQueryOrderTaskWithUserId:(NSString *)userId
+                              withState:(NSString *)state withPage:(NSString*)page
+                                Success:(SuccessBlock)success
+                                 failed:(FailedBlock)failed
+{
+    [AlertUtil showAlertWithText:@"订单查询"];
+    
+    NSString *url =[BaseHandler requestUrlWithUrl:API_QUERYORDER WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&state=%@&page=%@",userId,state,page];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+        MyOrderModel *mm = [[MyOrderModel alloc]initWithDict:json];
+        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(mm);
+            }
+        }else{
+            if (failed) {
+                failed(mm);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
 
 
 }

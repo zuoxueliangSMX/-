@@ -244,4 +244,15 @@
                                             Success:(SuccessBlock)success
                                              failed:(FailedBlock)failed;
 
+
+
+/**
+*  29.订单查询接口地址
+*/
+- (void)executeQueryOrderTaskWithUserId:(NSString *)userId
+                              withState:(NSString *)state withPage:(NSString*)page
+                                       Success:(SuccessBlock)success
+                                        failed:(FailedBlock)failed;
+
+
 @end

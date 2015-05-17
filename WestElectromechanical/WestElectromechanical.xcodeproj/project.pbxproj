@@ -13,6 +13,9 @@
 		7F8B1AB01AFA01560085FE2D /* UIButton+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AA91AFA01560085FE2D /* UIButton+Button.m */; };
 		7F8B1AB11AFA01560085FE2D /* PALocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AAB1AFA01560085FE2D /* PALocation.m */; };
 		7F8B1AB21AFA01560085FE2D /* PAPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B1AAD1AFA01560085FE2D /* PAPickView.m */; };
+		7FC6114D1B088B07007255B8 /* MyOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC6114C1B088B07007255B8 /* MyOrderModel.m */; };
+		7FC611531B088BB6007255B8 /* OrderM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC611521B088BB6007255B8 /* OrderM.m */; };
+		7FC611561B0895E3007255B8 /* ProductsM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC611551B0895E3007255B8 /* ProductsM.m */; };
 		7FDEDC071AF71D6400911A02 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDBF11AF71D6400911A02 /* MASCompositeConstraint.m */; };
 		7FDEDC081AF71D6400911A02 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDBF41AF71D6400911A02 /* MASConstraint.m */; };
 		7FDEDC091AF71D6400911A02 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEDBF61AF71D6400911A02 /* MASConstraintMaker.m */; };
@@ -182,6 +185,12 @@
 		7F8B1AAB1AFA01560085FE2D /* PALocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PALocation.m; sourceTree = "<group>"; };
 		7F8B1AAC1AFA01560085FE2D /* PAPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPickView.h; sourceTree = "<group>"; };
 		7F8B1AAD1AFA01560085FE2D /* PAPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPickView.m; sourceTree = "<group>"; };
+		7FC6114B1B088B07007255B8 /* MyOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderModel.h; sourceTree = "<group>"; };
+		7FC6114C1B088B07007255B8 /* MyOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderModel.m; sourceTree = "<group>"; };
+		7FC611511B088BB6007255B8 /* OrderM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderM.h; sourceTree = "<group>"; };
+		7FC611521B088BB6007255B8 /* OrderM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderM.m; sourceTree = "<group>"; };
+		7FC611541B0895E3007255B8 /* ProductsM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsM.h; sourceTree = "<group>"; };
+		7FC611551B0895E3007255B8 /* ProductsM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsM.m; sourceTree = "<group>"; };
 		7FDEDBEE1AF71A0B00911A02 /* SendIFMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendIFMacros.h; sourceTree = "<group>"; };
 		7FDEDBF01AF71D6400911A02 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		7FDEDBF11AF71D6400911A02 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
@@ -552,6 +561,12 @@
 			children = (
 				7FE5DDD51AFE0FC800B77986 /* MyOrderMenuVC.h */,
 				7FE5DDD61AFE0FC800B77986 /* MyOrderMenuVC.m */,
+				7FC6114B1B088B07007255B8 /* MyOrderModel.h */,
+				7FC6114C1B088B07007255B8 /* MyOrderModel.m */,
+				7FC611511B088BB6007255B8 /* OrderM.h */,
+				7FC611521B088BB6007255B8 /* OrderM.m */,
+				7FC611541B0895E3007255B8 /* ProductsM.h */,
+				7FC611551B0895E3007255B8 /* ProductsM.m */,
 				7FE73D8B1B003DE4004559D4 /* MyOrderDetailVC.h */,
 				7FE73D8C1B003DE4004559D4 /* MyOrderDetailVC.m */,
 				7FDEDC181AF764CD00911A02 /* MyRegisterVC.h */,
@@ -1603,6 +1618,7 @@
 				A3C466F31AF313B300E1604D /* TAPageControl.m in Sources */,
 				7FE59F081AFB9DF200D8ABA9 /* GlanceHistoryVC.m in Sources */,
 				7FDEDC0C1AF71D6400911A02 /* MASViewConstraint.m in Sources */,
+				7FC611531B088BB6007255B8 /* OrderM.m in Sources */,
 				A3ADFDDC1B010AC10029795A /* BaseHandler.m in Sources */,
 				A3BFB6251AFB9EC400024BEE /* WEProductTableCell.m in Sources */,
 				7FE6D47A1AFB40C200CFABE4 /* CollectionM.m in Sources */,
@@ -1624,6 +1640,7 @@
 				A3C16D581AFDAFAA00004721 /* WEProductInfoView.m in Sources */,
 				A38851BA1AED2DD40019D6E5 /* SMPageControl.m in Sources */,
 				A3ADFDE31B010C3E0029795A /* SelectModel.m in Sources */,
+				7FC611561B0895E3007255B8 /* ProductsM.m in Sources */,
 				7FDEDC0F1AF71D6400911A02 /* View+MASAdditions.m in Sources */,
 				A3C0AFBE1B04F566008F6900 /* WEProductCommentCell.m in Sources */,
 				7F0CF6951B07B2F300E0BF57 /* WECartHomeVC.m in Sources */,
@@ -1653,6 +1670,7 @@
 				A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */,
 				A39659581B0259F8006BAEFA /* NSData+Base64.m in Sources */,
 				A3C248A11AF906BC00760C72 /* WEHomeInfoModel.m in Sources */,
+				7FC6114D1B088B07007255B8 /* MyOrderModel.m in Sources */,
 				7FE59F111AFBB24100D8ABA9 /* MarkSheetVC.m in Sources */,
 				A3ADFDDA1B010AC10029795A /* BaseDao.m in Sources */,
 				A39E9A8A1AFA6E760035A059 /* WEProductCollectionCell.m in Sources */,

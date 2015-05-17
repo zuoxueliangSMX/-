@@ -11,11 +11,17 @@
 #import "GlanceCell.h"
 #import "RDVTabBarController.h"
 #import "MyOrderDetailVC.h"
+#import "WEHTTPHandler.h"
+#import "AccountHanler.h"
+#import "MyOrderModel.h"
+#import "OrderM.h"
 @interface MyOrderMenuVC ()<HTHorizontalSelectionListDelegate,HTHorizontalSelectionListDataSource,UITableViewDelegate,UITableViewDataSource>{
 
     
     UITableView *_table;
     NSArray *Arr;
+    
+    WEHTTPHandler *we;
 
 }
 
@@ -23,6 +29,7 @@
 @property (nonatomic, strong) NSArray *carMakes;
 
 @property (nonatomic, strong) UILabel *selectedItemLabel;
+@property (nonatomic ,strong)MyOrderModel *orderModel;
 
 
 @end
@@ -34,6 +41,19 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    
+    
+    
+    [we  executeQueryOrderTaskWithUserId:[AccountHanler userId] withState:@"0" withPage:@"1" Success:^(id obj) {
+        DLog(@"输出我的订单有多少%@",obj);
+        
+        _orderModel =(MyOrderModel*)obj;
+        
+         
+        
+    } failed:^(id obj) {
+      
+    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -46,6 +66,7 @@
     [self addTopNavBar];
     self.title = @"我的订单";
   
+    we = [[WEHTTPHandler alloc]init];
   VIEW_BACKGROUND
     
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height-64) style:UITableViewStylePlain];
@@ -115,7 +136,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return self.orderModel.orders.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
