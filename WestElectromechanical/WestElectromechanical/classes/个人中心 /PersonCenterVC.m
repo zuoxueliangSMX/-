@@ -127,7 +127,7 @@
     [super viewDidLoad];
     VIEW_BACKGROUND;
     [self setTitle:@"个人中心"];
-    array1 = @[@"查看信息",@"浏览历史",@"我的收藏",@"40025558787"];
+    array1 = @[@"查看信息",@"浏览历史",@"我的收藏",@"400-821-8800"];
     weh = [[WEHTTPHandler alloc]init];
     
     walert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"登陆成功" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil] ;
@@ -153,7 +153,7 @@
     if (buttonIndex == 1) {
         
 
-        CALL_PHONE(@"0851-86889691");
+        CALL_PHONE(@"400-821-8800");
         
     }else if (buttonIndex == 2){
     
@@ -433,7 +433,7 @@
 
             
             
-            CALL_PHONE(@"40025558787");
+            CALL_PHONE(@"400-821-8800");
         }
         
     }

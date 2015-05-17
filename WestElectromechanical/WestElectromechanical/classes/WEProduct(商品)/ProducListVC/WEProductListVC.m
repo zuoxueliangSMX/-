@@ -17,6 +17,7 @@
 #import "WEProductDetailModel.h"
 #import "WEProductSingleModel.h"
 #import "WEProductHandler.h"
+#import "WEProductFilterVC.h"
 @interface WEProductListVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic ,weak)UITableView *productList;
 @property (nonatomic ,weak)UICollectionView *productCollection;
@@ -58,7 +59,7 @@
     UIBarButtonItem *negativeSpacer1= [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
-    negativeSpacer1.width = 15;
+    negativeSpacer1.width = 10;
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, right2,negativeSpacer1,right1];
 }
 - (void)screen:(UIButton*)btn{
@@ -66,6 +67,9 @@
 }
 - (void)condition:(UIButton*)btn{
     NSLog(@"添加好友");
+    
+    WEProductFilterVC *filterVC =[[WEProductFilterVC alloc]init];
+    [self.navigationController pushViewController:filterVC animated:YES];
 }
 
 - (void)viewDidLoad {
