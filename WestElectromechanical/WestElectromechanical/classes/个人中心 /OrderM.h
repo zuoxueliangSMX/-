@@ -12,6 +12,8 @@
 @property (nonatomic ,copy)NSString *all_money;
 @property (nonatomic ,copy)NSString *o_id;
 @property (nonatomic ,copy)NSString *order_num;
+@property (nonatomic ,copy)NSString *order_state;
+@property (nonatomic ,copy)NSString *order_time;
 @property (nonatomic ,strong)NSMutableArray *order_products;
 - (instancetype)initWithDict:(NSDictionary *)dict;
 
