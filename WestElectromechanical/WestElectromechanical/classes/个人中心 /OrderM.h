@@ -12,7 +12,7 @@
 @property (nonatomic ,copy)NSString *all_money;
 @property (nonatomic ,copy)NSString *o_id;
 @property (nonatomic ,copy)NSString *order_num;
-@property (nonatomic ,copy)NSMutableArray *order_products;
+@property (nonatomic ,strong)NSMutableArray *order_products;
 - (instancetype)initWithDict:(NSDictionary *)dict;
 
 @end
