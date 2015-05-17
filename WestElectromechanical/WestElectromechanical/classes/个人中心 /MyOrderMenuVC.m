@@ -136,19 +136,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-       GlanceCell *subCell =[[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:0];
-      OrderM *om=[self.orderModel.orders  objectAtIndex:indexPath.row];
-      GlanceCell* bcell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:1];
-    
-    
-
-    
-    
+    GlanceCell *subCell =[[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:0];
+    OrderM *om=[self.orderModel.orders  objectAtIndex:indexPath.row];
+    GlanceCell* bcell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:1];
     return subCell.frame.size.height*om.order_products.count+CGRectGetHeight(bcell.totalPriceLa.frame)+CGRectGetHeight(bcell.orderTimeLa.frame)+CGRectGetHeight(bcell.orderCodeLa.frame)+10;;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    
     return self.orderModel.orders.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

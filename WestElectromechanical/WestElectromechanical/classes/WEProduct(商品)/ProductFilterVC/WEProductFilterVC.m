@@ -10,7 +10,7 @@
 #import "RDVTabBarController.h"
 #import "UIButton+Extension.h"
 @interface WEProductFilterVC ()<UITableViewDataSource,UITableViewDelegate>
-
+@property (nonatomic ,strong)NSArray *priceArr;
 @end
 
 @implementation WEProductFilterVC
@@ -32,6 +32,8 @@
     self.view.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     self.title = @"筛选";
     
+    
+    _priceArr =@[@"全部",@"0~50",@"50~100",@"100~500",@"500~1000",@"1000~2000",@"2000~5000",@"5000~10000"];
     UITableView *filterList =[[UITableView alloc]initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, SCREEN_HEIGHT-50) style:UITableViewStyleGrouped];
     filterList.delegate =self;
     filterList.dataSource =self;
@@ -40,6 +42,7 @@
     filterList.layer.borderColor = [UIColor colorFromHexCode:@"f2f2f2"].CGColor;
     filterList.layer.borderWidth = 1;
     filterList.layer.cornerRadius =5;
+    filterList.bounces = NO;
     filterList.backgroundColor =[UIColor clearColor];
     [self.view addSubview:filterList];
     
@@ -72,14 +75,14 @@
     
     if (section == 0) {
         return 0;
-    }else return 10;
+    }else return _priceArr.count;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 8, SCREEN_WIDTH, 44)];
-        UITextField *tf =[[UITextField alloc]initWithFrame:CGRectMake(10, 2, SCREEN_WIDTH-20, 40)];
+        UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+        UITextField *tf =[[UITextField alloc]initWithFrame:CGRectMake(0, 5, SCREEN_WIDTH-0, 40)];
         
         UILabel *productBrand =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
         productBrand.backgroundColor =[UIColor whiteColor];
@@ -98,14 +101,25 @@
         view.backgroundColor =[UIColor clearColor];
         return view;
     }else{
-        UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
-        view.backgroundColor =[UIColor blueColor];
+        UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+        view.backgroundColor =[UIColor whiteColor];
+        
+        UILabel *price =[[UILabel alloc]init];
+        price.frame =CGRectMake(  10,0,40,50);
+        price.numberOfLines =1;
+        price.text = @"价格";
+        price.textAlignment = 1;
+        price.font =[UIFont systemFontOfSize:18.0];
+        price.backgroundColor =[UIColor clearColor];
+        [view addSubview:price];
+        
+        
         return view;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 60;
+    return 50;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -117,8 +131,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.backgroundColor =[UIColor grayColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor =[UIColor whiteColor];
     }
+    
+    cell.textLabel.text =[_priceArr objectAtIndex:indexPath.row];
     
     return cell;
 }

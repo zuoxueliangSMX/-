@@ -7,7 +7,7 @@
 //
 
 #import "ProductsM.h"
-
+#import "NSString+Base64.h"
 @implementation ProductsM
 - (instancetype)initWithDict:(NSDictionary *)dict
 {
@@ -18,7 +18,7 @@
         self.p_order_num=[self stringFromValue:[dict objectForKey:@"p_order_num"]];
         self.p_price=[self stringFromValue:[dict objectForKey:@"p_price"]];
         self.p_version=[self stringFromValue:[dict objectForKey:@"p_version"]];
-        self.p_name=[self stringFromValue:[dict objectForKey:@"p_name"]];
+        self.p_name=[[self stringFromValue:[dict objectForKey:@"p_name"]] base64DecodedString];
         self.p_num=[self stringFromValue:[dict objectForKey:@"p_num"]];
 //        self.isDeleteNoOrYes = NO;
 //        self.isChoose = NO;

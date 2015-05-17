@@ -7,7 +7,7 @@
 //
 
 #import "BaseModel.h"
-
+#import "WEMyOrderFrame.h"
 @interface MyOrderModel : BaseModel
 @property (nonatomic ,copy)NSString *message;
 @property (nonatomic ,copy)NSString *page;
