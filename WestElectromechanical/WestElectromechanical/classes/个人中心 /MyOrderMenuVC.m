@@ -15,6 +15,9 @@
 #import "AccountHanler.h"
 #import "MyOrderModel.h"
 #import "OrderM.h"
+
+
+
 @interface MyOrderMenuVC ()<HTHorizontalSelectionListDelegate,HTHorizontalSelectionListDataSource,UITableViewDelegate,UITableViewDataSource>{
 
     
@@ -45,10 +48,11 @@
     
     
     [we  executeQueryOrderTaskWithUserId:[AccountHanler userId] withState:@"0" withPage:@"1" Success:^(id obj) {
-        DLog(@"输出我的订单有多少%@",obj);
+       
         
         _orderModel =(MyOrderModel*)obj;
-        
+         DLog(@"输出我的订单有多少%@",obj);
+        [_table reloadData];
          
         
     } failed:^(id obj) {
@@ -132,15 +136,24 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 230;
+       GlanceCell *subCell =[[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:0];
+      OrderM *om=[self.orderModel.orders  objectAtIndex:indexPath.row];
+      GlanceCell* bcell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:1];
+    
+    
+
+    
+    
+    return subCell.frame.size.height*om.order_products.count+CGRectGetHeight(bcell.totalPriceLa.frame)+CGRectGetHeight(bcell.orderTimeLa.frame)+CGRectGetHeight(bcell.orderCodeLa.frame)+10;;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
     
     return self.orderModel.orders.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+     OrderM *om=[self.orderModel.orders  objectAtIndex:indexPath.row];
     static NSString * cellidentifer = @"cell";
     GlanceCell * cell = [tableView dequeueReusableCellWithIdentifier:cellidentifer];
     if (cell ==nil) {
@@ -149,7 +162,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:1];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         cell.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
-               UIView *cellBgview = [[UIView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 219)];
+               UIView *cellBgview = [[UIView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, cell.frame.size.height-11)];
         
         cellBgview.backgroundColor = SET_COLOR(246.0, 246.0, 246.0);
         [cell insertSubview:cellBgview atIndex:0];
@@ -162,8 +175,27 @@
         UIImageView *lineimgv1 = [[UIImageView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(cell.priceLa.frame)+21,  SCREEN_WIDTH-20, 1)];
         lineimgv1.backgroundColor =[UIColor appLineColor];
         [cellBgview addSubview:lineimgv1];
+        
+     
+        for (int i=0; i <om.order_products.count; i++) {
+            
+               GlanceCell *subCell =[[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:0];
+            subCell.frame =CGRectMake(0, CGRectGetHeight(cell.orderCodeLa.frame)+CGRectGetHeight(cell.orderTimeLa.frame)+i*CGRectGetHeight(subCell.frame), cellBgview.frame.size.width, subCell.frame.size.height);
+//            subCell.backgroundColor = [UIColor  blueColor];
+            
+             [cellBgview addSubview:subCell];
+            
+            
+//            cell.totalPriceLa.frame  =CGRectMake(cell.totalPriceLa.frame.origin.x, CGRectGetMaxY(), cell.totalPriceLa.frame.size.width, cell.totalPriceLa.frame.size.height);
+        }
+        
+        
+        
+       
 
     }
+    
+   
     
     //    ZyxM *zm = [zyxArr objectAtIndex:indexPath.row];
     //
@@ -174,10 +206,12 @@
     //    }];
     //
     
-    cell.orderCodeLa.text =@"订单号: 0dadfasf907654";
-    cell.orderTimeLa.text =@"下单时间: 2015-02-08";
-    cell.changgeLa.text =@"待付款";
-    cell.totalPriceLa.text =@"总计: ¥100000";
+    
+    cell.orderCodeLa.text =[NSString stringWithFormat:@"订单号:%@",om.order_num];
+    cell.orderTimeLa.text =[NSString stringWithFormat:@"下单时间:%@",om.order_time];
+    cell.changgeLa.text =om.order_state;
+    
+        cell.totalPriceLa.text = [NSString stringWithFormat:@"总计:¥%@",om.all_money];
     [cell.changeBtn setTitle:@"立即支付" forState:UIControlStateNormal];
     cell.imgV.image = [UIImage imageNamed:@"Product_Placeholder"];
     cell.titleLa.text=@"CPU芯片";
