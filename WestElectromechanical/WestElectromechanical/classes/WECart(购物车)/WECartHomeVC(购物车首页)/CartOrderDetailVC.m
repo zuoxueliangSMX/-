@@ -10,7 +10,8 @@
 #import "GlanceCell.h"
 #import "WEProductHandler.h"
 #import "UIImageView+WebCacheImg.h"
-#import "RDVTabBarController.h"
+#import "MyCartM.h"
+#import "NSString+Base64.h"
 @interface CartOrderDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     
@@ -27,16 +28,16 @@
 @implementation CartOrderDetailVC
 #pragma mark -
 #pragma mark - pop和push控制器时的操作
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
-}
-
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+//}
+//
 - (void)viewDidLoad {
     [super viewDidLoad];
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-64) style:UITableViewStylePlain];
@@ -63,7 +64,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return self.Mu.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -77,18 +78,18 @@
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
     }
-//    WEProductSingleModel *singleModel =_totalHistoryProducts[indexPath.row];
-//    [cell.imgV setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    MyCartM *mc =self.Mu[indexPath.row];
+    [cell.imgV setWebImgUrl:mc.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    DLog(@"输出这张卑微的图片%@",mc.p_imgurl);
+    cell.titleLa.text=[mc.p_name base64DecodedString];
+  
     
-    cell.imgV.image = [UIImage imageNamed:@"Product_Placeholder"];
-    cell.titleLa.text=@"组合工具";
-    cell.orderNum.text =@"订单号： 0919898767yhu";
-    cell.styleBrand.text =@"苹果品牌";
-    cell.priceLa.text =@"¥100000";
-    cell.memberPrice.text =@"8000";
-    //    cell.cartBtn.image= [UIImage imageNamed:@"Product_AddCart"];
-    
-    [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
+     cell.orderNum.text = [NSString stringWithFormat:@"西域订单编号:%@",mc.p_order_num];
+    cell.styleBrand.text =mc.p_brand;
+    cell.priceLa.text= [NSString stringWithFormat:@"¥:%@ x %@",mc.p_price,mc.p_num];
+    cell.priceLa.textColor = [UIColor orangeColor];
+    cell.memberPrice.hidden =YES;
+       [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
     return cell;
     
 }

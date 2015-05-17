@@ -75,7 +75,7 @@
     [footCell.layer setCornerRadius:4];
     footCell.backgroundColor = [UIColor whiteColor];
     footCell.backgroundColor = [UIColor whiteColor];
-    footCell.goodsPriceLa.text = @"商品总额“¥ :800.00";
+    footCell.goodsPriceLa.text = [NSString stringWithFormat:@"商品总额: ¥%0.2f",self.totalP];
     footCell.freightageLa.text = @"共计运费: ¥ 8";
     footCell.subtractFeeLa.text =@"减免运费: 30";
     
@@ -397,6 +397,7 @@
         case 1:
         {
             CartOrderDetailVC *caod = [[CartOrderDetailVC alloc]init];
+            caod.Mu =self.selectedMu;
             [self.navigationController pushViewController:caod animated:YES];
 
         }
@@ -454,10 +455,11 @@
 {
     UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_table.frame), SCREEN_WIDTH, 44)];
     view.backgroundColor = [UIColor whiteColor];
-        UILabel *allPriceLa=  [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 70, 20)];
+        UILabel *allPriceLa=  [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 120, 20)];
     allPriceLa.font = [UIFont systemFontOfSize:14];
-    allPriceLa.text = @"总金额";
-    allPriceLa.textColor  =[UIColor  lightGrayColor];
+    
+     allPriceLa.text = [NSString stringWithFormat:@"总金额:¥:%0.2f",self.totalP];
+      allPriceLa.textColor  =[UIColor  lightGrayColor];
     [view addSubview:allPriceLa];
     
     
