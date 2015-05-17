@@ -64,12 +64,13 @@
 }
 - (void)screen:(UIButton*)btn{
     NSLog(@"添加好友");
+    WEProductFilterVC *filterVC =[[WEProductFilterVC alloc]init];
+    [self.navigationController pushViewController:filterVC animated:YES];
 }
 - (void)condition:(UIButton*)btn{
     NSLog(@"添加好友");
     
-    WEProductFilterVC *filterVC =[[WEProductFilterVC alloc]init];
-    [self.navigationController pushViewController:filterVC animated:YES];
+
 }
 
 - (void)viewDidLoad {
