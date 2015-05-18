@@ -24,6 +24,7 @@
 #import "MyCollectionVC.h"
 #import "GlanceHistoryVC.h"
 #import "MyOrderMenuVC.h"
+#import "WEMineOrderVC.h"
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>
 {
@@ -174,8 +175,9 @@
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString:email]];
 }
 - (void)headBtnClick:(UIButton*)sender{
-  MyOrderMenuVC *mymenu = [[MyOrderMenuVC alloc]init];
+//  MyOrderMenuVC *mymenu = [[MyOrderMenuVC alloc]init];
     
+    WEMineOrderVC *mymenu =[[WEMineOrderVC alloc]init];
     if (sender.tag == 98970) {
       mymenu.selectedItem =1;
    

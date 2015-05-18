@@ -17,9 +17,11 @@
         self.page =[self stringFromValue:[dict objectForKey:@"page"]];
         self.pagej =[self stringFromValue:[dict objectForKey:@"pagej"]];
         self.orders =[NSMutableArray arrayWithCapacity:0];
-        for (NSDictionary *orders in [dict objectForKey:@"orders"]) {
-            OrderM *om =[[OrderM alloc]initWithDict:orders];
-            [self.orders addObject:om];
+        for (NSDictionary *order in [dict objectForKey:@"orders"]) {
+            OrderM *om =[[OrderM alloc]initWithDict:order];
+            WEMyOrderFrame *orderFrame = [[WEMyOrderFrame alloc]init];
+            orderFrame.orderModel = om;
+            [self.orders addObject:orderFrame];
         }
     }
     return self;
