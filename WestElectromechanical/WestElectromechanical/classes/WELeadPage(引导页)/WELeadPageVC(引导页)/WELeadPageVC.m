@@ -8,7 +8,7 @@
 
 #import "WELeadPageVC.h"
 #import "AppDelegate.h"
-#define WELeadPageImageCount 4
+#define WELeadPageImageCount 3
 #define FourInch 
 @interface WELeadPageVC ()<UIScrollViewDelegate>
 @property (nonatomic ,weak)UIPageControl *pageControl;
@@ -47,7 +47,7 @@
     for (int i = 0; i<WELeadPageImageCount; i++) {
         // 创建UIImageView
         UIImageView *imageView = [[UIImageView alloc] init];
-        NSString *name = [NSString stringWithFormat:@"new_feature_%d.png", i + 1];
+        NSString *name = [NSString stringWithFormat:@"welcome_page_%d.png", i + 1];
         UIImage *image =[UIImage imageNamed:name];
         if (Iphone5Inch) { // 4inch  需要手动去加载4inch对应的-568h图片
             name = [name stringByAppendingString:@"-568h.png"];
@@ -94,6 +94,7 @@
     pageControl.numberOfPages = WELeadPageImageCount;
     pageControl.centerX = SCREEN_WIDTH * 0.5;
     pageControl.centerY = SCREEN_HEIGHT - 30;
+    pageControl.hidden = YES;
     [self.view addSubview:pageControl];
     
     // 2.设置圆点的颜色
