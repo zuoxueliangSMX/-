@@ -183,7 +183,7 @@
             subCell.frame =CGRectMake(0, CGRectGetHeight(cell.orderCodeLa.frame)+CGRectGetHeight(cell.orderTimeLa.frame)+i*CGRectGetHeight(subCell.frame), cellBgview.frame.size.width, subCell.frame.size.height);
 //            subCell.backgroundColor = [UIColor  blueColor];
             
-             [cellBgview addSubview:subCell];
+             [cell addSubview:subCell];
             
             
 //            cell.totalPriceLa.frame  =CGRectMake(cell.totalPriceLa.frame.origin.x, CGRectGetMaxY(), cell.totalPriceLa.frame.size.width, cell.totalPriceLa.frame.size.height);
