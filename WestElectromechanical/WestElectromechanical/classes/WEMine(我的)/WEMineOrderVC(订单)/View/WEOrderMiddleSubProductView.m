@@ -77,7 +77,7 @@
     _productModel = productModel;
     
     
-    _priceLabel.text =[NSString stringWithFormat:@"¥ %.2f",[productModel.p_price floatValue]];
+    _priceLabel.text =[NSString stringWithFormat:@"¥ %.2f x %@",[productModel.p_price floatValue],productModel.p_num];
     
     _versionBrandLa.text =[NSString stringWithFormat:@"型号:%@ 品牌:%@",productModel.p_version,productModel.p_brand];
     

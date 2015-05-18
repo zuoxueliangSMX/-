@@ -23,7 +23,6 @@
 #import "SheZhiVC.h"
 #import "MyCollectionVC.h"
 #import "GlanceHistoryVC.h"
-#import "MyOrderMenuVC.h"
 #import "WEMineOrderVC.h"
 
 @interface PersonCenterVC () <UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UIActionSheetDelegate>

@@ -157,6 +157,12 @@
  */
 #define API_QUERYORDER @"/json_order.php"
 
+/**
+ *  30.确认收货
+ */
+#define API_AFFIRMACCEPTGOODS @"/json_orderconfirm.php"
+
+
 
 
 

@@ -8,6 +8,9 @@
 
 #import "MyOrderDetailVC.h"
 #import "GlanceCell.h"
+#import "AccountHanler.h"
+#import "NSString+Base64.h"
+#import "ProductsM.h"
 
 @interface MyOrderDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -15,6 +18,7 @@
     
     UITableView *_table;
     NSArray *Arr;
+    int pCount;
     
 }
 
@@ -27,15 +31,24 @@
     [super viewDidLoad];
     
     self.title =@"订单详情";
+    for (int i =0; i< self.om.order_products.count; i++) {
+        
+        ProductsM *pm =[self.om.order_products objectAtIndex:i];
+        pCount +=[pm.p_num  intValue];
+    }
+
     
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-44) style:UITableViewStylePlain];
     
     _table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
 
     //添加headView,footView
-    [self addHeadFoot];
+    
     _table.delegate =self;
     _table.dataSource =self;
+     [self addHeadFoot];
+    
+        DLog(@"输出这产品的数量%d",pCount);
     [self.view addSubview:_table];
     
     
@@ -52,17 +65,22 @@
     headCell.frame = CGRectMake(10, 10, SCREEN_WIDTH-20, 140);
     [headCell.layer setCornerRadius:4];
     headCell.backgroundColor = [UIColor whiteColor];
-    headCell.orderNum.text =@"订单号 :11111111";
-    headCell.orderTimeLa.text =@"2015.05.11";
-    headCell.CompletedLa.text =@"已完成";
-    headCell.NameAndPhoneLa.text =@"徐琳  15515717255";
-    headCell.WaitComentLa.text =@"带评价";
     
+    headCell.orderNum.text =[NSString stringWithFormat:@"订单号 :%@",self.om.order_num];
+    
+    headCell.orderTimeLa.text =self.om.order_time;
+    headCell.CompletedLa.text =self.om.order_state;
+    
+    
+    
+    headCell.NameAndPhoneLa.text =[NSString stringWithFormat:@"%@  %@",[AccountHanler reciveName],[AccountHanler recivePhone]];
+    headCell.WaitComentLa.text =@"";
+   
     UIImageView *lineimgv = [[UIImageView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(headCell.orderTimeLa.frame)+10,  headCell.frame.size.width-40, 1)];
     lineimgv.backgroundColor =[UIColor appLineColor];
     [headCell addSubview:lineimgv];
     
-    headCell.addressLa.text =@"上海市机械制造厂,专业修理核潜艇，航母保修，核弹头保存，等业务";
+    headCell.addressLa.text =[AccountHanler addres];
     
     
     [headView addSubview:headCell];
@@ -72,11 +90,12 @@
     [footCell.layer setCornerRadius:4];
     footCell.backgroundColor = [UIColor whiteColor];
     footCell.backgroundColor = [UIColor whiteColor];
-    footCell.goodsPriceLa.text = @"商品总额“¥ :800.00";
-    footCell.totalCountLa.text =@"共计 5 件商品";
-    footCell.freightageLa.text = @"共计运费: ¥ 8";
-    footCell.subtractFeeLa.text =@"减免运费: 30";
-    footCell.goodsTotalPriceLa.text =@"总计:  ¥888";
+  
+    footCell.goodsPriceLa.text = [NSString stringWithFormat:@"商品总额“¥ :%@",self.om.all_money];
+    footCell.totalCountLa.text =[NSString stringWithFormat:@"总计 :%d件商品",pCount];
+    footCell.freightageLa.text = @"共计运费: ¥ 000";
+    footCell.subtractFeeLa.text =@"减免运费: 000";
+    footCell.goodsTotalPriceLa.text = @"";
     
     
     UIImageView *lineimgv2 = [[UIImageView alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(footCell.subtractFeeLa.frame)+6,  footCell.frame.size.width-40, 1)];
@@ -99,7 +118,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return self.om.order_products.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -112,6 +131,7 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:0];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         cell.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
+        cell.frame =CGRectMake(0, 0, SCREEN_WIDTH, 120);
         
     }
     
@@ -123,13 +143,21 @@
     //        [[SDImageCache sharedImageCache] storeImage:image forKey:zm.picture];
     //    }];
     //
+     ProductsM *pm = [self.om.order_products objectAtIndex:indexPath.row];
+
     
     cell.imgV.image = [UIImage imageNamed:@"Product_Placeholder"];
-    cell.titleLa.text=@"CPU芯片";
-    cell.orderNum.text =@"090807";
-    cell.styleBrand.text =@"89-2型 联发科品牌";
-    cell.priceLa.text =@"999元";
-    cell.memberPrice.text =@"9.9元";
+    cell.titleLa.text=pm.p_name;
+    cell.titleLa.numberOfLines = 0;
+    
+    cell.orderNum.text = [NSString stringWithFormat:@"西域订单编号:%@",pm.p_order_num];
+   
+   cell.styleBrand.text =[NSString stringWithFormat:@"型号%@  品牌%@",pm.p_version,pm.p_brand];
+   
+    cell.priceLa.text =[NSString stringWithFormat:@"¥%@ x %@",pm.p_price,pm.p_num];
+    
+    cell.priceLa.textColor =[UIColor orangeColor];
+    cell.memberPrice.text =@"";
     //    cell.cartBtn.image= [UIImage imageNamed:@"Product_AddCart"];
     
     [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];

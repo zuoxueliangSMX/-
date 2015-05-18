@@ -17,11 +17,15 @@
 #import "OrderM.h"
 #import "WEMineOrderCell.h"
 #import "WEMyOrderFrame.h"
+#import "TLAlertView.h"
+#import "WEMineAddComentVC.h"
 @interface WEMineOrderVC()<HTHorizontalSelectionListDelegate,HTHorizontalSelectionListDataSource,UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_table;
     NSArray *Arr;
     WEHTTPHandler *we;
+    TLAlertView *alertView;
+
 }
 
 @property (nonatomic, strong) HTHorizontalSelectionList *selectionList;
@@ -36,19 +40,12 @@
 #pragma mark - pop和push控制器时的操作
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
-    [we  executeQueryOrderTaskWithUserId:[AccountHanler userId] withState:@"0" withPage:@"1" Success:^(id obj) {
-        
-        
-        _orderModel =(MyOrderModel*)obj;
-        DLog(@"输出我的订单有多少%@",obj);
-        [_table reloadData];
-        
-        
-    } failed:^(id obj) {
-        
-    }];
-}
+        [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    
+    
+    [self sendRequest];
+
+   }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -67,7 +64,23 @@
     _table.delegate =self;
     _table.dataSource =self;
     [self.view addSubview:_table];
-    
+  
+}
+
+-(void)sendRequest
+{
+    [we  executeQueryOrderTaskWithUserId:[AccountHanler userId] withState: [NSString stringWithFormat:@"%d",self.selectedItem] withPage:@"1" Success:^(id obj) {
+        
+        _orderModel =(MyOrderModel*)obj;
+               [_table reloadData];
+        
+        
+    } failed:^(id obj) {
+        
+    }];
+
+
+
 }
 -(void)addTopNavBar
 {
@@ -115,8 +128,39 @@
 #pragma mark - HTHorizontalSelectionListDelegate Protocol Methods
 
 - (void)selectionList:(HTHorizontalSelectionList *)selectionList didSelectButtonWithIndex:(NSInteger)index {
-    // update the view for the corresponding index
-    self.selectedItemLabel.text = self.carMakes[index];
+  
+    DLog(@"输出我点击的是几%@",self.carMakes[index]);
+    switch (index) {
+        case 0:
+        {
+            self.selectedItem =0;
+        }
+            break;
+        case 1:
+        {
+            self.selectedItem =1;
+        }
+            break;
+        case 2:
+        {
+            self.selectedItem =2;
+        }
+            break;
+        case 3:
+        {
+             self.selectedItem =3;
+        }
+            break;
+
+
+            
+        default:
+            break;
+    }
+    
+    
+    [self  sendRequest];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,6 +169,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+       //这写的  有点奇怪 啊
+    
     WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
     return orderFrame.height+5;
 }
@@ -141,9 +187,55 @@
         cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
         cell.selectionStyle =UITableViewCellSelectionStyleNone;
     }
-
-     WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
+        WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
     cell.orderFrame = orderFrame;
+    [cell.bottomView setOrderBottomViewBlock:^(UIButton *btn) {
+        if ([btn.titleLabel.text isEqual:kOrderBtnTypeConfirm] ) {
+            
+            NSInteger row2 = [tableView indexPathForCell:((WEMineOrderCell*)[[btn   superview]superview])].row;
+            WEMyOrderFrame *orderFrame = [self.orderModel.orders  objectAtIndex:row2];
+            
+
+            
+            [we executeAffirmAcceptGoodsWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
+                if ([[obj objectForKey:@"message"] isEqualToString:@"1"]) {
+                
+                    alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"我已经收到货，同意支付宝付款" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
+
+                    
+                    
+                    [alertView handleCancel:^{
+                        
+                    }         handleConfirm:^{
+                        
+                        
+                        WEMineAddComentVC *coment = [[WEMineAddComentVC alloc]init];
+                        
+                        
+                  
+                        [self.navigationController pushViewController:coment animated:YES];
+                        
+ 
+                    
+                        
+                    }];
+                    
+                    alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
+                    
+                    
+                    
+                    [alertView show];
+                    
+  
+                    
+                    
+                }
+            } failed:^(id obj) {
+              
+            }];
+        }
+    }];
+
 
     return cell;
     
@@ -152,8 +244,11 @@
     
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
+
     MyOrderDetailVC *orderDetail = [[MyOrderDetailVC alloc]init];
-    
+   
+       orderDetail.om  =  orderFrame.orderModel;
     [self.navigationController pushViewController:orderDetail animated:YES];
     
 }

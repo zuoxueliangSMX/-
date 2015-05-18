@@ -255,4 +255,13 @@
                                         failed:(FailedBlock)failed;
 
 
+/**
+ *  30.确认收货
+ */
+- (void)executeAffirmAcceptGoodsWithUserId:(NSString *)userId
+                              withOrderNum:(NSString *)state
+                                Success:(SuccessBlock)success
+                                 failed:(FailedBlock)failed;
+
+
 @end

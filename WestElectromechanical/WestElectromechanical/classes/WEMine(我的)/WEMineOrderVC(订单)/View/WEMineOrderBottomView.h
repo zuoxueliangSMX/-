@@ -12,7 +12,7 @@
 #define kOrderBtnTypeConfirm @"确认收货"
 #define kOrderBtnTypeComment @"评价"
 #define kOrderBtnTypeFinish @"已评价"
-typedef void(^orderBottomViewBlock) (NSString *btnTitle);
+typedef void(^orderBottomViewBlock) (UIButton *btn);
 @interface WEMineOrderBottomView : UIView
 {
     __strong orderBottomViewBlock _block;
