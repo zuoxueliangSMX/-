@@ -29,6 +29,9 @@
 		7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FDEDC1B1AF77A1900911A02 /* Images.xcassets */; };
 		7FDEE40E1AF706B200674488 /* PersonCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEE40D1AF706B200674488 /* PersonCenterVC.m */; };
 		7FE18B411B04A111004552B1 /* CommitOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE18B401B04A111004552B1 /* CommitOrderVC.m */; };
+		7FE1C5B91B09E2C1007ED5E0 /* WEMineAddComentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE1C5B81B09E2C1007ED5E0 /* WEMineAddComentVC.m */; };
+		7FE1C5BE1B09E393007ED5E0 /* WEMineAddComentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE1C5BD1B09E393007ED5E0 /* WEMineAddComentCell.m */; };
+		7FE1C5C11B09E4DB007ED5E0 /* WEMineComentHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE1C5C01B09E4DB007ED5E0 /* WEMineComentHeadView.m */; };
 		7FE2C9B51B050250005C1FE9 /* ClaimInvoiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2C9B41B050250005C1FE9 /* ClaimInvoiceVC.m */; };
 		7FE4204E1AFA6E8C00988846 /* GCPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4204D1AFA6E8C00988846 /* GCPlaceholderTextView.m */; };
 		7FE420511AFA7CA400988846 /* SheZhiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE420501AFA7CA400988846 /* SheZhiVC.m */; };
@@ -44,7 +47,6 @@
 		7FE59F111AFBB24100D8ABA9 /* MarkSheetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE59F101AFBB24100D8ABA9 /* MarkSheetVC.m */; };
 		7FE5DDD31AFE0F5000B77986 /* HTHorizontalSelectionList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE5DDD01AFE0F5000B77986 /* HTHorizontalSelectionList.m */; };
 		7FE5DDD41AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE5DDD21AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.m */; };
-		7FE5DDD71AFE0FC800B77986 /* MyOrderMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE5DDD61AFE0FC800B77986 /* MyOrderMenuVC.m */; };
 		7FE643AA1AF7921A000809A4 /* EmailForCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */; };
 		7FE6D47A1AFB40C200CFABE4 /* CollectionM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D4791AFB40C200CFABE4 /* CollectionM.m */; };
 		7FE6D47D1AFB422400CFABE4 /* JsonToModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE6D47C1AFB422400CFABE4 /* JsonToModel.m */; };
@@ -228,6 +230,12 @@
 		7FDEE40D1AF706B200674488 /* PersonCenterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCenterVC.m; sourceTree = "<group>"; };
 		7FE18B3F1B04A111004552B1 /* CommitOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommitOrderVC.h; sourceTree = "<group>"; };
 		7FE18B401B04A111004552B1 /* CommitOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommitOrderVC.m; sourceTree = "<group>"; };
+		7FE1C5B71B09E2C1007ED5E0 /* WEMineAddComentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEMineAddComentVC.h; sourceTree = "<group>"; };
+		7FE1C5B81B09E2C1007ED5E0 /* WEMineAddComentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEMineAddComentVC.m; sourceTree = "<group>"; };
+		7FE1C5BC1B09E393007ED5E0 /* WEMineAddComentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEMineAddComentCell.h; sourceTree = "<group>"; };
+		7FE1C5BD1B09E393007ED5E0 /* WEMineAddComentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEMineAddComentCell.m; sourceTree = "<group>"; };
+		7FE1C5BF1B09E4DB007ED5E0 /* WEMineComentHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEMineComentHeadView.h; sourceTree = "<group>"; };
+		7FE1C5C01B09E4DB007ED5E0 /* WEMineComentHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEMineComentHeadView.m; sourceTree = "<group>"; };
 		7FE2C9B31B050250005C1FE9 /* ClaimInvoiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimInvoiceVC.h; sourceTree = "<group>"; };
 		7FE2C9B41B050250005C1FE9 /* ClaimInvoiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimInvoiceVC.m; sourceTree = "<group>"; };
 		7FE4204C1AFA6E8C00988846 /* GCPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -257,8 +265,6 @@
 		7FE5DDD01AFE0F5000B77986 /* HTHorizontalSelectionList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTHorizontalSelectionList.m; sourceTree = "<group>"; };
 		7FE5DDD11AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTHorizontalSelectionListScrollView.h; sourceTree = "<group>"; };
 		7FE5DDD21AFE0F5000B77986 /* HTHorizontalSelectionListScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTHorizontalSelectionListScrollView.m; sourceTree = "<group>"; };
-		7FE5DDD51AFE0FC800B77986 /* MyOrderMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderMenuVC.h; sourceTree = "<group>"; };
-		7FE5DDD61AFE0FC800B77986 /* MyOrderMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderMenuVC.m; sourceTree = "<group>"; };
 		7FE643A81AF7921A000809A4 /* EmailForCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmailForCodeVC.h; sourceTree = "<group>"; };
 		7FE643A91AF7921A000809A4 /* EmailForCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailForCodeVC.m; sourceTree = "<group>"; };
 		7FE6D4781AFB40C200CFABE4 /* CollectionM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionM.h; sourceTree = "<group>"; };
@@ -580,8 +586,6 @@
 		7FDEE40B1AF706B200674488 /* 个人中心  */ = {
 			isa = PBXGroup;
 			children = (
-				7FE5DDD51AFE0FC800B77986 /* MyOrderMenuVC.h */,
-				7FE5DDD61AFE0FC800B77986 /* MyOrderMenuVC.m */,
 				7FE73D8B1B003DE4004559D4 /* MyOrderDetailVC.h */,
 				7FE73D8C1B003DE4004559D4 /* MyOrderDetailVC.m */,
 				7FDEDC181AF764CD00911A02 /* MyRegisterVC.h */,
@@ -613,6 +617,17 @@
 				7FE59F0C1AFB9E8C00D8ABA9 /* GlanceCell.xib */,
 			);
 			path = "个人中心 ";
+			sourceTree = "<group>";
+		};
+		7FE1C5BB1B09E328007ED5E0 /* comentView */ = {
+			isa = PBXGroup;
+			children = (
+				7FE1C5BC1B09E393007ED5E0 /* WEMineAddComentCell.h */,
+				7FE1C5BD1B09E393007ED5E0 /* WEMineAddComentCell.m */,
+				7FE1C5BF1B09E4DB007ED5E0 /* WEMineComentHeadView.h */,
+				7FE1C5C01B09E4DB007ED5E0 /* WEMineComentHeadView.m */,
+			);
+			path = comentView;
 			sourceTree = "<group>";
 		};
 		7FE5DDCE1AFE0F5000B77986 /* HTHorizontalSelectionList */ = {
@@ -1172,6 +1187,8 @@
 				A39AC8E51B0936600017CF8A /* Modle */,
 				A39AC8E21B0934DB0017CF8A /* WEMineOrderVC.h */,
 				A39AC8E31B0934DB0017CF8A /* WEMineOrderVC.m */,
+				7FE1C5B71B09E2C1007ED5E0 /* WEMineAddComentVC.h */,
+				7FE1C5B81B09E2C1007ED5E0 /* WEMineAddComentVC.m */,
 			);
 			path = "WEMineOrderVC(订单)";
 			sourceTree = "<group>";
@@ -1192,6 +1209,7 @@
 		A39AC8EC1B09367B0017CF8A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7FE1C5BB1B09E328007ED5E0 /* comentView */,
 				A39AC8ED1B0936A30017CF8A /* WEMineOrderCell.h */,
 				A39AC8EE1B0936A30017CF8A /* WEMineOrderCell.m */,
 				A39AC8F01B0936E00017CF8A /* WEMineOrderHeaderView.h */,
@@ -1653,7 +1671,6 @@
 				A3C248AA1AF9088A00760C72 /* WERecommendModel.m in Sources */,
 				A3ADFDC91B0100050029795A /* WEProductHandler.m in Sources */,
 				A3843ECE1AF47A6000FDE84F /* HTTPBaseRequest.m in Sources */,
-				7FE5DDD71AFE0FC800B77986 /* MyOrderMenuVC.m in Sources */,
 				A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */,
 				A3C466F11AF313B300E1604D /* TAAnimatedDotView.m in Sources */,
 				A38A32911AEC0BC100F7FE7C /* WENavitationController.m in Sources */,
@@ -1721,10 +1738,12 @@
 				A3C0AFC11B04FAE3008F6900 /* CommentImgListView.m in Sources */,
 				A3ADC4331B024B2500B00FD2 /* WECartsModel.m in Sources */,
 				A39AC8F51B09370B0017CF8A /* WEMineOrderMiddleView.m in Sources */,
+				7FE1C5C11B09E4DB007ED5E0 /* WEMineComentHeadView.m in Sources */,
 				A3BFB6311AFBB6E600024BEE /* WEProductDetailModel.m in Sources */,
 				A38A328C1AEC083900F7FE7C /* RDVTabBarController.m in Sources */,
 				A373592F1AFE26D700484A59 /* WESecondCategoryVC.m in Sources */,
 				A3ADFDDE1B010AC10029795A /* BaseTableViewProtocol.m in Sources */,
+				7FE1C5B91B09E2C1007ED5E0 /* WEMineAddComentVC.m in Sources */,
 				A39AC8FB1B0939250017CF8A /* WEOrderMiddleSubProductView.m in Sources */,
 				A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */,
 				A38A328D1AEC083900F7FE7C /* RDVTabBarItem.m in Sources */,
@@ -1771,6 +1790,7 @@
 				7FDEDC0B1AF71D6400911A02 /* MASViewAttribute.m in Sources */,
 				A369CFB01AEE70C4001F3DB7 /* HanyuPinyinOutputFormat.m in Sources */,
 				A39AC8F81B0937310017CF8A /* WEMineOrderBottomView.m in Sources */,
+				7FE1C5BE1B09E393007ED5E0 /* WEMineAddComentCell.m in Sources */,
 				7F8B1AB11AFA01560085FE2D /* PALocation.m in Sources */,
 				7FDEDC121AF7541000911A02 /* LoginVC.m in Sources */,
 				A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */,

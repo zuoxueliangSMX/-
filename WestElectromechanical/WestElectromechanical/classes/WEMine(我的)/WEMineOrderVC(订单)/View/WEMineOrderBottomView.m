@@ -44,11 +44,11 @@
         [_orderBtn setTitle:kOrderBtnTypePay forState:UIControlStateNormal];
         [_orderBtn setTitle:kOrderBtnTypePay forState:UIControlStateHighlighted];
 
-    }else if ([orderModel.order_state isEqualToString:@"待发货"])
+    }else if ([orderModel.order_state isEqualToString:@"待收货"])
     {
         [_orderBtn setTitle:kOrderBtnTypeConfirm forState:UIControlStateNormal];
         [_orderBtn setTitle:kOrderBtnTypeConfirm forState:UIControlStateHighlighted];
-    }else if ([orderModel.order_state isEqualToString:@"已完成"])
+    }else if ([orderModel.order_state isEqualToString:@"待评价"])
     {
         [_orderBtn setTitle:kOrderBtnTypeComment forState:UIControlStateNormal];
         [_orderBtn setTitle:kOrderBtnTypeComment forState:UIControlStateHighlighted];
@@ -64,7 +64,7 @@
 - (void)orderClick:(UIButton *)btn
 {
     if (_block) {
-        _block(btn.titleLabel.text);
+        _block(btn);
     }
     
 }

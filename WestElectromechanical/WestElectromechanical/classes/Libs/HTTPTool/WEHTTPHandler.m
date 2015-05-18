@@ -1030,6 +1030,45 @@
 
 }
 
+/**
+ *  30.确认收货
+ */
 
+- (void)executeAffirmAcceptGoodsWithUserId:(NSString *)userId
+                              withOrderNum:(NSString *)OrderNum
+                                   Success:(SuccessBlock)success
+                                    failed:(FailedBlock)failed
+
+{
+
+
+    [AlertUtil showAlertWithText:@"确认收货"];
+    
+    NSString *url =[BaseHandler requestUrlWithUrl:API_AFFIRMACCEPTGOODS WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&Order_num=%@",userId,OrderNum];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+         if ([[json  objectForKey:@"message"] integerValue]== 1) {
+            
+            if (success) {
+                success(json);
+            }
+        }else{
+            if (failed) {
+                failed(json);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+
+
+
+
+}
 
 @end
