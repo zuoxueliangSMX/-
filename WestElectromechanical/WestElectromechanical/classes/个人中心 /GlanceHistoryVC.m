@@ -133,7 +133,7 @@
 {
 
     [handler deleteProductSuccessBlock:^(id obj) {
-        _totalHistoryProducts = obj;
+        _totalHistoryProducts = nil;
 
         [_table reloadData];
     } failedBlock:^(id obj) {
