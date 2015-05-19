@@ -10,5 +10,6 @@
 
 @interface WEAdModel : BaseModel
 @property (nonatomic ,copy)NSString * pic;
+@property (nonatomic ,copy)NSString *pid;
 - (instancetype)initWithDict:(NSDictionary *)dict;
 @end

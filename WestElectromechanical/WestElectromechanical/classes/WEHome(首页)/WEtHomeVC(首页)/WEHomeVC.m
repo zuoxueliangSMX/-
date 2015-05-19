@@ -143,6 +143,10 @@
             [bSelf.navigationController pushViewController:productListVC animated:YES];
         }
     }];
+    [scrollView.headerView setHomeHeaderScrollViewBlock:^(NSString *pid) {
+        [bSelf getProductDetailInfo:pid];
+
+    }];
     _homeScroll = scrollView;
     
     WELocationManager *mgr =[WELocationManager sharedWELocationManager];
@@ -189,7 +193,7 @@
 - (void)showADInfo
 {
     NSMutableArray *temArray =[NSMutableArray array];
-    UIImage * PlaceholderImage = [UIImage imageNamed:@"Home_Middle_04"];
+    UIImage * PlaceholderImage = [UIImage imageNamed:@"product_load_default"];
     NSInteger index = 1;
     for (WEAdModel *adModel in _homeInfoModel.ads) {
         //网络图片
@@ -202,7 +206,7 @@
         NSString *picTag =[NSString stringWithFormat:@"PIC%ld",(long)index];
         DLog(@"%@",[NSDictionary dictionaryWithObjects:@[adModel.pic,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]);
         DLog(@"%@",adModel.pic);
-        [temArray addObject:[NSDictionary dictionaryWithObjects:@[adModel.pic,picTag,@NO,PlaceholderImage] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage"]]];
+        [temArray addObject:[NSDictionary dictionaryWithObjects:@[adModel.pic,picTag,@NO,PlaceholderImage,adModel.pid] forKeys:@[@"pic",@"title",@"isLoc",@"placeholderImage",@"pId"]]];
     }
     _homeScroll.headerView.imageURLs = temArray;
      [_homeScroll.headerView.imgPlayerView upDate];

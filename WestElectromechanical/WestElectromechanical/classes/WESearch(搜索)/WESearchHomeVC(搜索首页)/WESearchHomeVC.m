@@ -10,6 +10,7 @@
 #import "WEHTTPHandler.h"
 #import "WEHotRecommendModel.h"
 #import "WEProductListVC.h"
+#import "NSString+Extension.h"
 @interface WESearchHomeVC ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic ,weak)UISearchBar *mySearchBar;
@@ -217,7 +218,12 @@
 //}
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self initSearchProductContent:@"通电"];
+    
+    if ([[NSString deleteSpacing:searchBar.text] length]>0) {
+        [self initSearchProductContent:[NSString deleteSpacing:searchBar.text]];
+    }else{
+        [AlertUtil showAlertWithText:@"您搜索的内容为空，请您输入产品的名字或者分类"];
+    }
     [searchBar resignFirstResponder];
 }
 

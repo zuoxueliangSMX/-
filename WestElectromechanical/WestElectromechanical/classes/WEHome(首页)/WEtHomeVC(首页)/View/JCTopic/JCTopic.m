@@ -26,6 +26,13 @@
     self.showsHorizontalScrollIndicator = NO;
     self.showsVerticalScrollIndicator = NO;
     self.backgroundColor = [UIColor whiteColor];
+    
+    UIImageView* bgview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"product_advert_default"]];
+    bgview.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.frame.size.height);
+    [self addSubview:bgview];
+    
+//    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"product_advert_default"]]];
+    
 }
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

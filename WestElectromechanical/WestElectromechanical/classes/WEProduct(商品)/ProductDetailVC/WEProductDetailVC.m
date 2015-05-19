@@ -78,7 +78,7 @@
 }
 - (void)initWebView
 {
-    UIWebView *webView =[[UIWebView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    UIWebView *webView =[[UIWebView alloc]initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 1)];
     webView.delegate = self;
     
     [self.view addSubview:webView];

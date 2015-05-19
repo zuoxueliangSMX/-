@@ -34,6 +34,8 @@
             imageView.frame =CGRectMake(kMargin+((frame.size.width-3*kMargin)/2+kMargin)*(i%2), kMargin+((frame.size.height-3*kMargin)/2+kMargin)*(i/2), (frame.size.width-3*kMargin)/2, (frame.size.height-3*kMargin)/2);
             imageView.tag = kTag + i;
             imageView.userInteractionEnabled = YES;
+            [imageView setImage:[UIImage imageNamed:@"product_load_default"]];
+            imageView.contentMode =UIViewContentModeScaleToFill;
             imageView.backgroundColor =[UIColor blueColor];
             [self addSubview:imageView];
             [_imgs addObject:imageView];
@@ -50,7 +52,7 @@
     for (int i = 0; i < kImgCount; i++) {
         UIImageView *imgView =[_imgs objectAtIndex:i];
         WERecommendModel *recommendModel =[recommends objectAtIndex:i];
-        [imgView setWebImgUrl:recommendModel.Imgurl placeHolder:[UIImage imageNamed:@"Person_header_bg"]];
+        [imgView setWebImgUrl:recommendModel.Imgurl placeHolder:[UIImage imageNamed:@"product_load_default"]];
     }
 }
 - (void)setRecommendBgViewBlock:(recommendBgViewBlock)block

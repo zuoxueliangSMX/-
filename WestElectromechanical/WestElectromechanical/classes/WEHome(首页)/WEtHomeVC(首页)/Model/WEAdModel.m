@@ -13,6 +13,7 @@
 {
     if (self = [super init]) {
         self.pic =[NSString stringWithFormat:@"%@%@",kWEImgUrl,[self stringFromValue:[dict objectForKey:@"pic"]]];
+        self.pid =[NSString stringWithFormat:@"%@",[self stringFromValue:[dict objectForKey:@"p_id"]]];
     }
     return self;
 }

@@ -19,7 +19,7 @@
         _imageURLs =[NSMutableArray array];
         
         JCTopic *imagePlayerView = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, frame.size.height)];
-        imagePlayerView.backgroundColor = [UIColor blueColor];
+//        imagePlayerView.backgroundColor = [UIColor blueColor];
         imagePlayerView.JCdelegate =self;
         [self addSubview:imagePlayerView];
         _imgPlayerView = imagePlayerView;
@@ -43,9 +43,16 @@
     _imgPlayerView.pics = _imageURLs;;
     
 }
-
+- (void)setHomeHeaderScrollViewBlock:(homeHeaderScrollViewBlock)block
+{
+    _block = block;
+}
 -(void)didClick:(id)data{
     DLog(@"点击的是1张图");
+    NSDictionary *dataDict = (NSDictionary *)data;
+    if (_block) {
+        _block([dataDict objectForKey:@"pId"]);
+    }
 }
 -(void)currentPage:(int)page total:(NSUInteger)total{
     

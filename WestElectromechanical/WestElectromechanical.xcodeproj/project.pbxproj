@@ -106,6 +106,7 @@
 		A38A32911AEC0BC100F7FE7C /* WENavitationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32901AEC0BC100F7FE7C /* WENavitationController.m */; };
 		A38A32951AEC0CB000F7FE7C /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */; };
 		A38A32981AEC11E700F7FE7C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38A32971AEC11E700F7FE7C /* ViewController.m */; };
+		A38C43AF1B0B006B0055887C /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A38C43AE1B0B006B0055887C /* NSString+Extension.m */; };
 		A39659551B025897006BAEFA /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A39659541B025897006BAEFA /* NSString+Base64.m */; };
 		A39659581B0259F8006BAEFA /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = A39659571B0259F8006BAEFA /* NSData+Base64.m */; };
 		A39AC8E41B0934DB0017CF8A /* WEMineOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A39AC8E31B0934DB0017CF8A /* WEMineOrderVC.m */; };
@@ -382,6 +383,8 @@
 		A38A32941AEC0CB000F7FE7C /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
 		A38A32961AEC11E700F7FE7C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A38A32971AEC11E700F7FE7C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A38C43AD1B0B006B0055887C /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		A38C43AE1B0B006B0055887C /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		A39659531B025897006BAEFA /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
 		A39659541B025897006BAEFA /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		A39659561B0259F8006BAEFA /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -1425,6 +1428,8 @@
 		A3C2A82F1AEC9518001DC327 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A38C43AD1B0B006B0055887C /* NSString+Extension.h */,
+				A38C43AE1B0B006B0055887C /* NSString+Extension.m */,
 				A39659561B0259F8006BAEFA /* NSData+Base64.h */,
 				A39659571B0259F8006BAEFA /* NSData+Base64.m */,
 				A39659531B025897006BAEFA /* NSString+Base64.h */,
@@ -1747,6 +1752,7 @@
 				A39AC8FB1B0939250017CF8A /* WEOrderMiddleSubProductView.m in Sources */,
 				A3C248931AF8FAC400760C72 /* WEHotRecommendSingleModel.m in Sources */,
 				A38A328D1AEC083900F7FE7C /* RDVTabBarItem.m in Sources */,
+				A38C43AF1B0B006B0055887C /* NSString+Extension.m in Sources */,
 				7F8B1AB21AFA01560085FE2D /* PAPickView.m in Sources */,
 				A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */,
 				A39659581B0259F8006BAEFA /* NSData+Base64.m in Sources */,

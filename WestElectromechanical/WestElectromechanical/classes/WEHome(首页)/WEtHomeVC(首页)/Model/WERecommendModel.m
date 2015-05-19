@@ -13,7 +13,8 @@
 {
     if (self = [super init]) {
        self.contentid =[self stringFromValue:[dict objectForKey:@"contentid"]];
-       self.Imgurl=[NSString stringWithFormat:@"%@%@",kWEProductImgUrl,[self stringFromValue:[dict objectForKey:@"Imgurl"]]];
+       self.Imgurl=[NSString stringWithFormat:@"%@%@",kWEProductImgUrl,[self stringFromValue:[dict objectForKey:@"imgurl"]]];
+        DLog(@"Imgurl------>%@",self.Imgurl);
        self.p_id=[self stringFromValue:[dict objectForKey:@"p_id"]];
     }
     return self;
