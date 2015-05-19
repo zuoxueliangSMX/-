@@ -77,7 +77,7 @@
 /**
  *  产品二级分类列表
  */
-- (void)initFirstCategoryList:(NSString *)categroyId
+- (void)initFirstCategoryList:(NSString *)categroyId withCategoryName:(NSString *)name
 {
     
     WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
@@ -85,6 +85,7 @@
     
     [handler executeGetSecondCategoryTaskWithCategory:categroyId Success:^(id obj) {
         WESecondCategoryVC *secondCategoryVC =[[WESecondCategoryVC alloc]init];
+        secondCategoryVC.title = name;
         secondCategoryVC.leftModel = (WECategorysModel *)obj;
         WECategorysModel *categorysModel =(WECategorysModel *)obj;
         WECategorySingleModel *singleModel =categorysModel.types[0];
@@ -158,7 +159,7 @@
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
-    [self initFirstCategoryList:[_categorys.types[indexPath.row] t_name]];
+    [self initFirstCategoryList:[_categorys.types[indexPath.row] t_id] withCategoryName:[_categorys.types[indexPath.row] t_name]];
     
 }
 

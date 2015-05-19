@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initLeftTableView];
     [self initRightTableView];
@@ -31,7 +32,7 @@
     leftTable.delegate =self;
     leftTable.dataSource =self;
     leftTable.bounces = NO;
-    leftTable.backgroundColor =[UIColor clearColor];
+    leftTable.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     [self.view addSubview:leftTable];
     _leftTable =leftTable;
     UIView *view =[[UIView alloc]init];
@@ -48,7 +49,7 @@
     leftTable.delegate =self;
     leftTable.bounces = NO;
     leftTable.dataSource =self;
-    leftTable.backgroundColor =[UIColor clearColor];
+    leftTable.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     [self.view addSubview:leftTable];
     UIView *view =[[UIView alloc]init];
     leftTable.tableFooterView = view;
@@ -79,20 +80,21 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
+        
     }
-    
 
-    
     if (self.leftTable == tableView) {
         cell.textLabel.text =[_leftModel.types[indexPath.row] t_name];
+        cell.backgroundColor =[UIColor clearColor];
         if (!_isSelected) {
             if (indexPath == _selectedIndex) {
-                cell.backgroundColor =[UIColor lightGrayColor];
+                cell.backgroundColor =[UIColor whiteColor];
             }
             _isSelected =YES;
         }
        
     }else{
+        cell.backgroundColor =[UIColor whiteColor];
         cell.textLabel.text =[_rightModel.types[indexPath.row] t_name];
     }
     

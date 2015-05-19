@@ -72,10 +72,10 @@
     
     if (tableView == self.leftTable) {
         UITableViewCell *selectedCell =[tableView cellForRowAtIndexPath:self.selectedIndex];
-        selectedCell.backgroundColor =[UIColor whiteColor];
+        selectedCell.backgroundColor =[UIColor clearColor];
         self.selectedIndex = indexPath;
         UITableViewCell *cell =[tableView cellForRowAtIndexPath:self.selectedIndex];
-        cell.backgroundColor =[UIColor lightGrayColor];
+        cell.backgroundColor =[UIColor whiteColor];
         
         WECategorySingleModel *singleModel =self.leftModel.types[indexPath.row];
         [self getRightData:singleModel.t_id];
@@ -83,7 +83,7 @@
     }else{
         
         
-        WECategorySingleModel *singleModel =self.leftModel.types[indexPath.row];
+        WECategorySingleModel *singleModel =self.rightModel.types[indexPath.row];
         [self getNextVCData:singleModel.t_id];
         
         

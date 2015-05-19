@@ -49,7 +49,7 @@
 /**
  *  获取下一个控制器的数据
  */
-- (void)getNextVCData:(NSString *)categroyId
+- (void)getNextVCData:(NSString *)categroyId withCategoryName:(NSString *)name
 {
     
     WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
@@ -57,6 +57,7 @@
     
     [handler executeGetSecondCategoryTaskWithCategory:categroyId Success:^(id obj) {
         WEThirdCategoryVC *thirdCategoryVC =[[WEThirdCategoryVC alloc]init];
+        thirdCategoryVC.title = name;
         thirdCategoryVC.leftModel = (WECategorysModel *)obj;
         WECategorysModel *categorysModel =(WECategorysModel *)obj;
         WECategorySingleModel *singleModel =categorysModel.types[0];
@@ -80,10 +81,10 @@
     
     if (tableView == self.leftTable) {
         UITableViewCell *selectedCell =[tableView cellForRowAtIndexPath:self.selectedIndex];
-        selectedCell.backgroundColor =[UIColor whiteColor];
+        selectedCell.backgroundColor =[UIColor clearColor];
         self.selectedIndex = indexPath;
         UITableViewCell *cell =[tableView cellForRowAtIndexPath:self.selectedIndex];
-        cell.backgroundColor =[UIColor lightGrayColor];
+        cell.backgroundColor =[UIColor whiteColor];
         
         WECategorySingleModel *singleModel =self.leftModel.types[indexPath.row];
         [self getRightData:singleModel.t_id];
@@ -92,7 +93,7 @@
         
         
         WECategorySingleModel *singleModel =self.leftModel.types[indexPath.row];
-        [self getNextVCData:singleModel.t_id];
+        [self getNextVCData:singleModel.t_id withCategoryName:singleModel.t_name];
 
         
     }
