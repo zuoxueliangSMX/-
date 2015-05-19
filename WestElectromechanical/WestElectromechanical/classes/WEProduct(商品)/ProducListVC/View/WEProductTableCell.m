@@ -117,8 +117,15 @@
     
 }
 
+- (void)setProductAddCartBlock:(productAddCartBlock)block
+{
+    _block = block;
+}
+
 - (void)addProductCart:(UIButton *)btn
 {
-    
+    if (_block) {
+        _block(self.singleModel.pid);
+    }
 }
 @end

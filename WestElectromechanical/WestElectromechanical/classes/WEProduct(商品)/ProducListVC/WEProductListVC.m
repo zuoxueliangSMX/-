@@ -18,6 +18,7 @@
 #import "WEProductSingleModel.h"
 #import "WEProductHandler.h"
 #import "WEProductFilterVC.h"
+#import "WECartHomeVC.h"
 @interface WEProductListVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic ,weak)UITableView *productList;
 @property (nonatomic ,weak)UICollectionView *productCollection;
@@ -156,6 +157,12 @@
         cell = [[WEProductTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
+    
+    [cell setProductAddCartBlock:^(NSString *productId) {
+        
+    }];
+    
     cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     WEProductSingleModel *singleModel =_products.products[indexPath.row];
     cell.singleModel = singleModel;
