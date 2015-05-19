@@ -19,7 +19,7 @@
 #import "MyCartM.h"
 #import "UIImageView+WebCacheImg.h"
 
-
+#import "RDVTabBarController.h"
 @interface CommitOrderVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     
@@ -36,20 +36,26 @@
 
 @implementation CommitOrderVC
 
-
--(void)viewWillAppear:(BOOL)animated
-{
+#pragma mark -
+#pragma mark - pop和push控制器时的操作
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
     [_table reloadData];
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"提交订单";
     
     we= [[WEHTTPHandler alloc]init];
     
-    _table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT-100) style:UITableViewStylePlain];
+    _table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT-44) style:UITableViewStylePlain];
     _table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
     
     self.view.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);

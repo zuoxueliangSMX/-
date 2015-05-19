@@ -110,11 +110,16 @@
 {
     imageView.userInteractionEnabled = YES;
     
-    // 1.添加开始按钮
-    [self setupStartButton:imageView];
     
-    // 2.添加分享按钮
-    [self setupShareButton:imageView];
+    UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(start)];
+    tap.numberOfTapsRequired = 1;
+    [imageView addGestureRecognizer:tap];
+    
+//    // 1.添加开始按钮
+//    [self setupStartButton:imageView];
+//    
+//    // 2.添加分享按钮
+//    [self setupShareButton:imageView];
 }
 
 /**

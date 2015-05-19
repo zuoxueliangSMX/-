@@ -12,6 +12,7 @@
 #import "UIImageView+WebCacheImg.h"
 #import "MyCartM.h"
 #import "NSString+Base64.h"
+#import "RDVTabBarController.h"
 @interface CartOrderDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     
@@ -28,18 +29,19 @@
 @implementation CartOrderDetailVC
 #pragma mark -
 #pragma mark - pop和push控制器时的操作
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
-//}
-//
-//- (void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
-//}
-//
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-64) style:UITableViewStylePlain];
     
     
