@@ -367,15 +367,7 @@
     if (sureTf.text.length == 0 && sureTf!=nil) {
         [self animationForTextfield:sureTf];
     }
-//    if (valCodeTf.text.length == 0) {
-//        
-//        [self animationForTextfield:valCodeTf];
-//    }
-//    if (valCodeTf.text.length == 0 && sureTf !=nil) {
-//        
-//        [self animationForTextfield:valCodeTf];
-//        
-//    }
+
     
     
     if (emailTf.text.length==0||userNameTf.text.length==0||LogNmTextF.text.length == 0||pwdNmTextF.text.length==0 ) {
@@ -393,11 +385,8 @@
         return;
     }
     
-//    if (![valCodeTf.text isEqualToString:checkCode] && sureTf !=nil) {
-//        
-//        ALERT_WARN(@"请输入正确的验证码");
-//        return;
-//    }
+
+
     
     [pwdNmTextF resignFirstResponder];
     [LogNmTextF resignFirstResponder];
@@ -418,32 +407,6 @@
         
          DLog(@"输出%@",obj);
     }];
-    //调用注册接口
-    
-//    NSDictionary *subD = @{@"login": LogNmTextF.text,@"pass":pwdNmTextF.text,@"mobile":LogNmTextF.text,@"email":@"hill@163.com"};
-//    [HttpManager requestConsumerRegPortWithDataInfo:@{@"consumer": subD} subKey:@"consumer" SuccessDic:^(id succDic) {
-//        DLog(@"UI ++++++++ register=====%@",succDic);
-//
-//        if ([succDic objectForKey:@"msg"]!=nil) {
-//            return;
-//        }
-//        
-//        [[SendIFAppDefault shareAppDefault] setCurrentUserId:[succDic objectForKey:@"userId"]];
-//        [[SendIFAppDefault shareAppDefault] setMobilePhone:[succDic objectForKey:@"mobile"]];
-//        [[SendIFAppDefault shareAppDefault] setLoginState:@"1"];
-//        
-//        if ([self.type isEqualToString:@"fromPay"]) {
-//            
-//            [self.navigationController popToViewController:(UIViewController*)self.navigationController.viewControllers[3] animated:YES];
-//        }else{
-//            
-//        [self.navigationController popViewControllerAnimated:YES];
-//        }
-//        
-//        
-//    } failure:^(NSError *MSGerror) {
-//        
-//    }];
     
 }
 #pragma mark -
@@ -531,16 +494,5 @@
     [self.view endEditing:YES];
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
