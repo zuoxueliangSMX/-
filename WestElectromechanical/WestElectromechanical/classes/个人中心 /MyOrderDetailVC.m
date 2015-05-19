@@ -14,6 +14,7 @@
 #import "RDVTabBarController.h"
 #import "WEHTTPHandler.h"
 #import "WEOrderDetailM.h"
+#import "UIImageView+WebCacheImg.h"
 
 @interface MyOrderDetailVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -165,21 +166,24 @@
         cell.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
         cell.frame =CGRectMake(0, 0, SCREEN_WIDTH, 120);
         
+        UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 110, 120)];
+        
+        [cell.contentView addSubview:imgV];
+        
+        imgV.tag = 98;
+
+        
     }
     
-    //    ZyxM *zm = [zyxArr objectAtIndex:indexPath.row];
-    //
-    //
-    //    NSString *path1 = [NSString stringWithFormat:@"%@%@",SendIFServer,zm.picture];
-    //    [cell.bigImgView sd_setImageWithURL:[NSURL URLWithString:path1] placeholderImage:[UIImage imageNamed:@"about_1"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-    //        [[SDImageCache sharedImageCache] storeImage:image forKey:zm.picture];
-    //    }];
-    //
-     ProductsM *pm = [_wm.products objectAtIndex:indexPath.row];
+        ProductsM *pm = [_wm.products objectAtIndex:indexPath.row];
+    UIImageView*imgv2 =(UIImageView*)[cell.contentView viewWithTag:98];
+    imgv2.contentMode =UIViewContentModeScaleAspectFit;
+    
+    [imgv2  setWebImgUrl:pm.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    
 
     
-    cell.imgV.image = [UIImage imageNamed:@"Product_Placeholder"];
-    cell.titleLa.text=pm.p_name;
+       cell.titleLa.text=pm.p_name;
     cell.titleLa.numberOfLines = 0;
     
     cell.orderNum.text = [NSString stringWithFormat:@"西域订单编号:%@",pm.p_order_num];
@@ -190,29 +194,15 @@
     
     cell.priceLa.textColor =[UIColor orangeColor];
     cell.memberPrice.text =@"";
-    //    cell.cartBtn.image= [UIImage imageNamed:@"Product_AddCart"];
+    cell.cartBtn.hidden =YES;
     
-    [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
-    
-    //    cell.titleLa.text = zm.zyxName;
-    //    cell.introduceLa.text =[NSString stringFromHtml:zm.introduce];
-    //    cell.priceLa.text =zm.price ;
-    //    cell.accesoryImgv.image =[UIImage imageNamed:@"Person_arrow_right"];
-    return cell;
+       return cell;
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    //    FreeLineDetailVC *free =[[FreeLineDetailVC alloc]init];
-    //
-    //
-    //    ZyxM*zm = [zyxArr objectAtIndex:indexPath.row];
-    //    free.zm =zm;
-    //
-    //
-    //    [self.navigationController pushViewController:free animated:YES];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+      [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
 }

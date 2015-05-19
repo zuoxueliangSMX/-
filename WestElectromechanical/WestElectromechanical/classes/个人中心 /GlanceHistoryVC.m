@@ -12,7 +12,7 @@
 #import "UIImageView+WebCacheImg.h"
 #import "RDVTabBarController.h"
 #import "NSString+Base64.h"
-#import "UIImageView+WebCache.h"
+
 
 @interface GlanceHistoryVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -20,7 +20,7 @@
     
     UITableView *_table;
     NSArray *Arr;
-    
+    WEProductHandler *handler;
 }
 @property (nonatomic ,strong)NSMutableArray *totalHistoryProducts;
 @end
@@ -60,7 +60,7 @@
     _table.tableFooterView =[[UIView alloc]init];
     
     
-    WEProductHandler *handler =[[WEProductHandler alloc]init];
+    handler =[[WEProductHandler alloc]init];
     [handler fetchAllSuccessBlock:^(id obj) {
         DLog(@"%@",obj);
         _totalHistoryProducts = obj;
@@ -95,28 +95,28 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:0];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
+        
+        UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 110, 120)];
+        
+        [cell.contentView addSubview:imgV];
+        
+        imgV.tag = 98;
     }
     WEProductSingleModel *singleModel =_totalHistoryProducts[indexPath.row];
-    cell.titleLa.text=[singleModel.p_name base64DecodedString];
+    cell.titleLa.text= singleModel.p_name;
     cell.orderNum.text =singleModel.p_order_num;
      cell.styleBrand.text=  [NSString stringWithFormat:@"型号:%@  品牌:%@",singleModel.p_version,singleModel.p_brand];
     
     cell.priceLa.text =[NSString stringWithFormat:@"¥%@",singleModel.p_price];
     cell.memberPrice.text =[NSString stringWithFormat:@"会员价:%@",singleModel.p_v_price];
-//   
-//    [ cell.imgV  setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
-  
-    NSURL*url =[NSURL URLWithString:singleModel.p_imgurl ];
-//    
-//    cell.im
-    [cell.imgV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"Product_Placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        [[SDImageCache sharedImageCache] storeImage:image forKey:singleModel.p_imgurl];
-    }];
+
+    UIImageView*imgv2 =(UIImageView*)[cell.contentView viewWithTag:98];
+    imgv2.contentMode =UIViewContentModeScaleAspectFit;
+
+    [imgv2  setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
 
     
-    
-    cell.imgV.contentMode =UIViewContentModeCenter;
-    [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
+     [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
     return cell;
     
 }
@@ -132,7 +132,14 @@
 -(void)clearAllClick
 {
 
+    [handler deleteProductSuccessBlock:^(id obj) {
+        _totalHistoryProducts = obj;
 
+        [_table reloadData];
+    } failedBlock:^(id obj) {
+        
+        
+          }];
 
 }
 /*
@@ -144,5 +151,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end
