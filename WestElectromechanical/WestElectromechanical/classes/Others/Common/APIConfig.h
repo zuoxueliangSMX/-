@@ -163,6 +163,21 @@
 #define API_AFFIRMACCEPTGOODS @"/json_orderconfirm.php"
 
 
+/**
+ *  31.订单详情
+ */
+#define API_ORDERDETAIL @"/json_orderdetail.php"
+
+
+/**
+ *  33.订单评价
+ */
+#define API_ADDCOMMENTS @"/json_evaluate.php"
+
+
+
+
+
 
 
 

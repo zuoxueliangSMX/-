@@ -1071,4 +1071,91 @@
 
 }
 
+/**
+ *  31.订单详情
+ */
+- (void)executeOrderDetailWithUserId:(NSString *)userId
+                        withOrderNum:(NSString *)orderNum
+                             Success:(SuccessBlock)success
+                              failed:(FailedBlock)failed
+{
+
+
+    [AlertUtil showAlertWithText:@"订单详情"];
+    
+    NSString *url =[BaseHandler requestUrlWithUrl:API_ORDERDETAIL WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&order_num=%@",userId,orderNum];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+       
+        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(json);
+            }
+        }else{
+            if (failed) {
+                failed(json);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+
+
+}
+///**
+// *  33.订单评价
+// */
+//- (void)executeAffirmAcceptGoodsWithUserId:(NSString *)userId
+//                                   withArr:(NSArray *)arr
+//                                   Success:(SuccessBlock)success
+//                                    failed:(FailedBlock)failed;
+//
+//{
+//
+//
+//    [AlertUtil showAlertWithText:@"订单评价"];
+//    NSString *url =[BaseHandler requestUrlWithUrl:API_DELETECARTPRODUCT WithPath:@""];
+//
+//
+//
+////    NSString *params = [NSString stringWithFormat:@"uid=%@&Pinglun_list=%@",userId,count];
+//    for (NSDictionary *dic in arr) {
+//
+//
+//
+//
+//    }
+//
+//
+//    [HttpTool post:url withParams:params withSuccess:^(id json) {
+//        DLog(@"%@",json);
+//        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+//
+//            if (success) {
+//                success(json);
+//            }
+//        }else{
+//            if (failed) {
+//                failed(nil);
+//            }
+//        }
+//    } withFailure:^(NSError *error) {
+//        DLog(@"%@",error.localizedDescription);
+//        if (failed) {
+//            failed(error);
+//        }
+//    }];
+//
+//
+//}
+//
+
+
+
 @end

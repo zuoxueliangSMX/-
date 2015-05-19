@@ -264,4 +264,28 @@
                                  failed:(FailedBlock)failed;
 
 
+
+
+
+
+/**
+ *  31.订单详情
+ */
+- (void)executeOrderDetailWithUserId:(NSString *)userId
+                              withOrderNum:(NSString *)orderNum
+                                   Success:(SuccessBlock)success
+                                    failed:(FailedBlock)failed;
+
+////
+///**
+// *  33.订单评价
+// */
+//- (void)executeAffirmAcceptGoodsWithUserId:(NSString *)userId
+//                              withArr:(NSArray *)arr
+//                                   Success:(SuccessBlock)success
+//                                    failed:(FailedBlock)failed;
+
+
+
+
 @end

@@ -39,14 +39,14 @@
     [self.view addSubview:table];
     
     UIView * footView= [[UIView  alloc]init];
-    footView.bounds =CGRectMake(0, 0, SCREEN_WIDTH, 50);
+    footView.frame =CGRectMake(0, 0, SCREEN_WIDTH, 50);
     table.tableFooterView =footView;
     
     
     
     // 提交
     UIButton *commtiBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [commtiBut setFrame:CGRectMake(100, 2, SCREEN_WIDTH-40, 40)];
+    [commtiBut setFrame:CGRectMake(10, 2, SCREEN_WIDTH-20, 40)];
     [commtiBut setTitle:@"提交" forState:UIControlStateNormal];
     [commtiBut setBackgroundColor:[UIColor pumpkinColor]];
     [commtiBut addTarget:self action:@selector(commitBtnClick) forControlEvents:UIControlEventTouchUpInside];
