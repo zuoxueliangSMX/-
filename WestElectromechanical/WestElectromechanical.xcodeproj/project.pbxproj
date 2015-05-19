@@ -124,6 +124,7 @@
 		A39AC9011B0950E10017CF8A /* ProductsM.m in Sources */ = {isa = PBXBuildFile; fileRef = A39AC9001B0950E10017CF8A /* ProductsM.m */; };
 		A39E9A871AFA6AD80035A059 /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E9A861AFA6AD80035A059 /* UIButton+Extension.m */; };
 		A39E9A8A1AFA6E760035A059 /* WEProductCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A39E9A891AFA6E760035A059 /* WEProductCollectionCell.m */; };
+		A3AB06661B0B99210007D8BD /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AB06651B0B99210007D8BD /* NSDate+Helper.m */; };
 		A3ADC4301B024B0600B00FD2 /* MyCartM.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC42F1B024B0600B00FD2 /* MyCartM.m */; };
 		A3ADC4331B024B2500B00FD2 /* WECartsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC4321B024B2500B00FD2 /* WECartsModel.m */; };
 		A3ADC4391B02521E00B00FD2 /* WEProdcutCommentListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC4381B02521E00B00FD2 /* WEProdcutCommentListVC.m */; };
@@ -420,6 +421,8 @@
 		A39E9A861AFA6AD80035A059 /* UIButton+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		A39E9A881AFA6E760035A059 /* WEProductCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductCollectionCell.h; sourceTree = "<group>"; };
 		A39E9A891AFA6E760035A059 /* WEProductCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductCollectionCell.m; sourceTree = "<group>"; };
+		A3AB06641B0B99210007D8BD /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		A3AB06651B0B99210007D8BD /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		A3ADC42E1B024B0600B00FD2 /* MyCartM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCartM.h; sourceTree = "<group>"; };
 		A3ADC42F1B024B0600B00FD2 /* MyCartM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCartM.m; sourceTree = "<group>"; };
 		A3ADC4311B024B2500B00FD2 /* WECartsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartsModel.h; sourceTree = "<group>"; };
@@ -1448,6 +1451,8 @@
 		A3C2A82F1AEC9518001DC327 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A3AB06641B0B99210007D8BD /* NSDate+Helper.h */,
+				A3AB06651B0B99210007D8BD /* NSDate+Helper.m */,
 				A38C43AD1B0B006B0055887C /* NSString+Extension.h */,
 				A38C43AE1B0B006B0055887C /* NSString+Extension.m */,
 				A39659561B0259F8006BAEFA /* NSData+Base64.h */,
@@ -1796,6 +1801,7 @@
 				A3C16D571AFDAFAA00004721 /* WEProductDetailInfoCell.m in Sources */,
 				A369CFB81AEE713B001F3DB7 /* ChineseInclude.m in Sources */,
 				A3843EDB1AF48D5C00FDE84F /* WEHTTPHandler.m in Sources */,
+				A3AB06661B0B99210007D8BD /* NSDate+Helper.m in Sources */,
 				A39AC8FE1B0940520017CF8A /* WEMyOrderFrame.m in Sources */,
 				A39AC8E41B0934DB0017CF8A /* WEMineOrderVC.m in Sources */,
 				A37F75601AF3DF040054B677 /* WECartHomeCellBottomView.m in Sources */,

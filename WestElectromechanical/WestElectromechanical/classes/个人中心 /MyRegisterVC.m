@@ -13,7 +13,7 @@
 #import "WEHTTPHandler.h"
 #import "NSString+val.h"
 #import "RDVTabBarController.h"
-
+#import "NSDate+Helper.h"
 @interface MyRegisterVC ()<UITextFieldDelegate>{
 
     
@@ -400,8 +400,7 @@
     
     
     [we executeRegistUserTaskWithName:userNameTf.text withPaw:pwdNmTextF.text withEmail:emailTf.text withPhone:LogNmTextF.text success:^(id obj) {
-        
-        
+
         DLog(@"输出%@",obj);
     } failed:^(id obj) {
         
