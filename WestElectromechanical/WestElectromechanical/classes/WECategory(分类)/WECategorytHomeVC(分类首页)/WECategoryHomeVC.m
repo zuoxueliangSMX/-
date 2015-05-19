@@ -141,7 +141,11 @@
     }
     cell.titleLabel.text = [_categorys.types[indexPath.row] t_name];
     cell.contentLabel.text = _menuTitles[indexPath.row%_menuTitles.count];
-    [cell.cateImg setWebImgUrl:[_categorys.types[indexPath.row] t_imgurl] placeHolder:[UIImage imageNamed:_headers[indexPath.row%_headers.count]]];
+    
+    [cell.cateImg setWebImgUrl:[NSString stringWithFormat:@"%@/uploads/image/cate/%@.jpg",kWEImgUrl,[_categorys.types[indexPath.row] t_id]] placeHolder:[UIImage imageNamed:_headers[indexPath.row%_headers.count]]];
+    
+//    http://114.215.135.236/ehsy/uploads/image/cate/1012239.jpg
+    DLog(@"%@",[NSString stringWithFormat:@"%@/uploads/image/cate/%@.jpg",kWEImgUrl,[_categorys.types[indexPath.row] t_id]]);
     
     return cell;
 }

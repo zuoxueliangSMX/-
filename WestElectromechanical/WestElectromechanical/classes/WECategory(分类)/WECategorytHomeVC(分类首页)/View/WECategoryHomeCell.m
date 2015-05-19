@@ -23,7 +23,7 @@
         
         UIImageView *cateImg = [[UIImageView alloc] initWithFrame:CGRectMake(kCellMargin, kCellMargin, kCellImageWidth, kCellImageHeight)];
         cateImg.backgroundColor =[UIColor clearColor];
-        cateImg.contentMode = UIViewContentModeCenter;
+        cateImg.contentMode = UIViewContentModeScaleToFill;
         [self.contentView addSubview:cateImg];
         _cateImg = cateImg;
         

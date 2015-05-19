@@ -186,7 +186,7 @@
     _productForm.tableHeaderView = _headerView;
     
     NSMutableArray *temArray =[NSMutableArray array];
-    UIImage * PlaceholderImage = [UIImage imageNamed:@"Home_Middle_04"];
+    UIImage * PlaceholderImage = [UIImage imageNamed:@"product_load_default"];
     NSInteger index = 1;
     for (WEProductImgModel *adModel in _detailModel.imgs) {
         //网络图片
