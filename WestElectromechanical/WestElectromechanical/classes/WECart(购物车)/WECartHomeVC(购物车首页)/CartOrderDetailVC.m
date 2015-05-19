@@ -92,20 +92,14 @@
     cell.priceLa.textColor = [UIColor orangeColor];
     cell.memberPrice.hidden =YES;
        [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
+    cell.cartBtn.hidden =YES;
     return cell;
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    //    FreeLineDetailVC *free =[[FreeLineDetailVC alloc]init];
-    //
-    //
-    //    ZyxM*zm = [zyxArr objectAtIndex:indexPath.row];
-    //    free.zm =zm;
-    //
-    //
-    //    [self.navigationController pushViewController:free animated:YES];
+   
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
