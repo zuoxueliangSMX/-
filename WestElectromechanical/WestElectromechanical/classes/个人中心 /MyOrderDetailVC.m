@@ -49,11 +49,12 @@
     [super viewDidLoad];
     
       we = [[WEHTTPHandler alloc]init];
+    __weak  typeof (&*self)weakSelf =self;
     [we executeOrderDetailWithUserId:[AccountHanler userId] withOrderNum:self.om.order_num Success:^(id obj) {
         
         
           _wm=  [[WEOrderDetailM  alloc]initWithDict:obj];
-       
+        [weakSelf addHeadFoot];
         [_table reloadData];
     
         

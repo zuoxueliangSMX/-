@@ -190,7 +190,7 @@
         WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
     cell.orderFrame = orderFrame;
     [cell.bottomView setOrderBottomViewBlock:^(UIButton *btn) {
-        if ([btn.titleLabel.text isEqual:kOrderBtnTypePay] ) {
+        if ([btn.titleLabel.text isEqual:kOrderBtnTypeConfirm] ) {
             
             NSInteger row2 = [tableView indexPathForCell:((WEMineOrderCell*)[[btn   superview]superview])].row;
             WEMyOrderFrame *orderFrame = [self.orderModel.orders  objectAtIndex:row2];

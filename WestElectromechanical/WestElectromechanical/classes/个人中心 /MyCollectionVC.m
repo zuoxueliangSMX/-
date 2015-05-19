@@ -161,7 +161,7 @@
     
     deleteBtn =cell.deleteBu;
     [deleteBtn addTarget:self action:@selector(deleteClick:) forControlEvents:UIControlEventTouchUpInside];
-    
+    [cell.addCartBtn  addTarget:self action:@selector(addCart:) forControlEvents:UIControlEventTouchUpInside];
 
     return cell;
 }
@@ -284,6 +284,12 @@ BOOL  isClick ;
     WECartHomeVC * wc = [[WECartHomeVC alloc]init];
     [self.navigationController pushViewController:wc animated:YES];
 
+}
+- (void)addCart:(UIButton *)btn
+{
+    DLog(@"添加到购物车mm");
+    
+//    [_productCollection indexPathForCell:((WEProductCollectionCell*)[[btn superview]superview])].row;
 }
 
 @end

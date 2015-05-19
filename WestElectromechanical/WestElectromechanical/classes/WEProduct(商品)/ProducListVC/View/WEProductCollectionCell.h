@@ -35,4 +35,13 @@
  删除按钮
  **/
 @property (nonatomic ,weak)UIButton *deleteBu;
+
+
+/**
+添加到购物车
+**/
+@property (nonatomic ,weak)UIButton *addCartBtn;
+
+
+
 @end
