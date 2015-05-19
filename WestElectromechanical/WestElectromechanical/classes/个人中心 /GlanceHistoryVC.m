@@ -12,8 +12,8 @@
 #import "UIImageView+WebCacheImg.h"
 #import "RDVTabBarController.h"
 #import "NSString+Base64.h"
-
-
+#import "WEHTTPHandler.h"
+#import "WEProductDetailVC.h"
 @interface GlanceHistoryVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     
@@ -93,8 +93,7 @@
         
         
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:0];
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 110, 120)];
         
@@ -122,12 +121,26 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    WEProductSingleModel *singleModel =_totalHistoryProducts[indexPath.row];
+    [self getProductDetailInfo:singleModel.pid];
     
 }
+
+- (void)getProductDetailInfo:(NSString *)productId
+{
+    WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+    [handler executeGetProductDetailDataWithProductId:productId withSuccess:^(id obj) {
+        DLog(@"%@",obj);
+        WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
+        detailVC.productId =productId;
+        detailVC.detailModel = (WEProductDetailModel *)obj;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    } withFailed:^(id obj) {
+        
+    }];
+}
+
+
 
 -(void)clearAllClick
 {

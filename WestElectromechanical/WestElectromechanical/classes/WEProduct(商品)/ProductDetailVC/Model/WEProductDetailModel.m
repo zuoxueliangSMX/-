@@ -33,7 +33,7 @@
             WEProductModelImgModel *moreModel =[[WEProductModelImgModel alloc]initWithDict:more];
             [self.p_more_introduces addObject:moreModel];
         }
-        self.p_name=[self stringFromValue:[dict objectForKey:@"p_name"]];
+        self.p_name=[self stringFromValue:[[dict objectForKey:@"p_name"] base64DecodedString]];
         self.p_order_number=[self stringFromValue:[dict objectForKey:@"p_order_number"]];
         self.p_price=[self stringFromValue:[dict objectForKey:@"p_price"]];
     }
