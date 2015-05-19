@@ -37,6 +37,9 @@
 		7FE420511AFA7CA400988846 /* SheZhiVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE420501AFA7CA400988846 /* SheZhiVC.m */; };
 		7FE42B321AF9AF5A00EB923E /* AlwaysUsedAddresVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */; };
 		7FE42B351AF9E73000EB923E /* AddAdressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE42B341AF9E73000EB923E /* AddAdressVC.m */; };
+		7FE4BDA71B0ACBA1001A2B57 /* WEOrderDetailM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE4BDA61B0ACBA1001A2B57 /* WEOrderDetailM.m */; };
+		7FE4BDAB1B0AE82E001A2B57 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7FE4BDA91B0AE82E001A2B57 /* AlipaySDK.bundle */; };
+		7FE4BDAC1B0AE82E001A2B57 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FE4BDAA1B0AE82E001A2B57 /* AlipaySDK.framework */; };
 		7FE556B51AF84C8C00D98006 /* CheckPersonInFoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */; };
 		7FE556B81AF8519D00D98006 /* MyCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556B71AF8519D00D98006 /* MyCollectionVC.m */; };
 		7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE556BA1AF8649100D98006 /* ChangePsdVC.m */; };
@@ -247,6 +250,10 @@
 		7FE42B311AF9AF5A00EB923E /* AlwaysUsedAddresVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlwaysUsedAddresVC.m; sourceTree = "<group>"; };
 		7FE42B331AF9E73000EB923E /* AddAdressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAdressVC.h; sourceTree = "<group>"; };
 		7FE42B341AF9E73000EB923E /* AddAdressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAdressVC.m; sourceTree = "<group>"; };
+		7FE4BDA51B0ACBA1001A2B57 /* WEOrderDetailM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEOrderDetailM.h; sourceTree = "<group>"; };
+		7FE4BDA61B0ACBA1001A2B57 /* WEOrderDetailM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEOrderDetailM.m; sourceTree = "<group>"; };
+		7FE4BDA91B0AE82E001A2B57 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		7FE4BDAA1B0AE82E001A2B57 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		7FE556B31AF84C8C00D98006 /* CheckPersonInFoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPersonInFoVC.h; sourceTree = "<group>"; };
 		7FE556B41AF84C8C00D98006 /* CheckPersonInFoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPersonInFoVC.m; sourceTree = "<group>"; };
 		7FE556B61AF8519D00D98006 /* MyCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectionVC.h; sourceTree = "<group>"; };
@@ -519,6 +526,7 @@
 			files = (
 				A3843EDD1AF4900600FDE84F /* SystemConfiguration.framework in Frameworks */,
 				9D0E523495E67FFBE6F2714B /* libPods.a in Frameworks */,
+				7FE4BDAC1B0AE82E001A2B57 /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +639,15 @@
 				7FE1C5C01B09E4DB007ED5E0 /* WEMineComentHeadView.m */,
 			);
 			path = comentView;
+			sourceTree = "<group>";
+		};
+		7FE4BDA81B0AE82E001A2B57 /* aliPay */ = {
+			isa = PBXGroup;
+			children = (
+				7FE4BDA91B0AE82E001A2B57 /* AlipaySDK.bundle */,
+				7FE4BDAA1B0AE82E001A2B57 /* AlipaySDK.framework */,
+			);
+			path = aliPay;
 			sourceTree = "<group>";
 		};
 		7FE5DDCE1AFE0F5000B77986 /* HTHorizontalSelectionList */ = {
@@ -978,6 +995,7 @@
 		A38A32511AEC033D00F7FE7C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7FE4BDA81B0AE82E001A2B57 /* aliPay */,
 				A3ADFDCA1B010AC10029795A /* BaseClass */,
 				7FE5DDCE1AFE0F5000B77986 /* HTHorizontalSelectionList */,
 				7FE4204C1AFA6E8C00988846 /* GCPlaceholderTextView.h */,
@@ -1199,6 +1217,8 @@
 		A39AC8E51B0936600017CF8A /* Modle */ = {
 			isa = PBXGroup;
 			children = (
+				7FE4BDA51B0ACBA1001A2B57 /* WEOrderDetailM.h */,
+				7FE4BDA61B0ACBA1001A2B57 /* WEOrderDetailM.m */,
 				A39AC8E61B0936600017CF8A /* MyOrderModel.h */,
 				A39AC8E71B0936600017CF8A /* MyOrderModel.m */,
 				A39AC8E81B0936600017CF8A /* OrderM.h */,
@@ -1606,6 +1626,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FE4BDAB1B0AE82E001A2B57 /* AlipaySDK.bundle in Resources */,
 				A38A321C1AEBE98800F7FE7C /* Main.storyboard in Resources */,
 				7FE59F0E1AFB9E8C00D8ABA9 /* GlanceCell.xib in Resources */,
 				A38A32211AEBE98800F7FE7C /* LaunchScreen.xib in Resources */,
@@ -1731,6 +1752,7 @@
 				7FE556BB1AF8649100D98006 /* ChangePsdVC.m in Sources */,
 				A38A32801AEC078400F7FE7C /* WEMineHomeVC.m in Sources */,
 				A3BFB62E1AFBA8C200024BEE /* WEProductDetailVC.m in Sources */,
+				7FE4BDA71B0ACBA1001A2B57 /* WEOrderDetailM.m in Sources */,
 				A39AC8EA1B0936600017CF8A /* MyOrderModel.m in Sources */,
 				A3C253AF1B08720A00A3CA1E /* WEProductFilterVC.m in Sources */,
 				A39AC8F21B0936E00017CF8A /* WEMineOrderHeaderView.m in Sources */,
@@ -1947,6 +1969,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WestElectromechanical/classes/Libs/aliPay",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WestElectromechanical/WestElectromechanical-PrefixHeader.pch";
 				INFOPLIST_FILE = WestElectromechanical/Info.plist;
@@ -1973,7 +1999,7 @@
 				PRELINK_FLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/** ${SRCROOT}/WestElectromechanical";
 			};
 			name = Debug;
 		};
@@ -1984,6 +2010,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WestElectromechanical/classes/Libs/aliPay",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WestElectromechanical/WestElectromechanical-PrefixHeader.pch";
 				INFOPLIST_FILE = WestElectromechanical/Info.plist;
@@ -2010,7 +2040,7 @@
 				PRELINK_FLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/** ${SRCROOT}/WestElectromechanical";
 			};
 			name = Release;
 		};

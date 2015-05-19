@@ -16,6 +16,7 @@
 #import "APIConfig.h"
 #import "SendIFMacros.h"
 #import "Masonry.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 
 

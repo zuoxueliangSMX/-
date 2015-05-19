@@ -88,8 +88,13 @@
         _prodcutSalePrice = productDiscountPrice;
         
         
-        UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:@selector(addCart:)];
+       UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:nil];
+        
+//        UIButton *btn = [[UIButton alloc]init];
+//        [btn setImage:[ UIImage  imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
         btn.frame = CGRectMake(frame.size.width-btn.size.width-20, CGRectGetMaxY(productType.frame)+3, btn.size.width, btn.size.height);
+        
+        _addCartBtn =btn;
         [self.contentView addSubview:btn];
     }
     return self;
@@ -108,11 +113,7 @@
     self.productOriPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
     self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
     
-}
-
-- (void)addCart:(UIButton *)btn
-{
-    DLog(@"添加到购物车");
+    
 }
 
 -(void)acceptShow{
