@@ -12,6 +12,7 @@
 #import "UIImageView+WebCacheImg.h"
 #import "RDVTabBarController.h"
 #import "NSString+Base64.h"
+#import "UIImageView+WebCache.h"
 
 @interface GlanceHistoryVC ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -77,7 +78,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 110;
+    return 120;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -102,9 +103,18 @@
     
     cell.priceLa.text =[NSString stringWithFormat:@"¥%@",singleModel.p_price];
     cell.memberPrice.text =[NSString stringWithFormat:@"会员价:%@",singleModel.p_v_price];
-   
-    [ cell.imgV  setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+//   
+//    [ cell.imgV  setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+  
+    NSURL*url =[NSURL URLWithString:singleModel.p_imgurl ];
+//    
+//    cell.im
+    [cell.imgV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"Product_Placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [[SDImageCache sharedImageCache] storeImage:image forKey:singleModel.p_imgurl];
+    }];
 
+    
+    
     cell.imgV.contentMode =UIViewContentModeCenter;
     [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
     return cell;

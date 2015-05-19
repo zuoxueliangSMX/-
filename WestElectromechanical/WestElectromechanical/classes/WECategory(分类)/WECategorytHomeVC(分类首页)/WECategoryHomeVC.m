@@ -143,6 +143,9 @@
     cell.contentLabel.text = _menuTitles[indexPath.row%_menuTitles.count];
     [cell.cateImg setWebImgUrl:[_categorys.types[indexPath.row] t_imgurl] placeHolder:[UIImage imageNamed:_headers[indexPath.row%_headers.count]]];
     
+     DLog(@"这个数组里是什么%@",_categorys.types);
+    
+    
     return cell;
 }
 #pragma mark -

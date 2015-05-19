@@ -18,6 +18,7 @@
 #import "NSString+Base64.h"
 #import "UIImageView+WebCacheImg.h"
 #import "WECartHomeVC.h"
+#import "WEProductDetailVC.h"
 
 @interface MyCollectionVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>{
     UIButton *shopingCartBtn,*editBtn,*deleteBtn;
@@ -150,6 +151,10 @@
     cell.productBrand.text =cm.p_brand;
     cell.deleteBu.tag=[indexPath row]+1;
     
+    
+    cell.addCartBtn.tag=[indexPath row]+100;
+
+    
     cell.productOriPrice.text =[NSString stringWithFormat:@"¥%@",cm.p_v_price];
     cell.prodcutSalePrice.text =[NSString stringWithFormat:@"¥%@",cm.p_price];
     
@@ -202,7 +207,12 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
+    CollectionM  *cm =[_arr objectAtIndex: indexPath.row];
     DLog(@"点击的是----%d",indexPath.row);
+    
+    [self getProductDetailInfo:cm.p_id];
+    
+    
 }
 BOOL  isClick ;
 -(void)rigBtnClick:(UIButton *)btn
@@ -289,7 +299,40 @@ BOOL  isClick ;
 {
     DLog(@"添加到购物车mm");
     
-//    [_productCollection indexPathForCell:((WEProductCollectionCell*)[[btn superview]superview])].row;
+    NSInteger row2= ((WEProductCollectionCell*)[[btn superview]superview]).tag;
+    
+    CollectionM  *cm =[_arr objectAtIndex: row2];
+   [we executeProductAddCartTaskWithProductId:cm.p_id withUserId:[AccountHanler userId] withSuccess:^(id obj) {
+      if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+          
+          
+          WARN_ALERT(@"加入成功");
+          WECartHomeVC * wc = [[WECartHomeVC alloc]init];
+          [self.navigationController pushViewController:wc animated:YES];
+
+          
+      }
+      
+   
+  } withFailed:^(id obj) {
+   
+      
+  }];
+
+}
+
+- (void)getProductDetailInfo:(NSString *)productId
+{
+    WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+    [handler executeGetProductDetailDataWithProductId:productId withSuccess:^(id obj) {
+        DLog(@"%@",obj);
+        WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
+        detailVC.productId =productId;
+        detailVC.detailModel = (WEProductDetailModel *)obj;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    } withFailed:^(id obj) {
+        
+    }];
 }
 
 @end
