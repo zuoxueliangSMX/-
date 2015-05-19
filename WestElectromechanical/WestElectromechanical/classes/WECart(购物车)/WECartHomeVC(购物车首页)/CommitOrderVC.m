@@ -293,7 +293,7 @@
                 
                 MyCartM *mc =  [self.selectedMu  objectAtIndex:i];
                 
-                NSString *path = [NSString stringWithFormat:@"%@/%@",kWEProductImgUrl,mc.p_imgurl];
+                NSString *path = [NSString stringWithFormat:@"%@",mc.p_imgurl];
                 [ imgv  setWebImgUrl:path placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
                 if (i ==4) {
                     UIImageView *imgv5=(UIImageView*)[view viewWithTag:105];
