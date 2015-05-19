@@ -13,6 +13,7 @@
 #import "WECategorysModel.h"
 #import "UIImageView+WebCacheImg.h"
 #import "WECategorySingleModel.h"
+#import "RDVTabBarController.h"
 @interface WECategoryHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 /**
  *  分类的tableview
@@ -35,6 +36,18 @@
 @end
 
 @implementation WECategoryHomeVC
+#pragma mark -
+#pragma mark - pop和push控制器时的操作
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

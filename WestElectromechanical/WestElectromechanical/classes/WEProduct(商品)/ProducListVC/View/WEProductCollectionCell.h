@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "WEProductSingleModel.h"
+typedef void(^productAddCartBlock) (NSString *productId);
 @interface WEProductCollectionCell : UICollectionViewCell
-
+{
+    __strong productAddCartBlock _block;
+}
 @property (nonatomic ,strong)WEProductSingleModel *singleModel;
 
 /**
@@ -43,5 +46,5 @@
 @property (nonatomic ,weak)UIButton *addCartBtn;
 
 
-
+- (void)setProductAddCartBlock:(productAddCartBlock)block;
 @end

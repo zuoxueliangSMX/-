@@ -19,7 +19,9 @@
 #import "UIImageView+WebCacheImg.h"
 #import "WECartHomeVC.h"
 #import "WEProductDetailVC.h"
-
+#import "LoginVC.h"
+#import "AccountHanler.h"
+#import "AppDelegate.h"
 @interface MyCollectionVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>{
     UIButton *shopingCartBtn,*editBtn,*deleteBtn;
 
@@ -86,6 +88,7 @@
         
       
         NSDictionary *dic = [obj objectForKey:@"products"];
+        [_arr removeAllObjects];
         for (NSDictionary *dv in dic) {
             
             CollectionM *cm =  [JsonToModel objectFromDictionary:dv className:@"CollectionM"];
@@ -208,7 +211,7 @@
 {
 
     CollectionM  *cm =[_arr objectAtIndex: indexPath.row];
-    DLog(@"点击的是----%d",indexPath.row);
+    DLog(@"点击的是----%ld",indexPath.row);
     
     [self getProductDetailInfo:cm.p_id];
     
@@ -291,35 +294,48 @@ BOOL  isClick ;
 -(void)shopingCartClick:(UIButton*)btn
 {
     
-    WECartHomeVC * wc = [[WECartHomeVC alloc]init];
-    [self.navigationController pushViewController:wc animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    AppDelegate *delegate =(AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.tabBarController.selectedIndex =3;
 
 }
 - (void)addCart:(UIButton *)btn
 {
     DLog(@"添加到购物车mm");
     
-    NSInteger row2= ((WEProductCollectionCell*)[[btn superview]superview]).tag;
+    NSInteger row2= btn.tag-100;
     
     CollectionM  *cm =[_arr objectAtIndex: row2];
-   [we executeProductAddCartTaskWithProductId:cm.p_id withUserId:[AccountHanler userId] withSuccess:^(id obj) {
-      if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
-          
-          
-          WARN_ALERT(@"加入成功");
-          WECartHomeVC * wc = [[WECartHomeVC alloc]init];
-          [self.navigationController pushViewController:wc animated:YES];
-
-          
-      }
-      
-   
-  } withFailed:^(id obj) {
-   
-      
-  }];
+    if (![AccountHanler userId]) {
+        LoginVC *loginVC =[[LoginVC alloc]init];
+        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
+        
+        
+    }else{
+        WEHTTPHandler *HTTPhandler =[[WEHTTPHandler alloc]init];
+        __weak MyCollectionVC *bSelf =self;
+        [HTTPhandler executeProductAddCartTaskWithProductId:cm.p_id withUserId:[AccountHanler userId] withSuccess:^(id obj) {
+            DLog(@"%@",obj);
+            WECartHomeVC *homeVC =[[WECartHomeVC alloc]init];
+            homeVC.cartType = WECartHomeTypeAdd;
+            [bSelf.navigationController pushViewController:homeVC animated:YES];
+        } withFailed:^(id obj) {
+            DLog(@"加入购物车失败");
+        }];
+        
+    }
 
 }
+
+
+
+
+
+
+
 
 - (void)getProductDetailInfo:(NSString *)productId
 {

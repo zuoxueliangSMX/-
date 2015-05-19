@@ -162,7 +162,7 @@
     _currentbtn.selected =NO;  //  当前的BTN  设为no
     btn.selected =YES;         //显示  当前button选中状态
     _currentbtn =btn;
-    DLog(@"%d",_currentbtn.tag);
+    DLog(@"%ld",_currentbtn.tag);
     if (btn.tag==100&&btn.selected==YES) {
         squareView2.hidden =YES;
     }else{

@@ -137,8 +137,12 @@
 
 - (void)loginClick{
 
-    LoginVC *me = [[LoginVC alloc]init];
-    [self.navigationController pushViewController:me animated:YES];
+    LoginVC *loginVC =[[LoginVC alloc]init];
+    UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
+
 }
 
 - (void)registBtnClick{
@@ -398,22 +402,18 @@
                 
             }
             
-            
-            
-            
-            
             CheckPersonInFoVC *chVC = [[CheckPersonInFoVC alloc]init];
            [self.navigationController pushViewController:chVC animated:YES];
             
         }else if (indexPath.row == 1){
          
-            if ([AccountHanler loginState]==0) {
-                
-                ALERT_WARN(@"请先登录");
-                return;
-                
-            }
-            
+//            if ([AccountHanler loginState]==0) {
+//                
+//                ALERT_WARN(@"请先登录");
+//                return;
+//                
+//            }
+//            
             GlanceHistoryVC *gvc = [[GlanceHistoryVC alloc]init];
             
             [self.navigationController pushViewController:gvc animated:YES];

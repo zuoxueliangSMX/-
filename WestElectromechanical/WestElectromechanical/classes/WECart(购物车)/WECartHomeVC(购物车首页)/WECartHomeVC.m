@@ -52,7 +52,11 @@
 #pragma mark - pop和push控制器时的操作
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+    if (_cartType == WECartHomeTypeNormal) {
+        [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+    }else{
+        [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    }
     [self addRightItem];
     [we executeGetCartListTaskWithUserId:[AccountHanler userId] withPage:@"1" Success:^(id obj) {
         
@@ -72,7 +76,11 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+    if (_cartType == WECartHomeTypeNormal) {
+        [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+    }else{
+        [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+    }
 }
 - (void)addRightItem{
    
@@ -89,8 +97,16 @@
 }
 - (void)changeCategory:(UIButton*)btn{
     NSLog(@"添加好友");
-    AppDelegate *delegate =(AppDelegate *)[UIApplication sharedApplication].delegate;
-    delegate.tabBarController.selectedIndex =2;
+    if (_cartType == WECartHomeTypeNormal) {
+        AppDelegate *delegate =(AppDelegate *)[UIApplication sharedApplication].delegate;
+        delegate.tabBarController.selectedIndex =2;
+    }else{
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        AppDelegate *delegate =(AppDelegate *)[UIApplication sharedApplication].delegate;
+        delegate.tabBarController.selectedIndex =2;
+        
+    }
+    
 }
 
 
@@ -194,7 +210,12 @@
 -(void)initCartTable
 {   //新加的注释
     _cartTable =[[UITableView alloc]init];
-    _cartTable.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-50);
+    
+    if (_cartType == WECartHomeTypeNormal) {
+      _cartTable.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-50);
+    }else{
+        _cartTable.frame =CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-50);
+    }
     _cartTable.delegate =self;
     _cartTable.dataSource =self;
     _cartTable.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];

@@ -35,7 +35,7 @@
 #if __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_9 || __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
     if (![NSData instancesRespondToSelector:@selector(base64EncodedStringWithOptions:)])
     {
-        encoded = [self base64Encoding];
+        encoded = [self base64EncodedString];
     }
     else
 #endif

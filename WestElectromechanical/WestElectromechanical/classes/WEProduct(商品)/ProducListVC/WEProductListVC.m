@@ -19,6 +19,8 @@
 #import "WEProductHandler.h"
 #import "WEProductFilterVC.h"
 #import "WECartHomeVC.h"
+#import "AccountHanler.h"
+#import "LoginVC.h"
 @interface WEProductListVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic ,weak)UITableView *productList;
 @property (nonatomic ,weak)UICollectionView *productCollection;
@@ -158,9 +160,9 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    
+    __weak WEProductListVC *bSelf =self;
     [cell setProductAddCartBlock:^(NSString *productId) {
-        
+        [bSelf productAddCart:productId];
     }];
     
     cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
@@ -202,6 +204,11 @@
     WEProductCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.backgroundColor =[UIColor whiteColor];
     cell.singleModel =_products.products[indexPath.row];
+    
+    __weak WEProductListVC *bSelf =self;
+    [cell setProductAddCartBlock:^(NSString *productId) {
+        [bSelf productAddCart:productId];
+    }];
     return cell;
 }
 
@@ -278,7 +285,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)productAddCart:(NSString *)productId
+{
+    
+    if (![AccountHanler userId]) {
+        LoginVC *loginVC =[[LoginVC alloc]init];
+        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
 
+        
+    }else{
+        WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+        __weak WEProductListVC *bSelf =self;
+        [handler executeProductAddCartTaskWithProductId:productId withUserId:[AccountHanler userId] withSuccess:^(id obj) {
+            DLog(@"%@",obj);
+            WECartHomeVC *homeVC =[[WECartHomeVC alloc]init];
+            homeVC.cartType = WECartHomeTypeAdd;
+            [bSelf.navigationController pushViewController:homeVC animated:YES];
+        } withFailed:^(id obj) {
+            DLog(@"加入购物车失败");
+        }];
+
+    }
+    
+}
 
 /*
 #pragma mark - Navigation

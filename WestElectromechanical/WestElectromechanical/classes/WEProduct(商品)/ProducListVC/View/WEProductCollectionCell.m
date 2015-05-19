@@ -88,7 +88,7 @@
         _prodcutSalePrice = productDiscountPrice;
         
         
-       UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:nil];
+        UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:@selector(addProductCart:)];
         
 //        UIButton *btn = [[UIButton alloc]init];
 //        [btn setImage:[ UIImage  imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
@@ -114,6 +114,18 @@
     self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
     
     
+}
+
+- (void)setProductAddCartBlock:(productAddCartBlock)block
+{
+    _block = block;
+}
+
+- (void)addProductCart:(UIButton *)btn
+{
+    if (_block) {
+        _block(self.singleModel.pid);
+    }
 }
 
 -(void)acceptShow{

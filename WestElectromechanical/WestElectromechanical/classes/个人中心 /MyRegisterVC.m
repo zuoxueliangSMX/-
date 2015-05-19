@@ -396,14 +396,16 @@
 
     
     
-      WEHTTPHandler *we =[[WEHTTPHandler alloc]init];
+    WEHTTPHandler *we =[[WEHTTPHandler alloc]init];
     
-    
+    __weak MyRegisterVC *bSelf = self;
     [we executeRegistUserTaskWithName:userNameTf.text withPaw:pwdNmTextF.text withEmail:emailTf.text withPhone:LogNmTextF.text success:^(id obj) {
-
+        [bSelf.navigationController popViewControllerAnimated:YES];
+        [AlertUtil showAlertWithText:@"注册成功"];
         DLog(@"输出%@",obj);
     } failed:^(id obj) {
-        
+        [AlertUtil showAlertWithText:@"注册失败"];
+
          DLog(@"输出%@",obj);
     }];
     

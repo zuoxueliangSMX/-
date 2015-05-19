@@ -56,28 +56,28 @@ WEHTTPHandler *whanle;
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
 
-//- (void)backNav:(UIButton*)btn{
-//    NSLog(@"返回");
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        
-//    }];
-//}
+- (void)backNav:(UIButton*)btn{
+    NSLog(@"返回");
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 
 
 
 - (void)addLeftItem
 {
-//    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted" target:self action:@selector(backNav:)];
+    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted" target:self action:@selector(backNav:)];
     /**
      *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
      *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
      */
-//    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
-//                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-//                                       target:nil action:nil];
-//    negativeSpacer.width = -15;
-//    self.navigationItem.leftBarButtonItems = @[negativeSpacer, right];
-//
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = -15;
+    self.navigationItem.leftBarButtonItems = @[negativeSpacer, right];
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -249,7 +249,7 @@ WEHTTPHandler *whanle;
     
     
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
 
     
     [whanle executeLoginUserTaskWithAccount:_namefi.text withPaw:self.loginPass.text success:^(id obj) {
@@ -261,10 +261,12 @@ WEHTTPHandler *whanle;
             
             [AccountHanler saveUserId:[obj objectForKey:@"uid"]];
             [AccountHanler setLoginState:1];
-            
-            [self.navigationController popViewControllerAnimated:YES];
-            [alert  setTitle:@"登陆成功"];
-            [alert show];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
+//            [self.navigationController popViewControllerAnimated:YES];
+//            [alert  setTitle:@"登陆成功"];
+//            [alert show];
         }
         
     } failed:^(id obj) {

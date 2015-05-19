@@ -18,6 +18,8 @@
 #import "LoginVC.h"
 #import "WEAdModel.h"
 #import "WEProdcutCommentListVC.h"
+#import "WECartHomeVC.h"
+#import "WEHTTPHandler.h"
 @interface WEProductDetailVC ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
 {
     CGFloat _height;
@@ -57,10 +59,13 @@
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
     negativeSpacer1.width = 15;
-    self.navigationItem.rightBarButtonItems = @[negativeSpacer, right2,negativeSpacer1,right1];
+//    self.navigationItem.rightBarButtonItems = @[negativeSpacer, right2,negativeSpacer1,right1];
+    self.navigationItem.rightBarButtonItems =@[negativeSpacer, right1];
+    
 }
 - (void)addCart:(UIButton*)btn{
     NSLog(@"添加到购物车");
+    [self productAddCart:_productId];
 }
 - (void)shareProduct:(UIButton*)btn{
     NSLog(@"分享产品");
@@ -256,7 +261,7 @@
 }
 - (void)addProductCart:(UIButton *)btn
 {
-    
+    [self productAddCart:_productId];
 }
 #pragma mark -
 #pragma mark - UITableViewDataSource
@@ -301,9 +306,35 @@
         
     }else if (indexPath.row == 2){
         WEProdcutCommentListVC *commentListVC =[[WEProdcutCommentListVC alloc]init];
-//        commentListVC.productId =_productId;
-        commentListVC.productId = @"228508";
+        commentListVC.productId =_productId;
         [self.navigationController pushViewController:commentListVC animated:YES];
+    }
+}
+
+
+
+- (void)productAddCart:(NSString *)productId
+{
+    if (![AccountHanler userId]) {
+        LoginVC *loginVC =[[LoginVC alloc]init];
+        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
+        
+        
+    }else{
+        WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+        __weak WEProductDetailVC *bSelf =self;
+        [handler executeProductAddCartTaskWithProductId:productId withUserId:[AccountHanler userId] withSuccess:^(id obj) {
+            DLog(@"%@",obj);
+            WECartHomeVC *homeVC =[[WECartHomeVC alloc]init];
+            homeVC.cartType = WECartHomeTypeAdd;
+            [bSelf.navigationController pushViewController:homeVC animated:YES];
+        } withFailed:^(id obj) {
+            DLog(@"加入购物车失败");
+        }];
+        
     }
 }
 

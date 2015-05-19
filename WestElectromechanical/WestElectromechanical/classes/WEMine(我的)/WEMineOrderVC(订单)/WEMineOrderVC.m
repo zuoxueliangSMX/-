@@ -69,7 +69,7 @@
 
 -(void)sendRequest
 {
-    [we  executeQueryOrderTaskWithUserId:[AccountHanler userId] withState: [NSString stringWithFormat:@"%d",self.selectedItem] withPage:@"1" Success:^(id obj) {
+    [we  executeQueryOrderTaskWithUserId:[AccountHanler userId] withState: [NSString stringWithFormat:@"%ld",(long)self.selectedItem] withPage:@"1" Success:^(id obj) {
         
         _orderModel =(MyOrderModel*)obj;
                [_table reloadData];

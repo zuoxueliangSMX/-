@@ -14,6 +14,9 @@
 #import "NSString+Base64.h"
 #import "WEHTTPHandler.h"
 #import "WEProductDetailVC.h"
+#import "LoginVC.h"
+#import "AccountHanler.h"
+#import "WECartHomeVC.h"
 @interface GlanceHistoryVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     
@@ -114,8 +117,9 @@
 
     [imgv2  setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
 
-    
+    cell.cartBtn.tag = indexPath.row+100;
      [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
+      [cell.cartBtn  addTarget:self action:@selector(productAddCart:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
     
 }
@@ -128,8 +132,8 @@
 
 - (void)getProductDetailInfo:(NSString *)productId
 {
-    WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
-    [handler executeGetProductDetailDataWithProductId:productId withSuccess:^(id obj) {
+    WEHTTPHandler *HTTPhandler =[[WEHTTPHandler alloc]init];
+    [HTTPhandler executeGetProductDetailDataWithProductId:productId withSuccess:^(id obj) {
         DLog(@"%@",obj);
         WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
         detailVC.productId =productId;
@@ -138,6 +142,36 @@
     } withFailed:^(id obj) {
         
     }];
+}
+
+
+- (void)productAddCart:(UIButton *)button
+{
+    
+    NSInteger row2= button.tag-100;
+    
+    WEProductSingleModel  *singleModel =_totalHistoryProducts[row2];
+    if (![AccountHanler userId]) {
+        LoginVC *loginVC =[[LoginVC alloc]init];
+        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
+        
+        
+    }else{
+        WEHTTPHandler *HTTPhandler =[[WEHTTPHandler alloc]init];
+        __weak GlanceHistoryVC *bSelf =self;
+        [HTTPhandler executeProductAddCartTaskWithProductId:singleModel.pid withUserId:[AccountHanler userId] withSuccess:^(id obj) {
+            DLog(@"%@",obj);
+            WECartHomeVC *homeVC =[[WECartHomeVC alloc]init];
+            homeVC.cartType = WECartHomeTypeAdd;
+            [bSelf.navigationController pushViewController:homeVC animated:YES];
+        } withFailed:^(id obj) {
+            DLog(@"加入购物车失败");
+        }];
+        
+    }
 }
 
 
