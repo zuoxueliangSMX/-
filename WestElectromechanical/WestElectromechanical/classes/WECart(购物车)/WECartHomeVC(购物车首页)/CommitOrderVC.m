@@ -18,6 +18,7 @@
 #import "CartOrderDetailVC.h"
 #import "MyCartM.h"
 #import "UIImageView+WebCacheImg.h"
+#import "CartCommitOrderVC.h"
 
 #import "RDVTabBarController.h"
 @interface CommitOrderVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
@@ -82,8 +83,8 @@
     footCell.backgroundColor = [UIColor whiteColor];
     footCell.backgroundColor = [UIColor whiteColor];
     footCell.goodsPriceLa.text = [NSString stringWithFormat:@"商品总额: ¥%0.2f",self.totalP];
-    footCell.freightageLa.text = @"共计运费: ¥ 8";
-    footCell.subtractFeeLa.text =@"减免运费: 30";
+    footCell.freightageLa.text = @"共计运费: ¥ 0";
+    footCell.subtractFeeLa.text =@"减免运费: 0";
     
     
     
@@ -167,7 +168,7 @@
         switch (indexPath.row) {
             case 0:
             {
-                UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, 250, 25)];
+                UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, 280, 25)];
                 nameLa.textColor =[UIColor blackColor];
                 nameLa.font = [UIFont systemFontOfSize:12];
                 nameLa.textColor = [UIColor  lightGrayColor];
@@ -277,9 +278,21 @@
     switch (indexPath.row) {
         case 0:
         {
+            NSDateFormatter *formatter =[[NSDateFormatter alloc] init];
+            NSDateFormatter *formatter2 =[[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd-HHmm-ss"];
+            [formatter2 setDateFormat:@"yyyyMMddHHmmss"];
+            NSString *currentTime = [formatter stringFromDate:[NSDate date]];
+             NSString *currentOrderNum = [formatter2 stringFromDate:[NSDate date]];
+
+            
+            
+            
             UILabel *nameLa= (UILabel*)[view viewWithTag:100];
             view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 34);
-            nameLa.text =@"订单号：11211221212  2015-－14 17：17";
+            
+            nameLa.text =[NSString stringWithFormat:@"订单号：%@   %@",currentOrderNum,currentTime];
+          
           
         }
             break;
@@ -482,7 +495,9 @@
 -(void)payClick:(UIButton*)btn
 {
 
+  CartCommitOrderVC *cvc = [[CartCommitOrderVC alloc]init];
     
+  [self.navigationController  pushViewController:cvc animated:YES];
 
 }
 @end
