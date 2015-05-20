@@ -14,6 +14,7 @@
 #import "NSString+val.h"
 #import "RDVTabBarController.h"
 #import "NSDate+Helper.h"
+#import "XiyuprotocolVC.h"
 @interface MyRegisterVC ()<UITextFieldDelegate>{
 
     
@@ -22,6 +23,10 @@
     NSString *checkCode,*secsLeft;
     
     BOOL  isClick ;
+    
+    BOOL  agreeProtecol;
+    
+    WEHTTPHandler *we;
 
 }
 
@@ -245,7 +250,7 @@
     
     //同意协议
     
-    UILabel *protolcLa =[[UILabel alloc]initWithFrame:CGRectMake(50, 265+90, 100, 22)];
+    UILabel *protolcLa =[[UILabel alloc]initWithFrame:CGRectMake(50, 265+90, 90, 22)];
     protolcLa.text = @"同意协议";
     protolcLa.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:protolcLa];
@@ -264,6 +269,19 @@
     [protolcBtn addTarget:self action:@selector(protolcBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:protolcBtn];
+    // 协议
+    UIButton *protolcoDetailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [protolcoDetailBtn setFrame:CGRectMake(CGRectGetMaxX(protolcLa.frame)-30, CGRectGetMinY(protolcLa.frame), 130, 25)];
+    [protolcoDetailBtn setTitle:@"《西域机电注册协议》" forState:UIControlStateNormal];
+    
+    protolcoDetailBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    protolcoDetailBtn.backgroundColor = [UIColor clearColor];
+    [protolcoDetailBtn addTarget:self action:@selector(protolcoDetailClick) forControlEvents:UIControlEventTouchUpInside];
+    [protolcoDetailBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.view addSubview:protolcoDetailBtn];
+
+    
+    
     
     // 注册
     UIButton *loginBut = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -385,28 +403,50 @@
         return;
     }
     
-
-
+  
     
     [pwdNmTextF resignFirstResponder];
     [LogNmTextF resignFirstResponder];
     [sureTf resignFirstResponder];
     [valCodeTf resignFirstResponder];
     
+  
+    if (agreeProtecol==NO) {
+        ALERT_WARN(@"同意协议方可注册");
+        return;
+    }
 
     
-    
-    WEHTTPHandler *we =[[WEHTTPHandler alloc]init];
+      we =[[WEHTTPHandler alloc]init];
     
     __weak MyRegisterVC *bSelf = self;
     [we executeRegistUserTaskWithName:userNameTf.text withPaw:pwdNmTextF.text withEmail:emailTf.text withPhone:LogNmTextF.text success:^(id obj) {
-        [bSelf.navigationController popViewControllerAnimated:YES];
-        [AlertUtil showAlertWithText:@"注册成功"];
-        DLog(@"输出%@",obj);
-    } failed:^(id obj) {
-        [AlertUtil showAlertWithText:@"注册失败"];
 
-         DLog(@"输出%@",obj);
+        if ([[obj objectForKey:@"message"]intValue]==0) {
+            
+                         WARN_ALERT(@"注册成功");
+            
+        }else if ([[obj objectForKey:@"message"]intValue]==1){
+              WARN_ALERT(@"用户名存在");
+            return ;
+        }else if ([[obj objectForKey:@"message"]intValue]==2){
+          WARN_ALERT(@"手机号码存在");
+            return;
+        }else if([[obj objectForKey:@"message"]intValue]==3) {
+           WARN_ALERT(@"邮箱存在");
+            return;
+        }else{
+         WARN_ALERT(@"注册失败");
+            return;
+        }
+        
+        
+        [bSelf.navigationController popViewControllerAnimated:YES];
+        
+       
+    } failed:^(id obj) {
+//        [AlertUtil showAlertWithText:@"注册失败"];
+
     }];
     
 }
@@ -472,7 +512,7 @@
         btn.selected  =YES;
         
         
-        
+        agreeProtecol =YES;
         
         
         return;
@@ -483,7 +523,7 @@
         btn.selected = NO;
         
         
-       
+        agreeProtecol =NO;
         
     }
     
@@ -495,5 +535,30 @@
     [self.view endEditing:YES];
 }
 
-
+-(void)protolcoDetailClick{
+    
+    
+    
+    
+    [we executeGetUserRegistProtacolWithSuccess:^(id obj) {
+        
+            DLog(@"什么什么");
+        if ([[obj objectForKey:@"message"] isEqualToString:@"1"]) {
+        
+            NSString *textStr =[obj objectForKey:@"info"];
+            XiyuprotocolVC *xiyu = [[XiyuprotocolVC alloc]init];
+            xiyu.text =textStr;
+            [self.navigationController pushViewController:xiyu animated:YES];
+            
+            
+        }
+       
+  
+        
+    } failed:^(id obj) {
+      
+    }];
+    
+    
+}
 @end

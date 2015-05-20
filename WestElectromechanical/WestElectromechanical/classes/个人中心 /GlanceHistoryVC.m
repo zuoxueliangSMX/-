@@ -102,7 +102,7 @@
         
         [cell.contentView addSubview:imgV];
         
-        imgV.tag = 98;
+        imgV.tag = 10086;
     }
     WEProductSingleModel *singleModel =_totalHistoryProducts[indexPath.row];
     cell.titleLa.text= singleModel.p_name;
@@ -112,7 +112,7 @@
     cell.priceLa.text =[NSString stringWithFormat:@"¥%@",singleModel.p_price];
     cell.memberPrice.text =[NSString stringWithFormat:@"会员价:%@",singleModel.p_v_price];
 
-    UIImageView*imgv2 =(UIImageView*)[cell.contentView viewWithTag:98];
+    UIImageView*imgv2 =(UIImageView*)[cell.contentView viewWithTag:10086];
     imgv2.contentMode =UIViewContentModeScaleAspectFit;
 
     [imgv2  setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];

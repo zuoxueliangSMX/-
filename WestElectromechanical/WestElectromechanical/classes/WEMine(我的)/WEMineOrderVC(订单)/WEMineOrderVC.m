@@ -19,6 +19,14 @@
 #import "WEMyOrderFrame.h"
 #import "TLAlertView.h"
 #import "WEMineAddComentVC.h"
+#import "Order.h"
+#import "ProductsM.h"
+#import "NSDictionary+JsonString.h"
+
+#import "DataSigner.h"
+#import <AlipaySDK/AlipaySDK.h>
+
+#import "APAuthV2Info.h"
 @interface WEMineOrderVC()<HTHorizontalSelectionListDelegate,HTHorizontalSelectionListDataSource,UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_table;
@@ -190,11 +198,19 @@
         WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
     cell.orderFrame = orderFrame;
     [cell.bottomView setOrderBottomViewBlock:^(UIButton *btn) {
-        if ([btn.titleLabel.text isEqual:kOrderBtnTypeConfirm] ) {
+        
+        
+        
+        
+        
+        
+        if ([btn.titleLabel.text isEqualToString:kOrderBtnTypeConfirm] ) {
             
-            NSInteger row2 = [tableView indexPathForCell:((WEMineOrderCell*)[[btn   superview]superview])].row;
-            WEMyOrderFrame *orderFrame = [self.orderModel.orders  objectAtIndex:row2];
-            
+//            NSInteger row2 = [tableView indexPathForCell:((WEMineOrderCell*)[[btn   superview]superview])].row;
+//            
+//            DLog(@"输出我的row2%d,",row2);
+//            WEMyOrderFrame *orderFrame = [self.orderModel.orders  objectAtIndex:row2];
+//            
 
             
             [we executeAffirmAcceptGoodsWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
@@ -230,13 +246,94 @@
                     
                     
                 }
+                
+                
+                
+                
             } failed:^(id obj) {
               
             }];
-        }
+        }else if ([btn.titleLabel.text isEqualToString:kOrderBtnTypePay]){
+        
+            
+
+            
+               //字符串操作关于order.productDescription
+            
+              NSMutableString *miaoshusStr  =[[NSMutableString alloc]initWithCapacity:0];
+               NSMutableString *namestr =[[NSMutableString alloc]initWithCapacity:0];
+            
+                    for ( ProductsM *pm in orderFrame.orderModel.order_products) {
+                NSDictionary *dic = @{@"p_brand":pm.p_brand,@"p_imgurl":pm.p_imgurl,@"p_name":pm.p_name, @"p_num":pm.p_num,@"p_order_num":pm.p_order_num,@"p_price":pm.p_price,@"p_version":pm.p_version,@"pid":pm.pid};
+                NSString* productJsonStr=[dic jsonString];
+                    [miaoshusStr appendString:productJsonStr];
+                [namestr appendString:[NSString stringWithFormat:@"名字:%@",pm.p_name]];
+                
+            }
+
+            NSString *temp = @"/";
+            NSString *strm = [miaoshusStr stringByReplacingOccurrencesOfString :temp withString:@""];
+            DLog(@"输出这个过滤的字符串%@",strm);
+            
+            
+            
+            
+            
+            NSString *partner = PartnerID;
+            NSString *seller = @"alipayrisk10@alipay.com";
+            NSString *privateKey = PartnerPrivKey;
+            NSString *appScheme =@"WestElectromechanical";
+            
+            Order *order = [[Order alloc] init];
+            order.partner = partner;
+            order.seller = seller;
+            order.tradeNO =orderFrame.orderModel.order_num ; //订单ID（由商家自行制定）
+            order.productName = namestr; //商品标题
+            order.productDescription = strm; //商品描述
+            order.amount = [NSString stringWithFormat:@"%@",orderFrame.orderModel.all_money]; //商品价格
+            order.notifyURL = kALiPayNotifyUrl; //回调URL
+            order.service = @"mobile.securitypay.pay";
+            order.paymentType = @"1";
+            order.inputCharset = @"utf-8";
+            order.itBPay = @"30m";
+            order.showUrl = @"m.alipay.com";
+            NSString *orderSpec = [order description];
+            
+            id<DataSigner> signer = CreateRSADataSigner(privateKey);
+            NSString *signedString = [signer signString:orderSpec];
+             //将签名成功字符串格式化为订单字符串,请严格按照该格式
+            NSString *orderString = nil;
+            if (signedString != nil) {
+                orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                               orderSpec, signedString, @"RSA"];
+                
+                [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+                    
+                    NSLog(@"====resultDic====%@",resultDic);
+                    NSString *str = [NSString stringWithFormat:@"%@",[resultDic objectForKey:@"resultStatus"]];
+                    if ([str isEqualToString:@"9000"])
+                    {
+                        
+                       
+                        
+                        
+                        
+                    }
+                    
+  
+                    
+                    NSLog(@"reslut = %@",resultDic);
+                }];
+
+            }}else {
+            
+            
+            
+            
+            
+            }
+        
     }];
-
-
     return cell;
     
 }
