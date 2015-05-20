@@ -28,6 +28,7 @@ DEFINE_SINGLETON_FOR_IMPLEMENTATION(WELocationManager)
         // 当它定位完成,获得用户的经度和纬度时,会通知代理
         if ([CLLocationManager locationServicesEnabled]) {
             DLog(@"定位服务不可用");
+            
         }
         
         //如果没有授权则请求用户授权
@@ -51,7 +52,7 @@ DEFINE_SINGLETON_FOR_IMPLEMENTATION(WELocationManager)
     return self;
 }
 
-- (void)getLocationCity:(LocationCityBlock)cityBlock
+- (void)getLocationCity:(LocationCityBlock)cityBlock 
 {
     _cityBlock = cityBlock;
     [self.locationMgr startUpdatingLocation];
@@ -80,8 +81,8 @@ DEFINE_SINGLETON_FOR_IMPLEMENTATION(WELocationManager)
                  city =address[(NSString *)kABPersonAddressStateKey];
              }
              DLog(@"city = %@", city);
-             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-             [defaults setValue:[city substringToIndex:2] forKey:kHomeCityKey];
+//             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//             [defaults setValue:[city substringToIndex:2] forKey:kHomeCityKey];
              
              
              if (_cityBlock) {

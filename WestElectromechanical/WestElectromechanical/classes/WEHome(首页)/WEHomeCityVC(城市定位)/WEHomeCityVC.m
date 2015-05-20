@@ -511,6 +511,7 @@
 //    }else {
 //        city = [[_cities objectForKey:[_keys objectAtIndex:indexPath.section-1]] objectAtIndex:indexPath.row];
 //    }
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:kHomeCityKey]);
     if (_block) {
         _block(city);
     }

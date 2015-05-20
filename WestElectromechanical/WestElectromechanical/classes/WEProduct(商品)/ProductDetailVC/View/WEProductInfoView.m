@@ -116,6 +116,7 @@
     UIWebView *productIntroduce =[[UIWebView alloc]initWithFrame:CGRectMake(kLeftMargin, CGRectGetMaxY(_productOrderId.frame) + 2*kTopMargin, SCREEN_WIDTH, _height)];
     productIntroduce.backgroundColor =[UIColor redColor];
     productIntroduce.delegate = self;
+    productIntroduce.scalesPageToFit =YES;
     productIntroduce.scrollView.bounces = NO;
     productIntroduce.scrollView.showsHorizontalScrollIndicator = NO;
     productIntroduce.scrollView.showsVerticalScrollIndicator = NO;
@@ -128,6 +129,7 @@
 
 - (void)loadHtml:(NSString *)htmlStr
 {
+    
     //[_webView loadHTMLString:htmlStr baseURL:nil];
     
     /**
@@ -153,9 +155,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     
+   
     //        //设置缩放
     //修改服务器页面的meta的值
-    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=6.0, user-scalable=yes",SCREEN_WIDTH];
+    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes",SCREEN_WIDTH];
+     [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.width=320"];
     [webView stringByEvaluatingJavaScriptFromString:meta];
     ////
     //给网页增加utf-8编码

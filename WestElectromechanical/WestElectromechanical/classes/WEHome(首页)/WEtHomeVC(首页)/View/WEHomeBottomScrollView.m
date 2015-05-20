@@ -33,6 +33,7 @@
         UIImageView *recommendlogo = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5,31/2.0, 32/2.0)];
         [recommendlogo setImage:[UIImage imageNamed:@"Home_Recommend"]];
         [recommendBgView addSubview:recommendlogo];
+        
         // 本月推荐
         UILabel *hotlabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(recommendlogo.frame)+10, 5,200, 32/2.0)];
         hotlabel.font = font(16);
@@ -52,7 +53,7 @@
         [self addSubview:bottomScroll];
         
         for (int i = 0; i < kBottomViewCount; i++) {
-            WERecommendBgView *bgView =[[WERecommendBgView alloc]initWithFrame:CGRectMake(frame.size.width*i, 0, frame.size.width, bottomScroll.size.height)];
+            WERecommendBgView *bgView =[[WERecommendBgView alloc]initWithFrame:CGRectMake(frame.size.width*i, 0, frame.size.width, bottomScroll.size.height-15)];
             bgView.tag =kBgViewTag +i;
             [bgView setRecommendBgViewBlock:^(NSInteger imgTag) {
                 if (_block) {
@@ -64,7 +65,7 @@
             [_bgViews addObject:bgView];
         }
         
-        TAPageControl *pageControl = [[TAPageControl alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(bottomScroll.frame)-10, frame.size.width, 10)];;
+        TAPageControl *pageControl = [[TAPageControl alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(bottomScroll.frame)-15, frame.size.width, 10)];;
         pageControl.currentDotImage =[UIImage imageNamed:@"Home_ScrollLine_Highlighted"];
         pageControl.dotImage =[UIImage imageNamed:@"Home_ScrollLine_Normal"];
         pageControl.backgroundColor =[UIColor clearColor];

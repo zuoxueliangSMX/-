@@ -149,11 +149,20 @@
     }];
     _homeScroll = scrollView;
     
+    [self setLeftItems];
+    
     WELocationManager *mgr =[WELocationManager sharedWELocationManager];
+    
     [mgr getLocationCity:^(NSString *cityString) {
+        
+        DLog(@"%@=------%@",cityString,[[NSUserDefaults standardUserDefaults] objectForKey:kHomeCityKey]);
+        if ([cityString rangeOfString:[[NSUserDefaults standardUserDefaults] objectForKey:kHomeCityKey]].location !=NSNotFound||[[[NSUserDefaults standardUserDefaults] objectForKey:kHomeCityKey] rangeOfString:cityString].location!=NSNotFound) {
+            DLog(@"定位的城市相同");
+        }else{
+            DLog(@"您现在定位的城市是%@,是否本地地址选择为定位地址",cityString);
+        }
     }];
     
-    [self setLeftItems];
 
     [self initNetData:@"北京"];
 }

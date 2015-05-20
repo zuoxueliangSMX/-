@@ -35,8 +35,8 @@
             imageView.tag = kTag + i;
             imageView.userInteractionEnabled = YES;
             [imageView setImage:[UIImage imageNamed:@"product_load_default"]];
-            imageView.contentMode =UIViewContentModeScaleToFill;
-            imageView.backgroundColor =[UIColor blueColor];
+            imageView.contentMode =UIViewContentModeScaleAspectFit;
+            imageView.backgroundColor =[UIColor clearColor];
             [self addSubview:imageView];
             [_imgs addObject:imageView];
             UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(recommendClick:)];

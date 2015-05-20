@@ -117,6 +117,8 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     
+     [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.width=320"]; 
+    
     //        //设置缩放
     //修改服务器页面的meta的值
     NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=6.0, user-scalable=yes",SCREEN_WIDTH];
