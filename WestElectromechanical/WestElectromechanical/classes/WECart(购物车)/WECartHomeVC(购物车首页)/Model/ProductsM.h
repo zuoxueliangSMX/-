@@ -11,7 +11,7 @@
 
 @interface ProductsM : BaseModel
 @property(nonatomic,copy)NSString *p_brand;
-@property(nonatomic,copy)NSString *p_id;
+@property(nonatomic,copy)NSString *pid;
 @property(nonatomic,copy)NSString *p_imgurl;
 @property(nonatomic,copy)NSString *p_order_num;
 @property(nonatomic,copy)NSString *p_price;

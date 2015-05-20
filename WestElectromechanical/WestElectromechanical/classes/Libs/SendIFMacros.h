@@ -12,6 +12,35 @@
 #define SendIFMacros_h
 
 
+
+
+
+
+
+
+
+
+//*******************支付宝*******************//
+//合作身份者id，以2088开头的16位纯数字
+#define PartnerID @"2088301235096243"
+//收款支付宝账号
+#define SellerID  @"lunyi2015@163.com"
+
+//安全校验码（MD5）密钥，以数字和字母组成的32位字符
+#define MD5_KEY @"9u66u3titp5u758th8lzioaiqpga61ph"
+
+//商户私钥，自助生成
+#define PartnerPrivKey  @"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAOPJv8E8/cPQPTRE/petWSZZ/E6rUpTuiZvGybG84K4lTQV0w9/XufqMoi/235EO4WICRMAuWCNQ1AFcRBj1v2Fs6oHonHZx94l/ER9jRPf3QHi57XZQ4F+NRcTWJL8bZe/kg5o8szFGTh8wNs3Se3G4sEchDxbj6fNrvJrq1mfPAgMBAAECgYAFPOdm5yMitJAjuo5sKHVLV3hgyrm8aPvLFDghGSnFd2AdBwFWDVzecQtttOyRJllyaoDwNmCad0pYualrNYNwC/T+/BFztO1+uaSn0MMCwxbWP1CrifBv08dAM/qvMmQGTiHtCrAT2Ht+FwoZAg9Fyho2InH4FKEkUYsUXUfV2QJBAP6zB6+AtsLjvbsuJNLFTLRtqB6EIqDSAsx7u7oMZdNB9ZdpJdd8HkyE/9VAi5WD6KivrMC6lUIhAuQfWeY2KaMCQQDk84mrsvmL4RAH8QAZclRwP3odjIP/j60RIFWvDiBcfN+askrXhSAheosiiCwguF4wybGJl4RrDDfuJocdZMPlAkEA+0CM0lp87+BNqDqq5KjxNAQAlqnupwrE7AcbdzsHr9Effk+hnuK32PBSl4HmsIXBm7ZBCpaE6wk5muQ6gNjpVQJALKkVAdk3tIGCjwoD6vLSZdL8DyeJ2CA+skiMbkljJqd1NsfwsXnWerFc0q+dbASK2xl8+EoGGpuXjW0WjjVJwQJAIrPjgFV/jqhS1OtiTeaRkLFJsvjQs4ds5OrDNEXYxBrMaYYxXJQihYb4khXrgo9Kf0IHs4LY5UTACJqWRg/LYw=="
+
+
+//支付宝公钥
+#define AlipayPubKey  @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB"
+
+//支付宝回掉url
+#define kALiPayNotifyUrl    @"http://115.29.178.110/alipay/notify_url.php"
+//@"http://115.29.178.110/?c=pay"
+
+
 //iphone5适配
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
@@ -102,8 +131,7 @@ static NSString *const SendIFServer = @"http://app.ehgs.net:8094";
 
 #define DEFAULT_CITY_ID @"bdb3e546a86646039490b122812fbd17"
 
-// 支付宝公钥
-#define AlipayPubKey @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCAAeeQyaIs+DvTe48pH56/cPZ/0gHlO0kHfrcQFRvpPOlerpWh1+QGVR1KhgeOOoSkQuguPKcpULIk8X+wUBVuswx9ZwO5f5cIjcDIc3ird7soBBSzS5paewpF1zJPT+51B71VqoOljlgSY5R9akeo35ziJXDCCGlPm6zm23FRwwIDAQAB"
+
 
 //通知
 #define KNotification                 @"BuyNotification"
