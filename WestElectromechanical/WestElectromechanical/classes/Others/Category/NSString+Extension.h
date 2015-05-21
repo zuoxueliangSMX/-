@@ -10,5 +10,5 @@
 
 @interface NSString (Extension)
 + (NSString *)deleteSpacing:(NSString *)spacingStr;
-
++ (NSString*)MD5:(NSString *)str;
 @end

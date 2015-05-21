@@ -180,26 +180,33 @@
 - (void)headBtnClick:(UIButton*)sender{
 //  MyOrderMenuVC *mymenu = [[MyOrderMenuVC alloc]init];
     
-    WEMineOrderVC *mymenu =[[WEMineOrderVC alloc]init];
-    if (sender.tag == 98970) {
-      mymenu.selectedItem =1;
-   
-        
-    }else if (sender.tag == 98971){
-      mymenu.selectedItem =2;
     
-    }else if (sender.tag == 98972){
-       
-     mymenu.selectedItem =0;
-    }else if (sender.tag == 98973){
-        
-    mymenu.selectedItem =3;
+    if ([AccountHanler userId]) {
+        WEMineOrderVC *mymenu =[[WEMineOrderVC alloc]init];
+        if (sender.tag == 98970) {
+            mymenu.selectedItem =1;
+        }else if (sender.tag == 98971){
+            mymenu.selectedItem =2;
+            
+        }else if (sender.tag == 98972){
+            
+            mymenu.selectedItem =0;
+        }else if (sender.tag == 98973){
+            
+            mymenu.selectedItem =3;
+        }
+        [self.navigationController pushViewController:mymenu animated:YES];
+    }else{
+        LoginVC *loginVC =[[LoginVC alloc]init];
+        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
+ 
     }
-
     
-  
     
-    [self.navigationController pushViewController:mymenu animated:YES];
+    
 }
 
 - (void)addUI
@@ -397,7 +404,12 @@
 
             if ([AccountHanler userId]==NULL) {
             
-                ALERT_WARN(@"请先登录");
+                LoginVC *loginVC =[[LoginVC alloc]init];
+                UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+                [self presentViewController:nav animated:YES completion:^{
+                    
+                }];
+
                 return;
                 
             }
@@ -422,7 +434,12 @@
             
             if ([AccountHanler loginState]==0) {
                 
-                ALERT_WARN(@"请先登录");
+                LoginVC *loginVC =[[LoginVC alloc]init];
+                UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+                [self presentViewController:nav animated:YES completion:^{
+                    
+                }];
+
                 return;
             
             }

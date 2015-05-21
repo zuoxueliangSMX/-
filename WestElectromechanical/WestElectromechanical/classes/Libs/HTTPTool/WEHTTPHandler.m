@@ -16,6 +16,7 @@
 #import "WEProductDetailModel.h"
 #import "WEProductsModel.h"
 #import "MyOrderModel.h"
+#import "NSString+Extension.h"
 @implementation WEHTTPHandler
 #pragma mark -
 #pragma mark - 首页模块
@@ -439,7 +440,7 @@
 {
     [AlertUtil showAlertWithText:@"登陆用户"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_Login WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"account=%@&password=%@",account,passWord];
+    NSString *params = [NSString stringWithFormat:@"account=%@&password=%@",[NSString MD5:[NSString MD5:account]],[NSString MD5:[NSString MD5:passWord]]];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         if ([[json  objectForKey:@"message"] integerValue]== 0) {

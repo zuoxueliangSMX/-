@@ -107,9 +107,8 @@ WEHTTPHandler *whanle;
      
     
     _namefi = [[UITextField alloc] initWithFrame:CGRectMake(15,7*kGap+10, SCREEN_WIDTH-30, 50)];
-    _namefi.placeholder = @"                     手机/用户名/邮箱";
+    _namefi.placeholder = @"手机/用户名/邮箱";
     [_namefi setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-    
     _namefi.layer.borderWidth = 1.0;
     _namefi.layer.borderColor =[UIColor lightGrayColor].CGColor;
     [_namefi setKeyboardType:UIKeyboardTypeDefault];
@@ -119,8 +118,9 @@ WEHTTPHandler *whanle;
     _namefi.delegate =self;
     [_namefi setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_namefi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 20, 20)];
+    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    leftimg.contentMode =UIViewContentModeCenter;
     [leftimg setImage: [UIImage imageNamed:@"Person_user"]];
     _namefi.leftViewMode = UITextFieldViewModeAlways;
     
@@ -131,8 +131,10 @@ WEHTTPHandler *whanle;
     
     
     UITextField *pswfi = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_namefi.frame)+10, SCREEN_WIDTH-30, 50)];
-    [pswfi setPlaceholder:@"                         密码6至16字符"];
+    [pswfi setPlaceholder:@"密码6至16字符"];
     
+    pswfi.leftView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 50)];
+    pswfi.leftViewMode = UITextFieldViewModeAlways;
     if ( [AccountHanler userCode]!=nil) {
         pswfi.text =  [AccountHanler userCode];
         
@@ -152,9 +154,10 @@ WEHTTPHandler *whanle;
     [pswfi.layer setMasksToBounds:YES];
     [pswfi.layer setCornerRadius:5];
 
-    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, 20, 20)];
+    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 40,40)];
     [psdleftimg setImage: [UIImage imageNamed:@"Person_lock"]];
+    psdleftimg.contentMode = UIViewContentModeCenter;
     pswfi.leftViewMode = UITextFieldViewModeAlways;
     [psdleft addSubview:psdleftimg];
     pswfi.leftView = psdleft;
