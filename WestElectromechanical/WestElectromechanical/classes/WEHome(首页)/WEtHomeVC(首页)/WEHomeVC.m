@@ -138,9 +138,15 @@
             AppDelegate *delegate =(AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.tabBarController.selectedIndex =2;
 //            [delegate.tabBarController viewControllerAtIndex:3];
+        }else if(index ==1){
+
+            [bSelf getNextVCData:@"1000949"];
+
+        }else if(index == 2){
+            [bSelf getNextVCData:@"1009581"];
+
         }else{
-            WEProductListVC *productListVC =[[WEProductListVC alloc]init];
-            [bSelf.navigationController pushViewController:productListVC animated:YES];
+            [bSelf getNextVCData:@"1006595"];
         }
     }];
     [scrollView.headerView setHomeHeaderScrollViewBlock:^(NSString *pid) {
@@ -160,12 +166,34 @@
             DLog(@"定位的城市相同");
         }else{
             DLog(@"您现在定位的城市是%@,是否本地地址选择为定位地址",cityString);
+            
+            [[NSUserDefaults standardUserDefaults] setObject:cityString forKey:kHomeCityKey];
+            [bSelf setLeftItems];
         }
     }];
     
 
     [self initNetData:@"北京"];
 }
+
+/**
+ *  获取下一个控制器的数据
+ */
+- (void)getNextVCData:(NSString *)categroyId
+{
+    WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+    __weak WEHomeVC *bSelf =self;
+    [handler executeGetSearchDataWithSearchContent:categroyId withSuccess:^(id obj) {
+        WEProductListVC *productListVC =[[WEProductListVC alloc]init];
+        productListVC.products = (WEProductsModel *)obj;
+        [bSelf.navigationController pushViewController:productListVC animated:YES];
+        
+    } withFailed:^(id obj) {
+        
+    }];
+    
+}
+
 
 /**
  *  获取首页数据
