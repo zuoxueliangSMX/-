@@ -59,7 +59,7 @@
     // Do any additional setup after loading the view.
    
      self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
-    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(15, 80, SCREEN_WIDTH-30, 265)];
+    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(15, 80, SCREEN_WIDTH-30, 225)];
      squareView.backgroundColor = [UIColor whiteColor];
     squareView.layer.cornerRadius =4;
     [self.view addSubview:squareView];
@@ -203,45 +203,45 @@
     
 
     
-    // yan密码
-    valCodeTf = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(sureTf.frame), 220, 40)];
-    [valCodeTf setBorderStyle:UITextBorderStyleNone];
-    [valCodeTf setSecureTextEntry:YES]; //设置成密码格式
-    valCodeTf.textColor = [UIColor blackColor];
-    [valCodeTf setClearButtonMode:UITextFieldViewModeWhileEditing];
-    [valCodeTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIButton *codeBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [codeBut setImage:[UIImage imageNamed:@"Person_email"] forState:UIControlStateNormal];
-    [codeBut setBounds:CGRectMake(0, 0, 50, 40)];
-    [codeBut setUserInteractionEnabled:NO];
-    valCodeTf.leftViewMode = UITextFieldViewModeAlways;
-    [valCodeTf setLeftView:codeBut];
-    [valCodeTf setDelegate:self];
-    valCodeTf.returnKeyType=UIReturnKeyGo;//返回键的类型
-    [valCodeTf setPlaceholder:@"验证码"]; //默认显示的字
-    //    [pwdNmTextF setTextAlignment:NSTextAlignmentCenter];
-    [squareView addSubview:valCodeTf];
-    
-    UIButton *getCodeBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-    getCodeBtn.tag = 10081;
-    [getCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [getCodeBtn setBackgroundColor:[UIColor orangeColor]];
-    [getCodeBtn setFrame:CGRectMake(CGRectGetMaxX(valCodeTf.frame)-60, CGRectGetMaxY(valCodeTf.frame)-30, 80, 25)];
-    [getCodeBtn addTarget:self action:@selector(getCodeClick) forControlEvents:UIControlEventTouchUpInside];
-    [squareView addSubview:getCodeBtn];
-
-    _numLab = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(valCodeTf.frame)-40, CGRectGetMaxY(valCodeTf.frame)-30, 64, 25)];
-    _numLab.backgroundColor = [UIColor redColor];
-    _numLab.textColor = [UIColor whiteColor];
-    _numLab.textAlignment = NSTextAlignmentCenter;
-    [squareView addSubview:_numLab];
-    _numLab.hidden = YES;
-    
-    UIImageView *imgv5 = [[UIImageView alloc] init];
-    imgv5.frame = CGRectMake(10, CGRectGetMaxY(valCodeTf.frame)+1, squareView.frame.size.width-20, 1);
-    imgv5.backgroundColor = [UIColor appLineColor];
-    [squareView addSubview:imgv5];
+//    // yan密码
+//    valCodeTf = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(sureTf.frame), 220, 40)];
+//    [valCodeTf setBorderStyle:UITextBorderStyleNone];
+//    [valCodeTf setSecureTextEntry:YES]; //设置成密码格式
+//    valCodeTf.textColor = [UIColor blackColor];
+//    [valCodeTf setClearButtonMode:UITextFieldViewModeWhileEditing];
+//    [valCodeTf setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+//    UIButton *codeBut = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [codeBut setImage:[UIImage imageNamed:@"Person_email"] forState:UIControlStateNormal];
+//    [codeBut setBounds:CGRectMake(0, 0, 50, 40)];
+//    [codeBut setUserInteractionEnabled:NO];
+//    valCodeTf.leftViewMode = UITextFieldViewModeAlways;
+//    [valCodeTf setLeftView:codeBut];
+//    [valCodeTf setDelegate:self];
+//    valCodeTf.returnKeyType=UIReturnKeyGo;//返回键的类型
+//    [valCodeTf setPlaceholder:@"验证码"]; //默认显示的字
+//    //    [pwdNmTextF setTextAlignment:NSTextAlignmentCenter];
+//    [squareView addSubview:valCodeTf];
+//    
+//    UIButton *getCodeBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+//    getCodeBtn.tag = 10081;
+//    [getCodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [getCodeBtn setBackgroundColor:[UIColor orangeColor]];
+//    [getCodeBtn setFrame:CGRectMake(CGRectGetMaxX(valCodeTf.frame)-60, CGRectGetMaxY(valCodeTf.frame)-30, 80, 25)];
+//    [getCodeBtn addTarget:self action:@selector(getCodeClick) forControlEvents:UIControlEventTouchUpInside];
+//    [squareView addSubview:getCodeBtn];
+//
+//    _numLab = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(valCodeTf.frame)-40, CGRectGetMaxY(valCodeTf.frame)-30, 64, 25)];
+//    _numLab.backgroundColor = [UIColor redColor];
+//    _numLab.textColor = [UIColor whiteColor];
+//    _numLab.textAlignment = NSTextAlignmentCenter;
+//    [squareView addSubview:_numLab];
+//    _numLab.hidden = YES;
+//    
+//    UIImageView *imgv5 = [[UIImageView alloc] init];
+//    imgv5.frame = CGRectMake(10, CGRectGetMaxY(valCodeTf.frame)+1, squareView.frame.size.width-20, 1);
+//    imgv5.backgroundColor = [UIColor appLineColor];
+//    [squareView addSubview:imgv5];
     
 
     
@@ -276,7 +276,7 @@
     
     protolcoDetailBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     protolcoDetailBtn.backgroundColor = [UIColor clearColor];
-    [protolcoDetailBtn addTarget:self action:@selector(protolcoDetailClick) forControlEvents:UIControlEventTouchUpInside];
+    [protolcoDetailBtn addTarget:self action:@selector(protolcoDetailClick11) forControlEvents:UIControlEventTouchUpInside];
     [protolcoDetailBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.view addSubview:protolcoDetailBtn];
 
@@ -535,7 +535,7 @@
     [self.view endEditing:YES];
 }
 
--(void)protolcoDetailClick{
+-(void)protolcoDetailClick11{
     
     
     
@@ -556,7 +556,7 @@
   
         
     } failed:^(id obj) {
-      
+        DLog(@"ssjjs");
     }];
     
     
