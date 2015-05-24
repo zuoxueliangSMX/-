@@ -176,6 +176,14 @@
 
 
 
+/**
+ *  38.支付订单
+ */
+#define API_PAYORDER @"/json_orderpay.php"
+
+
+
+
 
 
 
