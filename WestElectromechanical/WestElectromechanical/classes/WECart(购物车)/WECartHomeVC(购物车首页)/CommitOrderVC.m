@@ -19,6 +19,7 @@
 #import "MyCartM.h"
 #import "UIImageView+WebCacheImg.h"
 #import "CartCommitOrderVC.h"
+#import "NSDictionary+JsonString.h"
 
 #import "RDVTabBarController.h"
 @interface CommitOrderVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
@@ -28,6 +29,8 @@
     NSArray *imgArr;
     NSArray *titleArr;
     UITableView *_table;
+    NSString *currentOrderNum;
+    
 
     
 }
@@ -283,7 +286,7 @@
             [formatter setDateFormat:@"yyyy-MM-dd-HHmm-ss"];
             [formatter2 setDateFormat:@"yyyyMMddHHmmss"];
             NSString *currentTime = [formatter stringFromDate:[NSDate date]];
-             NSString *currentOrderNum = [formatter2 stringFromDate:[NSDate date]];
+             currentOrderNum = [formatter2 stringFromDate:[NSDate date]];
 
             
             
@@ -494,10 +497,56 @@
 }
 -(void)payClick:(UIButton*)btn
 {
-
-  CartCommitOrderVC *cvc = [[CartCommitOrderVC alloc]init];
+    NSMutableArray *Mu  =[[NSMutableArray alloc]initWithCapacity:0];
+     for ( MyCartM *pm in self.selectedMu) {
+       NSDictionary *dic = @{@"pid":pm.p_id,@"p_price":pm.p_price,@"p_num":pm.p_num};
+          [Mu addObject:dic];
+         }
+       NSDictionary *products =@{@"products":Mu};
+    NSString* productJsonStr=[products jsonString];
     
-  [self.navigationController  pushViewController:cvc animated:YES];
+    
+    DLog(@"输出这个json字符串%@",productJsonStr);
+  
+
+    
+    
+    NSString *invoice =nil;
+    
+    if ( [[AccountHanler invoiceStyle]isEqualToString:@"普票"]) {
+       invoice =@"1";
+    }else if([[AccountHanler invoiceStyle]isEqualToString:@"无需发票"]){
+    
+     invoice =@"0";
+    
+    }else if([[AccountHanler invoiceStyle]isEqualToString:@"增值发票"]){
+     invoice =@"2";
+    }
+ 
+  
+    
+    
+    
+    [we executePlaceOrderWithUserId:[AccountHanler userId] withOrderNum:currentOrderNum withProductsJsonStr:productJsonStr withReceivedName:[AccountHanler reciveName] withReceivedAddress:[AccountHanler addres] withReceivedMobile:[AccountHanler recivePhone] withReceivedPhone:[AccountHanler recivePhone]  withFapiao:invoice withFapiaoHeade:[AccountHanler invoiceHead] Success:^(id obj) {
+        
+        
+        
+        if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+            CartCommitOrderVC *cvc = [[CartCommitOrderVC alloc]init];
+            cvc.orderNum =currentOrderNum;
+            
+           NSString *pricek = [NSString stringWithFormat:@"%f",self.totalP];
+           cvc.allPrice =pricek;
+            [self.navigationController  pushViewController:cvc animated:YES];
+        }
+        
+    } failed:^(id obj) {
+       
+    }];
+
+ 
+    
+    
 
 }
 @end

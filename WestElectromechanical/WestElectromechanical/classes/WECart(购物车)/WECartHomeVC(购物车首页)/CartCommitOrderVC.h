@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CartCommitOrderVC : UIViewController
+@property(nonatomic,strong)NSString *orderNum;
+@property(nonatomic,strong)NSString *allPrice;
 
 @end

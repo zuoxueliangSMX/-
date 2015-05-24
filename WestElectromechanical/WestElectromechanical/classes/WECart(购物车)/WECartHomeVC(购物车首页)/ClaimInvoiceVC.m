@@ -109,7 +109,7 @@
     
     
     
-    NSArray * titileArr =@[@"无须发票",@"普票",@"增值发票"];
+    NSArray * titileArr =@[@"无需发票",@"普票",@"增值发票"];
     for (int i =0; i <3; i++) {
         
         UIButton *roundBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -183,7 +183,7 @@
         
         [AccountHanler setInvoiceAdress:nil];
         [AccountHanler setInvoiceHead:nil];
-         [AccountHanler setInvoiceStyle:@"未选择发票类型"];
+         [AccountHanler setInvoiceStyle:@"无需发票"];
           
     }else
     {
@@ -198,7 +198,7 @@
         [AccountHanler setInvoiceHead:invoiceHeadeTf.text];
         
         if (_currentbtn.tag==101) {
-             [AccountHanler setInvoiceStyle:@"普发"];
+             [AccountHanler setInvoiceStyle:@"普票"];
         }else if(_currentbtn.tag==102) {
         
         [AccountHanler setInvoiceStyle:@"增值发票"];
