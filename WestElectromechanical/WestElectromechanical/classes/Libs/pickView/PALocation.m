@@ -23,4 +23,5 @@
 @synthesize   latitude = _latitude;
 //经度
 @synthesize   longitude = _longitude;
+@synthesize zipCode = _zipCode;
 @end

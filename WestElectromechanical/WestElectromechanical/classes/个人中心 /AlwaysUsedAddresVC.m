@@ -103,6 +103,7 @@
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellidentifer];
     if (cell ==nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer];
+        cell.selectionStyle =UITableViewCellAccessoryNone;
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 65)] ;
         view.backgroundColor = [UIColor whiteColor];
           cell.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
@@ -158,7 +159,7 @@
     
     AddAdressVC *add  =[[AddAdressVC alloc]init];
     add.am =adm;
-        [self.navigationController pushViewController:add animated:YES];}
+    [self.navigationController pushViewController:add animated:YES];}
     
    
 }

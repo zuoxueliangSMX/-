@@ -31,7 +31,7 @@ static MBProgressHUD *hudAlertView;
     hud.detailsLabelText = text;
     hud.detailsLabelFont = [UIFont systemFontOfSize:14];
     hud.margin = 10.f;
-    hud.yOffset = 150.f;
+    hud.yOffset = -20;
     hud.removeFromSuperViewOnHide = YES;
     
     [hud hide:YES afterDelay:1.5];

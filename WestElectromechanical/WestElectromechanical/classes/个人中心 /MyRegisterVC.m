@@ -15,6 +15,7 @@
 #import "RDVTabBarController.h"
 #import "NSDate+Helper.h"
 #import "XiyuprotocolVC.h"
+#import "NSString+Base64.h"
 @interface MyRegisterVC ()<UITextFieldDelegate>{
 
     
@@ -401,7 +402,9 @@
     
     if (![pwdNmTextF.text isEqualToString:sureTf.text] && sureTf.text!=nil) {
         
-        ALERT_WARN(@"两次输入的密码不一致,请重新输入");
+//        ALERT_WARN(@"两次输入的密码不一致,请重新输入");
+        [AlertUtil showAlertWithText:@"两次输入的密码不一致,请重新输入"];
+
         return;
     }
     
@@ -414,7 +417,9 @@
     
   
     if (agreeProtecol==NO) {
-        ALERT_WARN(@"同意协议方可注册");
+//        ALERT_WARN(@"同意协议方可注册");
+        [AlertUtil showAlertWithText:@"同意协议方可注册"];
+
         return;
     }
 
@@ -426,19 +431,26 @@
 
         if ([[obj objectForKey:@"message"]intValue]==0) {
             
-                         WARN_ALERT(@"注册成功");
+            [AlertUtil showAlertWithText:@"注册成功"];
+//                         WARN_ALERT(@"注册成功");
             
         }else if ([[obj objectForKey:@"message"]intValue]==1){
-              WARN_ALERT(@"用户名存在");
+            [AlertUtil showAlertWithText:@"用户名存在"];
+//              WARN_ALERT(@"用户名存在");
             return ;
         }else if ([[obj objectForKey:@"message"]intValue]==2){
-          WARN_ALERT(@"手机号码存在");
+            [AlertUtil showAlertWithText:@"手机号码存在"];
+//          WARN_ALERT(@"手机号码存在");
             return;
         }else if([[obj objectForKey:@"message"]intValue]==3) {
-           WARN_ALERT(@"邮箱存在");
+//           WARN_ALERT(@"邮箱存在");
+            [AlertUtil showAlertWithText:@"邮箱存在"];
+
             return;
         }else{
-         WARN_ALERT(@"注册失败");
+            [AlertUtil showAlertWithText:@"注册失败"];
+
+//         WARN_ALERT(@"");
             return;
         }
         
@@ -487,14 +499,17 @@
         
     }else if (textField==LogNmTextF){
         if ([NSString phoneValidate:LogNmTextF.text]==NO) {
-            WARN_ALERT(@"检查你的电话号码");
+            [AlertUtil showAlertWithText:@"检查你的电话号码"];
+//            WARN_ALERT(@"检查你的电话号码");
              return;
         }
         
     
     }else if (textField==emailTf){
         if ( [NSString  isValidateEmail:emailTf.text]==NO) {
-            WARN_ALERT(@"检查你的邮箱");
+            [AlertUtil showAlertWithText:@"检查你的邮箱"];
+
+//            WARN_ALERT(@"检查你的邮箱");
             
             return;
         }
@@ -546,11 +561,23 @@
     __weak MyRegisterVC *bself =self;
     [httphandler executeGetUserRegistProtacolWithSuccess:^(id obj) {
         DLog(@"什么什么");
-        if ([[obj objectForKey:@"message"] isEqualToString:@"1"]) {
+        if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
             
-            NSString *textStr =[obj objectForKey:@"info"];
+            NSString *textStr =[[obj objectForKey:@"info"] base64DecodedString];
             XiyuprotocolVC *xiyu = [[XiyuprotocolVC alloc]init];
             xiyu.text =textStr;
+            [xiyu setXiyuprotocolVCBlock:^(NSInteger tag) {
+                if (tag == 1000) {
+                    isClick = NO;
+                    bself.protolcBtn.selected = NO;
+                    agreeProtecol =NO;
+                }else{
+                    isClick = YES;
+                    bself.protolcBtn.selected = YES;
+                    agreeProtecol =YES;
+                }
+            }];
+
             [self.navigationController pushViewController:xiyu animated:YES];
             
             

@@ -440,7 +440,7 @@
 {
     [AlertUtil showAlertWithText:@"登陆用户"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_Login WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"account=%@&password=%@",[NSString MD5:[NSString MD5:account]],[NSString MD5:[NSString MD5:passWord]]];
+    NSString *params = [NSString stringWithFormat:@"account=%@&password=%@",account,passWord];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         if ([[json  objectForKey:@"message"] integerValue]== 0) {
@@ -733,7 +733,7 @@
     
     [AlertUtil showAlertWithText:@"添加收货地址"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_ADDADRESS WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"uid=%@&U_name=%@&mobile=%@&address=%@&doorplate=%@&postalcode=%@&phone=%@",userId,userName,mobile,address,doorPlate,postalcode,phone];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&u_name=%@&mobile=%@&address=%@&doorplate=%@&postalcode=%@&phone=%@",userId,userName,mobile,address,doorPlate,postalcode,phone];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         if ([[json  objectForKey:@"message"] integerValue]== 0) {
@@ -771,7 +771,7 @@
     
     [AlertUtil showAlertWithText:@"修改收货地址"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_UPDATEADDRESS WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"uid=%@&U_name=%@&mobile=%@&address=%@&doorplate=%@&postalcode=%@&phone=%@&aid=%@",userId,userName,mobile,address,doorPlate,postalcode,phone,aid];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&u_name=%@&mobile=%@&address=%@&doorplate=%@&postalcode=%@&phone=%@&aid=%@",userId,userName,mobile,address,doorPlate,postalcode,mobile,aid];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         if ([[json  objectForKey:@"message"] integerValue]== 0) {

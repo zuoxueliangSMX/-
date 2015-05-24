@@ -178,6 +178,7 @@
 		A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A8391AEC9B07001DC327 /* UIView+Extension.m */; };
 		A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A83C1AEC9BF6001DC327 /* UIImage+Extension.m */; };
 		A3C2CC811AFA4AD40087BDED /* WEProductListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2CC801AFA4AD40087BDED /* WEProductListVC.m */; };
+		A3C3B9ED1B10BD0F00DBA328 /* province_data.xml in Resources */ = {isa = PBXBuildFile; fileRef = A3C3B9EC1B10BD0F00DBA328 /* province_data.xml */; };
 		A3C466E01AF30B1900E1604D /* JCTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C466DF1AF30B1900E1604D /* JCTopic.m */; };
 		A3C466E31AF30B3C00E1604D /* WEHomeBottomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C466E21AF30B3C00E1604D /* WEHomeBottomScrollView.m */; };
 		A3C466E61AF30D4300E1604D /* WERecommendBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C466E51AF30D4300E1604D /* WERecommendBgView.m */; };
@@ -619,6 +620,7 @@
 		A3C2A83C1AEC9BF6001DC327 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		A3C2CC7F1AFA4AD40087BDED /* WEProductListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductListVC.h; sourceTree = "<group>"; };
 		A3C2CC801AFA4AD40087BDED /* WEProductListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductListVC.m; sourceTree = "<group>"; };
+		A3C3B9EC1B10BD0F00DBA328 /* province_data.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = province_data.xml; sourceTree = "<group>"; };
 		A3C466DE1AF30B1900E1604D /* JCTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTopic.h; sourceTree = "<group>"; };
 		A3C466DF1AF30B1900E1604D /* JCTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTopic.m; sourceTree = "<group>"; };
 		A3C466E11AF30B3C00E1604D /* WEHomeBottomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEHomeBottomScrollView.h; sourceTree = "<group>"; };
@@ -944,6 +946,7 @@
 		A36888351B077C3D00DEE1D9 /* File */ = {
 			isa = PBXGroup;
 			children = (
+				A3C3B9EC1B10BD0F00DBA328 /* province_data.xml */,
 				A36888361B077C3D00DEE1D9 /* citydict.plist */,
 			);
 			path = File;
@@ -1887,6 +1890,7 @@
 				A36888371B077C3D00DEE1D9 /* citydict.plist in Resources */,
 				7FDEDC171AF7549C00911A02 /* SendIFAPPSeting.plist in Resources */,
 				A369CFB51AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				A3C3B9ED1B10BD0F00DBA328 /* province_data.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

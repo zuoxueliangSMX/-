@@ -224,7 +224,8 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
             [_pickView cancelPicker];
         }else{
             NSLog(@"%@赶紧出来 %@ %@",_pickView.location.state,_pickView.location.city,_pickView.location.district);
-            addressTf.text =[NSString stringWithFormat:@"%@%@%@",_pickView.location.state,_pickView.location.city,_pickView.location.district];
+            addressTf.text =[NSString stringWithFormat:@"%@,%@,%@",_pickView.location.state,_pickView.location.city,_pickView.location.district];
+            emadilCodeTf.text =_pickView.location.zipCode;
             [_pickView cancelPicker];
         }
     }];
@@ -241,7 +242,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
         userNameTf.text =self.am.u_name;
         phoneNumTF.text =self.am.mobile;
         addressTf.text =self.am.a_address;
-        streetAdressTF.text =self.am.doorplate;
+        tv.text =self.am.doorplate;
         emadilCodeTf.text =self.am.postalcode;
         
     }
@@ -255,7 +256,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
 
 -(void)saveBtnclick
 {
-    
+    __weak AddAdressVC *bSelf = self;
     if (self.am) {
 
         [we  executeUpdateAdressTaskWithUserId:[AccountHanler userId] withUserName:userNameTf.text withMobile:phoneNumTF.text withAddress:addressTf.text withDoorPlate:tv.text withPostalcode:emadilCodeTf.text withPhone:@"0398-2963733" withAdressHandleId:self.am.a_id Success:^(id obj) {
@@ -263,9 +264,9 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
             
             DLog(@"输出我的修改地址信息%@",obj);
             
-
+            [AlertUtil showAlertWithText:@"地址修改成功"];
             
-            
+            [bSelf.navigationController popViewControllerAnimated:YES];
         } failed:^(id obj) {
         
             
@@ -281,7 +282,9 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
         
         
         if ([[obj  objectForKey:@"message"] isEqualToString:@"0"]) {
-            WARN_ALERT(@"保存成功");
+//            WARN_ALERT(@"保存成功");
+            [AlertUtil showAlertWithText:@"地址添加成功"];
+            [bSelf.navigationController popViewControllerAnimated:YES];
         }
       
     } failed:^(id obj) {
@@ -297,7 +300,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-
+    [textField resignFirstResponder];
     return YES;
 }
 

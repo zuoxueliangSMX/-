@@ -23,4 +23,6 @@
 @property (nonatomic ,assign) double latitude;
 //经度
 @property (nonatomic ,assign) double longitude;
+//邮政编码
+@property (nonatomic ,copy)NSString * zipCode;
 @end

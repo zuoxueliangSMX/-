@@ -12,6 +12,7 @@
 #import "WEProductListVC.h"
 #import "NSString+Extension.h"
 #import "RDVTabBarController.h"
+#import "XMLReader.h"
 @interface WESearchHomeVC ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic ,weak)UISearchBar *mySearchBar;
@@ -60,7 +61,23 @@
     _searchTable = searchTable;
     searchTable.tableHeaderView = mySearchBar;
     [self initNetData:@"北京"];
+ 
+//    [self parseXmlFile];
 }
+
+- (void)parseXmlFile
+{
+    //从资源文件中获取images.xml文件
+    NSString *strPathXml = [[NSBundle mainBundle] pathForResource:@"province_data" ofType:@"xml"];
+    
+    //将xml文件转换成data类型
+    NSData * xmlData = [[NSData alloc] initWithContentsOfFile:strPathXml];
+    
+    NSDictionary * dict =[XMLReader dictionaryForXMLData:xmlData error:nil];
+    NSLog(@"%@",dict);
+
+}
+
 
 /**
  *  获取热门推荐数据

@@ -84,6 +84,16 @@
         labbb.text =[AccountHanler userName];
         NSString *userID =[AccountHanler userId];
         [weh executeGetPersonCenterInfoWithUserId:userID Success:^(id obj) {
+            
+            
+            if ([AccountHanler loginState]==0) {
+                imgv.frame = CGRectMake(SCREEN_WIDTH * 0.5 - 140, (head.frame.size.height-60)/2-30, 30, 30);
+                
+                textLa.frame =CGRectMake((SCREEN_WIDTH-190+40)/2, CGRectGetMinY(imgv.frame), 190, 30);
+            }else{
+                imgv.frame = CGRectMake(SCREEN_WIDTH * 0.5 - 120, (head.frame.size.height-60)/2-30, 30, 30);
+                textLa.frame =CGRectMake(15,  (head.frame.size.height-60)/2-30, SCREEN_WIDTH-30, 30);
+            }
             NSString *str = [NSString stringWithFormat:@"您好：%@先生",[obj objectForKey:@"u_name"]];
             NSString *is_identification= [obj objectForKey:@"is_identification"];
             textLa.text =str;
@@ -221,9 +231,10 @@
    
    
     
-    textLa = [[UILabel alloc]initWithFrame:CGRectMake((VIEW_WIDETH-190)/2+15,  (head.frame.size.height-60)/2-30, 190, 30)];
+    textLa = [[UILabel alloc]initWithFrame:CGRectMake(15,  (head.frame.size.height-60)/2-30, SCREEN_WIDTH-30, 30)];
+    textLa.textAlignment = NSTextAlignmentCenter;
     imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_smile"]];
-    imgv.frame = CGRectMake(CGRectGetMinX(textLa.frame)-35, (head.frame.size.height-60)/2-30, 30, 30);
+    imgv.frame = CGRectMake(SCREEN_WIDTH * 0.5 - 120, (head.frame.size.height-60)/2-30, 30, 30);
     [head addSubview:imgv];
     if ([AccountHanler loginState]==0) {
         textLa.frame =CGRectMake((SCREEN_WIDTH-190+40)/2, CGRectGetMinY(imgv.frame), 190, 30);
