@@ -1158,5 +1158,39 @@
 //
 
 
+/**
+ *  31.订单支付
+ */
+- (void)executePayOrderWithUserId:(NSString *)userId
+                     withOrderNum:(NSString *)orderNum
+                   withTotalMoney:(NSString*)money
+                          Success:(SuccessBlock)success
+                           failed:(FailedBlock)failed{
 
+    
+    [AlertUtil showAlertWithText:@"订单支付"];
+    
+    NSString *url =[BaseHandler requestUrlWithUrl:API_PAYORDER WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&order_num=%@&money=%@",userId,orderNum,money];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+        
+        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(json);
+            }
+        }else{
+            if (failed) {
+                failed(json);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+}
 @end

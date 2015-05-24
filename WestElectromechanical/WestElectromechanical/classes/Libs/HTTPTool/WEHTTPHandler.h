@@ -287,5 +287,14 @@
 
 
 
+/**
+ *  31.订单支付
+ */
+- (void)executePayOrderWithUserId:(NSString *)userId
+                            withOrderNum:(NSString *)orderNum
+                             withTotalMoney:(NSString*)money
+                             Success:(SuccessBlock)success
+                              failed:(FailedBlock)failed;
+
 
 @end
