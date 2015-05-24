@@ -45,14 +45,14 @@
     UILabel *orderNumLa = [[UILabel alloc]initWithFrame:CGRectMake(10, 74, SCREEN_WIDTH, 30)];
     orderNumLa.textColor = [UIColor lightGrayColor];
     
-    orderNumLa.text =@"订单号：2387947238971504";
+    orderNumLa.text =[NSString stringWithFormat:@"订单号：%@",self.orderNum];
     
     orderNumLa.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:orderNumLa];
      UILabel *priceLa = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(orderNumLa.frame)+10, SCREEN_WIDTH, 30)];
     
     priceLa.textColor = [UIColor lightGrayColor];
-    priceLa.text =@"价格：10000";
+    priceLa.text =[NSString stringWithFormat:@"价格：%@",self.allPrice];
     priceLa.font = [UIFont systemFontOfSize:14];
 
     [self.view addSubview:priceLa];
@@ -68,7 +68,7 @@
     
     
     UILabel * succeedLa = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-75, CGRectGetMaxY(imgv.frame)+25, 150, 70)];
-    succeedLa.text =@"      恭喜你 \n订单提交成功";
+    succeedLa.text =@"       恭喜你       \n订单提交成功";
     succeedLa.numberOfLines =2;
     succeedLa.textColor =[UIColor darkGrayColor];
     [self.view addSubview:succeedLa];

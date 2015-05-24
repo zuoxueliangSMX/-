@@ -994,6 +994,59 @@
 
 }
 
+
+/**
+ *  28.下单接口
+ */
+- (void)executePlaceOrderWithUserId:(NSString *)userId
+                       withOrderNum:(NSString *)orderNum
+                withProductsJsonStr:(NSString *)productsJsonStr
+                   withReceivedName:(NSString *)name
+                withReceivedAddress:(NSString *)address
+                 withReceivedMobile:(NSString *)mobile
+                  withReceivedPhone:(NSString *)phone
+                         withFapiao:(NSString *)fapiao
+                    withFapiaoHeade:(NSString *)FapiaoHeade
+                            Success:(SuccessBlock)success
+                             failed:(FailedBlock)failed
+
+
+{
+    
+    
+    [AlertUtil showAlertWithText:@"下单接口"];
+    
+    NSString *url =[BaseHandler requestUrlWithUrl:API_CARTPLACEORDER WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&order_num=%@&products=%@&received_person_name=%@&received_address=%@&mobile=%@&phone=%@&Is_get_fapiao=%@&Fapiao_taitou=%@",userId,orderNum,productsJsonStr,name,address,mobile,phone,fapiao,FapiaoHeade];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(json);
+            }
+        }else{
+            if (failed) {
+                failed(nil);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+    
+
+    
+    
+}
+
+
+
+
+
 /**
  *  29.订单查询接口地址
  */
@@ -1193,4 +1246,6 @@
         }
     }];
 }
+
+
 @end

@@ -153,6 +153,10 @@
 #define API_DELETECARTPRODUCT @"/json_shoppingdelete.php"
 
 /**
+ *  28.购物车下单
+ */
+#define API_CARTPLACEORDER @"/json_orderdown.php"
+/**
  *  29.订单查询
  */
 #define API_QUERYORDER @"/json_order.php"

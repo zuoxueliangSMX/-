@@ -246,6 +246,24 @@
 
 
 
+
+/**
+ *  28.下单接口
+ */
+- (void)executePlaceOrderWithUserId:(NSString *)userId
+                                 withOrderNum:(NSString *)orderNum
+                                 withProductsJsonStr:(NSString *)productsJsonStr
+                                 withReceivedName:(NSString *)name
+                                 withReceivedAddress:(NSString *)address
+                                 withReceivedMobile:(NSString *)mobile
+                                 withReceivedPhone:(NSString *)phone
+                                 withFapiao:(NSString *)fapiao
+                                 withFapiaoHeade:(NSString *)FapiaoHeade
+                                       Success:(SuccessBlock)success
+                                        failed:(FailedBlock)failed;
+
+
+
 /**
 *  29.订单查询接口地址
 */
