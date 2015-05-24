@@ -1006,6 +1006,10 @@
                  withReceivedMobile:(NSString *)mobile
                   withReceivedPhone:(NSString *)phone
                          withFapiao:(NSString *)fapiao
+                         withYunfei:(NSString *)yunfei
+                   withReduceYunfei:(NSString *)reduceYunfei
+                      withAll_price:(NSString *)allPrice
+                         withPayWay:(NSString *)payWay
                     withFapiaoHeade:(NSString *)FapiaoHeade
                             Success:(SuccessBlock)success
                              failed:(FailedBlock)failed
@@ -1017,7 +1021,7 @@
     [AlertUtil showAlertWithText:@"下单接口"];
     
     NSString *url =[BaseHandler requestUrlWithUrl:API_CARTPLACEORDER WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"uid=%@&order_num=%@&products=%@&received_person_name=%@&received_address=%@&mobile=%@&phone=%@&Is_get_fapiao=%@&Fapiao_taitou=%@",userId,orderNum,productsJsonStr,name,address,mobile,phone,fapiao,FapiaoHeade];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&order_num=%@&products=%@&received_person_name=%@&received_address=%@&mobile=%@&phone=%@&is_get_fapiao=%@&fapiao_taitou=%@&address=%@&all_price=%@&yun_fei=%@&reduce_yun_fei=%@&pay_way=%@",userId,orderNum,productsJsonStr,name,address,mobile,phone,fapiao,FapiaoHeade,[[address componentsSeparatedByString:@","] objectAtIndex:0],allPrice,yunfei,reduceYunfei,payWay];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         if ([[json  objectForKey:@"message"] integerValue]== 0) {

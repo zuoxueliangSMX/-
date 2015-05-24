@@ -251,16 +251,20 @@
  *  28.下单接口
  */
 - (void)executePlaceOrderWithUserId:(NSString *)userId
-                                 withOrderNum:(NSString *)orderNum
-                                 withProductsJsonStr:(NSString *)productsJsonStr
-                                 withReceivedName:(NSString *)name
-                                 withReceivedAddress:(NSString *)address
-                                 withReceivedMobile:(NSString *)mobile
-                                 withReceivedPhone:(NSString *)phone
-                                 withFapiao:(NSString *)fapiao
-                                 withFapiaoHeade:(NSString *)FapiaoHeade
-                                       Success:(SuccessBlock)success
-                                        failed:(FailedBlock)failed;
+                       withOrderNum:(NSString *)orderNum
+                withProductsJsonStr:(NSString *)productsJsonStr
+                   withReceivedName:(NSString *)name
+                withReceivedAddress:(NSString *)address
+                 withReceivedMobile:(NSString *)mobile
+                  withReceivedPhone:(NSString *)phone
+                         withFapiao:(NSString *)fapiao
+                         withYunfei:(NSString *)yunfei
+                   withReduceYunfei:(NSString *)reduceYunfei
+                      withAll_price:(NSString *)allPrice
+                         withPayWay:(NSString *)payWay
+                    withFapiaoHeade:(NSString *)FapiaoHeade
+                            Success:(SuccessBlock)success
+                             failed:(FailedBlock)failed;
 
 
 

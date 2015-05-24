@@ -20,7 +20,7 @@
 #import "UIImageView+WebCacheImg.h"
 #import "CartCommitOrderVC.h"
 #import "NSDictionary+JsonString.h"
-
+#import "JSONKit.h"
 #import "RDVTabBarController.h"
 @interface CommitOrderVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
@@ -499,11 +499,11 @@
 {
     NSMutableArray *Mu  =[[NSMutableArray alloc]initWithCapacity:0];
      for ( MyCartM *pm in self.selectedMu) {
-       NSDictionary *dic = @{@"pid":pm.p_id,@"p_price":pm.p_price,@"p_num":pm.p_num};
+       NSDictionary *dic = @{@"pid":pm.p_id,@"price":pm.p_price,@"num":pm.p_num};
           [Mu addObject:dic];
          }
-       NSDictionary *products =@{@"products":Mu};
-    NSString* productJsonStr=[products jsonString];
+//       NSDictionary *products =@{@"products":Mu};
+    NSString* productJsonStr=[Mu JSONString];
     
     
     DLog(@"输出这个json字符串%@",productJsonStr);
@@ -524,28 +524,21 @@
     }
  
   
-    
-    
-    
-    [we executePlaceOrderWithUserId:[AccountHanler userId] withOrderNum:currentOrderNum withProductsJsonStr:productJsonStr withReceivedName:[AccountHanler reciveName] withReceivedAddress:[AccountHanler addres] withReceivedMobile:[AccountHanler recivePhone] withReceivedPhone:[AccountHanler recivePhone]  withFapiao:invoice withFapiaoHeade:[AccountHanler invoiceHead] Success:^(id obj) {
-        
-        
+    [we executePlaceOrderWithUserId:[AccountHanler userId] withOrderNum:currentOrderNum withProductsJsonStr:productJsonStr withReceivedName:[AccountHanler reciveName] withReceivedAddress:[AccountHanler addres] withReceivedMobile:[AccountHanler recivePhone] withReceivedPhone:[AccountHanler recivePhone] withFapiao:invoice withYunfei:@"20" withReduceYunfei:@"20" withAll_price:[NSString stringWithFormat:@"%0.2f",self.totalP] withPayWay:@"0" withFapiaoHeade:[AccountHanler invoiceHead] Success:^(id obj) {
         
         if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
             CartCommitOrderVC *cvc = [[CartCommitOrderVC alloc]init];
             cvc.orderNum =currentOrderNum;
             
-           NSString *pricek = [NSString stringWithFormat:@"%f",self.totalP];
-           cvc.allPrice =pricek;
+            NSString *pricek = [NSString stringWithFormat:@"%f",self.totalP];
+            cvc.allPrice =pricek;
             [self.navigationController  pushViewController:cvc animated:YES];
         }
-        
+
     } failed:^(id obj) {
-       
+        
     }];
 
- 
-    
     
 
 }
