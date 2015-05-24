@@ -13,6 +13,7 @@
 #import "NSString+Extension.h"
 #import "RDVTabBarController.h"
 #import "XMLReader.h"
+#import "JSONKit.h"
 @interface WESearchHomeVC ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic ,weak)UISearchBar *mySearchBar;
@@ -62,6 +63,7 @@
     searchTable.tableHeaderView = mySearchBar;
     [self initNetData:@"北京"];
  
+    [self dictTojson];
 //    [self parseXmlFile];
 }
 
@@ -76,6 +78,14 @@
     NSDictionary * dict =[XMLReader dictionaryForXMLData:xmlData error:nil];
     NSLog(@"%@",dict);
 
+}
+- (void)dictTojson
+{
+    NSDictionary *dict =@{@"zuo":@"左学良是个好孩子",
+                          @"du":@"杜渊卓是个好女孩",
+                          @"love":@[@{@"111":@"222"},@{@"111":@"222"},@{@"111":@"222"}]};
+    NSString *dictJson =[dict JSONString];
+    DLog(@"%@",dictJson);
 }
 
 
