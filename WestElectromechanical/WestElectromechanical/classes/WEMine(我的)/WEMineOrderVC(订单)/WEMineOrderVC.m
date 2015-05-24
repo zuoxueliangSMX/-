@@ -187,7 +187,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-   
+    
     static NSString *CellIdentifier = @"Cell";
     WEMineOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil) {
@@ -195,29 +195,17 @@
         cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
         cell.selectionStyle =UITableViewCellSelectionStyleNone;
     }
-        WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
+    WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
     cell.orderFrame = orderFrame;
     [cell.bottomView setOrderBottomViewBlock:^(UIButton *btn) {
         
-        
-        
-        
-        
-        
         if ([btn.titleLabel.text isEqualToString:kOrderBtnTypeConfirm] ) {
-            
-//            NSInteger row2 = [tableView indexPathForCell:((WEMineOrderCell*)[[btn   superview]superview])].row;
-//            
-//            DLog(@"输出我的row2%d,",row2);
-//            WEMyOrderFrame *orderFrame = [self.orderModel.orders  objectAtIndex:row2];
-//            
 
-            
             [we executeAffirmAcceptGoodsWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
                 if ([[obj objectForKey:@"message"] isEqualToString:@"1"]) {
-                
+                    
                     alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"我已经收到货，同意支付宝付款" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
-
+                    
                     
                     
                     [alertView handleCancel:^{
@@ -228,11 +216,11 @@
                         WEMineAddComentVC *coment = [[WEMineAddComentVC alloc]init];
                         
                         
-                  
+                        
                         [self.navigationController pushViewController:coment animated:YES];
                         
- 
-                    
+                        
+                        
                         
                     }];
                     
@@ -242,7 +230,7 @@
                     
                     [alertView show];
                     
-  
+                    
                     
                     
                 }
@@ -251,29 +239,29 @@
                 
                 
             } failed:^(id obj) {
-              
+                
             }];
         }else if ([btn.titleLabel.text isEqualToString:kOrderBtnTypePay]){
-        
+            
             
             [we executePayOrderWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num  withTotalMoney:orderFrame.orderModel.all_money Success:^(id obj) {
-               
+                
                 
                 if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
-                   
+                    
                     
                     WARN_ALERT(@"支付成功");
                 }
                 
             } failed:^(id obj) {
-             
+                
                 
             }];
             
             
             
             
-            }
+        }
         
     }];
     return cell;

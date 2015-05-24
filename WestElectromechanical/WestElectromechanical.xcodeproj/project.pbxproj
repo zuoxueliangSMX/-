@@ -85,6 +85,7 @@
 		A369CFB41AEE70C4001F3DB7 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CFAB1AEE70C4001F3DB7 /* PinyinHelper.m */; };
 		A369CFB51AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = A369CFAC1AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt */; };
 		A369CFB81AEE713B001F3DB7 /* ChineseInclude.m in Sources */ = {isa = PBXBuildFile; fileRef = A369CFB71AEE713B001F3DB7 /* ChineseInclude.m */; };
+		A36EBFED1B1200D100847E8A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A36EBFEC1B1200D100847E8A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A37359141AFDE47700484A59 /* WEProductsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A37359131AFDE47700484A59 /* WEProductsModel.m */; };
 		A37359171AFDE49300484A59 /* WEProductSingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A37359161AFDE49300484A59 /* WEProductSingleModel.m */; };
 		A37359261AFDFECA00484A59 /* WEThirdCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A37359251AFDFECA00484A59 /* WEThirdCategoryVC.m */; };
@@ -432,6 +433,8 @@
 		A369CFAC1AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
 		A369CFB61AEE713B001F3DB7 /* ChineseInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseInclude.h; sourceTree = "<group>"; };
 		A369CFB71AEE713B001F3DB7 /* ChineseInclude.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseInclude.m; sourceTree = "<group>"; };
+		A36EBFEB1B1200D100847E8A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		A36EBFEC1B1200D100847E8A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		A37359121AFDE47700484A59 /* WEProductsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductsModel.h; sourceTree = "<group>"; };
 		A37359131AFDE47700484A59 /* WEProductsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductsModel.m; sourceTree = "<group>"; };
 		A37359151AFDE49300484A59 /* WEProductSingleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductSingleModel.h; sourceTree = "<group>"; };
@@ -992,6 +995,15 @@
 			path = PinYin;
 			sourceTree = "<group>";
 		};
+		A36EBFEA1B1200D100847E8A /* JsonKit */ = {
+			isa = PBXGroup;
+			children = (
+				A36EBFEB1B1200D100847E8A /* JSONKit.h */,
+				A36EBFEC1B1200D100847E8A /* JSONKit.m */,
+			);
+			path = JsonKit;
+			sourceTree = "<group>";
+		};
 		A37359111AFDE44A00484A59 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1239,6 +1251,7 @@
 		A38A32511AEC033D00F7FE7C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				A36EBFEA1B1200D100847E8A /* JsonKit */,
 				7FE4BDA81B0AE82E001A2B57 /* aliPay */,
 				A3ADFDCA1B010AC10029795A /* BaseClass */,
 				7FE5DDCE1AFE0F5000B77986 /* HTHorizontalSelectionList */,
@@ -2051,6 +2064,7 @@
 				A3ADFDDA1B010AC10029795A /* BaseDao.m in Sources */,
 				A39E9A8A1AFA6E760035A059 /* WEProductCollectionCell.m in Sources */,
 				A369CFB31AEE70C4001F3DB7 /* PinYinForObjc.m in Sources */,
+				A36EBFED1B1200D100847E8A /* JSONKit.m in Sources */,
 				A3C248A71AF907C500760C72 /* WENoticeModel.m in Sources */,
 				7FDEDC161AF7549C00911A02 /* SendIFAPPDefault.m in Sources */,
 				A3C48FAF1AEFC2C7001D9717 /* WECategoryHomeCell.m in Sources */,
