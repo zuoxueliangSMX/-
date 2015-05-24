@@ -198,28 +198,14 @@
         WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
     cell.orderFrame = orderFrame;
     [cell.bottomView setOrderBottomViewBlock:^(UIButton *btn) {
-        
-        
-        
-        
-        
-        
-        if ([btn.titleLabel.text isEqualToString:kOrderBtnTypeConfirm] ) {
-            
-//            NSInteger row2 = [tableView indexPathForCell:((WEMineOrderCell*)[[btn   superview]superview])].row;
-//            
-//            DLog(@"输出我的row2%d,",row2);
-//            WEMyOrderFrame *orderFrame = [self.orderModel.orders  objectAtIndex:row2];
-//            
 
+        if ([btn.titleLabel.text isEqualToString:kOrderBtnTypeConfirm] ) {
             
             [we executeAffirmAcceptGoodsWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
                 if ([[obj objectForKey:@"message"] isEqualToString:@"1"]) {
                 
                     alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"我已经收到货，同意支付宝付款" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
 
-                    
-                    
                     [alertView handleCancel:^{
                         
                     }         handleConfirm:^{
@@ -231,20 +217,12 @@
                   
                         [self.navigationController pushViewController:coment animated:YES];
                         
- 
-                    
-                        
                     }];
                     
                     alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
                     
-                    
-                    
                     [alertView show];
-                    
-  
-                    
-                    
+
                 }
                 
                 
@@ -254,8 +232,6 @@
               
             }];
         }else if ([btn.titleLabel.text isEqualToString:kOrderBtnTypePay]){
-        
-            
 
             
                //字符串操作关于order.productDescription

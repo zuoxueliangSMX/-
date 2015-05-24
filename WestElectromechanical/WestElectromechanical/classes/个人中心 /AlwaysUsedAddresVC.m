@@ -13,7 +13,6 @@
 #import "AccountHanler.h"
 #import "JsonToModel.h"
 #import "AddressM.h"
-
 #import "SendIFAPPDefault.h"
 @interface AlwaysUsedAddresVC ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -25,6 +24,7 @@
 @end
 
 @implementation AlwaysUsedAddresVC
+
 
 
 #pragma mark -

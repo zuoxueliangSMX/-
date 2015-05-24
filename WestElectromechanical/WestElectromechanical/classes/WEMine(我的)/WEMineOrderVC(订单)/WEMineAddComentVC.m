@@ -10,7 +10,7 @@
 #import "WEHTTPHandler.h"
 #import "WEMineAddComentCell.h"
 
-
+#import "RDVTabBarController.h"
 @interface WEMineAddComentVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     WEHTTPHandler *we;
@@ -20,6 +20,19 @@
 @end
 
 @implementation WEMineAddComentVC
+
+#pragma mark -
+#pragma mark - pop和push控制器时的操作
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,9 +92,6 @@
     WEMineAddComentCell * cell = [tableView dequeueReusableCellWithIdentifier:cellidentifer];
     if (cell ==nil) {
         cell = [[WEMineAddComentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer];
-        
-        
-        
     }
     
     
