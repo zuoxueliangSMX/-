@@ -67,8 +67,8 @@
     
     
     
-    UILabel * succeedLa = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-75, CGRectGetMaxY(imgv.frame)+25, 150, 70)];
-    succeedLa.text =@"       恭喜你       \n订单提交成功";
+    UILabel * succeedLa = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, CGRectGetMaxY(imgv.frame)+25, 200, 70)];
+    succeedLa.text =@"                 恭喜你\n            订单提交成功";
     succeedLa.numberOfLines =2;
     succeedLa.textColor =[UIColor darkGrayColor];
     [self.view addSubview:succeedLa];
