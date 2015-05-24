@@ -197,30 +197,24 @@
     }
     WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
     cell.orderFrame = orderFrame;
+    
+    __weak WEMineOrderVC *bSelf = self;
     [cell.bottomView setOrderBottomViewBlock:^(UIButton *btn) {
         
         if ([btn.titleLabel.text isEqualToString:kOrderBtnTypeConfirm] ) {
 
             [we executeAffirmAcceptGoodsWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
-                if ([[obj objectForKey:@"message"] isEqualToString:@"1"]) {
-                    
+                if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+                    [bSelf sendRequest];
                     alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"我已经收到货，同意支付宝付款" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
-                    
-                    
-                    
+
                     [alertView handleCancel:^{
                         
-                    }         handleConfirm:^{
+                    } handleConfirm:^{
                         
                         
                         WEMineAddComentVC *coment = [[WEMineAddComentVC alloc]init];
-                        
-                        
-                        
                         [self.navigationController pushViewController:coment animated:YES];
-                        
-                        
-                        
                         
                     }];
                     
@@ -229,15 +223,9 @@
                     
                     
                     [alertView show];
-                    
-                    
-                    
-                    
+
                 }
-                
-                
-                
-                
+
             } failed:^(id obj) {
                 
             }];

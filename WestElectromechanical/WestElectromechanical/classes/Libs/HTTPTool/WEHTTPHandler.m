@@ -1046,10 +1046,10 @@
     [AlertUtil showAlertWithText:@"确认收货"];
     
     NSString *url =[BaseHandler requestUrlWithUrl:API_AFFIRMACCEPTGOODS WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"uid=%@&Order_num=%@",userId,OrderNum];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&order_num=%@",userId,OrderNum];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
-         if ([[json  objectForKey:@"message"] integerValue]== 1) {
+         if ([[json  objectForKey:@"message"] integerValue]== 0) {
             
             if (success) {
                 success(json);
