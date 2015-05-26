@@ -185,10 +185,13 @@
  */
 #define API_PAYORDER @"/json_orderpay.php"
 
+/**
+ *  39.支付宝信息
+ */
+#define API_AlYINFO @"/json_user.php"
 
 
-
-
+#define ctmKey @"20120401"
 
 
 

@@ -122,6 +122,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     [addressTf setBorderStyle:UITextBorderStyleNone];
     addressTf.textColor = [UIColor blackColor];
     [addressTf setPlaceholder:@"地域信息"];
+    addressTf.delegate = self;
     [addressTf setKeyboardType:UIKeyboardTypeDefault];
     [addressTf setClearButtonMode:UITextFieldViewModeWhileEditing];
     //    [LogNmTextF setTextAlignment:NSTextAlignmentCenter];
@@ -269,7 +270,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
             [bSelf.navigationController popViewControllerAnimated:YES];
         } failed:^(id obj) {
         
-            
+            [AlertUtil showAlertWithText:@"地址修改失败"];
             
         }];
         
@@ -288,7 +289,11 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
         }
       
     } failed:^(id obj) {
-        }];
+        
+        [AlertUtil showAlertWithText:@"地址添加失败"];
+
+    }];
+    
     }
 }
 -(void)locationBtnClick
@@ -297,11 +302,29 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     [_pickView showInView:self.view];
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [_pickView cancelPicker];
+
+}
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    return YES;
+    
+    if (textField == addressTf) {
+        [userNameTf resignFirstResponder];
+        [phoneNumTF resignFirstResponder];
+        [tv resignFirstResponder];
+        [_pickView showInView:self.view];
+        return NO;
+    }else{
+        [_pickView cancelPicker];
+      return YES;
+    }
+    
+    
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -331,7 +354,13 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     
 }
 
-
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [userNameTf resignFirstResponder];
+    [phoneNumTF resignFirstResponder];
+    [tv resignFirstResponder];
+    [_pickView cancelPicker];
+}
 /*
 #pragma mark - Navigation
 

@@ -175,6 +175,12 @@
 		A3C248A71AF907C500760C72 /* WENoticeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A61AF907C500760C72 /* WENoticeModel.m */; };
 		A3C248AA1AF9088A00760C72 /* WERecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C248A91AF9088A00760C72 /* WERecommendModel.m */; };
 		A3C253AF1B08720A00A3CA1E /* WEProductFilterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C253AE1B08720A00A3CA1E /* WEProductFilterVC.m */; };
+		A3C2913D1B13734A006BB246 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C2913C1B13734A006BB246 /* QuartzCore.framework */; };
+		A3C2913F1B137357006BB246 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C2913E1B137357006BB246 /* CoreTelephony.framework */; };
+		A3C291411B137367006BB246 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C291401B137367006BB246 /* CoreText.framework */; };
+		A3C291431B137373006BB246 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C291421B137373006BB246 /* CoreGraphics.framework */; };
+		A3C291451B137382006BB246 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C291441B137382006BB246 /* libz.dylib */; };
+		A3C291471B13738A006BB246 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C291461B13738A006BB246 /* Foundation.framework */; };
 		A3C2A8371AEC9AD4001DC327 /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A8361AEC9AD4001DC327 /* UIBarButtonItem+Extension.m */; };
 		A3C2A83A1AEC9B07001DC327 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A8391AEC9B07001DC327 /* UIView+Extension.m */; };
 		A3C2A83D1AEC9BF6001DC327 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C2A83C1AEC9BF6001DC327 /* UIImage+Extension.m */; };
@@ -191,6 +197,8 @@
 		A3C48FB31AEFD00D001D9717 /* WECartHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C48FB21AEFD00D001D9717 /* WECartHomeCell.m */; };
 		A3C48FB61AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C48FB51AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m */; };
 		A3C48FB91AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C48FB81AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m */; };
+		A3D9E8A91B13FA850090F619 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9E8A71B13FA850090F619 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A3D9E8AC1B1434E60090F619 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9E8AB1B1434E60090F619 /* Product.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -615,6 +623,12 @@
 		A3C248A91AF9088A00760C72 /* WERecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WERecommendModel.m; sourceTree = "<group>"; };
 		A3C253AD1B08720A00A3CA1E /* WEProductFilterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductFilterVC.h; sourceTree = "<group>"; };
 		A3C253AE1B08720A00A3CA1E /* WEProductFilterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductFilterVC.m; sourceTree = "<group>"; };
+		A3C2913C1B13734A006BB246 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A3C2913E1B137357006BB246 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		A3C291401B137367006BB246 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A3C291421B137373006BB246 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A3C291441B137382006BB246 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A3C291461B13738A006BB246 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A3C2A8351AEC9AD4001DC327 /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
 		A3C2A8361AEC9AD4001DC327 /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 		A3C2A8381AEC9B07001DC327 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -646,6 +660,11 @@
 		A3C48FB51AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartHomeCellBackgroudView.m; sourceTree = "<group>"; };
 		A3C48FB71AEFD582001D9717 /* WECartHomeCellMiddleInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartHomeCellMiddleInfoView.h; sourceTree = "<group>"; };
 		A3C48FB81AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartHomeCellMiddleInfoView.m; sourceTree = "<group>"; };
+		A3D9E8A61B13FA850090F619 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		A3D9E8A71B13FA850090F619 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		A3D9E8A81B13FA850090F619 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		A3D9E8AA1B1434E60090F619 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		A3D9E8AB1B1434E60090F619 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		FE2B572B065DC01E072A4CD3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -654,8 +673,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FE6B7E11B0C1C5A00AE2230 /* libssl.a in Frameworks */,
+				A3C291471B13738A006BB246 /* Foundation.framework in Frameworks */,
+				A3C291451B137382006BB246 /* libz.dylib in Frameworks */,
+				A3C291431B137373006BB246 /* CoreGraphics.framework in Frameworks */,
+				A3C291411B137367006BB246 /* CoreText.framework in Frameworks */,
+				A3C2913F1B137357006BB246 /* CoreTelephony.framework in Frameworks */,
+				A3C2913D1B13734A006BB246 /* QuartzCore.framework in Frameworks */,
 				A3843EDD1AF4900600FDE84F /* SystemConfiguration.framework in Frameworks */,
+				7FE6B7E11B0C1C5A00AE2230 /* libssl.a in Frameworks */,
 				9D0E523495E67FFBE6F2714B /* libPods.a in Frameworks */,
 				7FE6B7E01B0C1C5A00AE2230 /* libcrypto.a in Frameworks */,
 				7FE4BDAC1B0AE82E001A2B57 /* AlipaySDK.framework in Frameworks */,
@@ -776,6 +801,9 @@
 		7FE4BDA81B0AE82E001A2B57 /* aliPay */ = {
 			isa = PBXGroup;
 			children = (
+				A3D9E8A61B13FA850090F619 /* GTMBase64.h */,
+				A3D9E8A71B13FA850090F619 /* GTMBase64.m */,
+				A3D9E8A81B13FA850090F619 /* GTMDefines.h */,
 				7FE6B7E21B0C1EF800AE2230 /* APAuthV2Info.h */,
 				7FE6B7E31B0C1EF800AE2230 /* APAuthV2Info.m */,
 				7FE6B7E41B0C1EF800AE2230 /* Order.h */,
@@ -923,6 +951,12 @@
 		80556063BF12EC176E7806F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3C291461B13738A006BB246 /* Foundation.framework */,
+				A3C291441B137382006BB246 /* libz.dylib */,
+				A3C291421B137373006BB246 /* CoreGraphics.framework */,
+				A3C291401B137367006BB246 /* CoreText.framework */,
+				A3C2913E1B137357006BB246 /* CoreTelephony.framework */,
+				A3C2913C1B13734A006BB246 /* QuartzCore.framework */,
 				A3843EDC1AF4900600FDE84F /* SystemConfiguration.framework */,
 				A37D720A9818131CA3C9CC92 /* libPods.a */,
 			);
@@ -1322,6 +1356,8 @@
 				7FE70D961B05CA0D00830EF6 /* CartOrderDetailVC.m */,
 				7FE55B581B0BA503002113B1 /* CartCommitOrderVC.h */,
 				7FE55B591B0BA503002113B1 /* CartCommitOrderVC.m */,
+				A3D9E8AA1B1434E60090F619 /* Product.h */,
+				A3D9E8AB1B1434E60090F619 /* Product.m */,
 			);
 			path = "WECartHomeVC(购物车首页)";
 			sourceTree = "<group>";
@@ -2095,6 +2131,7 @@
 				7FE6B7E71B0C1EF800AE2230 /* Order.m in Sources */,
 				A3C0AFB51B04F15D008F6900 /* WEProductCommentModel.m in Sources */,
 				7FE6B7D81B0C1C1200AE2230 /* DataVerifier.m in Sources */,
+				A3D9E8AC1B1434E60090F619 /* Product.m in Sources */,
 				A373592C1AFDFF1F00484A59 /* WEBaseCategoryVC.m in Sources */,
 				A38851B31AED2C7F0019D6E5 /* WEHomeScrollView.m in Sources */,
 				A3C48FB31AEFD00D001D9717 /* WECartHomeCell.m in Sources */,
@@ -2120,6 +2157,7 @@
 				7FDEE40E1AF706B200674488 /* PersonCenterVC.m in Sources */,
 				A38851C61AED3B530019D6E5 /* HomeMiddleView.m in Sources */,
 				A3ADFDB21B00E9700029795A /* ATLabel.m in Sources */,
+				A3D9E8A91B13FA850090F619 /* GTMBase64.m in Sources */,
 				A369CFB11AEE70C4001F3DB7 /* NSString+PinYin4Cocoa.m in Sources */,
 				A38A328B1AEC083900F7FE7C /* RDVTabBar.m in Sources */,
 			);
@@ -2199,6 +2237,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/WestElectromechanical",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2240,6 +2283,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRELINK_FLAGS = "-all_load";
 				SDKROOT = iphoneos;

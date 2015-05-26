@@ -65,6 +65,8 @@
 }
 - (void)addCart:(UIButton*)btn{
     NSLog(@"添加到购物车");
+    
+
     [self productAddCart:_productId];
 }
 - (void)shareProduct:(UIButton*)btn{
@@ -193,7 +195,7 @@
     _productForm.tableHeaderView = _headerView;
     
     NSMutableArray *temArray =[NSMutableArray array];
-    UIImage * PlaceholderImage = [UIImage imageNamed:@"product_load_default"];
+    UIImage * PlaceholderImage = [UIImage imageNamed:@"product_advert_default"];
     NSInteger index = 1;
     for (WEProductImgModel *adModel in _detailModel.imgs) {
         //网络图片
@@ -326,16 +328,25 @@
         
         
     }else{
-        WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
-        __weak WEProductDetailVC *bSelf =self;
-        [handler executeProductAddCartTaskWithProductId:productId withUserId:[AccountHanler userId] withSuccess:^(id obj) {
-            DLog(@"%@",obj);
-            WECartHomeVC *homeVC =[[WECartHomeVC alloc]init];
-            homeVC.cartType = WECartHomeTypeAdd;
-            [bSelf.navigationController pushViewController:homeVC animated:YES];
-        } withFailed:^(id obj) {
-            DLog(@"加入购物车失败");
-        }];
+        
+        if ([_detailModel.p_price integerValue]>99999999.9999) {
+            
+            [AlertUtil showAlertWithText:@"商品暂不出售，请联系我们方可商谈价格"];
+        }else{
+            WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+            __weak WEProductDetailVC *bSelf =self;
+            [handler executeProductAddCartTaskWithProductId:productId withUserId:[AccountHanler userId] withSuccess:^(id obj) {
+                DLog(@"%@",obj);
+                WECartHomeVC *homeVC =[[WECartHomeVC alloc]init];
+                homeVC.cartType = WECartHomeTypeAdd;
+                [bSelf.navigationController pushViewController:homeVC animated:YES];
+            } withFailed:^(id obj) {
+                DLog(@"加入购物车失败");
+            }];
+        }
+        
+        
+       
         
     }
 }

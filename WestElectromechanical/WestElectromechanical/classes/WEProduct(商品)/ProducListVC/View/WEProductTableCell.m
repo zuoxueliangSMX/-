@@ -30,7 +30,7 @@
         
         UIImageView *productImg =[[UIImageView alloc]init];
         productImg.frame =CGRectMake(10,10,80,80);
-        [productImg setImage:[UIImage imageNamed:@"Product_Placeholder"]];
+        [productImg setImage:[UIImage imageNamed:@"product_advert_default"]];
         productImg.backgroundColor =[UIColor clearColor];
         [bgView addSubview:productImg];
         productImg.userInteractionEnabled=YES;
@@ -96,6 +96,7 @@
         UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:@selector(addProductCart:)];
         btn.frame = CGRectMake(SCREEN_WIDTH-btn.size.width-20, CGRectGetMaxY(productType.frame)+3, btn.size.width, btn.size.height);
         [bgView addSubview:btn];
+        _acrtBtn = btn;
 
     }
     
@@ -111,9 +112,18 @@
     self.productBrand.text = singleModel.p_brand;
     self.productOrder.text = singleModel.p_order_num;
 
-    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"product_advert_default"]];
+   
+    self.acrtBtn.enabled=YES;
+
     self.productPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
-    self.productSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
+    self.productSalePrice.text = [NSString stringWithFormat:@"￥%@",singleModel.p_v_price];
+
+    if ([singleModel.p_price integerValue]>99999999.99999) {
+        self.productPrice.text =@"无价格";
+        self.acrtBtn.enabled=NO;
+        self.productSalePrice.text =@"无价格";
+    }
     
 }
 

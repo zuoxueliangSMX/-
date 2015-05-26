@@ -84,7 +84,7 @@
     _productLabel.text =productModel.p_name;
     _productCartIdLabel.text =[NSString stringWithFormat:@"西域订货号:%@ ",productModel.p_order_num];
     [_productImg  setWebImgUrl:productModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
-    
+
 }
 
 @end

@@ -25,7 +25,7 @@
 
         UIImageView *productImg =[[UIImageView alloc]init];
         productImg.frame =CGRectMake(5,5,frame.size.width-10, frame.size.width-10);
-//        [productImg setImage:[UIImage imageNamed:@"Product_Placeholder"]];
+        [productImg setImage:[UIImage imageNamed:@"product_advert_default"]];
         productImg.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productImg];
         productImg.userInteractionEnabled=YES;
@@ -109,9 +109,18 @@
     self.productType.text =  singleModel.p_version;
     self.productBrand.text = singleModel.p_brand;
 //    self.productOrder.text = singleModel.p_order_num;
-    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    [self.productImg setWebImgUrl:singleModel.p_imgurl placeHolder:[UIImage imageNamed:@"product_advert_default"]];
+    self.addCartBtn.enabled=YES;
+    
     self.productOriPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
-    self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_v_price];
+    self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥%@",singleModel.p_v_price];
+    
+    if ([singleModel.p_price integerValue]>99999999.99999) {
+        self.productOriPrice.text =@"无价格";
+        self.addCartBtn.enabled=NO;
+        self.prodcutSalePrice.text =@"无价格";
+    }
+
     
     
 }

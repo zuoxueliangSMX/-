@@ -17,7 +17,7 @@
 #import "RDVTabBarController.h"
 #import "UIBarButtonItem+Extension.h"
 #define kGap 10
-
+#define kUserAccount @"kUserAccount"
 
 @interface LoginVC ()<UITextFieldDelegate,UIActionSheetDelegate>
 
@@ -169,31 +169,24 @@ WEHTTPHandler *whanle;
 
     
     UILabel *jizhumimaLa =[[UILabel alloc]initWithFrame:CGRectMake(50, CGRectGetMaxY(pswfi.frame)+20, 100, 22)];
-    jizhumimaLa.text = @"记住密码";
+    jizhumimaLa.text = @"记住账号";
     jizhumimaLa.font = [UIFont systemFontOfSize:12];
        [self.view addSubview:jizhumimaLa];
     
     
     
     UIButton *jizhumimaBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [jizhumimaBtn setFrame:CGRectMake(30, CGRectGetMaxY(pswfi.frame)+22, 15, 22)];
+    [jizhumimaBtn setFrame:CGRectMake(30, CGRectGetMaxY(pswfi.frame)+22, 16, 22)];
     
     [jizhumimaBtn setImage:[UIImage imageNamed:@"Person_selected"] forState: UIControlStateNormal];
     [jizhumimaBtn setImage:[UIImage imageNamed:@"Person_selected_btn"] forState:UIControlStateSelected];
-    
-    
-    
-    
     [jizhumimaBtn addTarget:self action:@selector(jizhumimaBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    if ([AccountHanler userCode].length>0) {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kUserAccount]) {
         jizhumimaBtn.selected = YES;
-         isClick = YES;
-        
-        
+        isClick = YES;
+        _namefi.text =[[NSUserDefaults standardUserDefaults] objectForKey:kUserAccount];
     }
-
     [self.view addSubview:jizhumimaBtn];
     
     
@@ -212,7 +205,7 @@ WEHTTPHandler *whanle;
     
     
     UIButton *loginBu = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginBu setTitle:@"登陆" forState:UIControlStateNormal];
+    [loginBu setTitle:@"登录" forState:UIControlStateNormal];
     [loginBu setTitle:@"" forState:UIControlStateHighlighted];
     [loginBu setFrame:CGRectMake((self.view.frame.size.width-240)/2, CGRectGetMaxY(jizhumimaLa.frame)+20, 240, 44)];
     [loginBu setBackgroundColor:[UIColor orangeColor]];
@@ -262,19 +255,34 @@ WEHTTPHandler *whanle;
         
         if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
             
+            if (isClick) {
+                
+                [[NSUserDefaults standardUserDefaults] setObject:_namefi.text forKey:kUserAccount];
+            }
             [AccountHanler saveUserId:[obj objectForKey:@"uid"]];
             [AccountHanler setLoginState:1];
             [self dismissViewControllerAnimated:YES completion:^{
                 
             }];
-//            [self.navigationController popViewControllerAnimated:YES];
-//            [alert  setTitle:@"登陆成功"];
-//            [alert show];
+
         }
-        
     } failed:^(id obj) {
     
         DLog(@"会出现%@",obj);
+        if([[obj objectForKey:@"message"] isEqualToString:@"1"]){
+            [AlertUtil showAlertWithText:@"登录失败"];
+            
+        }else if([[obj objectForKey:@"message"] isEqualToString:@"2"]){
+            [AlertUtil showAlertWithText:@"用户不存在"];
+            
+        }else if([[obj objectForKey:@"message"] isEqualToString:@"3"]){
+            [AlertUtil showAlertWithText:@"密码错误"];
+            
+        }else{
+            [AlertUtil showAlertWithText:@"网络错误"];
+
+        }
+
         
 
     }];
@@ -308,19 +316,15 @@ WEHTTPHandler *whanle;
         
         btn.selected  =YES;
     
-        [AccountHanler saveUserCode:self.loginPass.text ];
+//        [AccountHanler saveUserCode:self.loginPass.text];
 
-
-
-                return;
+        return;
         
     }else{
-    
-        
+
         btn.selected = NO;
-    
-    
-       [AccountHanler saveUserCode:@""];
+
+//       [AccountHanler saveUserCode:@""];
         
     }
 

@@ -318,5 +318,11 @@
                              Success:(SuccessBlock)success
                               failed:(FailedBlock)failed;
 
+/**
+ *  31.订单支付
+ */
+- (void)executePayInfoWithSuccess:(SuccessBlock)success
+                           failed:(FailedBlock)failed;
+
 
 @end

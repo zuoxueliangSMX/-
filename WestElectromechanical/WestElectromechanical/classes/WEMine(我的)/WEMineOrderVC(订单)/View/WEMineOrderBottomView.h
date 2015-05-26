@@ -11,7 +11,8 @@
 #define kOrderBtnTypePay @"立即支付"
 #define kOrderBtnTypeConfirm @"确认收货"
 #define kOrderBtnTypeComment @"评价"
-#define kOrderBtnTypeFinish @"已评价"
+#define kOrderBtnTypeFinish @"已完成"
+#define kOrderBtnTypeSend @"配送中"
 typedef void(^orderBottomViewBlock) (UIButton *btn);
 @interface WEMineOrderBottomView : UIView
 {

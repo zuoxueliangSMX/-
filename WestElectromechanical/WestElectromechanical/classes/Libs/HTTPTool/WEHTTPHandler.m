@@ -450,7 +450,7 @@
             }
         }else{
             if (failed) {
-                failed(nil);
+                failed(json);
             }
         }
     } withFailure:^(NSError *error) {
@@ -1249,6 +1249,39 @@
             failed(error);
         }
     }];
+}
+
+/**
+ *  31.订单支付
+ */
+- (void)executePayInfoWithSuccess:(SuccessBlock)success
+                           failed:(FailedBlock)failed
+{
+    [AlertUtil showAlertWithText:@"订单支付"];
+    
+    NSString *url =[BaseHandler requestUrlWithUrl:API_AlYINFO WithPath:@""];
+
+    [HttpTool post:url withParams:nil withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+        
+        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(json);
+            }
+        }else{
+            if (failed) {
+                failed(json);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+
 }
 
 

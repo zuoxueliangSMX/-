@@ -78,12 +78,16 @@
 
     NSString *name =[NSString stringWithFormat:@"商品名 : %@",detailModel.p_name];
     
+
     NSString *price =[NSString stringWithFormat:@"价格 : %@",detailModel.p_price];
     
     NSString *type =[NSString stringWithFormat:@"原始型号 : %@",detailModel.p_model];
     NSString *brand =[NSString stringWithFormat:@"品牌 : %@",detailModel.p_brand];
     NSString *orderNumber =[NSString stringWithFormat:@"西域订货号 : %@",detailModel.p_order_number];
     NSString *introduce =[NSString stringWithFormat:@"%@",detailModel.p_introduce];
+    if ([detailModel.p_price integerValue]>99999999.9999) {
+        price =[NSString stringWithFormat:@"价格 : %@",@"无价格"];
+    }
     
     CGSize typeSize = [type boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
     CGSize nameSize = [name boundingRectWithSize:CGSizeMake(contentW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
@@ -218,6 +222,10 @@
  
     NSString *price =[NSString stringWithFormat:@"价格 : %@",model.p_price];
 
+    if ([model.p_price integerValue]>99999999.9999) {
+        price =[NSString stringWithFormat:@"价格 : %@",@"无价格"];
+    }
+    
     NSString *type =[NSString stringWithFormat:@"原始型号 : %@",model.p_model];
     NSString *brand =[NSString stringWithFormat:@"品牌 : %@",model.p_brand];
     NSString *orderNumber =[NSString stringWithFormat:@"西域订货号 : %@",model.p_order_number];

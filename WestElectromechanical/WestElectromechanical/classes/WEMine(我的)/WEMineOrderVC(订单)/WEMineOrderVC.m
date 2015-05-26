@@ -19,14 +19,18 @@
 #import "WEMyOrderFrame.h"
 #import "TLAlertView.h"
 #import "WEMineAddComentVC.h"
-#import "Order.h"
 #import "ProductsM.h"
 #import "NSDictionary+JsonString.h"
-
+#import "Order.h"
 #import "DataSigner.h"
 #import <AlipaySDK/AlipaySDK.h>
-
+#import "NSString+Base64.h"
 #import "APAuthV2Info.h"
+#import "GTMBase64.h"
+#include <CommonCrypto/CommonCryptor.h>
+#import "AccountHanler.h"
+#import "Product.h"
+
 @interface WEMineOrderVC()<HTHorizontalSelectionListDelegate,HTHorizontalSelectionListDataSource,UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *_table;
@@ -199,6 +203,7 @@
     cell.orderFrame = orderFrame;
     
     __weak WEMineOrderVC *bSelf = self;
+    __weak WEMineOrderCell *bCell = cell;
     [cell.bottomView setOrderBottomViewBlock:^(UIButton *btn) {
         
         if ([btn.titleLabel.text isEqualToString:kOrderBtnTypeConfirm] ) {
@@ -232,23 +237,14 @@
         }else if ([btn.titleLabel.text isEqualToString:kOrderBtnTypePay]){
             
             
-            [we executePayOrderWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num  withTotalMoney:orderFrame.orderModel.all_money Success:^(id obj) {
-                
-                
-                if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
-                    
-                    
-                    WARN_ALERT(@"支付成功");
-                }
-                
+            WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
+            [handler executePayInfoWithSuccess:^(id obj) {
+                DLog(@"%@",obj);
+                [bSelf sendOrder:[bSelf decryptUseDES:[obj objectForKey:@"a"] key:ctmKey] withSeller:[bSelf decryptUseDES:[obj objectForKey:@"ipk"] key:ctmKey] privateKey:[bSelf decryptUseDES:[obj objectForKey:@"p"] key:ctmKey] withAllprice:bCell.orderFrame.orderModel.all_money withOrderNum:bCell.orderFrame.orderModel.order_num];
             } failed:^(id obj) {
-                
-                
+                DLog(@"%@",obj);
             }];
-            
-            
-            
-            
+
         }
         
     }];
@@ -267,6 +263,185 @@
     [self.navigationController pushViewController:orderDetail animated:YES];
     
 }
+
+
+
+#pragma mark -
+#pragma mark   ==============产生随机订单号==============
+
+
+- (NSString *)generateTradeNO
+{
+    static int kNumber = 15;
+    
+    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
+    srand(time(0));
+    for (int i = 0; i < kNumber; i++)
+    {
+        unsigned index = rand() % [sourceStr length];
+        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+        [resultStr appendString:oneStr];
+    }
+    return resultStr;
+}
+
+
+- (void)sendOrder:(NSString *)partner1 withSeller:(NSString *)seller1 privateKey:(NSString *)privateKey1 withAllprice:(NSString *)allPrice withOrderNum:(NSString *)orderNum
+{
+    
+    Product *product = [[Product alloc] init];
+    product.subject = @"西域电商订单";
+//    product.body = self.orderNum;
+    
+    product.price = 0.01f;
+    
+    
+    
+    /*
+     *商户的唯一的parnter和seller。
+     *签约后，支付宝会为每个商户分配一个唯一的 parnter 和 seller。
+     */
+    
+    /*============================================================================*/
+    /*=======================需要填写商户app申请的===================================*/
+    /*============================================================================*/
+    NSString *partner = partner1;
+    NSString *seller = seller1;
+    NSString *privateKey = @"MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAMoh77pOtTHB3En1Pn7q07hZvwJX7Abfjer0AqgKd8iqei9I8FOrZBTN5DAoa2QKmzb/QTzbzP+9FPDd+ekNlFtQlyxmrBWbWnVLDaXK3OYG5jTev9mmpY2ctS0+uLpbW/QT8iTBAFtpRhssoLRwsgpw30ZwgiIUuhA7dvNxV8BJAgMBAAECgYA4cE9aiv2G3iVfNS31DCZ/s/dkdR4/MQ6USvuu5fVaP1eMemY4RoPUV0TeuXp63YdHTPBvSMQtqCL/uks8aoFAmuk/3bni3E3PLfapdsuJAX7YLCT6C/Tov/oK/gidmgAkt1MbsdWUQMsVCWNvhtKciguZLP+F4+TPcZ4TTO3ELQJBAOhjoocWwo+Xybm9p9cPtI+2ByqGXWO396ieXYwdM8V23TUcb6uDg9DU7HVe36WE1sYBqaNB2Lvmq66xSGbNkHsCQQDeq1YuZ86oT7Hof9TNRga2U5A/oZTCMbhpexAbFs8rj8waKwuKu46wcakXo/iaoUGl6U4PAe902gFXjCvKITELAkEA2R0FIqrb+WX5nOQZJC9TJZUOGufP5rNg2ZOjmJ1L2ifUQaOgnSBRDdFwXbPWxQBX3ER/ZbzGLb80FREisJFLcwJBAJyTVrKjBEqOX8fhu73ss+OZtyFHeddkJwzlIFosG9nB7/+mrSMM6DVid0jMYJA7PHJyMBWVgtBkS/VH97LWzCkCQQDfxCMFcyEwGgszk/dCeBhzyI6vzzsfSCejzPaBwpAvSFJbZ8ZZWK0jObTLItFywjli53m7fEth5eJFv//6gwfp";
+    /*============================================================================*/
+    /*============================================================================*/
+    /*============================================================================*/
+    
+    //partner和seller获取失败,提示
+    if ([partner length] == 0 ||
+        [seller length] == 0 ||
+        [privateKey length] == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"缺少partner或者seller或者私钥。"
+                                                       delegate:self
+                                              cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    /*
+     *生成订单信息及签名
+     */
+    //将商品信息赋予AlixPayOrder的成员变量
+    Order *order = [[Order alloc] init];
+    order.partner = partner;
+    order.seller = seller;
+    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.productName = product.subject; //商品标题
+    order.productDescription = product.body; //商品描述
+    order.amount = [NSString stringWithFormat:@"%.2f",product.price]; //商品价格
+    order.notifyURL =  @"http://www.eysa.com"; //回调URL
+    
+    order.service = @"mobile.securitypay.pay";
+    order.paymentType = @"1";
+    order.inputCharset = @"utf-8";
+    order.itBPay = @"30m";
+    order.showUrl = @"m.alipay.com";
+    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+    NSString *appScheme = @"WestElectromechanicalAlipay";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    NSLog(@"orderSpec = %@",orderSpec);
+    
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    id<DataSigner> signer = CreateRSADataSigner(privateKey);
+    NSString *signedString = [signer signString:orderSpec];
+    
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        __weak WEMineOrderVC *bSelf = self;
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            NSLog(@"reslut = %@",resultDic);
+            if ([[resultDic objectForKey:@"resultStatus"] integerValue]==9000) {
+                [[[WEHTTPHandler alloc] init] executePayOrderWithUserId:[AccountHanler userId] withOrderNum:orderNum withTotalMoney:allPrice Success:^(id obj) {
+                    
+                    
+                    if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+                        
+                        //                    [AlertUtil showAlertWithText:@"支付成功"];
+                        WARN_ALERT(@"支付成功");
+                        [bSelf.navigationController popToRootViewControllerAnimated:YES];
+                    }
+                    
+                } failed:^(id obj) {
+                    
+                    
+                }];
+            }
+            
+        }];
+    }
+    
+}
+
+-(NSString*) decryptUseDES:(NSString*)cipherText key:(NSString*)key {
+    // 利用 GTMBase64 解碼 Base64 字串
+    NSData* cipherData = [GTMBase64 decodeString:cipherText];
+    unsigned char buffer[1024];
+    memset(buffer, 0, sizeof(char));
+    size_t numBytesDecrypted = 0;
+    
+    // IV 偏移量不需使用
+    CCCryptorStatus cryptStatus = CCCrypt(kCCDecrypt,
+                                          kCCAlgorithmDES,
+                                          kCCOptionPKCS7Padding | kCCOptionECBMode,
+                                          [key UTF8String],
+                                          kCCKeySizeDES,
+                                          nil,
+                                          [cipherData bytes],
+                                          [cipherData length],
+                                          buffer,
+                                          1024,
+                                          &numBytesDecrypted);
+    NSString* plainText = nil;
+    if (cryptStatus == kCCSuccess) {
+        NSData* data = [NSData dataWithBytes:buffer length:(NSUInteger)numBytesDecrypted];
+        plainText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    return plainText;
+}
+-(NSString *) encryptUseDES:(NSString *)clearText key:(NSString *)key
+{
+    NSData *data = [clearText dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    unsigned char buffer[1024];
+    memset(buffer, 0, sizeof(char));
+    size_t numBytesEncrypted = 0;
+    
+    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt,
+                                          kCCAlgorithmDES,
+                                          kCCOptionPKCS7Padding | kCCOptionECBMode,
+                                          [key UTF8String],
+                                          kCCKeySizeDES,
+                                          nil,
+                                          [data bytes],
+                                          [data length],
+                                          buffer,
+                                          1024,
+                                          &numBytesEncrypted);
+    
+    NSString* plainText = nil;
+    if (cryptStatus == kCCSuccess) {
+        NSData *dataTemp = [NSData dataWithBytes:buffer length:(NSUInteger)numBytesEncrypted];
+        plainText = [GTMBase64 stringByEncodingData:dataTemp];
+    }else{
+        NSLog(@"DES加密失败");
+    }
+    return plainText;
+}
+
 
 /*
  #pragma mark - Navigation

@@ -38,13 +38,18 @@
 - (void)setOrderModel:(OrderM *)orderModel
 {
     _orderModel = orderModel;
+//    待付款  ，
+//    待收货  ，
+//    待评价  ，
+//    待发货  ，
+//    待评价  ，
     
     _totalPrice.text =[NSString stringWithFormat:@"总计:￥ %@",orderModel.all_money];
     if ([orderModel.order_state isEqualToString:@"待付款"]) {
         [_orderBtn setTitle:kOrderBtnTypePay forState:UIControlStateNormal];
         [_orderBtn setTitle:kOrderBtnTypePay forState:UIControlStateHighlighted];
 
-    }else if ([orderModel.order_state isEqualToString:@"待收货"])
+    }else if ([orderModel.order_state isEqualToString:@"待收货"]||[orderModel.order_state isEqualToString:@"待发货"]||[orderModel.order_state isEqualToString:@"配送中"])
     {
         [_orderBtn setTitle:kOrderBtnTypeConfirm forState:UIControlStateNormal];
         [_orderBtn setTitle:kOrderBtnTypeConfirm forState:UIControlStateHighlighted];
@@ -52,6 +57,9 @@
     {
         [_orderBtn setTitle:kOrderBtnTypeComment forState:UIControlStateNormal];
         [_orderBtn setTitle:kOrderBtnTypeComment forState:UIControlStateHighlighted];
+    }else if ([orderModel.order_state isEqualToString:@"已完成"]){
+        [_orderBtn setTitle:@"已完成" forState:UIControlStateNormal];
+        [_orderBtn setTitle:@"已完成" forState:UIControlStateHighlighted];
     }
     
 }

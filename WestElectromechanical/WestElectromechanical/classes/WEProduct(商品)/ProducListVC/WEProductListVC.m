@@ -72,8 +72,7 @@
 }
 - (void)condition:(UIButton*)btn{
     NSLog(@"添加好友");
-    
-
+    [self exchangeView:btn];
 }
 
 - (void)viewDidLoad {
