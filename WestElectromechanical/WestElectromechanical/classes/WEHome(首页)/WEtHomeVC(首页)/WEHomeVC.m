@@ -140,13 +140,13 @@
 //            [delegate.tabBarController viewControllerAtIndex:3];
         }else if(index ==1){
 
-            [bSelf getNextVCData:@"1000949"];
+            [bSelf getNextVCData:[_homeInfoModel.advert[0] catid]];
 
         }else if(index == 2){
-            [bSelf getNextVCData:@"1009581"];
+            [bSelf getNextVCData:[_homeInfoModel.advert[1] catid]];
 
         }else{
-            [bSelf getNextVCData:@"1006595"];
+            [bSelf getNextVCData:[_homeInfoModel.advert[2] catid]];
         }
     }];
     [scrollView.headerView setHomeHeaderScrollViewBlock:^(NSString *pid) {

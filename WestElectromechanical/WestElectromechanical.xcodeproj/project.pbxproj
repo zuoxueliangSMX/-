@@ -199,6 +199,7 @@
 		A3C48FB91AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C48FB81AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m */; };
 		A3D9E8A91B13FA850090F619 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9E8A71B13FA850090F619 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A3D9E8AC1B1434E60090F619 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9E8AB1B1434E60090F619 /* Product.m */; };
+		A3D9E8D91B14BEAC0090F619 /* WEAdvertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9E8D81B14BEAC0090F619 /* WEAdvertModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -665,6 +666,8 @@
 		A3D9E8A81B13FA850090F619 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		A3D9E8AA1B1434E60090F619 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		A3D9E8AB1B1434E60090F619 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		A3D9E8D71B14BEAC0090F619 /* WEAdvertModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEAdvertModel.h; sourceTree = "<group>"; };
+		A3D9E8D81B14BEAC0090F619 /* WEAdvertModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEAdvertModel.m; sourceTree = "<group>"; };
 		FE2B572B065DC01E072A4CD3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1714,6 +1717,8 @@
 			children = (
 				A3C2489F1AF906BC00760C72 /* WEHomeInfoModel.h */,
 				A3C248A01AF906BC00760C72 /* WEHomeInfoModel.m */,
+				A3D9E8D71B14BEAC0090F619 /* WEAdvertModel.h */,
+				A3D9E8D81B14BEAC0090F619 /* WEAdvertModel.m */,
 				A3C248A21AF9074900760C72 /* WEAdModel.h */,
 				A3C248A31AF9074900760C72 /* WEAdModel.m */,
 				A3C248A51AF907C500760C72 /* WENoticeModel.h */,
@@ -2015,6 +2020,7 @@
 				A37359141AFDE47700484A59 /* WEProductsModel.m in Sources */,
 				A3C2CC811AFA4AD40087BDED /* WEProductListVC.m in Sources */,
 				7FE42B351AF9E73000EB923E /* AddAdressVC.m in Sources */,
+				A3D9E8D91B14BEAC0090F619 /* WEAdvertModel.m in Sources */,
 				A38851B91AED2DD40019D6E5 /* ImagePlayerView.m in Sources */,
 				A3843EE01AF4A82300FDE84F /* HttpTool.m in Sources */,
 				A38A327A1AEC075500F7FE7C /* WECategoryHomeVC.m in Sources */,
@@ -2219,6 +2225,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2269,6 +2276,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;

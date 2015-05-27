@@ -87,7 +87,7 @@
     footCell.backgroundColor = [UIColor whiteColor];
     footCell.goodsPriceLa.text = [NSString stringWithFormat:@"商品总额: ¥%0.2f",self.totalP];
     footCell.freightageLa.text = @"共计运费: ¥ 0";
-    footCell.subtractFeeLa.text =@"减免运费: 0";
+//    footCell.subtractFeeLa.text =@"减免运费: 0";
     
     
     

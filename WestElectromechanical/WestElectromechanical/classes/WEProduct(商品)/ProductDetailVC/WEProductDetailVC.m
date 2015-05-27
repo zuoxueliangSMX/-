@@ -271,7 +271,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 2;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -290,9 +290,8 @@
 
     }
     if (indexPath.row > 0) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-       cell.textLabel.text = @"更多产品";
-        if (indexPath.row ==2) {
+
+        if (indexPath.row ==1) {
             cell.textLabel.text = @"商品评论";
         }
     }else{
@@ -306,9 +305,8 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1) {
-        
-    }else if (indexPath.row == 2){
+
+    if (indexPath.row == 1){
         WEProdcutCommentListVC *commentListVC =[[WEProdcutCommentListVC alloc]init];
         commentListVC.productId =_productId;
         [self.navigationController pushViewController:commentListVC animated:YES];

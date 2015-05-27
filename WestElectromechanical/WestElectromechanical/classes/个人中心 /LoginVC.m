@@ -243,8 +243,6 @@ WEHTTPHandler *whanle;
 {
     [self.view endEditing:YES];
     
-    
-    
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
 
     

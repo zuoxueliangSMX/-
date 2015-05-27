@@ -12,5 +12,8 @@ typedef void(^productFilterBlock) (void);
 {
     __strong productFilterBlock _block;
 }
+@property (nonatomic ,copy)NSString *t_id;
+@property (nonatomic ,copy)NSString *productName;
+
 - (void)setProductFilterBlock:(productFilterBlock)block;
 @end

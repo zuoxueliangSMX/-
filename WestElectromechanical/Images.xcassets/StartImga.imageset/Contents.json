@@ -6,7 +6,8 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Default-480@2x.png"
     },
     {
       "idiom" : "iphone",
@@ -16,7 +17,8 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "Default-736@3x.png"
     }
   ],
   "info" : {

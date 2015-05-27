@@ -59,10 +59,10 @@
     for (id obj in self.pics) {
         pic= Nil;
         pic = [UIButton buttonWithType:UIButtonTypeCustom];
-        pic.imageView.contentMode = UIViewContentModeTop;
+//        pic.imageView.contentMode = UIViewContentModeTop;
         [pic setFrame:CGRectMake(i*self.frame.size.width,0, self.frame.size.width, self.frame.size.height)];
         UIImageView * tempImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, pic.frame.size.width, pic.frame.size.height)];
-        tempImage.contentMode = UIViewContentModeScaleToFill;
+        tempImage.contentMode = UIViewContentModeScaleAspectFit;
         [tempImage setClipsToBounds:YES];
         if ([[obj objectForKey:@"isLoc"]boolValue]) {
             [tempImage setImage:[obj objectForKey:@"pic"]];
@@ -73,7 +73,7 @@
             [tempImage setWebImgUrl:[obj objectForKey:@"pic"] placeHolder:[obj objectForKey:@"placeholderImage"]];
         }
         [pic addSubview:tempImage];
-        [pic setBackgroundColor:[UIColor grayColor]];
+        [pic setBackgroundColor:[UIColor whiteColor]];
         pic.tag = i;
         [pic addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:pic];

@@ -28,6 +28,13 @@
             WERecommendModel *recommendModel =[[WERecommendModel alloc]initWithDict:recommend];
             [self.recommends addObject:recommendModel];
         }
+        
+        self.advert =[NSMutableArray array];
+        
+        for (NSDictionary *advert in [dict objectForKey:@"advert"]) {
+            WEAdvertModel *model =[[WEAdvertModel alloc]initWithDict:advert];
+            [self.advert addObject:model];
+        }
     }
     return self;
 }

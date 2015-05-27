@@ -11,6 +11,7 @@
 #import "UIButton+Extension.h"
 @interface WEProductFilterVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic ,strong)NSArray *priceArr;
+@property (nonatomic ,weak)UILabel *priceInterval;
 @end
 
 @implementation WEProductFilterVC
@@ -25,7 +26,10 @@
     [super viewWillDisappear:animated];
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
-
+- (void)setProductFilterBlock:(productFilterBlock)block
+{
+    _block = block;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -61,7 +65,8 @@
 
 - (void)filterProduct:(UIButton *)btn
 {
-    
+    [AlertUtil showAlertWithText:@"没有搜出您需要的产品"];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -
@@ -81,8 +86,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
-        UITextField *tf =[[UITextField alloc]initWithFrame:CGRectMake(0, 5, SCREEN_WIDTH-0, 40)];
+        UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20, 50)];
+        UITextField *tf =[[UITextField alloc]initWithFrame:CGRectMake(0, 5, SCREEN_WIDTH-30, 40)];
         
         UILabel *productBrand =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
         productBrand.backgroundColor =[UIColor whiteColor];
@@ -101,7 +106,7 @@
         view.backgroundColor =[UIColor clearColor];
         return view;
     }else{
-        UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+        UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20, 50)];
         view.backgroundColor =[UIColor whiteColor];
         
         UILabel *price =[[UILabel alloc]init];
@@ -114,6 +119,16 @@
         [view addSubview:price];
         
         
+        UILabel *priceInterval =[[UILabel alloc]init];
+        priceInterval.frame =CGRectMake(  60,0,SCREEN_WIDTH-20-70,50);
+        priceInterval.numberOfLines =1;
+        priceInterval.text = @"价格";
+        priceInterval.textAlignment = NSTextAlignmentRight;
+        priceInterval.font =[UIFont systemFontOfSize:18.0];
+        priceInterval.textColor =[UIColor orangeColor];
+        priceInterval.backgroundColor =[UIColor clearColor];
+        [view addSubview:priceInterval];
+        _priceInterval = priceInterval;
         return view;
     }
 }
@@ -143,6 +158,9 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell =[tableView cellForRowAtIndexPath:indexPath];
+    _priceInterval.text = cell.textLabel.text;
 }
 
 

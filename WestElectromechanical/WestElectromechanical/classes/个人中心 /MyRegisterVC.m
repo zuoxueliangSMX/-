@@ -434,24 +434,6 @@
             [AlertUtil showAlertWithText:@"注册成功"];
 //                         WARN_ALERT(@"注册成功");
             
-        }else if ([[obj objectForKey:@"message"]intValue]==1){
-            [AlertUtil showAlertWithText:@"用户名存在"];
-//              WARN_ALERT(@"用户名存在");
-            return ;
-        }else if ([[obj objectForKey:@"message"]intValue]==2){
-            [AlertUtil showAlertWithText:@"手机号码存在"];
-//          WARN_ALERT(@"手机号码存在");
-            return;
-        }else if([[obj objectForKey:@"message"]intValue]==3) {
-//           WARN_ALERT(@"邮箱存在");
-            [AlertUtil showAlertWithText:@"邮箱存在"];
-
-            return;
-        }else{
-            [AlertUtil showAlertWithText:@"注册失败"];
-
-//         WARN_ALERT(@"");
-            return;
         }
         
         
@@ -460,7 +442,24 @@
        
     } failed:^(id obj) {
 //        [AlertUtil showAlertWithText:@"注册失败"];
-
+        if ([[obj objectForKey:@"message"]intValue]==1){
+            [AlertUtil showAlertWithText:@"用户名存在"];
+            //              WARN_ALERT(@"用户名存在");
+//            return ;
+        }else if ([[obj objectForKey:@"message"]intValue]==2){
+            [AlertUtil showAlertWithText:@"手机号码存在"];
+            //          WARN_ALERT(@"手机号码存在");
+//            return;
+        }else if([[obj objectForKey:@"message"]intValue]==3) {
+            //           WARN_ALERT(@"邮箱存在");
+            [AlertUtil showAlertWithText:@"邮箱存在"];
+            
+//            return;
+        }else{
+            [AlertUtil showAlertWithText:@"注册失败"];
+            
+            //         WARN_ALERT(@"");
+        }
     }];
     
 }
