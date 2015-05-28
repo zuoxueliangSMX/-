@@ -94,7 +94,7 @@
         viewController.hidesBottomBarWhenPushed = YES;
 //        viewController.navigationItem.backBarButtonItem =[UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted" target:self action:@selector(back)];
         // 设置导航栏按钮
-        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"navigationbar_back_highlighted" target:self action:@selector(back)];
+        viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"back_icon" highImageName:@"back_icon" target:self action:@selector(back)];
         viewController.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_more" highImageName:@"navigationbar_more_highlighted" target:self action:@selector(more)];
     }
     [super pushViewController:viewController animated:animated];

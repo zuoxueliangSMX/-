@@ -35,7 +35,7 @@
             imageView.tag = kTag + i;
             imageView.userInteractionEnabled = YES;
             [imageView setImage:[UIImage imageNamed:@"product_load_default"]];
-            imageView.contentMode =UIViewContentModeScaleAspectFit;
+            imageView.contentMode =UIViewContentModeScaleToFill;
             imageView.backgroundColor =[UIColor clearColor];
             [self addSubview:imageView];
             [_imgs addObject:imageView];

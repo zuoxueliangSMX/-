@@ -29,7 +29,7 @@
     
     UIImageView* bgview = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"product_advert_default"]];
     bgview.frame = CGRectMake(0, 0, SCREEN_WIDTH, self.frame.size.height);
-    bgview.contentMode = UIViewContentModeScaleAspectFit;
+    bgview.contentMode = UIViewContentModeScaleToFill;
     [self addSubview:bgview];
     
 //    [self setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"product_advert_default"]]];
@@ -62,7 +62,7 @@
 //        pic.imageView.contentMode = UIViewContentModeTop;
         [pic setFrame:CGRectMake(i*self.frame.size.width,0, self.frame.size.width, self.frame.size.height)];
         UIImageView * tempImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, pic.frame.size.width, pic.frame.size.height)];
-        tempImage.contentMode = UIViewContentModeScaleAspectFit;
+        tempImage.contentMode = UIViewContentModeScaleToFill;
         [tempImage setClipsToBounds:YES];
         if ([[obj objectForKey:@"isLoc"]boolValue]) {
             [tempImage setImage:[obj objectForKey:@"pic"]];

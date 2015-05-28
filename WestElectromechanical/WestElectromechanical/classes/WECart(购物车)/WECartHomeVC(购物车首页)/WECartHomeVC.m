@@ -58,20 +58,24 @@
         [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
     }
     [self addRightItem];
-    [we executeGetCartListTaskWithUserId:[AccountHanler userId] withPage:@"1" Success:^(id obj) {
-        
-        DLog(@"输出我的购物车里面的数据%@",obj);
-        _cartsModel = (WECartsModel *)obj;
-        [self.cartTable reloadData];
-        _totalPrice = 0.00;
-        _totalProduc = 0;
-        _bottomView.allButton.selected = NO;
-        [self setBottomData:_bottomView];
-        
-        
-    } failed:^(id obj) {
-        
-    }];
+    
+    if ([AccountHanler userId]) {
+        [we executeGetCartListTaskWithUserId:[AccountHanler userId] withPage:@"1" Success:^(id obj) {
+            
+            DLog(@"输出我的购物车里面的数据%@",obj);
+            _cartsModel = (WECartsModel *)obj;
+            [self.cartTable reloadData];
+            _totalPrice = 0.00;
+            _totalProduc = 0;
+            _bottomView.allButton.selected = NO;
+            [self setBottomData:_bottomView];
+            
+            
+        } failed:^(id obj) {
+            
+        }];
+
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
