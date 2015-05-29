@@ -10,5 +10,6 @@
 #import "WEProductsModel.h"
 @interface WEProductListVC : UIViewController
 @property (nonatomic ,strong)WEProductsModel *products;
-
+@property (nonatomic ,copy)NSString * t_id;
+@property (nonatomic ,copy)NSString * searchName;
 @end

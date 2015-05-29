@@ -26,7 +26,7 @@
         self.userInteractionEnabled = YES;
         _bgViews =[NSMutableArray array];
         UIView * recommendBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        [recommendBgView setBackgroundColor:[UIColor clearColor]];
+        [recommendBgView setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:recommendBgView];
         
         // 热门推荐图标

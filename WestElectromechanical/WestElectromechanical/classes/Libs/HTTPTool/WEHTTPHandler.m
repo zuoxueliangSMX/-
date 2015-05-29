@@ -1283,6 +1283,88 @@
     }];
 
 }
+/**
+ *  根据分类搜索产品并排序
+ */
+- (void)executeGetSearchDataWithSearchContent:(NSString *)content
+                                    withOrder:(NSString *)order
+                                  withSuccess:(SuccessBlock)success
+                                   withFailed:(FailedBlock)failed
+{
+    [AlertUtil showAlertWithText:@"正在进行排序"];
+    NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"t_id=%@&order=%@",content,order];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        WEProductsModel *productsModel =[[WEProductsModel alloc]initWithDict:json];
+        if ([productsModel.message integerValue]== 0) {
+            
+            if (productsModel.products.count>0) {
+                if (success) {
+                    success(productsModel);
+                }
+            }else{
+                [AlertUtil showAlertWithText:@"排序失败"];
+            }
+            
+        }else{
+            [AlertUtil showAlertWithText:@"排序失败"];
+            if (failed) {
+                failed(nil);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        [AlertUtil showAlertWithText:@"网络连接失败"];
+
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+}
+
+/**
+ *  33.搜索商品名字
+ */
+
+- (void)executeGetSearchDataWithSearchProductNameOrder:(NSString *)productName
+                                        withOrder:(NSString *)order
+                                      withSuccess:(SuccessBlock)success
+                                       withFailed:(FailedBlock)failed
+{
+    [AlertUtil showAlertWithText:@"获取搜索数据"];
+    NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"name=%@&order=%@",productName,order];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+        WEProductsModel *productsModel =[[WEProductsModel alloc]initWithDict:json];
+        if ([productsModel.message integerValue]== 0) {
+            
+            if (productsModel.products.count>0) {
+                if (success) {
+                    success(productsModel);
+                }
+            }else{
+                [AlertUtil showAlertWithText:@"未搜索到你所需要的商品"];
+            }
+            
+        }else{
+            [AlertUtil showAlertWithText:@"搜索出错"];
+            if (failed) {
+                failed(nil);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+}
+
 
 
 @end

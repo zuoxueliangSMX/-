@@ -186,6 +186,7 @@
     [handler executeGetSearchDataWithSearchContent:categroyId withSuccess:^(id obj) {
         WEProductListVC *productListVC =[[WEProductListVC alloc]init];
         productListVC.products = (WEProductsModel *)obj;
+        productListVC.t_id = categroyId;
         [bSelf.navigationController pushViewController:productListVC animated:YES];
         
     } withFailed:^(id obj) {

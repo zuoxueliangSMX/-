@@ -117,6 +117,7 @@
         DLog(@"%@",obj);
         WEProductListVC *productListVC =[[WEProductListVC alloc]init];
         productListVC.products = (WEProductsModel *)obj;
+        productListVC.searchName = content;
         [bSelf.navigationController pushViewController:productListVC animated:YES];
     } withFailed:^(id obj) {
         DLog(@"%@",obj);

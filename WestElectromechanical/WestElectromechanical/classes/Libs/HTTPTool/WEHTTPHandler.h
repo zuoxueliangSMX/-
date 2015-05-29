@@ -324,5 +324,21 @@
 - (void)executePayInfoWithSuccess:(SuccessBlock)success
                            failed:(FailedBlock)failed;
 
+/**
+ *  32.根据分类搜索产品并排序
+ */
+- (void)executeGetSearchDataWithSearchContent:(NSString *)content
+                                    withOrder:(NSString *)order
+                                  withSuccess:(SuccessBlock)success
+                                   withFailed:(FailedBlock)failed;
+
+/**
+ *  33.搜索商品名字
+ */
+
+- (void)executeGetSearchDataWithSearchProductNameOrder:(NSString *)productName
+                                             withOrder:(NSString *)order
+                                           withSuccess:(SuccessBlock)success
+                                            withFailed:(FailedBlock)failed;
 
 @end

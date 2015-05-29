@@ -24,7 +24,10 @@
 @interface WEProductListVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic ,weak)UITableView *productList;
 @property (nonatomic ,weak)UICollectionView *productCollection;
-
+@property (nonatomic ,weak)UITableView *conditionTable;
+@property (nonatomic ,weak)UIView *mask;
+@property (nonatomic ,strong)NSArray *conditionArr;
+@property (nonatomic ,weak)UIImageView *contitionBgView;
 @end
 
 @implementation WEProductListVC
@@ -62,7 +65,7 @@
     UIBarButtonItem *negativeSpacer1= [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
-    negativeSpacer1.width = 10;
+    negativeSpacer1.width = 30;
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, right2,negativeSpacer1,right1];
 }
 - (void)screen:(UIButton*)btn{
@@ -72,7 +75,10 @@
 }
 - (void)condition:(UIButton*)btn{
     NSLog(@"添加好友");
-    [self exchangeView:btn];
+//    [self exchangeView:btn];
+    _mask.hidden = !_mask.hidden;
+    _contitionBgView.hidden = !_contitionBgView.hidden;
+
 }
 
 - (void)viewDidLoad {
@@ -81,14 +87,61 @@
 //    self.view.backgroundColor =[UIColor appBlueColor];
     VIEW_BACKGROUND;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    _conditionArr = @[@"最新",@"价格",@"销售量",@"评论量"];
     self.title = @"商品分类";
     [self initTableView];
     [self initCollectionView];
     [self initBottomView];
+    
+    [self initMaskView];
+    [self initConditionTable];
+}
+- (void)initConditionTable
+{
+    UIImageView *view =[[UIImageView alloc]initWithFrame: CGRectMake(SCREEN_WIDTH*0.5, 64, 120, 190)];
+    view.hidden = YES;
+    view.userInteractionEnabled = YES;
+    [self.view addSubview:view];
+    _contitionBgView = view;
+    
+    UITableView *conditionTable =[[UITableView alloc]init];
+    conditionTable.frame =CGRectMake(0, 14, 120, 176);
+    conditionTable.delegate =self;
+    conditionTable.dataSource =self;
+    conditionTable.hidden = NO;
+    conditionTable.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
+    conditionTable.separatorStyle = UITableViewCellSelectionStyleNone;
+    [view addSubview:conditionTable];
+    _conditionTable = conditionTable;
+    _conditionTable.tableFooterView = [[UIView alloc]init];
+
+}
+- (void)initMaskView
+{
+    UIView *maskView =[[UIView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
+    maskView.backgroundColor =[UIColor clearColor];
+    maskView.hidden = YES;
+    maskView.userInteractionEnabled = YES;
+    [self.view addSubview:maskView];
+    _mask = maskView;
+    
+    
+    UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMask:)];
+
+    [_mask addGestureRecognizer:tap];
+}
+
+- (void)tapMask:(UITapGestureRecognizer *)tap
+{
+    _mask.hidden = !_mask.hidden;
+    _contitionBgView.hidden = !_contitionBgView.hidden;
+
 }
 
 - (void)initTableView
 {
+  
+    
     UITableView *productList =[[UITableView alloc]init];
     productList.frame =CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-44-64);
     productList.delegate =self;
@@ -144,40 +197,78 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return _products.products.count;
+  
+    if (tableView == _productList) {
+        return _products.products.count;
+    }else{
+        return 4;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 110;
+    
+    if (tableView == _productList) {
+        return 110;
+    }else{
+        return 44;
+    }
 }
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
-    WEProductTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if(cell == nil) {
-        cell = [[WEProductTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (tableView == _productList) {
+        static NSString *CellIdentifier = @"Cell";
+        WEProductTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if(cell == nil) {
+            cell = [[WEProductTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+        __weak WEProductListVC *bSelf =self;
+        [cell setProductAddCartBlock:^(NSString *productId) {
+            [bSelf productAddCart:productId];
+        }];
+        
+        cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
+        WEProductSingleModel *singleModel =_products.products[indexPath.row];
+        cell.singleModel = singleModel;
+        //    cell.backgroundColor =[UIColor redColor];
+        
+        return cell;
+
+    }else{
+        static NSString *CellIdentifier = @"conditionTable";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
+        }
+        cell.textLabel.text =_conditionArr[indexPath.row];
+        return cell;
+
+        
     }
-    
-    __weak WEProductListVC *bSelf =self;
-    [cell setProductAddCartBlock:^(NSString *productId) {
-        [bSelf productAddCart:productId];
-    }];
-    
-    cell.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
-    WEProductSingleModel *singleModel =_products.products[indexPath.row];
-    cell.singleModel = singleModel;
-//    cell.backgroundColor =[UIColor redColor];
-    
-    return cell;
 }
 #pragma mark -
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    WEProductSingleModel *singleModel =_products.products[indexPath.row];
-    [self getProductDeatilData:singleModel];
+    
+    
+    if (tableView == _productList) {
+        WEProductSingleModel *singleModel =_products.products[indexPath.row];
+        [self getProductDeatilData:singleModel];
+    }else{
+        _mask.hidden = !_mask.hidden;
+        _contitionBgView.hidden = !_contitionBgView.hidden;
+        if (_t_id.length>0) {
+            [self productOrder:_t_id withOrder:[NSString stringWithFormat:@"%ld",indexPath.row+1]];
+            
+        }else{
+            [self productOrderSearchName:_searchName withOrder:[NSString stringWithFormat:@"%ld",indexPath.row+1]];
+        }
+    }
 }
 
 
@@ -283,6 +374,36 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)productOrder:(NSString *)t_id withOrder:(NSString *)order
+{
+    __weak WEProductListVC *bSelf = self;
+    [[[WEHTTPHandler alloc]init] executeGetSearchDataWithSearchContent:t_id withOrder:order withSuccess:^(id obj) {
+        DLog(@"222");
+        bSelf.products = (WEProductsModel *)obj;
+        [bSelf.productList reloadData];
+        [bSelf.productCollection reloadData];
+        
+    } withFailed:^(id obj) {
+        DLog(@"111");
+    }];
+}
+
+- (void)productOrderSearchName:(NSString *)searchName withOrder:(NSString *)order
+{
+    __weak WEProductListVC *bSelf = self;
+    
+    
+    [[[WEHTTPHandler alloc]init]executeGetSearchDataWithSearchProductNameOrder:searchName withOrder:order withSuccess:^(id obj) {
+        bSelf.products = (WEProductsModel *)obj;
+        [bSelf.productList reloadData];
+        [bSelf.productCollection reloadData];
+    } withFailed:^(id obj) {
+        
+    }];
+
+}
+
 
 - (void)productAddCart:(NSString *)productId
 {
