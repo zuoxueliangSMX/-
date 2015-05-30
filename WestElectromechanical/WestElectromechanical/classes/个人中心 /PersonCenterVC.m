@@ -52,6 +52,7 @@
     WEHTTPHandler *weh;
     
     UIButton *addresBut;
+    UIImageView *imgvbg;
 
 }
 @end
@@ -95,7 +96,7 @@
                 textLa.frame =CGRectMake(15,  (head.frame.size.height-60)/2-30, SCREEN_WIDTH-30, 30);
             }
             NSString *str = [NSString stringWithFormat:@"您好：%@先生",[obj objectForKey:@"u_name"]];
-            NSString *is_identification= [obj objectForKey:@"is_identification"];
+//            NSString *is_identification= [obj objectForKey:@"is_identification"];
             textLa.text =str;
 
         } failed:^(id obj) {
@@ -221,28 +222,28 @@
 }
 
 - (void)addUI
+
 {
     
     
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setb"] style:UIBarButtonItemStyleDone target:self action:@selector(setBtnClick)];
-
-    
-    
     head = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, VIEW_WIDETH, 200)];
-   
-   
+
+    imgvbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_header_bg"]];
+    imgvbg.frame = head.frame;
+    imgvbg.userInteractionEnabled =YES;
+    [head addSubview:imgvbg];
     
-    textLa = [[UILabel alloc]initWithFrame:CGRectMake(15,  (head.frame.size.height-60)/2-30, SCREEN_WIDTH-30, 30)];
+     textLa = [[UILabel alloc]initWithFrame:CGRectMake(15,  (head.frame.size.height-60)/2-30, SCREEN_WIDTH-30, 30)];
     textLa.textAlignment = NSTextAlignmentCenter;
     imgv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_smile"]];
-    imgv.frame = CGRectMake(SCREEN_WIDTH * 0.5 - 120, (head.frame.size.height-60)/2-30, 30, 30);
-    [head addSubview:imgv];
+    imgv.frame = CGRectMake(SCREEN_WIDTH * 0.5 - 130, (head.frame.size.height-60)/2-30, 30, 30);
+    [imgvbg addSubview:imgv];
     if ([AccountHanler loginState]==0) {
         textLa.frame =CGRectMake((SCREEN_WIDTH-190+40)/2, CGRectGetMinY(imgv.frame), 190, 30);
     }
     textLa.text =@"登陆可以查看会员价哦～";
     textLa.textColor =[UIColor whiteColor];
-    [head addSubview:textLa];
+    [imgvbg addSubview:textLa];
     
     
     // 管理地址
@@ -255,29 +256,27 @@
     [addresBut setImage:[UIImage imageNamed:@"Person_address"] forState:UIControlStateNormal];
     addresBut.imageEdgeInsets = UIEdgeInsetsMake(0.0, -20, 0.0, 0.0);
     addresBut.titleEdgeInsets = UIEdgeInsetsMake(0.0, -15.0, 0.0, 0.0);
-    [head addSubview:addresBut];
+    [imgvbg addSubview:addresBut];
     
 
-    UIImageView *imgvbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_header_bg"]];
-    [head addSubview:imgvbg];
-    [head setImage:[UIImage imageNamed:@"Person_Btn_bg"]];
-//    [head setBackgroundColor:[UIColor blackColor]];
    
+//    [head sendSubviewToBack:imgvbg];
     
-    [head sendSubviewToBack:imgvbg];
-    [imgvbg mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.edges.equalTo(head).with.insets(UIEdgeInsetsMake(0, 0, 55, 0));
-    }];
+    UIView *blackv = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(head.frame)-55, VIEW_WIDETH, 55)];
+    blackv.userInteractionEnabled =YES;
+    blackv.alpha =0.7;
+    blackv.backgroundColor = [UIColor blackColor];
+    [imgvbg addSubview:blackv];
+    
     
     NSArray *tits = @[@"待付款",@"待收货",@"全部订单",@"评价订单"];
     for (int i =0; i<4; i++) {
         
         
-        UIButton *lBtn = [[UIButton alloc] initWithFrame:CGRectMake(i*(self.view.frame.size.width/4), CGRectGetMaxY(head.frame)-60, self.view.frame.size.width/4, 70)];
+        UIButton *lBtn = [[UIButton alloc] initWithFrame:CGRectMake(i*(self.view.frame.size.width/4), 0, self.view.frame.size.width/4, 60)];
         [lBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [lBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [head addSubview:lBtn];
+        [blackv addSubview:lBtn];
         lBtn.tag = 98970+i;
         
         UIImageView *img = [[UIImageView alloc] init];
@@ -287,7 +286,7 @@
         [lBtn addSubview:img];
         [img mas_makeConstraints:^(MASConstraintMaker *make) {
             
-            make.edges.equalTo(lBtn).with.insets(UIEdgeInsetsMake(10, 26, 35, 26));
+            make.edges.equalTo(lBtn).with.insets(UIEdgeInsetsMake(3, 26, 35, 26));
             
         }];
         UILabel *lab = [[UILabel alloc] init];
@@ -299,7 +298,7 @@
         
         [lab mas_makeConstraints:^(MASConstraintMaker *make) {
             
-             make.edges.equalTo(lBtn).with.insets(UIEdgeInsetsMake(45, 5, 15, 5));
+             make.edges.equalTo(lBtn).with.insets(UIEdgeInsetsMake(30, 5, 5, 5));
         }];
         
     }
@@ -309,7 +308,7 @@
     labbb = [[UILabel alloc] initWithFrame:CGRectMake((head.frame.size.width-200)/2, CGRectGetMaxY(imgv.frame)+20, 200, 17)];
     labbb.textAlignment = NSTextAlignmentCenter;
     labbb.textColor = [UIColor whiteColor];
-    [head addSubview:labbb];
+    [imgvbg addSubview:labbb];
     
     
     loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(55, CGRectGetMaxY(imgv.frame)+10, 85, 30)];
@@ -317,7 +316,7 @@
     [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(loginClick) forControlEvents:UIControlEventTouchUpInside];
     [loginBtn setBackgroundImage:[UIImage imageNamed:@"Person_BlackLine"] forState:UIControlStateNormal];
-    [head addSubview:loginBtn];
+    [imgvbg addSubview:loginBtn];
     
     
     registBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-85-55, CGRectGetMaxY(imgv.frame)+10, 85, 30)];
@@ -325,7 +324,7 @@
     [registBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [registBtn addTarget:self action:@selector(registBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [registBtn setBackgroundImage:[UIImage imageNamed:@"Person_BlackLine"] forState:UIControlStateNormal];
-    [head addSubview:registBtn];
+    [imgvbg addSubview:registBtn];
     head.userInteractionEnabled = YES;
     
    
