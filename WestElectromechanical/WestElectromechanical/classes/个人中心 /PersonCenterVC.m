@@ -135,7 +135,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    VIEW_BACKGROUND;
+    self.view.backgroundColor = [UIColor whiteColor];
     [self setTitle:@"个人中心"];
     array1 = @[@"查看信息",@"浏览历史",@"我的收藏",@"400-821-8800"];
     weh = [[WEHTTPHandler alloc]init];
@@ -260,8 +260,8 @@
     UIImageView *imgvbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_header_bg"]];
     [head addSubview:imgvbg];
     [head setImage:[UIImage imageNamed:@"Person_Btn_bg"]];
-    [head setBackgroundColor:[UIColor blackColor]];
-    head.alpha = 0.3;
+//    [head setBackgroundColor:[UIColor blackColor]];
+   
     
     [head sendSubviewToBack:imgvbg];
     [imgvbg mas_makeConstraints:^(MASConstraintMaker *make) {
