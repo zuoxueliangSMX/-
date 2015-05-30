@@ -244,7 +244,7 @@
     }else{
         
         LoginVC *loginVC =[[LoginVC alloc]init];
-        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
         [self presentViewController:nav animated:YES completion:^{
             
         }];
@@ -324,7 +324,7 @@
         [loginVC setLoginBlock:^{
             [bSelf productRedreshProductData];
         }];
-        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
         [self presentViewController:nav animated:YES completion:^{
             
         }];

@@ -65,7 +65,7 @@
     squareView.layer.cornerRadius =4;
     [self.view addSubview:squareView];
     
-    BACK_POP
+//    BACK_POP
     //用户名
     
     userNameTf = [[UITextField alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH-30, 40)];

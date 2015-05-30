@@ -458,7 +458,7 @@
                 [bSelf productRedreshCategoryId:bSelf.t_id];
             }
         }];
-        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
         
         
         [self presentViewController:nav animated:YES completion:^{
