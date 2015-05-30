@@ -349,6 +349,7 @@
 - (void)getProductDeatilData:(WEProductSingleModel *)singleModel
 {
     WEHTTPHandler *handler = [[WEHTTPHandler alloc]init];
+    __weak WEProductListVC *bSelf = self;
     [handler executeGetProductDetailDataWithProductId:singleModel.pid withSuccess:^(id obj) {
         DLog(@"%@",obj);
         WEProductDetailModel *detailModel = (WEProductDetailModel *)obj;
@@ -358,6 +359,15 @@
             WEProductDetailVC *detailVC =[[WEProductDetailVC alloc]init];
             detailVC.productId =singleModel.pid;
             detailVC.detailModel = detailModel;
+            [detailVC setProductDetailBlock:^{
+                if (bSelf.searchName.length>0) {
+                    
+                    [bSelf productRedreshSearchName:bSelf.searchName];
+                }else{
+                    [bSelf productRedreshCategoryId:bSelf.t_id];
+                }
+
+            }];
             [self.navigationController pushViewController:detailVC animated:YES];
         } faileBlock:^(id obj) {
             
@@ -401,16 +411,56 @@
     } withFailed:^(id obj) {
         
     }];
-
 }
 
+
+// 刷新分类数据
+- (void)productRedreshCategoryId:(NSString *)t_id
+{
+    __weak WEProductListVC *bSelf = self;
+    [[[WEHTTPHandler alloc]init] executeGetSearchDataWithSearchContent:t_id withSuccess:^(id obj) {
+        bSelf.products = (WEProductsModel *)obj;
+        [bSelf.productList reloadData];
+        [bSelf.productCollection reloadData];
+
+    } withFailed:^(id obj) {
+        
+    }];
+}
+
+
+// 刷新产品名字搜索数据
+- (void)productRedreshSearchName:(NSString *)searchName
+{
+    __weak WEProductListVC *bSelf = self;
+    
+    
+    [[[WEHTTPHandler alloc]init]executeGetSearchDataWithSearchProductName:searchName withSuccess:^(id obj) {
+        bSelf.products = (WEProductsModel *)obj;
+        [bSelf.productList reloadData];
+        [bSelf.productCollection reloadData];
+    } withFailed:^(id obj) {
+        
+    }];
+}
 
 - (void)productAddCart:(NSString *)productId
 {
     
     if (![AccountHanler userId]) {
         LoginVC *loginVC =[[LoginVC alloc]init];
+        __weak WEProductListVC *bSelf = self;
+        [loginVC setLoginBlock:^{
+            if (bSelf.searchName.length>0) {
+
+                [bSelf productRedreshSearchName:bSelf.searchName];
+            }else{
+                [bSelf productRedreshCategoryId:bSelf.t_id];
+            }
+        }];
         UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        
+        
         [self presentViewController:nav animated:YES completion:^{
             
         }];

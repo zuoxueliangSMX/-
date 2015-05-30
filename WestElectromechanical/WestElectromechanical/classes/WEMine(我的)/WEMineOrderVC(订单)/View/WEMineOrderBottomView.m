@@ -18,7 +18,7 @@
 {
     if (self = [super initWithFrame:frame]) {
         UILabel *totalPrice =[[UILabel alloc]init];
-        totalPrice.frame =CGRectMake(  10,15,SCREEN_WIDTH*0.5,20);
+        totalPrice.frame =CGRectMake(  10,10,SCREEN_WIDTH*0.5,20);
         totalPrice.numberOfLines =1;
         totalPrice.font =[UIFont systemFontOfSize:18.0];
         totalPrice.backgroundColor =[UIColor clearColor];
@@ -27,8 +27,8 @@
         _totalPrice = totalPrice;
         
         
-        UIButton *button =[UIButton addTarget:self WithNorTitle:kOrderBtnTypePay withNorColor:[UIColor whiteColor] withSelectedTitle:kOrderBtnTypePay withSelectedColor:[UIColor whiteColor] withBackgroundColor:[UIColor redColor] withTileSize:font(14) action:@selector(orderClick:)];
-        button.frame = CGRectMake(SCREEN_WIDTH *0.7+20, 5, SCREEN_WIDTH*0.2, 44);
+        UIButton *button =[UIButton addTarget:self WithNorTitle:kOrderBtnTypePay withNorColor:[UIColor whiteColor] withSelectedTitle:kOrderBtnTypePay withSelectedColor:[UIColor whiteColor] withBackgroundColor:[UIColor orangeColor] withTileSize:font(14) action:@selector(orderClick:)];
+        button.frame = CGRectMake(SCREEN_WIDTH -button.size.width-20, 5, button.size.width+10, 30);
         [self addSubview:button];
         _orderBtn = button;
     }

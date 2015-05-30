@@ -70,29 +70,30 @@
         _productType = productType;
         
         UILabel *productOriPrice =[[UILabel alloc]init];
-        productOriPrice.frame =CGRectMake(  CGRectGetMinX(productBrand.frame)+5,CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3,16);
+        productOriPrice.frame =CGRectMake(  CGRectGetMinX(productBrand.frame),CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3+10,16);
         productOriPrice.numberOfLines =1;
         productOriPrice.font =font(10);
                productOriPrice.textColor =[UIColor redColor];
         productOriPrice.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productOriPrice];
-        _productOriPrice = productOriPrice;
+        
         
         UILabel *productDiscountPrice =[[UILabel alloc]init];
-        productDiscountPrice.frame =CGRectMake(  CGRectGetMaxX(productOriPrice.frame)+5,CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3,16);
+        productDiscountPrice.frame =CGRectMake(  CGRectGetMaxX(productOriPrice.frame)+5,CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3+10,16);
         productDiscountPrice.numberOfLines =1;
         productDiscountPrice.font =font(10);
         productDiscountPrice.textColor =[UIColor appLineColor];
         productDiscountPrice.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productDiscountPrice];
-        _prodcutSalePrice = productDiscountPrice;
+        _productOriPrice = productDiscountPrice;
+        _prodcutSalePrice = productOriPrice;
         
         
         UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:@selector(addProductCart:)];
         
 //        UIButton *btn = [[UIButton alloc]init];
 //        [btn setImage:[ UIImage  imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
-        btn.frame = CGRectMake(frame.size.width-btn.size.width-20, CGRectGetMaxY(productType.frame)+3, btn.size.width, btn.size.height);
+        btn.frame = CGRectMake(frame.size.width-btn.size.width-10, CGRectGetMaxY(productType.frame)+3, btn.size.width, btn.size.height);
         
         _addCartBtn =btn;
         [self.contentView addSubview:btn];
@@ -115,6 +116,9 @@
     self.productOriPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
     self.prodcutSalePrice.text = [NSString stringWithFormat:@"￥%@",singleModel.p_v_price];
     
+    if ([singleModel.p_v_price isEqualToString:@"0"]) {
+        self.prodcutSalePrice.text =@"未登录";
+    }
     if ([singleModel.p_price integerValue]>99999999.99999) {
         self.productOriPrice.text =@"无价格";
         self.addCartBtn.enabled=NO;

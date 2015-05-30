@@ -34,8 +34,9 @@
         _titleLabel = titleLabel;
         
         
-        UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_cateImg.frame)+kCellVHorMargin, CGRectGetMaxY(_titleLabel.frame)+kCellVerMargin, SCREEN_WIDTH-2*kCellMargin, 14)];
+        UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_cateImg.frame)+kCellVHorMargin, CGRectGetMaxY(_titleLabel.frame)+kCellVerMargin, SCREEN_WIDTH-2*kCellMargin-40, 30)];
         [contentLabel setFont:font(12)];
+        contentLabel.numberOfLines=2;
         [contentLabel setTextColor:[UIColor grayColor]];
         [self.contentView addSubview:contentLabel];
         _contentLabel = contentLabel;

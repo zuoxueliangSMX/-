@@ -79,7 +79,8 @@
     NSString *name =[NSString stringWithFormat:@"商品名 : %@",detailModel.p_name];
     
 
-    NSString *price =[NSString stringWithFormat:@"价格 : %@",detailModel.p_price];
+    NSString *price =[NSString stringWithFormat:@"价格 : ￥ %@",detailModel.p_price];
+    
     
     NSString *type =[NSString stringWithFormat:@"原始型号 : %@",detailModel.p_model];
     NSString *brand =[NSString stringWithFormat:@"品牌 : %@",detailModel.p_brand];
@@ -100,6 +101,12 @@
     
     self.prodcutName.text =name;
     self.prodictPrice.text =price;
+    NSString *string = [NSString stringWithFormat:@"￥ %@",detailModel.p_price];
+    NSRange range = [price rangeOfString:string];
+    NSMutableAttributedString*attribute = [[NSMutableAttributedString alloc] initWithString: price];
+    [attribute addAttributes: @{NSForegroundColorAttributeName: [UIColor orangeColor]} range: range];
+    
+    self.prodictPrice.attributedText =attribute;
     self.productOriType.text =type;
     self.productBrand.text = brand;
     self.productOrderId.text = orderNumber;

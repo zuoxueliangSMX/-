@@ -111,7 +111,7 @@
 {
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-    UICollectionView *  productCollection=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-44-64) collectionViewLayout:flowLayout];
+    UICollectionView *  productCollection=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) collectionViewLayout:flowLayout];
     productCollection.dataSource=self;
     productCollection.delegate=self;
     [productCollection setBackgroundColor:[UIColor colorFromHexCode:@"f2f2f2"]];

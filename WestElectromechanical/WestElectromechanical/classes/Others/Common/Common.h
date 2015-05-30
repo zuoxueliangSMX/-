@@ -37,8 +37,9 @@
  */
 #define keySqlTraceExecution YES //设定是否显示fmdb的sql语句执行过程
 #define SERVER_PROTOCOL @"http://"
-#define SERVER_PORT @"/ehsy/interface"
-#define SERVER_HOST @"114.215.135.236" //开发版本
+#define SERVER_PORT @"/interface"
+#define SERVER_HOST @"interface.ehsy.com" //开发版本
+
 #define kColor(r,g,b) [UIColor colorWithRed:r green:g blue:b alpha:1]
 #define kColorAlpha(r,g,b,a) [UIColor colorWithRed:r green:g blue:b alpha:a]
 #define kHightLightedColor kColor(30.0/255,121.0/255,71.0/255)

@@ -17,6 +17,7 @@
 #import "LoginVC.h"
 #import "AccountHanler.h"
 #import "WECartHomeVC.h"
+#import "UIBarButtonItem+BarButtonItem.h"
 @interface GlanceHistoryVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     
@@ -41,16 +42,29 @@
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
 
+- (void)addRightItem{
+    UIBarButtonItem *right = [UIBarButtonItem addTarget:self WithTitle:@"清空" withColor:[UIColor whiteColor] action:@selector(clearAllClick)];
+    /**
+     *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
+     *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
+     */
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = -15;
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, right];
+}
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"浏览历史";
+    self.view.backgroundColor =[UIColor whiteColor];
     self.totalHistoryProducts =[NSMutableArray array];
-    self.navigationItem.rightBarButtonItem =   [[UIBarButtonItem alloc]initWithTitle:@"清空" style:UIBarButtonItemStylePlain target:self action:@selector(clearAllClick)];
-   
-     self.navigationItem.rightBarButtonItem.tintColor =[UIColor whiteColor];
 
-    
+    [self addRightItem];
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     
     
@@ -111,7 +125,7 @@
     
     cell.priceLa.text =[NSString stringWithFormat:@"¥%@",singleModel.p_price];
     cell.memberPrice.text =[NSString stringWithFormat:@"会员价:%@",singleModel.p_v_price];
-
+    cell.memberPrice.textColor =[UIColor redColor];
     UIImageView*imgv2 =(UIImageView*)[cell.contentView viewWithTag:10086];
     imgv2.contentMode =UIViewContentModeScaleAspectFit;
 

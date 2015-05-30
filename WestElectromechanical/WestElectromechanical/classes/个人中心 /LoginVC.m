@@ -59,11 +59,14 @@ WEHTTPHandler *whanle;
 - (void)backNav:(UIButton*)btn{
     NSLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:^{
-        
+
     }];
 }
 
-
+- (void)setLoginBlock:(loginBlock)block
+{
+  _block = block;
+}
 
 - (void)addLeftItem
 {
@@ -245,7 +248,7 @@ WEHTTPHandler *whanle;
     
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
 
-    
+    __weak LoginVC *bSelf = self;
     [whanle executeLoginUserTaskWithAccount:_namefi.text withPaw:self.loginPass.text success:^(id obj) {
     
         
@@ -259,8 +262,10 @@ WEHTTPHandler *whanle;
             }
             [AccountHanler saveUserId:[obj objectForKey:@"uid"]];
             [AccountHanler setLoginState:1];
-            [self dismissViewControllerAnimated:YES completion:^{
-                
+            [bSelf dismissViewControllerAnimated:YES completion:^{
+                if (_block) {
+                    _block();
+                }
             }];
 
         }

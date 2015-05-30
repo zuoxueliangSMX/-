@@ -59,7 +59,7 @@
         priceLabel.frame =CGRectMake(CGRectGetMaxX(productImg.frame)+10,CGRectGetMaxY(versionBrandLa.frame)+3,SCREEN_WIDTH-CGRectGetMinX(productCartIdLabel.frame)-10-20,15);
         priceLabel.numberOfLines =1;
         priceLabel.font =[UIFont systemFontOfSize:12.0];
-        priceLabel.textColor =[UIColor redColor];
+        priceLabel.textColor =[UIColor orangeColor];
         priceLabel.backgroundColor =[UIColor clearColor];
         [self addSubview:priceLabel];
         _priceLabel = priceLabel;

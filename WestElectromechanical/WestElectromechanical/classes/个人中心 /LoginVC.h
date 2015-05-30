@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^loginBlock) (void);
 @interface LoginVC : UIViewController
+{
+    __strong loginBlock _block;
+}
 
+- (void)setLoginBlock:(loginBlock)block;
 @end

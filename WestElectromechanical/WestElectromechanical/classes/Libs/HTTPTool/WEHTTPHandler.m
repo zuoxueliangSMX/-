@@ -123,7 +123,7 @@
     }];
 }
 /**
- *  根据内容搜索
+ *  根据分类搜索
  */
 - (void)executeGetSearchDataWithSearchContent:(NSString *)content
                                   withSuccess:(SuccessBlock)success
@@ -131,7 +131,7 @@
 {
     [AlertUtil showAlertWithText:@"获取分类商品数据"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"t_id=%@",content];
+    NSString *params = [NSString stringWithFormat:@"t_id=%@&uid=%@",content,[AccountHanler userId]];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         WEProductsModel *productsModel =[[WEProductsModel alloc]initWithDict:json];
@@ -171,7 +171,7 @@
 {
     [AlertUtil showAlertWithText:@"获取搜索数据"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"name=%@",productName];
+    NSString *params = [NSString stringWithFormat:@"name=%@&uid=%@",productName,[AccountHanler userId]];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         
@@ -212,7 +212,7 @@
 {
     [AlertUtil showAlertWithText:@"获取产品详情数据"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_PRODUCT_DETAIL WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"pid=%@",productId];
+    NSString *params = [NSString stringWithFormat:@"pid=%@&uid=%@",productId,[AccountHanler userId]];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         WEProductDetailModel *model =[[WEProductDetailModel alloc]initWithDict:json];
@@ -1293,7 +1293,7 @@
 {
     [AlertUtil showAlertWithText:@"正在进行排序"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"t_id=%@&order=%@",content,order];
+    NSString *params = [NSString stringWithFormat:@"t_id=%@&order=%@&uid=%@",content,order,[AccountHanler userId]];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         WEProductsModel *productsModel =[[WEProductsModel alloc]initWithDict:json];
@@ -1335,7 +1335,7 @@
 {
     [AlertUtil showAlertWithText:@"获取搜索数据"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"name=%@&order=%@",productName,order];
+    NSString *params = [NSString stringWithFormat:@"name=%@&order=%@&uid=%@",productName,order,[AccountHanler userId]];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         

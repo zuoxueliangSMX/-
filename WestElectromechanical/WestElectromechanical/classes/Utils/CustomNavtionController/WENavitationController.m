@@ -48,7 +48,7 @@
     }
     // 设置文字属性
     NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
-    textAttrs[NSForegroundColorAttributeName] =[UIColor blackColor];
+    textAttrs[NSForegroundColorAttributeName] =[UIColor whiteColor];
     textAttrs[NSFontAttributeName] = font(17);
     // UIOffsetZero是结构体, 只要包装成NSValue对象, 才能放进字典\数组中
 //    textAttrs[NSShadowAttributeName] = [NSValue valueWithUIOffset:UIOffsetZero];

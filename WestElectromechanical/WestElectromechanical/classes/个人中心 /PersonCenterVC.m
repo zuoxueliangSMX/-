@@ -260,6 +260,8 @@
     UIImageView *imgvbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Person_header_bg"]];
     [head addSubview:imgvbg];
     [head setImage:[UIImage imageNamed:@"Person_Btn_bg"]];
+    [head setBackgroundColor:[UIColor blackColor]];
+    head.alpha = 0.3;
     
     [head sendSubviewToBack:imgvbg];
     [imgvbg mas_makeConstraints:^(MASConstraintMaker *make) {

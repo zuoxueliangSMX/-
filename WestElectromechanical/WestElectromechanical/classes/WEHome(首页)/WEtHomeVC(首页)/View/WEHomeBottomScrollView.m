@@ -81,20 +81,52 @@
     NSMutableArray *tem1 =[NSMutableArray array];
     NSMutableArray *tem2 =[NSMutableArray array];
     NSMutableArray *tem3 =[NSMutableArray array];
+    if (recommends.count%3==0&&recommends.count%4==0) {
+        for (int i = 0; i<recommends.count; i++) {
+            WERecommendModel *model =[recommends objectAtIndex:i];
+            
+            if (i<recommends.count/3) {
+                [tem1 addObject:model];
+            }
+            if (i>recommends.count/3-1&&i<recommends.count/3*2) {
+                [tem2 addObject:model];
+            }
+            if (i>recommends.count/3*2-1&&i<recommends.count/3*3) {
+                [tem3 addObject:model];
+            }
+        }
 
-    for (int i = 0; i<recommends.count; i++) {
-        WERecommendModel *model =[recommends objectAtIndex:i];
+    }else{
+        for (int i = 0; i<recommends.count; i++) {
 
-        if (i<recommends.count/3) {
-            [tem1 addObject:model];
+            WERecommendModel *model =[recommends objectAtIndex:i];
+            
+            if (i<recommends.count/2) {
+                [tem1 addObject:model];
+            }
+            if (i>recommends.count/2-1&&i<recommends.count/2*2) {
+                [tem2 addObject:model];
+            }
+            
+
         }
-        if (i>recommends.count/3-1&&i<recommends.count/3*2) {
-            [tem2 addObject:model];
-        }
-        if (i>recommends.count/3*2-1&&i<recommends.count/3*3) {
-            [tem3 addObject:model];
-        }
+        [tem3 addObjectsFromArray:tem2];
+     
     }
+
+//    for (int i = 0; i<recommends.count; i++) {
+//        WERecommendModel *model =[recommends objectAtIndex:i];
+//
+//        if (i<recommends.count/3) {
+//            [tem1 addObject:model];
+//        }
+//        if (i>recommends.count/3-1&&i<recommends.count/3*2) {
+//            [tem2 addObject:model];
+//        }
+//        if (i>recommends.count/3*2-1&&i<recommends.count/3*3) {
+//            [tem3 addObject:model];
+//        }
+//    }
     NSArray *tem =@[tem1,tem2,tem3];
     for (int i = 0; i < kBottomViewCount; i++) {
        WERecommendBgView *bgView =  [_bgViews objectAtIndex:i];
@@ -115,14 +147,23 @@
 
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     // 获得页码
-    CGFloat doublePage = scrollView.contentOffset.x / scrollView.width;
-    int intPage = (int)(doublePage + 0.5);
+    int doublePage = scrollView.contentOffset.x / scrollView.width;
+    //    int intPage = (int)(doublePage + 0.5);
     // 设置页码
-    _pageControl.currentPage = intPage;
+    _pageControl.currentPage = doublePage;
 }
+
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+//{
+//    // 获得页码
+//    int doublePage = scrollView.contentOffset.x / scrollView.width;
+////    int intPage = (int)(doublePage + 0.5);
+//    // 设置页码
+//    _pageControl.currentPage = doublePage;
+//}
 
 /*
 // Only override drawRect: if you perform custom drawing.

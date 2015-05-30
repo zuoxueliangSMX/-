@@ -317,8 +317,13 @@
 
 - (void)productAddCart:(NSString *)productId
 {
+    __weak WEProductDetailVC *bSelf =self;
+
     if (![AccountHanler userId]) {
         LoginVC *loginVC =[[LoginVC alloc]init];
+        [loginVC setLoginBlock:^{
+            [bSelf productRedreshProductData];
+        }];
         UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
         [self presentViewController:nav animated:YES completion:^{
             
@@ -332,7 +337,6 @@
             [AlertUtil showAlertWithText:@"商品暂不出售，请联系我们方可商谈价格"];
         }else{
             WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
-            __weak WEProductDetailVC *bSelf =self;
             [handler executeProductAddCartTaskWithProductId:productId withUserId:[AccountHanler userId] withSuccess:^(id obj) {
                 DLog(@"%@",obj);
                 WECartHomeVC *homeVC =[[WECartHomeVC alloc]init];
@@ -347,6 +351,33 @@
        
         
     }
+}
+
+
+
+// 刷新产品相信数据
+- (void)productRedreshProductData
+{
+    __weak WEProductDetailVC *bSelf = self;
+
+    [[[WEHTTPHandler alloc]init] executeGetProductDetailDataWithProductId:self.productId withSuccess:^(id obj) {
+        
+        bSelf.detailModel = (WEProductDetailModel*)obj;
+        NSIndexPath *indexPath =[NSIndexPath indexPathForRow:0 inSection:0];
+       WEProductDetailInfoCell * cell = (WEProductDetailInfoCell *)[self.productForm cellForRowAtIndexPath:indexPath];
+        cell.detailModel = bSelf.detailModel;
+        if (_block) {
+            _block();
+        }
+        
+    } withFailed:^(id obj) {
+        
+    }];
+}
+
+- (void)setProductDetailBlock:(productDetailBlock)block
+{
+    _block = block;
 }
 
 

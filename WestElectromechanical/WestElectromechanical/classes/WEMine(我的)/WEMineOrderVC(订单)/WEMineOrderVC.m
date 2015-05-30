@@ -75,6 +75,7 @@
     _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, SCREEN_HEIGHT-64-40) style:UITableViewStylePlain];
     _table.delegate =self;
     _table.dataSource =self;
+    _table.tableFooterView =[[UIView alloc]init];
     [self.view addSubview:_table];
   
 }
@@ -124,6 +125,7 @@
                       ];
     
     [self.view addSubview:self.selectionList];
+    
     
     
 }

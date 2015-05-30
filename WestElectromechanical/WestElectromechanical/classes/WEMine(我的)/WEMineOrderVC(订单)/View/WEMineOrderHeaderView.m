@@ -21,26 +21,26 @@
     if (self = [super initWithFrame:frame]) {
         
         UILabel *orderNum =[[UILabel alloc]init];
-        orderNum.frame =CGRectMake( kHMargin,kMargin,SCREEN_WIDTH-100,18);
+        orderNum.frame =CGRectMake( kHMargin,kMargin,SCREEN_WIDTH-100,15);
         orderNum.numberOfLines =1;
-        orderNum.font =font(16);
-        orderNum.textColor =[UIColor colorFromHexCode:@"c2c2c2"];
+        orderNum.font =font(14);
+        orderNum.textColor =[UIColor darkGrayColor];
 
         orderNum.backgroundColor =[UIColor clearColor];
         [self addSubview:orderNum];
         
         UILabel *orderTime =[[UILabel alloc]init];
-        orderTime.frame =CGRectMake( kHMargin,CGRectGetMaxY(orderNum.frame)+kMargin,SCREEN_WIDTH-100,18);
+        orderTime.frame =CGRectMake( kHMargin,CGRectGetMaxY(orderNum.frame)+kMargin,SCREEN_WIDTH-100,15);
         orderTime.numberOfLines =1;
-        orderTime.font =font(16);
-        orderTime.textColor =[UIColor colorFromHexCode:@"c2c2c2"];
+        orderTime.font =font(14);
+        orderTime.textColor =[UIColor darkGrayColor];
         orderTime.backgroundColor =[UIColor clearColor];
         [self addSubview:orderTime];
         
         UILabel *orderStutas =[[UILabel alloc]init];
         orderStutas.frame =CGRectMake( SCREEN_WIDTH-80,CGRectGetMinY(orderNum.frame),60,18);
         orderStutas.numberOfLines =1;
-        orderStutas.font =font(18);
+        orderStutas.font =font(15);
         orderStutas.textAlignment =2;
         orderStutas.textColor =[UIColor blueColor];
         orderStutas.backgroundColor =[UIColor clearColor];

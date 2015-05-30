@@ -79,7 +79,7 @@
         productOriPrice.backgroundColor =[UIColor clearColor];
         [bgView addSubview:productOriPrice];
         productOriPrice.text =@"￥ 32.6";
-        _productPrice = productOriPrice;
+        
         
         
         UILabel *productDiscountPrice =[[UILabel alloc]init];
@@ -90,7 +90,8 @@
         productDiscountPrice.backgroundColor =[UIColor clearColor];
         productDiscountPrice.text =@"￥ 18.6";
         [bgView addSubview:productDiscountPrice];
-        _productSalePrice = productDiscountPrice;
+        _productPrice = productDiscountPrice;
+        _productSalePrice = productOriPrice;
         
         
         UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:@selector(addProductCart:)];
@@ -117,8 +118,13 @@
     self.acrtBtn.enabled=YES;
 
     self.productPrice.text = [NSString stringWithFormat:@"￥ %@",singleModel.p_price];
+    
     self.productSalePrice.text = [NSString stringWithFormat:@"￥%@",singleModel.p_v_price];
-
+    
+    if ([singleModel.p_v_price isEqualToString:@"0"]) {
+        self.productSalePrice.text = @"未登录";
+    }
+    
     if ([singleModel.p_price integerValue]>99999999.99999) {
         self.productPrice.text =@"无价格";
         self.acrtBtn.enabled=NO;

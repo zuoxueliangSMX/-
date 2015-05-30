@@ -143,7 +143,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 67;
+    return 80;
 }
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -154,7 +154,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.titleLabel.text = [_categorys.types[indexPath.row] t_name];
-    cell.contentLabel.text = _menuTitles[indexPath.row%_menuTitles.count];
+    cell.contentLabel.text = [_categorys.types[indexPath.row] t_types];
     
     [cell.cateImg setWebImgUrl:[NSString stringWithFormat:@"%@/uploads/image/cate/%@.jpg",kWEImgUrl,[_categorys.types[indexPath.row] t_id]] placeHolder:[UIImage imageNamed:_headers[indexPath.row%_headers.count]]];
     
