@@ -341,4 +341,12 @@
                                            withSuccess:(SuccessBlock)success
                                             withFailed:(FailedBlock)failed;
 
+/**
+ *  34.意见反馈
+ */
+
+- (void)executeCommitOrderBackWithMessage:(NSString *)message
+                              withSuccess:(SuccessBlock)success
+                               withFailed:(FailedBlock)failed;
+
 @end

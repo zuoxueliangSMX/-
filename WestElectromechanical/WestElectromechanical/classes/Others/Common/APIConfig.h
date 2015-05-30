@@ -190,6 +190,11 @@
  */
 #define API_AlYINFO @"/json_user.php"
 
+/**
+ *  34.提交意见反馈
+ */
+#define API_COMMIT_BACK @"/json_opinion.php"
+
 
 #define ctmKey @"20120401"
 

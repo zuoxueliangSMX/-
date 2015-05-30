@@ -11,6 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AccountHanler.h"
 #import "RDVTabBarController.h"
+#import "WEHTTPHandler.h"
+#import "NSString+Extension.h"
 @interface MarkSheetVC ()<UITextViewDelegate >
 {
     
@@ -39,7 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title =@"意见反馈及评分";
+    self.title =@"意见反馈";
     VIEW_BACKGROUND
     tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(10, 40,SCREEN_WIDTH-20, 160)];
     tv.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -58,8 +60,8 @@
     
     
     UIButton * commitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [commitBtn setFrame:CGRectMake(10, CGRectGetMaxY(tv.frame)+25, 120, 35)];
-    [commitBtn  setTitle:@"提       交" forState:UIControlStateNormal ];
+    [commitBtn setFrame:CGRectMake(10, CGRectGetMaxY(tv.frame)+25, SCREEN_WIDTH-20, 35)];
+    [commitBtn  setTitle:@"提交" forState:UIControlStateNormal ];
     [commitBtn  setTitle:@"" forState:UIControlStateHighlighted ];
     [commitBtn setBackgroundColor:SET_COLOR(255.0, 99.0, 0.0)];
     [commitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -67,14 +69,14 @@
     [self.view addSubview:commitBtn];
     
     
-    UIButton * markBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [markBtn setFrame:CGRectMake(SCREEN_WIDTH-130, CGRectGetMaxY(tv.frame)+25, 120, 35)];
-    [markBtn  setTitle:@"评       分" forState:UIControlStateNormal ];
-    [markBtn  setTitle:@"" forState:UIControlStateHighlighted ];
-    [markBtn setBackgroundColor:SET_COLOR(255.0, 99.0, 0.0)];
-    [markBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [markBtn addTarget:self action:@selector(markBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:markBtn];
+//    UIButton * markBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [markBtn setFrame:CGRectMake(CGRectGetMaxX(commitBtn.frame)+20, CGRectGetMaxY(tv.frame)+25, (SCREEN_WIDTH-40)/2, 35)];
+//    [markBtn  setTitle:@"评分" forState:UIControlStateNormal ];
+//    [markBtn  setTitle:@"" forState:UIControlStateHighlighted ];
+//    [markBtn setBackgroundColor:[UIColor colorWithRed:30.0/255 green:121.0/255 blue:71.0/255 alpha:1]];
+//    [markBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [markBtn addTarget:self action:@selector(markBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:markBtn];
 
 
 }
@@ -105,13 +107,22 @@
 -(void)commit
 {
     
-    NSString *userID =  [AccountHanler userId];
-    if (userID == nil) {
+    
+    if ([[NSString deleteSpacing:tv.text] length]>0) {
+        [[[WEHTTPHandler alloc]init] executeCommitOrderBackWithMessage:tv.text withSuccess:^(id obj) {
+            
+        } withFailed:^(id obj) {
+            
+        }];
+    }else{
         
-        
-        WARN_ALERT(@"请登录");
-        return;
+        [AlertUtil showAlertWithText:@"您输入的内容为空，请重新输入！"];
     }
+    
+
+    
+    
+
 //    NSMutableString * str =  [[NSMutableString alloc]initWithString:self.starfield.text];
 //    
 //    [str  deleteCharactersInRange:NSMakeRange(1,1)];

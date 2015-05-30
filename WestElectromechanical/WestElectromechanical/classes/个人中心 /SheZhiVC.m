@@ -12,7 +12,7 @@
 #import "AccountHanler.h"
 #import "MarkSheetVC.h"
 #import "TLAlertView.h"
-
+#import "LoginVC.h"
 
 @interface SheZhiVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
@@ -50,7 +50,7 @@
     
     
     imgArr = @[@"Person_update",@"Person_advice",@"Person_share",@"Person_exit",];
-    titleArr =@[@"版本更新",@"意见反馈评分",@"软件分享",@"注销"];
+    titleArr =@[@"版本更新",@"意见反馈",@"软件分享",@"注销"];
     table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
     
     self.view.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
@@ -109,8 +109,6 @@
         nameLa.textColor =[UIColor blackColor];
         nameLa.tag =100;
        
-        
-
        [view addSubview:imgv];
        [view addSubview:nameLa];
         
@@ -143,12 +141,17 @@
         case 1:
         {
             
-//            if ([AccountHanler loginState]==0) {
-//                
-//                ALERT_WARN(@"请先登录");
-//                return;
-//                
-//            }
+            if ([AccountHanler loginState]==0) {
+                
+                LoginVC *loginVC =[[LoginVC alloc]init];
+                WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
+                [self presentViewController:nav animated:YES completion:^{
+                    
+                }];
+
+                return;
+                
+            }
             MarkSheetVC *mark = [MarkSheetVC alloc];
             [self.navigationController pushViewController:mark animated:YES];
             
