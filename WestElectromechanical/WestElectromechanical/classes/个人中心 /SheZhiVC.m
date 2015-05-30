@@ -101,11 +101,10 @@
     
         
         UIImageView *imgv =[[UIImageView alloc]initWithFrame:CGRectMake(10, 20, 30, 30)];
+        
+        imgv.contentMode = UIViewContentModeCenter;
         imgv.tag =101;
-        
-        
-        
-        
+
         UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imgv.frame)+15, 20, 150, 30)];
         nameLa.textColor =[UIColor blackColor];
         nameLa.tag =100;
@@ -144,12 +143,12 @@
         case 1:
         {
             
-            if ([AccountHanler loginState]==0) {
-                
-                ALERT_WARN(@"请先登录");
-                return;
-                
-            }
+//            if ([AccountHanler loginState]==0) {
+//                
+//                ALERT_WARN(@"请先登录");
+//                return;
+//                
+//            }
             MarkSheetVC *mark = [MarkSheetVC alloc];
             [self.navigationController pushViewController:mark animated:YES];
             

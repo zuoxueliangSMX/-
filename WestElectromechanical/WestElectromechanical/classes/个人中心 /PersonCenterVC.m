@@ -148,7 +148,8 @@
 - (void)loginClick{
 
     LoginVC *loginVC =[[LoginVC alloc]init];
-    UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+    
+    WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
     [self presentViewController:nav animated:YES completion:^{
         
     }];
@@ -208,7 +209,7 @@
         [self.navigationController pushViewController:mymenu animated:YES];
     }else{
         LoginVC *loginVC =[[LoginVC alloc]init];
-        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
         [self presentViewController:nav animated:YES completion:^{
             
         }];
@@ -418,7 +419,7 @@
             if ([AccountHanler userId]==NULL) {
             
                 LoginVC *loginVC =[[LoginVC alloc]init];
-                UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+                WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
                 [self presentViewController:nav animated:YES completion:^{
                     
                 }];
@@ -448,7 +449,7 @@
             if ([AccountHanler loginState]==0) {
                 
                 LoginVC *loginVC =[[LoginVC alloc]init];
-                UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+                WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
                 [self presentViewController:nav animated:YES completion:^{
                     
                 }];

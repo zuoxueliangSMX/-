@@ -57,7 +57,7 @@ WEHTTPHandler *whanle;
 }
 
 - (void)backNav:(UIButton*)btn{
-    NSLog(@"返回");
+    DLog(@"返回");
     [self dismissViewControllerAnimated:YES completion:^{
 
     }];
@@ -70,7 +70,7 @@ WEHTTPHandler *whanle;
 
 - (void)addLeftItem
 {
-    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"navigationbar_back" highImageName:@"back_icon" target:self action:@selector(backNav:)];
+    UIBarButtonItem *right =[UIBarButtonItem itemWithImageName:@"back_icon" highImageName:@"back_icon" target:self action:@selector(backNav:)];
     /**
      *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
      *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
@@ -78,13 +78,13 @@ WEHTTPHandler *whanle;
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
-    negativeSpacer.width = -15;
+    negativeSpacer.width = -5;
     self.navigationItem.leftBarButtonItems = @[negativeSpacer, right];
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"用户登录";
+    self.title = @"登录";
  
     self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
     [self addUI];
@@ -105,7 +105,7 @@ WEHTTPHandler *whanle;
     
     
     UIButton * zhuceBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 5, 80, 30)];
-    [zhuceBtn setTitle:@"免费注册>" forState:UIControlStateNormal];
+    [zhuceBtn setTitle:@"免费注册" forState:UIControlStateNormal];
     
     [zhuceBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [zhuceBtn addTarget:self action:@selector(zhuce) forControlEvents:UIControlEventTouchUpInside];
@@ -123,7 +123,7 @@ WEHTTPHandler *whanle;
     [self.view addSubview:whiteBg];
     
     _namefi = [[UITextField alloc] initWithFrame:CGRectMake(15,5, SCREEN_WIDTH-30, 50)];
-    _namefi.placeholder = @"手机/用户名/邮箱";
+    _namefi.placeholder = @"手机/邮箱/用户名";
     [_namefi setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
     [_namefi setKeyboardType:UIKeyboardTypeDefault];
      _namefi.delegate =self;
@@ -148,7 +148,7 @@ WEHTTPHandler *whanle;
     
     
     UITextField *pswfi = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_namefi.frame)+10, SCREEN_WIDTH-30, 50)];
-    [pswfi setPlaceholder:@"密码(6-16字符)"];
+    [pswfi setPlaceholder:@"请输入密码(6-16字符)"];
     
     pswfi.leftView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 50)];
     pswfi.leftViewMode = UITextFieldViewModeAlways;
@@ -206,7 +206,7 @@ WEHTTPHandler *whanle;
     
     
         UIButton *forgotBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [forgotBtn setTitle:@"忘记密码>?" forState:UIControlStateNormal];
+        [forgotBtn setTitle:@"忘记密码?" forState:UIControlStateNormal];
         [forgotBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         forgotBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [forgotBtn setBackgroundColor:[UIColor clearColor]];

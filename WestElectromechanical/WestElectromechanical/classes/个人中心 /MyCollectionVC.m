@@ -320,7 +320,7 @@ BOOL  isClick ;
     CollectionM  *cm =[_arr objectAtIndex: row2];
     if (![AccountHanler userId]) {
         LoginVC *loginVC =[[LoginVC alloc]init];
-        UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:loginVC];
+        WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
         [self presentViewController:nav animated:YES completion:^{
             
         }];
