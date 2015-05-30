@@ -113,7 +113,7 @@
 
         _selectionIndicatorBar = [[UIView alloc] init];
         _selectionIndicatorBar.translatesAutoresizingMaskIntoConstraints = NO;
-        _selectionIndicatorBar.backgroundColor = [UIColor blackColor];
+        _selectionIndicatorBar.backgroundColor = [UIColor lightGrayColor];
 
         _buttonColorsByState = [NSMutableDictionary dictionary];
         _buttonColorsByState[@(UIControlStateNormal)] = [UIColor blackColor];

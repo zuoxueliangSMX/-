@@ -79,7 +79,7 @@
         
         
         UILabel *productDiscountPrice =[[UILabel alloc]init];
-        productDiscountPrice.frame =CGRectMake(  CGRectGetMaxX(productOriPrice.frame)+5,CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3+10,16);
+        productDiscountPrice.frame =CGRectMake(  CGRectGetMaxX(productOriPrice.frame)-10,CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3+10,16);
         productDiscountPrice.numberOfLines =1;
         productDiscountPrice.font =font(10);
         productDiscountPrice.textColor =[UIColor appLineColor];

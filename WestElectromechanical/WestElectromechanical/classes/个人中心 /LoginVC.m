@@ -104,21 +104,29 @@ WEHTTPHandler *whanle;
    
     
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"免费注册>" style:UIBarButtonItemStyleDone target:self action:@selector(zhuce)];
+    UIButton * zhuceBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 5, 80, 30)];
+    [zhuceBtn setTitle:@"免费注册>" forState:UIControlStateNormal];
+    
+    [zhuceBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [zhuceBtn addTarget:self action:@selector(zhuce) forControlEvents:UIControlEventTouchUpInside];
+    zhuceBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:zhuceBtn];
+    
+    self. navigationItem.rightBarButtonItem = item;
     
    
-     
+    UIView *whiteBg = [[UIView  alloc]initWithFrame:CGRectMake(10,7*kGap+10, SCREEN_WIDTH-20, 110 )];
+  
+    whiteBg.backgroundColor = [UIColor whiteColor];
+    [whiteBg.layer setMasksToBounds:YES];
+    [whiteBg.layer setCornerRadius:5];
+    [self.view addSubview:whiteBg];
     
-    _namefi = [[UITextField alloc] initWithFrame:CGRectMake(15,7*kGap+10, SCREEN_WIDTH-30, 50)];
+    _namefi = [[UITextField alloc] initWithFrame:CGRectMake(15,5, SCREEN_WIDTH-30, 50)];
     _namefi.placeholder = @"手机/用户名/邮箱";
     [_namefi setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-    _namefi.layer.borderWidth = 1.0;
-    _namefi.layer.borderColor =[UIColor lightGrayColor].CGColor;
     [_namefi setKeyboardType:UIKeyboardTypeDefault];
-    
-    [_namefi.layer setMasksToBounds:YES];
-    [_namefi.layer setCornerRadius:5];
-    _namefi.delegate =self;
+     _namefi.delegate =self;
     [_namefi setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_namefi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
@@ -129,12 +137,18 @@ WEHTTPHandler *whanle;
     
     [left addSubview:leftimg];
     _namefi.leftView = left;
-    [self.view addSubview:_namefi];
+    [whiteBg addSubview:_namefi];
     
+    
+    UIImageView *imgv4 = [[UIImageView alloc] init];
+    imgv4.frame = CGRectMake(10, CGRectGetMaxY(_namefi.frame)+1, whiteBg.frame.size.width-20, 1);
+    imgv4.backgroundColor = [UIColor appLineColor];
+    [whiteBg addSubview:imgv4];
+
     
     
     UITextField *pswfi = [[UITextField alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_namefi.frame)+10, SCREEN_WIDTH-30, 50)];
-    [pswfi setPlaceholder:@"密码6至16字符"];
+    [pswfi setPlaceholder:@"密码(6-16字符)"];
     
     pswfi.leftView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 50)];
     pswfi.leftViewMode = UITextFieldViewModeAlways;
@@ -152,10 +166,7 @@ WEHTTPHandler *whanle;
     [pswfi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
     [pswfi setDelegate:self];
     
-    pswfi.layer.borderWidth = 1.0;
-    pswfi.layer.borderColor =[UIColor lightGrayColor].CGColor;
-    [pswfi.layer setMasksToBounds:YES];
-    [pswfi.layer setCornerRadius:5];
+
 
     UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
     UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 40,40)];
@@ -165,24 +176,25 @@ WEHTTPHandler *whanle;
     [psdleft addSubview:psdleftimg];
     pswfi.leftView = psdleft;
     self.loginPass = pswfi;
-    [self.view addSubview:pswfi];
+    [whiteBg addSubview:pswfi];
     
     
     
 
     
-    UILabel *jizhumimaLa =[[UILabel alloc]initWithFrame:CGRectMake(50, CGRectGetMaxY(pswfi.frame)+20, 100, 22)];
+    UILabel *jizhumimaLa =[[UILabel alloc]initWithFrame:CGRectMake(35, CGRectGetMaxY(whiteBg.frame)+20, 100, 22)];
     jizhumimaLa.text = @"记住账号";
-    jizhumimaLa.font = [UIFont systemFontOfSize:12];
-       [self.view addSubview:jizhumimaLa];
+    jizhumimaLa.font = [UIFont systemFontOfSize:14];
+    jizhumimaLa.textColor =[UIColor darkGrayColor];
+    [self.view addSubview:jizhumimaLa];
     
     
     
     UIButton *jizhumimaBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [jizhumimaBtn setFrame:CGRectMake(30, CGRectGetMaxY(pswfi.frame)+22, 16, 22)];
+    [jizhumimaBtn setFrame:CGRectMake(15, CGRectGetMaxY(whiteBg.frame)+22, 16, 17)];
     
-    [jizhumimaBtn setImage:[UIImage imageNamed:@"Person_selected"] forState: UIControlStateNormal];
-    [jizhumimaBtn setImage:[UIImage imageNamed:@"Person_selected_btn"] forState:UIControlStateSelected];
+    [jizhumimaBtn setImage:[UIImage imageNamed:@"login_square"] forState: UIControlStateNormal];
+    [jizhumimaBtn setImage:[UIImage imageNamed:@"login_selected"] forState:UIControlStateSelected];
     [jizhumimaBtn addTarget:self action:@selector(jizhumimaBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kUserAccount]) {
@@ -194,14 +206,14 @@ WEHTTPHandler *whanle;
     
     
         UIButton *forgotBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [forgotBtn setTitle:@"忘记密码>" forState:UIControlStateNormal];
-        forgotBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [forgotBtn setTitle:@"忘记密码>?" forState:UIControlStateNormal];
+        [forgotBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        forgotBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [forgotBtn setBackgroundColor:[UIColor clearColor]];
-        [forgotBtn setFrame:CGRectMake(SCREEN_WIDTH-150, CGRectGetMaxY(pswfi.frame)+20, 100, 22)];
+        [forgotBtn setFrame:CGRectMake(SCREEN_WIDTH-100, CGRectGetMaxY(whiteBg.frame)+20, 100, 22)];
     
     
     
-        [forgotBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [forgotBtn addTarget:self action:@selector(forgetClick) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:forgotBtn];
     
@@ -210,10 +222,9 @@ WEHTTPHandler *whanle;
     UIButton *loginBu = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginBu setTitle:@"登录" forState:UIControlStateNormal];
     [loginBu setTitle:@"" forState:UIControlStateHighlighted];
-    [loginBu setFrame:CGRectMake((self.view.frame.size.width-240)/2, CGRectGetMaxY(jizhumimaLa.frame)+20, 240, 44)];
-    [loginBu setBackgroundColor:[UIColor orangeColor]];
+    [loginBu setFrame:CGRectMake((self.view.frame.size.width-300)/2, CGRectGetMaxY(jizhumimaLa.frame)+20, 300, 44)];
+     loginBu.backgroundColor =SET_COLOR(240.0, 80.0, 15.0);
     [loginBu.layer setMasksToBounds:YES];
-    [loginBu.layer setCornerRadius:5];
     [loginBu setBackgroundImage:[UIImage imageNamed:@"queding"] forState:UIControlStateNormal];
     [loginBu setBackgroundImage:[UIImage imageNamed:@"sharesure.png"] forState:UIControlStateHighlighted];
     [loginBu addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];

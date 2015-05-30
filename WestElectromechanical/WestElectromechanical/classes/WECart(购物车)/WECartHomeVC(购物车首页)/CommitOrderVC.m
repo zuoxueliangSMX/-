@@ -335,7 +335,7 @@
             UILabel *nameLa = (UILabel*)[view viewWithTag:104];
             UILabel *addresLa = (UILabel*)[view viewWithTag:105];
             UILabel *phoneLa = (UILabel*)[view viewWithTag:106];
-            titleLa.text =@"收货地址";
+            titleLa.text =@"送货地址";
             
             
               nameLa.text =[AccountHanler reciveName];
@@ -374,12 +374,11 @@
 
             
             
-         
-            
             
 
                         if ([AccountHanler   invoiceHead].length==0) {
                           
+                            titleLa.frame =CGRectMake(10, 12, 150, 20);
                             view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 50);
 
                         }
@@ -489,7 +488,7 @@
     
     UIButton *btn =[[UIButton alloc]initTarget:self WithTitle:@"提交订单" withColor:[UIColor whiteColor] action:@selector(payClick:)];
     
-    [btn  setBackgroundColor:[UIColor  redColor]];
+    [btn  setBackgroundColor:[UIColor  orangeColor]];
     
     btn.frame = CGRectMake(SCREEN_WIDTH-btn.size.width, 0, 70, 44);
     [view addSubview:btn];

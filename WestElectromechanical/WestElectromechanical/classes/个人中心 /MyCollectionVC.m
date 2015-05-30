@@ -76,6 +76,11 @@
     VIEW_BACKGROUND;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.title = @"我的收藏";
+
+    
+   self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    
+    
     [self addRightItem];
     [self initCollectionView];
         }
@@ -156,9 +161,16 @@
     
     
     cell.addCartBtn.tag=[indexPath row]+100;
+    
+    UIImageView *imgv4 = [[UIImageView alloc] init];
+    imgv4.frame = CGRectMake(CGRectGetMinX(cell.addCartBtn.frame)-15, CGRectGetMinY(cell.addCartBtn.frame), 1, CGRectGetHeight(cell.addCartBtn.frame));
+    imgv4.backgroundColor = [UIColor appLineColor];
+    [cell addSubview:imgv4];
 
     
+    
     cell.productOriPrice.text =[NSString stringWithFormat:@"¥%@",cm.p_v_price];
+//    cell.productOriPrice.frame =CGRectMake(CGRectGetMinX(cell.productBrand.frame)-10,CGRectGetMaxY(cell.productType.frame)+3,((SCREEN_WIDTH-30)/2-20)/3+10,16);
     cell.prodcutSalePrice.text =[NSString stringWithFormat:@"¥%@",cm.p_price];
     
      NSString *path = [NSString stringWithFormat:@"%@/%@",kWEProductImgUrl,cm.p_imgurl];

@@ -103,7 +103,7 @@
     [self.selectionList setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
     [self.selectionList setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
-    
+    self.selectionList.selectionIndicatorColor =[UIColor lightGrayColor];
     self.selectionList.selectedButtonIndex =self.selectedItem;
     
     

@@ -60,7 +60,7 @@
     // Do any additional setup after loading the view.
    
      self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
-    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(15, 80, SCREEN_WIDTH-30, 225)];
+    UIView * squareView = [[UIView alloc]initWithFrame:CGRectMake(15, 95, SCREEN_WIDTH-30, 210)];
      squareView.backgroundColor = [UIColor whiteColor];
     squareView.layer.cornerRadius =4;
     [self.view addSubview:squareView];
@@ -196,11 +196,7 @@
     //    [pwdNmTextF setTextAlignment:NSTextAlignmentCenter];
     [squareView addSubview:sureTf];
     
-    
-    UIImageView *imgv4 = [[UIImageView alloc] init];
-    imgv4.frame = CGRectMake(10, CGRectGetMaxY(sureTf.frame)+1, squareView.frame.size.width-20, 1);
-    imgv4.backgroundColor = [UIColor appLineColor];
-    [squareView addSubview:imgv4];
+   
     
 
     
@@ -259,10 +255,10 @@
     
     
     UIButton *protolcBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [protolcBtn setFrame:CGRectMake(30, 265+90, 15, 22)];
+    [protolcBtn setFrame:CGRectMake(30, 265+93, 15, 17)];
     
-    [protolcBtn setImage:[UIImage imageNamed:@"Person_selected"] forState: UIControlStateNormal];
-    [protolcBtn setImage:[UIImage imageNamed:@"Person_selected_btn"] forState:UIControlStateSelected];
+    [protolcBtn setImage:[UIImage imageNamed:@"login_square"] forState: UIControlStateNormal];
+    [protolcBtn setImage:[UIImage imageNamed:@"login_selected"] forState:UIControlStateSelected];
     
     
     

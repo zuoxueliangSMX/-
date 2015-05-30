@@ -39,13 +39,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title =@"设置";
+    self.title =@"意见反馈及评分";
     VIEW_BACKGROUND
     tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(10, 40,SCREEN_WIDTH-20, 160)];
     tv.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     tv.delegate = self;
     
-    tv.placeholder=@"字数不超过200字";
+    tv.placeholder=@"请输入您的意见（200字以内）";
     
     
     tv.font= [UIFont systemFontOfSize:17];
@@ -58,9 +58,7 @@
     
     
     UIButton * commitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [commitBtn setFrame:CGRectMake(20, CGRectGetMaxY(tv.frame)+25, 80, 35)];
-    [commitBtn.layer setMasksToBounds:YES];
-    [commitBtn.layer setCornerRadius:5];
+    [commitBtn setFrame:CGRectMake(10, CGRectGetMaxY(tv.frame)+25, 120, 35)];
     [commitBtn  setTitle:@"提       交" forState:UIControlStateNormal ];
     [commitBtn  setTitle:@"" forState:UIControlStateHighlighted ];
     [commitBtn setBackgroundColor:SET_COLOR(255.0, 99.0, 0.0)];
@@ -70,9 +68,7 @@
     
     
     UIButton * markBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [markBtn setFrame:CGRectMake(SCREEN_WIDTH-100, CGRectGetMaxY(tv.frame)+25, 80, 35)];
-    [markBtn.layer setMasksToBounds:YES];
-    [markBtn.layer setCornerRadius:5];
+    [markBtn setFrame:CGRectMake(SCREEN_WIDTH-130, CGRectGetMaxY(tv.frame)+25, 120, 35)];
     [markBtn  setTitle:@"评       分" forState:UIControlStateNormal ];
     [markBtn  setTitle:@"" forState:UIControlStateHighlighted ];
     [markBtn setBackgroundColor:SET_COLOR(255.0, 99.0, 0.0)];

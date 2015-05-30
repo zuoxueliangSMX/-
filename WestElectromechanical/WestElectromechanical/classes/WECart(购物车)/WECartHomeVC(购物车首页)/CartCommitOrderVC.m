@@ -39,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    VIEW_BACKGROUND
     self.title =@"提交订单";
     [self  addUI];
 
