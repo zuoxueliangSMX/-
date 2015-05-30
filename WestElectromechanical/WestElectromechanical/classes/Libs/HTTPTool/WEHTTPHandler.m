@@ -1365,6 +1365,43 @@
     
 }
 
+/**
+ *  34.意见反馈
+ */
+
+- (void)executeCommitOrderBackWithMessage:(NSString *)message
+                              withSuccess:(SuccessBlock)success
+                               withFailed:(FailedBlock)failed
+{
+    [AlertUtil showAlertWithText:@"提交意见反馈"];
+    NSString *url =[BaseHandler requestUrlWithUrl:API_COMMIT_BACK WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&comment=%@",[AccountHanler userId],message];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+    
+        if ([[json objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(json);
+            }
+            
+        }else{
+            [AlertUtil showAlertWithText:@"提交出错"];
+            if (failed) {
+                failed(nil);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        [AlertUtil showAlertWithText:@"网络连接失败"];
+
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+}
 
 
 @end
