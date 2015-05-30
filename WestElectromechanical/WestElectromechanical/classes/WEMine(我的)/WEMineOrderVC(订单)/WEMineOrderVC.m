@@ -102,8 +102,8 @@
     self.selectionList = [[HTHorizontalSelectionList alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
     [self.selectionList setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
-    [self.selectionList setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
-    self.selectionList.selectionIndicatorColor =[UIColor lightGrayColor];
+    [self.selectionList setTitleColor:[UIColor colorFromHexCode:@"333333"] forState:UIControlStateSelected];
+    self.selectionList.selectionIndicatorColor =[UIColor colorWithRed:30.0/255 green:121.0/255 blue:71.0/255 alpha:1];
     self.selectionList.selectedButtonIndex =self.selectedItem;
     
     
