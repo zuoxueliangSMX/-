@@ -204,7 +204,7 @@
                 break;
             case 2:
             {
-                UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 150, 20)];
+                UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, 150, 20)];
                 titleLa.tag =103;
                 UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLa.frame), 180, 20)];
                 nameLa.font= [UIFont systemFontOfSize:14];
@@ -232,7 +232,7 @@
                 break;
             case 3:
             {
-                UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 150, 20)];
+                UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, 150, 20)];
                 titleLa.tag =107;
                 titleLa.font= [UIFont systemFontOfSize:14];
                 
@@ -347,7 +347,7 @@
             
             
             if ([AccountHanler   reciveName].length==0) {
-                
+                titleLa.frame =CGRectMake(10, 10, 150, 20);
                 view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 50);
                 
             }
@@ -366,7 +366,7 @@
             UILabel *invoiceHeadLa = (UILabel*)[view viewWithTag:110];
             titleLa.text =@"索要发票";
             
-            
+             titleLa.frame =CGRectMake(0, 0, 150, 20);
             invoiceStyleLa.text =[AccountHanler invoiceStyle];
             invoiceAddresLa.text = [AccountHanler invoiceAdress];
             invoiceHeadLa.text = [AccountHanler invoiceHead];
@@ -378,7 +378,7 @@
 
                         if ([AccountHanler   invoiceHead].length==0) {
                           
-                            titleLa.frame =CGRectMake(10, 12, 150, 20);
+                            titleLa.frame =CGRectMake(0, 10, 150, 20);
                             view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 50);
 
                         }
@@ -477,13 +477,22 @@
 {
     UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_table.frame), SCREEN_WIDTH, 44)];
     view.backgroundColor = [UIColor whiteColor];
-        UILabel *allPriceLa=  [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 120, 20)];
+    UILabel *allPriceLa=  [[UILabel alloc]initWithFrame:CGRectMake(10, 10, 60, 20)];
     allPriceLa.font = [UIFont systemFontOfSize:14];
     
-     allPriceLa.text = [NSString stringWithFormat:@"总金额:¥:%0.2f",self.totalP];
+     allPriceLa.text = @"总金额:¥:";
       allPriceLa.textColor  =[UIColor  lightGrayColor];
     [view addSubview:allPriceLa];
     
+    
+    UILabel *onlyPriceLa=  [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(allPriceLa.frame), 10, 70, 20)];
+    onlyPriceLa.font = [UIFont systemFontOfSize:14];
+    
+    onlyPriceLa.text =[NSString stringWithFormat:@"%0.2f",self.totalP];
+    onlyPriceLa.textColor  =[UIColor  orangeColor];
+    [view addSubview:onlyPriceLa];
+    
+
     
     
     UIButton *btn =[[UIButton alloc]initTarget:self WithTitle:@"提交订单" withColor:[UIColor whiteColor] action:@selector(payClick:)];

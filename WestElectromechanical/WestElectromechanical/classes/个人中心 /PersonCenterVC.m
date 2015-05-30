@@ -264,7 +264,7 @@
     
     UIView *blackv = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(head.frame)-55, VIEW_WIDETH, 55)];
     blackv.userInteractionEnabled =YES;
-    blackv.alpha =0.7;
+    blackv.alpha =0.6;
     blackv.backgroundColor = [UIColor blackColor];
     [imgvbg addSubview:blackv];
     
