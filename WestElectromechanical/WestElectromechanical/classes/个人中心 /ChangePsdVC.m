@@ -139,7 +139,7 @@
     UIButton *sureBut = [UIButton buttonWithType:UIButtonTypeCustom];
     [sureBut setFrame:CGRectMake(20, 260, SCREEN_WIDTH-40, 40)];
     [sureBut setTitle:@"确定" forState:UIControlStateNormal];
-    [sureBut setBackgroundColor:[UIColor pumpkinColor]];
+    [sureBut setBackgroundColor:[UIColor redColor]];
     [sureBut addTarget:self action:@selector(sureBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [sureBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:sureBut];

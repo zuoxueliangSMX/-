@@ -212,7 +212,7 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     UIButton *loginBut = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginBut setFrame:CGRectMake(15, 265+90, SCREEN_WIDTH-30, 40)];
     [loginBut setTitle:@"保存" forState:UIControlStateNormal];
-    [loginBut setBackgroundColor:[UIColor pumpkinColor]];
+    [loginBut setBackgroundColor:[UIColor redColor]];
     [loginBut addTarget:self action:@selector(saveBtnclick) forControlEvents:UIControlEventTouchUpInside];
     [loginBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:loginBut];

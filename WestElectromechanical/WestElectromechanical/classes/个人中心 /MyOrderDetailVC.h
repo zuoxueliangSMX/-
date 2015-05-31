@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "OrderM.h"
-
+#import "WEOrderDetailM.h"
 @interface MyOrderDetailVC : UIViewController
+@property(nonatomic,strong)  WEOrderDetailM *wm;
 @property(nonatomic,strong)OrderM *om;
 @end
