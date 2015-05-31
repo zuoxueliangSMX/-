@@ -298,14 +298,15 @@
                                    Success:(SuccessBlock)success
                                     failed:(FailedBlock)failed;
 
-////
-///**
-// *  33.订单评价
-// */
-//- (void)executeAffirmAcceptGoodsWithUserId:(NSString *)userId
-//                              withArr:(NSArray *)arr
-//                                   Success:(SuccessBlock)success
-//                                    failed:(FailedBlock)failed;
+
+/**
+ *  35.订单评价
+ */
+- (void)executeOrderCommentsWithUserId:(NSString *)userId
+                              withOrderNum:(NSString *)orderNum
+                           withJsonStr:(NSString*)PinglunList
+                                   Success:(SuccessBlock)success
+                                    failed:(FailedBlock)failed;
 
 
 

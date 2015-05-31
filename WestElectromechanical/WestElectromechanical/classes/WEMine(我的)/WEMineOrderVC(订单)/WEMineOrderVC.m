@@ -183,8 +183,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-       //这写的  有点奇怪 啊
-    
+           
     WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
     return orderFrame.height+5;
 }
@@ -208,7 +207,7 @@
     __weak WEMineOrderCell *bCell = cell;
     [cell.bottomView setOrderBottomViewBlock:^(UIButton *btn) {
         
-        if ([btn.titleLabel.text isEqualToString:kOrderBtnTypeConfirm] ) {
+        if ([@"确认收货" isEqualToString:kOrderBtnTypeConfirm] ) {
 
             [we executeAffirmAcceptGoodsWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
                 if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
@@ -219,8 +218,10 @@
                         
                     } handleConfirm:^{
                         
-                        
+                        WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
+
                         WEMineAddComentVC *coment = [[WEMineAddComentVC alloc]init];
+                        coment.orderFrame =orderFrame;
                         [self.navigationController pushViewController:coment animated:YES];
                         
                     }];

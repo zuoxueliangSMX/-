@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WEMyOrderFrame.h"
 
 @interface WEMineAddComentVC : UIViewController
+@property(nonatomic,strong)WEMyOrderFrame *orderFrame;
 
 @end
