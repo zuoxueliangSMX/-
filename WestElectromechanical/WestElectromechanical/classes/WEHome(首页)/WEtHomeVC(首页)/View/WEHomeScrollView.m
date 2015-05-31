@@ -16,7 +16,7 @@
 
         UIImage *img =[UIImage imageNamed:@"Home_Middle_01"];
 
-        HomeHeaderScrollView *headerView =[[HomeHeaderScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width,(SCREEN_HEIGHT-64-49-10-img.size.height)*0.4)];
+        HomeHeaderScrollView *headerView =[[HomeHeaderScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width,(SCREEN_HEIGHT-64-49-10-img.size.height)*0.4)  withType:JCDetailTopicHome];
         headerView.backgroundColor =[UIColor clearColor];
         [self addSubview:headerView];
         _headerView = headerView;

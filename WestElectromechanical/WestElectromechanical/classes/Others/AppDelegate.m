@@ -16,11 +16,26 @@
 #import "WEHomeVC.h"
 #import "PersonCenterVC.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
+
+
+
+#pragma mark -
+#pragma mark - shareSdk 分享
+- (void)addWeChatShareSDK
+{
+    [ShareSDK registerApp:kShareSDKAPP];
+    
+    [ShareSDK connectWeChatWithAppId:kWeChatAppId
+                           appSecret:kWeChatAppKey
+                           wechatCls:[WXApi class]];
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -138,24 +153,41 @@
     
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    //如果极简开发包不可用,会跳转支付宝钱包进行支付,需要将支付宝钱包的支付结果回传给开 发包
-    if ([url.host isEqualToString:@"safepay"]) {
-        [[AlipaySDK defaultService] processOrderWithPaymentResult:url
-                                                  standbyCallback:^(NSDictionary *resultDic) {
-                                                      NSLog(@"result = %@",resultDic);
-                                                  }]; }
-    if ([url.host isEqualToString:@"platformapi"]){//支付宝钱包快登授权返回 authCode
-        [[AlipaySDK defaultService] processAuthResult:url standbyCallback:^(NSDictionary *resultDic) {
-            NSLog(@"result = %@",resultDic);
+    
+    if ([url.host isEqualToString:@"safepay"]||[url.host isEqualToString:@"platformapi"]) {
+        //如果极简开发包不可用,会跳转支付宝钱包进行支付,需要将支付宝钱包的支付结果回传给开 发包
+        if ([url.host isEqualToString:@"safepay"]) {
+            [[AlipaySDK defaultService] processOrderWithPaymentResult:url
+                                                      standbyCallback:^(NSDictionary *resultDic) {
+                                                          NSLog(@"result = %@",resultDic);
+                                                      }]; }
+        if ([url.host isEqualToString:@"platformapi"]){//支付宝钱包快登授权返回 authCode
+            [[AlipaySDK defaultService] processAuthResult:url standbyCallback:^(NSDictionary *resultDic) {
+                NSLog(@"result = %@",resultDic);
+            }];
+        }
+        
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) { NSLog(@"result = %@",resultDic);//返回的支付结果
         }];
+        return YES;
+
+    }else{
+        return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:nil];
+
     }
     
-    [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) { NSLog(@"result = %@",resultDic);//返回的支付结果
-    }];
-    return YES;
-
+    
 
 }
+
+
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url wxDelegate:nil];
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

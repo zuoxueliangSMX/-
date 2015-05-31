@@ -11,6 +11,10 @@
 -(void)didClick:(id)data;
 -(void)currentPage:(int)page total:(NSUInteger)total;
 @end
+typedef enum : NSUInteger {
+    JCTopicHome,
+    JCTopicDetail,
+} JCTopicType;
 @interface JCTopic : UIScrollView<UIScrollViewDelegate>{
     UIButton * pic;
     bool flag;
@@ -21,6 +25,7 @@
     UIImage *image;
 }
 @property(nonatomic,strong)NSArray * pics;
+@property (nonatomic ,assign)JCTopicType picType;
 @property(nonatomic,retain)id<JCTopicDelegate> JCdelegate;
 -(void)releaseTimer;
 -(void)upDate;

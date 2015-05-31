@@ -8,19 +8,20 @@
 
 #import "HomeHeaderScrollView.h"
 #import "TAPageControl.h"
-@interface HomeHeaderScrollView()<JCTopicDelegate>
+@interface HomeHeaderScrollView()<JCDetailTopicDelegate>
 @property (nonatomic ,weak)TAPageControl *pageControl;
 @end
 @implementation HomeHeaderScrollView
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame withType:(JCDetailTopicType)type
 {
     if (self = [super initWithFrame:frame]) {
         
         _imageURLs =[NSMutableArray array];
         
-        JCTopic *imagePlayerView = [[JCTopic alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, frame.size.height)];
+        JCDetailTopic *imagePlayerView = [[JCDetailTopic alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, frame.size.height)];
 //        imagePlayerView.backgroundColor = [UIColor blueColor];
-        imagePlayerView.JCdelegate =self;
+        imagePlayerView.picType = type;
+        imagePlayerView.JCDetaildelegate =self;
         [self addSubview:imagePlayerView];
         _imgPlayerView = imagePlayerView;
         

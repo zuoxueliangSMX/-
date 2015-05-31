@@ -243,7 +243,7 @@
 }
 - (void)initTableHeaderView
 {
-    HomeHeaderScrollView *headerView =[[HomeHeaderScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,(SCREEN_HEIGHT-64)*0.3)];
+    HomeHeaderScrollView *headerView =[[HomeHeaderScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,(SCREEN_HEIGHT-64)*0.3) withType:JCDetailTopicDetail];
     headerView.backgroundColor =[UIColor clearColor];
     [self.view addSubview:headerView];
     _headerView = headerView;
@@ -274,7 +274,6 @@
     headerView.imageURLs = temArray;
     if (temArray.count >0) {
         [headerView.imgPlayerView upDate];
-
     }
 }
 

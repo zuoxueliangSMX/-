@@ -26,6 +26,9 @@
 #define kPhoneLinkPeopleStateUser @"02"// 02:注册用户
 #define kPhoneLinkPeopleStateNotUser @"03"// 03:未注册用户
 
+#define kShareSDKAPP @"7d0066c5e8bc"
+#define kWeChatAppId @"wxbe41ebca760466e"
+#define kWeChatAppKey @"270e045bf66d6515309e13e71dceb707"
 
 #define kHomeCityKey @"homeCityKey"
 #define kProductCount @"productCount"
