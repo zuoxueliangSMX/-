@@ -78,19 +78,28 @@
         
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:0];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 110, 110)];
+        
+        [cell.contentView addSubview:imgV];
+        
+        imgV.tag = 10086;
         
     }
+    
+     UIImageView *imgv = (UIImageView*)[cell viewWithTag:10086];
     MyCartM *mc =self.Mu[indexPath.row];
-    [cell.imgV setWebImgUrl:mc.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    [imgv setWebImgUrl:mc.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
        cell.titleLa.text=[mc.p_name base64DecodedString];
   
     
      cell.orderNum.text = [NSString stringWithFormat:@"西域订单编号:%@",mc.p_order_num];
     cell.styleBrand.text =mc.p_brand;
     cell.priceLa.text= [NSString stringWithFormat:@"¥:%@ x %@",mc.p_price,mc.p_num];
+    cell.priceLa.font =[UIFont systemFontOfSize:11] ;
+
     cell.priceLa.textColor = [UIColor orangeColor];
-    cell.memberPrice.hidden =YES;
-       [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
+    [ cell.memberPrice removeFromSuperview];
+    [cell.cartBtn setBackgroundImage:[UIImage imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
     cell.cartBtn.hidden =YES;
     return cell;
     
