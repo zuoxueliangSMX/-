@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductsM.h"
 
 @interface WEMineComentHeadView : UIView
+@property(nonatomic,strong)UILabel *titleLabel;
+@property(nonatomic,strong)UILabel *orderNumLa;
+@property(nonatomic,strong)ProductsM *pm;
+
 
 @end

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WEMineComentHeadView.h"
+
 
 @interface WEMineAddComentCell : UITableViewCell
+@property(nonatomic,strong)WEMineComentHeadView *header;
+
+
 
 @end

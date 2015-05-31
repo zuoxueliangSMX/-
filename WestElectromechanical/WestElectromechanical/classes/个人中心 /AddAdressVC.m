@@ -361,14 +361,10 @@ UITextField *phoneNumTF,*streetAdressTF,*emadilCodeTf,*valCodeTf,*userNameTf,*ad
     [tv resignFirstResponder];
     [_pickView cancelPicker];
 }
-/*
-#pragma mark - Navigation
+- (void)textViewDidEndEditing:(UITextView *)textView{
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+ [tv resignFirstResponder];
+
 }
-*/
 
 @end
