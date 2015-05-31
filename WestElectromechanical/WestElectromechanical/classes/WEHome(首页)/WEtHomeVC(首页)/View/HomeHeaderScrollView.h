@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "ImagePlayerView.h"
-#import "JCTopic.h"
+#import "JCDetailTopic.h"
 
 typedef void(^homeHeaderScrollViewBlock) (NSString *pid);
 @interface HomeHeaderScrollView : UIView
 {
     __strong homeHeaderScrollViewBlock _block;
 }
-@property (nonatomic ,weak)JCTopic *imgPlayerView;
+@property (nonatomic ,weak)JCDetailTopic *imgPlayerView;
 @property (nonatomic ,strong)NSMutableArray *imageURLs;
 - (void)setHomeHeaderScrollViewBlock:(homeHeaderScrollViewBlock)block;
+- (instancetype)initWithFrame:(CGRect)frame withType:(JCDetailTopicType)type;
 @end
