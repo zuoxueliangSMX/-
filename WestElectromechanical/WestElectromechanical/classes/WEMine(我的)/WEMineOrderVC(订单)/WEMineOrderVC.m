@@ -207,7 +207,7 @@
     __weak WEMineOrderCell *bCell = cell;
     [cell.bottomView setOrderBottomViewBlock:^(UIButton *btn) {
         
-        if ([@"确认收货" isEqualToString:kOrderBtnTypeConfirm] ) {
+        if ([btn.titleLabel.text isEqualToString:kOrderBtnTypeConfirm] ) {
 
             [we executeAffirmAcceptGoodsWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
                 if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
