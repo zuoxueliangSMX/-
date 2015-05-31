@@ -38,20 +38,20 @@
 -(void)sendRequset
 {
     
-//    for (ProductsM* pm in self.orderFrame.orderModel.order_products) {
-//        
-//    }
-//  
+    for (ProductsM* pm in self.orderFrame.orderModel.order_products) {
+        
+    }
+  
 //  @[];
-//    
+    
 //    NSDictionary *dict =@{@"P_id":self.orderFrame.orderModel.o_id,
 //                          @"Comment":};
 //    
-    
+//    
 //    
 //    NSString *dictJson =[dict JSONString];
 //    DLog(@"%@",dictJson);
-
+//
 //    [we executeOrderCommentsWithUserId:[AccountHanler userId] withOrderNum:self.orderFrame.orderModel.order_num withJsonStr:(NSString *) Success:^(id obj) {
 //   
 //        
@@ -59,7 +59,7 @@
 //  
 //        
 //    }];
-
+//
 
 }
 - (void)viewDidLoad {
@@ -114,7 +114,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
-    return 4;
+    return self.orderFrame.orderModel.order_products.count;
 }
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -125,9 +125,9 @@
     if (cell ==nil) {
         cell = [[WEMineAddComentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer];
     }
-    
-    
-    
+    ProductsM*pm = [self.orderFrame.orderModel.order_products objectAtIndex:indexPath.row];
+   
+    cell.header.pm =pm;
     return cell;
     
 }

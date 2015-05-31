@@ -13,8 +13,6 @@
 @property(nonatomic,weak)UIImageView *productImg;
 @property(nonatomic,weak)UILabel *productLabel;
 @property(nonatomic,weak)UILabel *productCartIdLabel;
-@property(nonatomic,weak)UILabel *versionBrandLa;
-@property(nonatomic,weak)UILabel *priceLabel;
 @end
 @implementation WEMineComentHeadView
 - (instancetype)initWithFrame:(CGRect)frame
@@ -27,31 +25,37 @@
         [self addSubview:productImg];
         _productImg = productImg;
         
-        UILabel *titleLabel =[[UILabel alloc]init];
-        titleLabel.frame =CGRectMake(CGRectGetMaxX(productImg.frame)+10,CGRectGetMinY(productImg.frame),SCREEN_WIDTH-CGRectGetMaxX(titleLabel.frame)-10-20,20);
-        titleLabel.numberOfLines =1;
-        titleLabel.font =[UIFont systemFontOfSize:12.0];
-        titleLabel.text =@"银河";
-        titleLabel.textColor =[UIColor darkGrayColor];
-        titleLabel.backgroundColor =[UIColor clearColor];
-        [self addSubview:titleLabel];
-        _productLabel = titleLabel;
+        _titleLabel =[[UILabel alloc]init];
+        _titleLabel.frame =CGRectMake(CGRectGetMaxX(productImg.frame)+10,CGRectGetMinY(productImg.frame),SCREEN_WIDTH-CGRectGetMaxX(_titleLabel.frame)-10-20,20);
+        _titleLabel.numberOfLines =1;
+        _titleLabel.font =[UIFont systemFontOfSize:12.0];
+        _titleLabel.textColor =[UIColor darkGrayColor];
+        _titleLabel.backgroundColor =[UIColor clearColor];
+        [self addSubview:_titleLabel];
+        _productLabel = _titleLabel;
         
-        UILabel * orderNumLa =[[UILabel alloc]init];
-        orderNumLa.frame =CGRectMake(CGRectGetMaxX(productImg.frame)+10,CGRectGetMaxY(titleLabel.frame),SCREEN_WIDTH-CGRectGetMaxX(productImg.frame)-10-20,24);
-        orderNumLa.numberOfLines =2;
-        orderNumLa.font =[UIFont systemFontOfSize:12.0];
-        orderNumLa.textColor =[UIColor darkGrayColor];
-        orderNumLa.backgroundColor =[UIColor clearColor];
-        [self addSubview:orderNumLa];
-        orderNumLa.text =@"订单号码1238267";
-        _productCartIdLabel = orderNumLa;
+        _orderNumLa =[[UILabel alloc]init];
+        _orderNumLa.frame =CGRectMake(CGRectGetMaxX(productImg.frame)+10,CGRectGetMaxY(_titleLabel.frame),SCREEN_WIDTH-CGRectGetMaxX(productImg.frame)-10-20,24);
+        _orderNumLa.numberOfLines =2;
+        _orderNumLa.font =[UIFont systemFontOfSize:12.0];
+        _orderNumLa.textColor =[UIColor darkGrayColor];
+        [self addSubview:_orderNumLa];
+        _productCartIdLabel = _orderNumLa;
         
         
+        
+        _titleLabel.text =self.pm.p_name;
+        
+        _orderNumLa.text =self.pm.p_order_num;
 
     }
     return self;
 }
 
-
+-(void)setPm:(ProductsM *)pm
+{
+    
+    _pm=pm;
+    
+}
 @end
