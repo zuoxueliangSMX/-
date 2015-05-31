@@ -13,7 +13,7 @@
 #import "ProductsM.h"
 #import "RDVTabBarController.h"
 #import "WEHTTPHandler.h"
-#import "WEOrderDetailM.h"
+
 #import "UIImageView+WebCacheImg.h"
 
 @interface MyOrderDetailVC ()<UITableViewDelegate,UITableViewDataSource>
@@ -26,7 +26,7 @@
     WEHTTPHandler *we ;
     
    }
-@property(nonatomic,strong)  WEOrderDetailM *wm;
+
 
 
 @end
@@ -53,24 +53,12 @@
     self.view.backgroundColor =[UIColor whiteColor];
     
       we = [[WEHTTPHandler alloc]init];
-    __weak  typeof (&*self)weakSelf =self;
-    [we executeOrderDetailWithUserId:[AccountHanler userId] withOrderNum:self.om.order_num Success:^(id obj) {
-        
-        
-          _wm=  [[WEOrderDetailM  alloc]initWithDict:obj];
-        [weakSelf addHeadFoot];
-        [_table reloadData];
-    
-        
-    } failed:^(id obj) {
-        
-    }];
-   
+
     self.title =@"订单详情";
  
 
     
-    _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-64) style:UITableViewStylePlain];
+    _table = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, SCREEN_HEIGHT) style:UITableViewStylePlain];
     
     _table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
 

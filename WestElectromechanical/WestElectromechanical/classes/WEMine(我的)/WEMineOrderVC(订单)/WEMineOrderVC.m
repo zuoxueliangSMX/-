@@ -209,41 +209,45 @@
         
         if ([btn.titleLabel.text isEqualToString:kOrderBtnTypeConfirm] ) {
 
-            [we executeAffirmAcceptGoodsWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
-                if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
-                    [bSelf sendRequest];
-                    alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"我已经收到货，同意支付宝付款" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
-
-                    [alertView handleCancel:^{
-                        
-                    } handleConfirm:^{
+            alertView = [TLAlertView showInView:self.view withTitle:@"" message:@"我已经收到货，同意支付宝付款" confirmButtonTitle:@"确定" cancelButtonTitle:@"取消"];
+            
+            [alertView handleCancel:^{
+                
+            } handleConfirm:^{
+                
+                [we executeAffirmAcceptGoodsWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
+                    if ([[obj objectForKey:@"message"] isEqualToString:@"0"]) {
+//                        [bSelf sendRequest];
                         
                         WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
-
+                        
                         WEMineAddComentVC *coment = [[WEMineAddComentVC alloc]init];
                         coment.orderFrame =orderFrame;
                         [self.navigationController pushViewController:coment animated:YES];
                         
-                    }];
+                    }
                     
-                    alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
+                } failed:^(id obj) {
                     
-                    
-                    
-                    [alertView show];
+                }];
 
-                }
-
-            } failed:^(id obj) {
+                
+               
                 
             }];
+            
+            alertView.TLAnimationType = (arc4random_uniform(10) % 2 == 0) ? TLAnimationType3D : tLAnimationTypeHinge;
+            
+            
+            
+            [alertView show];
         }else if ([btn.titleLabel.text isEqualToString:kOrderBtnTypePay]){
             
             
             WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
             [handler executePayInfoWithSuccess:^(id obj) {
                 DLog(@"%@",obj);
-                [bSelf sendOrder:[bSelf decryptUseDES:[obj objectForKey:@"a"] key:ctmKey] withSeller:[bSelf decryptUseDES:[obj objectForKey:@"pk"] key:ctmKey] privateKey:[bSelf decryptUseDES:[obj objectForKey:@"p"] key:ctmKey] withAllprice:bCell.orderFrame.orderModel.all_money withOrderNum:bCell.orderFrame.orderModel.order_num];
+                [bSelf sendOrder:[bSelf decryptUseDES:[obj objectForKey:@"a"] key:ctmKey] withSeller:[bSelf decryptUseDES:[obj objectForKey:@"ipk"] key:ctmKey] privateKey:[bSelf decryptUseDES:[obj objectForKey:@"p"] key:ctmKey] withAllprice:bCell.orderFrame.orderModel.all_money withOrderNum:bCell.orderFrame.orderModel.order_num];
             } failed:^(id obj) {
                 DLog(@"%@",obj);
             }];
@@ -260,10 +264,25 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     WEMyOrderFrame *orderFrame=[self.orderModel.orders  objectAtIndex:indexPath.row];
 
-    MyOrderDetailVC *orderDetail = [[MyOrderDetailVC alloc]init];
-   
-       orderDetail.om  =  orderFrame.orderModel;
-    [self.navigationController pushViewController:orderDetail animated:YES];
+    __weak  typeof (&*self)weakSelf =self;
+    [[[WEHTTPHandler alloc]init] executeOrderDetailWithUserId:[AccountHanler userId] withOrderNum:orderFrame.orderModel.order_num Success:^(id obj) {
+        
+        [AlertUtil showAlertWithText:@"获取详情成功"];
+       WEOrderDetailM * wm=  [[WEOrderDetailM  alloc]initWithDict:obj];
+
+        MyOrderDetailVC *orderDetail = [[MyOrderDetailVC alloc]init];
+        orderDetail.wm =wm;
+        orderDetail.om  =  orderFrame.orderModel;
+        [weakSelf.navigationController pushViewController:orderDetail animated:YES];
+
+        
+    } failed:^(id obj) {
+
+        [AlertUtil showAlertWithText:@"获取详情失败"];
+    }];
+
+    
+    
     
 }
 

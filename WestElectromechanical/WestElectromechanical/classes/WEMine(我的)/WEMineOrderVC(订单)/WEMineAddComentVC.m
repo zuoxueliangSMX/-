@@ -91,9 +91,9 @@
     
     // 提交
     UIButton *commtiBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [commtiBut setFrame:CGRectMake(10, 2, SCREEN_WIDTH-20, 40)];
+    [commtiBut setFrame:CGRectMake(10, 25, SCREEN_WIDTH-20, 40)];
     [commtiBut setTitle:@"提交" forState:UIControlStateNormal];
-    [commtiBut setBackgroundColor:[UIColor pumpkinColor]];
+    [commtiBut setBackgroundColor:[UIColor redColor]];
     [commtiBut addTarget:self action:@selector(commitBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [commtiBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [footView addSubview:commtiBut];
