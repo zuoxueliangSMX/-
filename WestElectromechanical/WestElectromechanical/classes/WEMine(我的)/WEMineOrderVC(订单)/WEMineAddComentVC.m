@@ -126,9 +126,11 @@
         cell = [[WEMineAddComentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellidentifer];
     }
     ProductsM*pm = [self.orderFrame.orderModel.order_products objectAtIndex:indexPath.row];
-   
-    cell.header.pm =pm;
-    return cell;
+    DLog(@"%@",pm);
+    
+    cell.header.titleLabel.text =pm.p_name;
+    cell.header.orderNumLa.text =pm.p_order_num;
+      return cell;
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

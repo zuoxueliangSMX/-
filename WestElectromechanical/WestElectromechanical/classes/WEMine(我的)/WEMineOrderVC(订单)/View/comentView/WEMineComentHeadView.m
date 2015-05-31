@@ -43,19 +43,11 @@
         _productCartIdLabel = _orderNumLa;
         
         
-        
-        _titleLabel.text =self.pm.p_name;
-        
-        _orderNumLa.text =self.pm.p_order_num;
+       
 
     }
     return self;
 }
 
--(void)setPm:(ProductsM *)pm
-{
-    
-    _pm=pm;
-    
-}
+
 @end
