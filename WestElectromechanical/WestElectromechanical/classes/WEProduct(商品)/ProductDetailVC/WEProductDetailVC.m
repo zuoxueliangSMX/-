@@ -27,6 +27,7 @@
 @property (nonatomic ,weak)HomeHeaderScrollView *headerView;
 @property (nonatomic ,weak)UIWebView *aWebView;
 @property (nonatomic ,weak)UITableView *productForm;
+@property (nonatomic ,weak)UILabel *dotImage;
 
 @end
 
@@ -36,7 +37,18 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
-    [self addRightItem];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kProductCount]) {
+        _dotImage.text = @"0";
+    }else{
+        
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount] integerValue]>99) {
+            _dotImage.text =@"99";
+        }else{
+            _dotImage.text =[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount];
+        }
+        
+    }
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -45,22 +57,68 @@
 }
 - (void)addRightItem{
     UIBarButtonItem *right1 =[UIBarButtonItem itemWithImageName:@"Navitation_Cart" highImageName:@"Navitation_Cart" target:self action:@selector(addCart:)];
-    UIBarButtonItem *right2 =[UIBarButtonItem itemWithImageName:@"Navitation_Cart" highImageName:@"Navitation_Cart" target:self action:@selector(shareProduct:)];
+//    UIBarButtonItem *right2 =[UIBarButtonItem itemWithImageName:@"Navitation_Cart" highImageName:@"Navitation_Cart" target:self action:@selector(shareProduct:)];
+    
+    UILabel *dotImage = [[UILabel alloc] init];
+    dotImage.textAlignment = 1;
+    
+    dotImage.backgroundColor = [UIColor whiteColor];
+    //    dotImage.tag = RED_DOT_TAG;
+    
+//    CGRect btnFrame = btn.frame;
+    
+    CGFloat x = ceilf(0.94 * right1.customView.size.width);
+    
+    CGFloat y = -ceilf(0.2 * right1.customView.size.height);
+    dotImage.textColor =kNavBarColor;
+    dotImage.frame = CGRectMake(x, y, 15, 15);
+    
+    //创建圆形遮罩，把用户头像变成圆形
+    UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(dotImage.frame.size.width/2,dotImage.frame.size.width/2) radius:dotImage.frame.size.width/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
+    CAShapeLayer* shape = [CAShapeLayer layer];
+    shape.path = path.CGPath;
+    dotImage.layer.mask = shape;
+    [right1.customView addSubview:dotImage];
+    dotImage.font = font(7);
+    _dotImage = dotImage;
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kProductCount]) {
+        dotImage.text = @"0";
+    }else{
+        
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount] integerValue]>99) {
+            dotImage.text =@"99";
+        }else{
+            dotImage.text =[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount];
+        }
+        
+    }
+
+    
+    
+    
+    
+    UIBarButtonItem *right2 =[UIBarButtonItem itemWithImageName:@"" withTitle:@"分享" highImageName:nil withHighTitle:@"分享" target:self action:@selector(shareProduct:)];
     /**
      *  width为负数时，相当于btn向右移动width数值个像素，由于按钮本身和边界间距为5pix，所以width设为-15时，间距正好调整
      *  为10；width为正数时，正好相反，相当于往左移动width数值个像素
      */
+    
+    
+    
+    
+    
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
-    negativeSpacer.width = -5;
+    negativeSpacer.width = -15;
     
     UIBarButtonItem *negativeSpacer1= [[UIBarButtonItem alloc]
                                        initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                        target:nil action:nil];
-    negativeSpacer1.width = 15;
-//    self.navigationItem.rightBarButtonItems = @[negativeSpacer, right2,negativeSpacer1,right1];
-    self.navigationItem.rightBarButtonItems =@[negativeSpacer, right1];
+    negativeSpacer1.width = -5;
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, right2,negativeSpacer1,right1];
+//    self.navigationItem.rightBarButtonItems =@[negativeSpacer, right1];
     
 }
 - (void)addCart:(UIButton*)btn{
@@ -76,6 +134,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self addRightItem];
     self.view.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     self.title = @"商品详情";
     
@@ -105,7 +165,7 @@
     //        NSString*  htmlStrUpdate = [NSString stringWithFormat:@"<html><meta name=\"viewport\" content=\"width=320, height=10, user-scalable=yes, initial-scale=2.5, maximum-scale=5.0, minimun-scale=0.1\"><head></head><body>%@</body></html>",htmlStr];
     
     [_aWebView setScalesPageToFit:NO];
-    NSString *htmlStr1 = [NSString stringWithFormat:@"<html><body>%@<script type=\"text/javascript\">for(var i = 0;i<document.images.length;++i){document.images[i].style.width = %f;document.images[i].style.height = %f/document.images[i].width*document.images[i].height;}</script>",htmlStr,self.view.bounds.size.width,self.view.bounds.size.width];
+    NSString *htmlStr1 = [NSString stringWithFormat:@"<html><body>%@<script type=\"text/javascript\">for(var i = 0;i<document.images.length;++i){document.images[i].style.width = %f;document.images[i].style.height = %f/document.images[i].width*document.images[i].height;}</script>",htmlStr,self.view.bounds.size.width-20,self.view.bounds.size.width-20];
     
     
     [_aWebView loadHTMLString:htmlStr baseURL:[NSURL URLWithString:@"http://www.ehsy.com"]];

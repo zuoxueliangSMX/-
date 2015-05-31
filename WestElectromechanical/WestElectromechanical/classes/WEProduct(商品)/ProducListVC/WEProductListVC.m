@@ -21,6 +21,7 @@
 #import "WECartHomeVC.h"
 #import "AccountHanler.h"
 #import "LoginVC.h"
+#import "UIButton+Extension.h"
 @interface WEProductListVC ()<UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (nonatomic ,weak)UITableView *productList;
 @property (nonatomic ,weak)UICollectionView *productCollection;
@@ -28,6 +29,7 @@
 @property (nonatomic ,weak)UIView *mask;
 @property (nonatomic ,strong)NSArray *conditionArr;
 @property (nonatomic ,weak)UIImageView *contitionBgView;
+@property (nonatomic ,weak)UILabel *dotImage;
 @end
 
 @implementation WEProductListVC
@@ -43,7 +45,23 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
-    [self addRightItem];
+
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kProductCount]) {
+        _dotImage.text = @"0";
+    }else{
+        
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount] integerValue]>99) {
+            _dotImage.text =@"99";
+        }else{
+            _dotImage.text =[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount];
+        }
+        
+    }
+    
+    
+   
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -67,6 +85,10 @@
                                        target:nil action:nil];
     negativeSpacer1.width = 30;
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, right2,negativeSpacer1,right1];
+    
+    
+    
+    
 }
 - (void)screen:(UIButton*)btn{
     NSLog(@"添加好友");
@@ -85,6 +107,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.view.backgroundColor =[UIColor appBlueColor];
+    [self addRightItem];
     VIEW_BACKGROUND;
     self.automaticallyAdjustsScrollViewInsets = NO;
     _conditionArr = @[@"最新",@"价格",@"销售量",@"评论量"];
@@ -98,20 +121,23 @@
 }
 - (void)initConditionTable
 {
-    UIImageView *view =[[UIImageView alloc]initWithFrame: CGRectMake(SCREEN_WIDTH*0.5, 64, 120, 190)];
+    UIImageView *view =[[UIImageView alloc]initWithFrame: CGRectMake(SCREEN_WIDTH-120, 64, 100, 190)];
     view.hidden = YES;
+    [view setImage:[UIImage imageNamed:@"Product_order_bgView"]];
     view.userInteractionEnabled = YES;
     [self.view addSubview:view];
     _contitionBgView = view;
     
     UITableView *conditionTable =[[UITableView alloc]init];
-    conditionTable.frame =CGRectMake(0, 14, 120, 176);
+    conditionTable.frame =CGRectMake(0, 14, 100, 176);
     conditionTable.delegate =self;
     conditionTable.dataSource =self;
     conditionTable.hidden = NO;
-    conditionTable.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
+    conditionTable.backgroundColor =[UIColor clearColor];
     conditionTable.separatorStyle = UITableViewCellSelectionStyleNone;
     [view addSubview:conditionTable];
+    
+    
     _conditionTable = conditionTable;
     _conditionTable.tableFooterView = [[UIView alloc]init];
 
@@ -148,7 +174,7 @@
     productList.dataSource =self;
     productList.hidden = YES;
     productList.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
-    productList.separatorStyle = UITableViewCellSelectionStyleNone;
+//    productList.separatorStyle = UITableViewCellSelectionStyleNone;
     [self.view addSubview:productList];
     _productList = productList;
 }
@@ -157,10 +183,83 @@
 {
     UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_productCollection.frame), SCREEN_WIDTH, 44)];
     view.backgroundColor =kHightLightedColor;
-    UIButton *btn =[UIButton buttonWithImageName:@"Product_Condition" highImageName:@"Product_Condition" target:self action:@selector(exchangeView:)];
-    btn.frame = CGRectMake(SCREEN_WIDTH-btn.size.width-20, (44-btn.size.height)/2.0, btn.size.width, btn.size.height);
+    UIButton *btn =[UIButton buttonWithImageName:@"Product_exchangeType" highImageName:@"Product_exchangeType" target:self action:@selector(exchangeView:)];
+    btn.frame = CGRectMake(SCREEN_WIDTH-btn.size.width-20-btn.size.width-15, (44-btn.size.height)/2.0, btn.size.width, btn.size.height);
     [view addSubview:btn];
+    
+    UIButton *btn1 =[UIButton buttonWithBgImageName:@"Navitation_Cart" bgHighImageName:@"Navitation_Cart" title:nil selectedTitle:nil target:self action:@selector(enterAcart:)];
+    btn1.frame = CGRectMake(CGRectGetMaxX(btn.frame)+15, (44-btn1.size.height)/2.0, btn1.size.width, btn1.size.height);
+    [view addSubview:btn1];
+    
+    UILabel *dotImage = [[UILabel alloc] init];
+    dotImage.textAlignment = 1;
+    
+    dotImage.backgroundColor = [UIColor whiteColor];
+//    dotImage.tag = RED_DOT_TAG;
+    
+    CGRect btnFrame = btn.frame;
+    
+    CGFloat x = ceilf(0.94 * btn.size.width);
+    
+    CGFloat y = -ceilf(0.2 * btn.size.height);
+    dotImage.textColor =kNavBarColor;
+    dotImage.frame = CGRectMake(x, y, 15, 15);
+    
+    //创建圆形遮罩，把用户头像变成圆形
+    UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(dotImage.frame.size.width/2,dotImage.frame.size.width/2) radius:dotImage.frame.size.width/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
+    CAShapeLayer* shape = [CAShapeLayer layer];
+    shape.path = path.CGPath;
+    dotImage.layer.mask = shape;
+    [btn1 addSubview:dotImage];
+    dotImage.font = font(7);
+    _dotImage = dotImage;
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kProductCount]) {
+        dotImage.text = @"0";
+    }else{
+        
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount] integerValue]>99) {
+             dotImage.text =@"99";
+        }else{
+             dotImage.text =[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount];
+        }
+       
+    }
+    
+    
     [self.view addSubview:view];
+    
+    
+    
+    
+}
+- (void)enterAcart:(UIButton *)btn{
+    if (![AccountHanler userId]) {
+        LoginVC *loginVC =[[LoginVC alloc]init];
+        __weak WEProductListVC *bSelf = self;
+        [loginVC setLoginBlock:^{
+            if (bSelf.searchName.length>0) {
+                
+                [bSelf productRedreshSearchName:bSelf.searchName];
+            }else{
+                [bSelf productRedreshCategoryId:bSelf.t_id];
+            }
+        }];
+        WENavitationController *nav =[[WENavitationController alloc]initWithRootViewController:loginVC];
+        
+        
+        [self presentViewController:nav animated:YES completion:^{
+            
+        }];
+        
+        
+    }else{
+        
+        WECartHomeVC *homeVC =[[WECartHomeVC alloc]init];
+        homeVC.cartType = WECartHomeTypeAdd;
+        [self.navigationController pushViewController:homeVC animated:YES];
+
+    }
     
 }
 
@@ -242,8 +341,11 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.accessoryType =UITableViewCellAccessoryDisclosureIndicator;
+            cell.backgroundColor =[UIColor clearColor];
         }
         cell.textLabel.text =_conditionArr[indexPath.row];
+        cell.textLabel.textColor =[UIColor whiteColor];
+        cell.textLabel.font = font(16);
         return cell;
 
         

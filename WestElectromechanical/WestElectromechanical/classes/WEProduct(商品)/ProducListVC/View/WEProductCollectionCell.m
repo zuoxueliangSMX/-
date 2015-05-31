@@ -55,7 +55,7 @@
         productBrand.frame =CGRectMake(  CGRectGetMinX(productImg.frame),CGRectGetMaxY(productTitle.frame)+5,(frame.size.width-15)/2.0,16);
         productBrand.numberOfLines =1;
         productBrand.font =font(10);
-        productBrand.textColor = [UIColor lightGrayColor];
+        productBrand.textColor = [UIColor darkGrayColor];
         productBrand.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productBrand];
         _productBrand = productBrand;
@@ -64,7 +64,7 @@
         productType.frame =CGRectMake(  CGRectGetMaxX(productBrand.frame)+5,CGRectGetMaxY(productTitle.frame)+5,(frame.size.width-15)/2,16);
         productType.numberOfLines =1;
         productType.font =font(10);
-          productType.textColor = [UIColor lightGrayColor];
+          productType.textColor = [UIColor darkGrayColor];
         productType.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productType];
         _productType = productType;
@@ -82,7 +82,7 @@
         productDiscountPrice.frame =CGRectMake(  CGRectGetMaxX(productOriPrice.frame)-10,CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3+10,16);
         productDiscountPrice.numberOfLines =1;
         productDiscountPrice.font =font(10);
-        productDiscountPrice.textColor =[UIColor appLineColor];
+        productDiscountPrice.textColor =[UIColor darkGrayColor];
         productDiscountPrice.backgroundColor =[UIColor clearColor];
         [self.contentView addSubview:productDiscountPrice];
         _productOriPrice = productDiscountPrice;

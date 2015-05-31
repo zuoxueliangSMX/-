@@ -362,12 +362,13 @@
             [we executeUpdateCartProductCountTaskWithUserId:[AccountHanler userId] withProductId:mcm.p_id withNum:strNum Success:^(id obj) {
                 MyCartM *cm =  [_cartsModel.products objectAtIndex:indexPath.row];
                 cm.p_num = strNum;
+                
+                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",[[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount] integerValue]-1] forKey:kProductCount];
                 bCell.myCartModel = cm;
                 if (cm.isChoose == YES) {
                     _totalProduc --;
                     _totalPrice -= [cm.p_price floatValue];
                     [bSelf setBottomData:_bottomView];
-
 
                 }
                 
@@ -394,7 +395,7 @@
                 MyCartM *cm =  [_cartsModel.products objectAtIndex:indexPath.row];
                 cm.p_num = strNum;
                 bCell.myCartModel = cm;
-                
+                [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",[[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount] integerValue]+1] forKey:kProductCount];
                 if (cm.isChoose == YES) {
                     _totalProduc++;
                     _totalPrice += [cm.p_price floatValue];

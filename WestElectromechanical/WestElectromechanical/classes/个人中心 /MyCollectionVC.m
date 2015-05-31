@@ -29,6 +29,7 @@
    }
 @property (nonatomic ,weak)UICollectionView *productCollection;
 @property (nonatomic ,strong) NSMutableArray *arr;
+@property (nonatomic ,weak)UILabel *dotImage;
 @end
 
 @implementation MyCollectionVC
@@ -37,8 +38,20 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kProductCount]) {
+        _dotImage.text = @"0";
+    }else{
+        
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount] integerValue]>99) {
+            _dotImage.text =@"99";
+        }else{
+            _dotImage.text =[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount];
+        }
+        
+    }
     
     [self initNetData:1];
+    
 
 }
 
@@ -48,11 +61,51 @@
 }
 
 - (void)addRightItem{
-    shopingCartBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, 5, 25, 25)];
+    shopingCartBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+    shopingCartBtn.frame = CGRectMake(5, (44-18)/2.0, 36/2.0,34/2.0 );
     shopingCartBtn.backgroundColor = [UIColor clearColor];
     [shopingCartBtn setBackgroundImage:[UIImage imageNamed:@"Navitation_Cart"] forState:UIControlStateNormal];
     [shopingCartBtn addTarget:self action:@selector(shopingCartClick:) forControlEvents:UIControlEventTouchUpInside];
-    editBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shopingCartBtn.frame)+5, 5, 50, 30)];
+    
+    UILabel *dotImage = [[UILabel alloc] init];
+    dotImage.textAlignment = 1;
+    
+    dotImage.backgroundColor = [UIColor whiteColor];
+    //    dotImage.tag = RED_DOT_TAG;
+    
+    //    CGRect btnFrame = btn.frame;
+    
+    CGFloat x = ceilf(0.94 * shopingCartBtn.size.width);
+    
+    CGFloat y = -ceilf(0.2 * shopingCartBtn.size.height);
+    dotImage.textColor =kNavBarColor;
+    dotImage.frame = CGRectMake(x, y, 15, 15);
+    
+    //创建圆形遮罩，把用户头像变成圆形
+    UIBezierPath* path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(dotImage.frame.size.width/2,dotImage.frame.size.width/2) radius:dotImage.frame.size.width/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
+    CAShapeLayer* shape = [CAShapeLayer layer];
+    shape.path = path.CGPath;
+    dotImage.layer.mask = shape;
+    [shopingCartBtn addSubview:dotImage];
+    dotImage.font = font(7);
+    _dotImage = dotImage;
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:kProductCount]) {
+        dotImage.text = @"0";
+    }else{
+        
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount] integerValue]>99) {
+            dotImage.text =@"99";
+        }else{
+            dotImage.text =[[NSUserDefaults standardUserDefaults] objectForKey:kProductCount];
+        }
+        
+    }
+    
+    
+    
+    
+    editBtn = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(shopingCartBtn.frame)+20, 5, 30, 30)];
     editBtn.backgroundColor = [UIColor clearColor];
     [editBtn setTitle:@"编辑" forState:UIControlStateNormal];
     
@@ -62,7 +115,7 @@
      UIView * view =[[UIView alloc]init];
     [view addSubview:shopingCartBtn];
     [view addSubview:editBtn];
-    view.bounds = CGRectMake(0, 0, 90, 40);
+    view.bounds = CGRectMake(0, 0, 70, 44);
     
        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:view];
     self.navigationItem.rightBarButtonItem = item;

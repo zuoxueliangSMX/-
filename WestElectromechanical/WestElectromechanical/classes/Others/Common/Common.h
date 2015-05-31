@@ -28,7 +28,7 @@
 
 
 #define kHomeCityKey @"homeCityKey"
-
+#define kProductCount @"productCount"
 
 #import "UIColor+FlatUI.h"
 #import "UIView+Extension.h"
@@ -43,6 +43,7 @@
 #define kColor(r,g,b) [UIColor colorWithRed:r green:g blue:b alpha:1]
 #define kColorAlpha(r,g,b,a) [UIColor colorWithRed:r green:g blue:b alpha:a]
 #define kHightLightedColor kColor(30.0/255,121.0/255,71.0/255)
+#define kNavBarColor kColor(30.0/255,121.0/255,71.0/255)
 
 
 

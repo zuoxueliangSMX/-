@@ -901,7 +901,7 @@
                                   failed:(FailedBlock)failed
 {
     
-    [AlertUtil showAlertWithText:@"获取购物车列表"];
+//    [AlertUtil showAlertWithText:@"获取购物车列表"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_CARTLIST WithPath:@""];
     NSString *params = [NSString stringWithFormat:@"uid=%@&page=%@",userId,page];
     [HttpTool post:url withParams:params withSuccess:^(id json) {

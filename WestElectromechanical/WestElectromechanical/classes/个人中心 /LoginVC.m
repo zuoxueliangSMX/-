@@ -273,11 +273,19 @@ WEHTTPHandler *whanle;
             }
             [AccountHanler saveUserId:[obj objectForKey:@"uid"]];
             [AccountHanler setLoginState:1];
+            [[[WEHTTPHandler alloc]init] executeGetCartListTaskWithUserId:[AccountHanler userId] withPage:@"1" Success:^(id obj) {
+                
+            } failed:^(id obj) {
+                
+            }];
+
+            
             [bSelf dismissViewControllerAnimated:YES completion:^{
                 if (_block) {
                     _block();
                 }
             }];
+            
 
         }
     } failed:^(id obj) {

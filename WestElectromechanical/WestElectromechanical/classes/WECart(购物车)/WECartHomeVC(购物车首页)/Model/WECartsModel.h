@@ -13,6 +13,7 @@
 @property (nonatomic ,copy)NSString *page;
 @property (nonatomic ,copy)NSString *pagej;
 @property (nonatomic ,strong)NSMutableArray *products;
+@property (nonatomic ,copy)NSString * productCounts;
 - (instancetype)initWithDict:(NSDictionary *)dict;
 
 @end
