@@ -26,6 +26,7 @@
         
        header.backgroundColor =[UIColor whiteColor];
       [self.contentView addSubview:header];
+        _header = header;
        
         
         tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(header.frame)+10,SCREEN_WIDTH-20, 60)];
@@ -62,10 +63,7 @@
     
 }
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    
-    
-    
-    
+
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {

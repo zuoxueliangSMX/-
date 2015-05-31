@@ -350,4 +350,22 @@
                               withSuccess:(SuccessBlock)success
                                withFailed:(FailedBlock)failed;
 
+
+- (void)executeDoProductFilterWithProductName:(NSString *)productName
+                               withFirstPrice:(NSString*)firstPrice
+                              withSecondPrice:(NSString *)secondPrice
+                                    withBrand:(NSString *)Brand
+                                     withPage:(NSString *)page
+                                      Success:(SuccessBlock)success
+                                       failed:(FailedBlock)failed;
+
+- (void)executeDoProductFilterWithProductCategory:(NSString *)categoryId
+                                   withFirstPrice:(NSString*)firstPrice
+                                  withSecondPrice:(NSString *)secondPrice
+                                        withBrand:(NSString *)Brand
+                                         withPage:(NSString *)page
+                                          Success:(SuccessBlock)success
+                                           failed:(FailedBlock)failed;
+
+
 @end

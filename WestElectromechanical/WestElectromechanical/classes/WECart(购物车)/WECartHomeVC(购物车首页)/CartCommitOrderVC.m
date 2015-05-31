@@ -18,7 +18,7 @@
 #include <CommonCrypto/CommonCryptor.h>
 #import "AccountHanler.h"
 #import "Product.h"
-
+#import "CommitOrderVC.h"
 
 @interface CartCommitOrderVC ()
 
@@ -42,8 +42,43 @@
     VIEW_BACKGROUND
     self.title =@"提交订单";
     [self  addUI];
-
+    [self addRightItem];
  }
+
+
+- (void)addRightItem{
+    [self addRightItemWithImage:@"back_icon" action:@selector(back:)];
+}
+
+- (UIButton *)addRightItemWithImage:(NSString *)imageName action:(SEL)action {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image = [UIImage imageNamed:imageName];
+    button.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    
+    // 这里需要注意：由于是想让图片右移，所以left需要设置为正，right需要设置为负。正在是相反的。
+    // 让按钮图片右移15
+    //[button setImageEdgeInsets:UIEdgeInsetsMake(0, 15, 0, -15)];
+    
+    [button setImage:image forState:UIControlStateNormal];
+     [button setImage:image forState:UIControlStateHighlighted];
+    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    button.titleLabel.font = [UIFont systemFontOfSize:16];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = rightItem;
+    return button;
+}
+
+
+- (void)back:(UIButton *)btn
+{
+    
+    if ( [[self.navigationController.childViewControllers objectAtIndex:self.navigationController.childViewControllers.count-2]isKindOfClass:[CommitOrderVC class]]) {
+        [self.navigationController popToViewController: [self.navigationController.childViewControllers objectAtIndex:self.navigationController.childViewControllers.count-3] animated:YES];
+    }
+    
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

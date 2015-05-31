@@ -243,7 +243,7 @@
             WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
             [handler executePayInfoWithSuccess:^(id obj) {
                 DLog(@"%@",obj);
-                [bSelf sendOrder:[bSelf decryptUseDES:[obj objectForKey:@"a"] key:ctmKey] withSeller:[bSelf decryptUseDES:[obj objectForKey:@"ipk"] key:ctmKey] privateKey:[bSelf decryptUseDES:[obj objectForKey:@"p"] key:ctmKey] withAllprice:bCell.orderFrame.orderModel.all_money withOrderNum:bCell.orderFrame.orderModel.order_num];
+                [bSelf sendOrder:[bSelf decryptUseDES:[obj objectForKey:@"a"] key:ctmKey] withSeller:[bSelf decryptUseDES:[obj objectForKey:@"pk"] key:ctmKey] privateKey:[bSelf decryptUseDES:[obj objectForKey:@"p"] key:ctmKey] withAllprice:bCell.orderFrame.orderModel.all_money withOrderNum:bCell.orderFrame.orderModel.order_num];
             } failed:^(id obj) {
                 DLog(@"%@",obj);
             }];

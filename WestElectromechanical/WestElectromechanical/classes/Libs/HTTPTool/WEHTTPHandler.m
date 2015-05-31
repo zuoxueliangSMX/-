@@ -1448,4 +1448,84 @@
 
 
 
+- (void)executeDoProductFilterWithProductCategory:(NSString *)categoryId
+                                   withFirstPrice:(NSString*)firstPrice
+                                  withSecondPrice:(NSString *)secondPrice
+                                        withBrand:(NSString *)Brand
+                                         withPage:(NSString *)page
+                                          Success:(SuccessBlock)success
+                                           failed:(FailedBlock)failed
+{
+    [AlertUtil showAlertWithText:@"订单评价"];
+    NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"t_id=%@&price_one=%@&price_two=%@&page=%@&uid=%@",categoryId,firstPrice,secondPrice,page,[AccountHanler userId]];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+        
+        if ([[json objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(json);
+            }
+            
+        }else{
+            [AlertUtil showAlertWithText:@"提交出错"];
+            if (failed) {
+                failed(nil);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        [AlertUtil showAlertWithText:@"网络连接失败"];
+        
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+
+}
+
+
+- (void)executeDoProductFilterWithProductName:(NSString *)productName
+                                   withFirstPrice:(NSString*)firstPrice
+                                  withSecondPrice:(NSString *)secondPrice
+                                        withBrand:(NSString *)Brand
+                                         withPage:(NSString *)page
+                                          Success:(SuccessBlock)success
+                                           failed:(FailedBlock)failed
+{
+    [AlertUtil showAlertWithText:@"订单评价"];
+    NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"name=%@&price_one=%@&price_two=%@&page=%@&uid=%@",productName,firstPrice,secondPrice,page,[AccountHanler userId]];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+        
+        if ([[json objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(json);
+            }
+            
+        }else{
+            [AlertUtil showAlertWithText:@"提交出错"];
+            if (failed) {
+                failed(nil);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        [AlertUtil showAlertWithText:@"网络连接失败"];
+        
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+    
+}
+
+
 @end
