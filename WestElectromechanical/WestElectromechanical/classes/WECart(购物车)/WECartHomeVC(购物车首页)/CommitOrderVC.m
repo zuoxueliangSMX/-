@@ -172,7 +172,7 @@
         switch (indexPath.row) {
             case 0:
             {
-                UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, 280, 25)];
+                UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, VIEW_WIDETH, 25)];
                 nameLa.textColor =[UIColor blackColor];
                 nameLa.font = [UIFont systemFontOfSize:12];
                 nameLa.textColor = [UIColor  lightGrayColor];
@@ -232,7 +232,7 @@
                 break;
             case 3:
             {
-                UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, 150, 20)];
+                UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 150, 20)];
                 titleLa.tag =107;
                 titleLa.font= [UIFont systemFontOfSize:14];
                 
@@ -261,7 +261,7 @@
             case 4:
             {
                 
-                UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 250, 25)];
+                UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 250, 25)];
                 nameLa.tag =111;
                 view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 30);
                 
@@ -284,8 +284,8 @@
         {
             NSDateFormatter *formatter =[[NSDateFormatter alloc] init];
             NSDateFormatter *formatter2 =[[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd-HHmm-ss"];
-            [formatter2 setDateFormat:@"yyyyMMddHHmmss"];
+            [formatter setDateFormat:@"yyyy-MM-dd  HH:mm"];
+            [formatter2 setDateFormat:@"yyyyMMddHHmm"];
             NSString *currentTime = [formatter stringFromDate:[NSDate date]];
              currentOrderNum = [formatter2 stringFromDate:[NSDate date]];
 
@@ -295,8 +295,8 @@
             UILabel *nameLa= (UILabel*)[view viewWithTag:100];
             view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 34);
             
-            nameLa.text =[NSString stringWithFormat:@"订单号：%@   %@",currentOrderNum,currentTime];
-          
+            nameLa.text =[NSString stringWithFormat:@"订单号：%@                  %@",currentOrderNum,currentTime];
+            nameLa.textColor = [UIColor blackColor];
           
         }
             break;
@@ -366,7 +366,7 @@
             UILabel *invoiceHeadLa = (UILabel*)[view viewWithTag:110];
             titleLa.text =@"索要发票";
             
-             titleLa.frame =CGRectMake(0, 0, 150, 20);
+            
             invoiceStyleLa.text =[AccountHanler invoiceStyle];
             invoiceAddresLa.text = [AccountHanler invoiceAdress];
             invoiceHeadLa.text = [AccountHanler invoiceHead];
@@ -378,7 +378,7 @@
 
                         if ([AccountHanler   invoiceHead].length==0) {
                           
-                            titleLa.frame =CGRectMake(0, 10, 150, 20);
+                            titleLa.frame =CGRectMake(10, 10, 150, 20);
                             view.frame =CGRectMake(0, 0, SCREEN_WIDTH, 50);
 
                         }

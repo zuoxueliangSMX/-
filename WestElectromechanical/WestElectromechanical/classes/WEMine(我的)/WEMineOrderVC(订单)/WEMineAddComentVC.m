@@ -9,8 +9,10 @@
 #import "WEMineAddComentVC.h"
 #import "WEHTTPHandler.h"
 #import "WEMineAddComentCell.h"
-
+#import "AccountHanler.h"
 #import "RDVTabBarController.h"
+#import "JSONKit.h"
+#import "ProductsM.h"
 @interface WEMineAddComentVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     WEHTTPHandler *we;
@@ -33,14 +35,44 @@
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
 
+-(void)sendRequset
+{
+    
+//    for (ProductsM* pm in self.orderFrame.orderModel.order_products) {
+//        
+//    }
+//  
+//  @[];
+//    
+//    NSDictionary *dict =@{@"P_id":self.orderFrame.orderModel.o_id,
+//                          @"Comment":};
+//    
+    
+    
+    NSString *dictJson =[dict JSONString];
+    DLog(@"%@",dictJson);
 
+    [we executeOrderCommentsWithUserId:[AccountHanler userId] withOrderNum:self.orderFrame.orderModel.order_num withJsonStr:(NSString *) Success:^(id obj) {
+   
+        
+    } failed:^(id obj) {
+  
+        
+    }];
+
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"订单评价";
     
+    
+    
     we= [[WEHTTPHandler alloc]init];
     
-    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStylePlain];
+    
+    [self sendRequset];
+    UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT) style:UITableViewStylePlain];
     
     
         table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
@@ -66,7 +98,7 @@
     [commtiBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [footView addSubview:commtiBut];
 
-
+   
 }
 
 - (void)didReceiveMemoryWarning {

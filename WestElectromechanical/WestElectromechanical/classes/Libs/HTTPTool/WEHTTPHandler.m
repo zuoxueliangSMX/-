@@ -1402,6 +1402,49 @@
     }];
     
 }
+/**
+ *  35.订单评价
+ */
+- (void)executeOrderCommentsWithUserId:(NSString *)userId
+                          withOrderNum:(NSString *)orderNum
+                           withJsonStr:(NSString*)PinglunList
+                               Success:(SuccessBlock)success
+                                failed:(FailedBlock)failed;
+{
+
+    [AlertUtil showAlertWithText:@"订单评价"];
+    NSString *url =[BaseHandler requestUrlWithUrl:API_ADDCOMMENTS WithPath:@""];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&Order_num=%@&Pinglun_list=%@",userId,orderNum,PinglunList];
+    [HttpTool post:url withParams:params withSuccess:^(id json) {
+        DLog(@"%@",json);
+        
+        
+        if ([[json objectForKey:@"message"] integerValue]== 0) {
+            
+            if (success) {
+                success(json);
+            }
+            
+        }else{
+            [AlertUtil showAlertWithText:@"提交出错"];
+            if (failed) {
+                failed(nil);
+            }
+        }
+    } withFailure:^(NSError *error) {
+        DLog(@"%@",error.localizedDescription);
+        [AlertUtil showAlertWithText:@"网络连接失败"];
+        
+        if (failed) {
+            failed(error);
+        }
+    }];
+    
+
+
+}
+
+
 
 
 @end
