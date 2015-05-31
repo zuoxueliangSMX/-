@@ -204,7 +204,7 @@
                 break;
             case 2:
             {
-                UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(0, 5, 150, 20)];
+                UILabel *titleLa = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 150, 20)];
                 titleLa.tag =103;
                 UILabel *nameLa = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLa.frame), 180, 20)];
                 nameLa.font= [UIFont systemFontOfSize:14];
@@ -506,12 +506,13 @@
 }
 -(void)payClick:(UIButton*)btn
 {
+    
     NSMutableArray *Mu  =[[NSMutableArray alloc]initWithCapacity:0];
      for ( MyCartM *pm in self.selectedMu) {
        NSDictionary *dic = @{@"pid":pm.p_id,@"price":pm.p_price,@"num":pm.p_num};
           [Mu addObject:dic];
          }
-//       NSDictionary *products =@{@"products":Mu};
+
     NSString* productJsonStr=[Mu JSONString];
     
     
@@ -531,7 +532,12 @@
     }else if([[AccountHanler invoiceStyle]isEqualToString:@"增值发票"]){
      invoice =@"2";
     }
- 
+    
+    if ([AccountHanler addres].length==0||[AccountHanler reciveName]==0||[AccountHanler recivePhone]==0) {
+        
+        WARN_ALERT(@"需要地址信息");
+        return;
+    }
   
     [we executePlaceOrderWithUserId:[AccountHanler userId] withOrderNum:currentOrderNum withProductsJsonStr:productJsonStr withReceivedName:[AccountHanler reciveName] withReceivedAddress:[AccountHanler addres] withReceivedMobile:[AccountHanler recivePhone] withReceivedPhone:[AccountHanler recivePhone] withFapiao:invoice withYunfei:@"20" withReduceYunfei:@"20" withAll_price:[NSString stringWithFormat:@"%0.2f",self.totalP] withPayWay:@"0" withFapiaoHeade:[AccountHanler invoiceHead] Success:^(id obj) {
         

@@ -82,8 +82,7 @@
     }
     MyCartM *mc =self.Mu[indexPath.row];
     [cell.imgV setWebImgUrl:mc.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
-    DLog(@"输出这张卑微的图片%@",mc.p_imgurl);
-    cell.titleLa.text=[mc.p_name base64DecodedString];
+       cell.titleLa.text=[mc.p_name base64DecodedString];
   
     
      cell.orderNum.text = [NSString stringWithFormat:@"西域订单编号:%@",mc.p_order_num];
