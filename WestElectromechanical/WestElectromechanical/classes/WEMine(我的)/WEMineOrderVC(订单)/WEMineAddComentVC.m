@@ -48,17 +48,17 @@
 //                          @"Comment":};
 //    
     
-    
-    NSString *dictJson =[dict JSONString];
-    DLog(@"%@",dictJson);
+//    
+//    NSString *dictJson =[dict JSONString];
+//    DLog(@"%@",dictJson);
 
-    [we executeOrderCommentsWithUserId:[AccountHanler userId] withOrderNum:self.orderFrame.orderModel.order_num withJsonStr:(NSString *) Success:^(id obj) {
-   
-        
-    } failed:^(id obj) {
-  
-        
-    }];
+//    [we executeOrderCommentsWithUserId:[AccountHanler userId] withOrderNum:self.orderFrame.orderModel.order_num withJsonStr:(NSString *) Success:^(id obj) {
+//   
+//        
+//    } failed:^(id obj) {
+//  
+//        
+//    }];
 
 
 }
