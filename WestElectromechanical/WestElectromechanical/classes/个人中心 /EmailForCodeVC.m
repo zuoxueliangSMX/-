@@ -10,6 +10,7 @@
 #import "WEHTTPHandler.h"
 #import "NSString+val.h"
 #import "RDVTabBarController.h"
+#import "NSString+Extension.h"
 #define kGap 10
 
 @interface EmailForCodeVC ()<UITextFieldDelegate>
@@ -33,21 +34,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"找回密码";
+    
      self.view.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
-    _namefi = [[UITextField alloc] initWithFrame:CGRectMake(kGap+10,7*kGap+10, self.view.frame.size.width-2*kGap-30, 50)];
-    _namefi.placeholder = @"     输入已注册的邮箱";
+    _namefi = [[UITextField alloc] initWithFrame:CGRectMake(kGap+10,7*kGap+10, SCREEN_WIDTH-40, 50)];
+    _namefi.placeholder = @"输入已注册的邮箱";
     [_namefi setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-    
+    _namefi.backgroundColor =[UIColor whiteColor];
     _namefi.layer.borderWidth = 1.0;
-    _namefi.layer.borderColor =[UIColor lightGrayColor].CGColor;
+    _namefi.layer.borderColor =[UIColor whiteColor].CGColor;
     [_namefi setKeyboardType:UIKeyboardTypeDefault];
-    
+//    executeFindPwdTaskWithEmail
     [_namefi.layer setMasksToBounds:YES];
     [_namefi.layer setCornerRadius:5];
     _namefi.delegate =self;
     [_namefi setClearButtonMode:UITextFieldViewModeWhileEditing];
     [_namefi setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
+    UIView *left  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 50, 30)];
     UIImageView *leftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
     [leftimg setImage: [UIImage imageNamed:@"Person_e"]];
     _namefi.leftViewMode = UITextFieldViewModeAlways;
@@ -60,71 +63,71 @@
     
     
     
-    UITextField *NewTF = [[UITextField alloc] initWithFrame:CGRectMake(10+10, CGRectGetMaxY(_namefi.frame)+10, self.view.frame.size.width-2*10-30, 50)];
-    [NewTF setPlaceholder:@"        新密码（6-11字符）"];
-    
-    
-    
-    [NewTF setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-    [NewTF setSecureTextEntry:YES];
-    [NewTF setClearButtonMode:UITextFieldViewModeWhileEditing];
-    [NewTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    [NewTF setDelegate:self];
-    NewTF.layer.borderWidth = 1.0;
-    NewTF.layer.borderColor =[UIColor lightGrayColor].CGColor;
-    
-    [NewTF.layer setMasksToBounds:YES];
-    [NewTF.layer setCornerRadius:5];
-    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
-    UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [psdleftimg setImage: [UIImage imageNamed:@"Person_lock"]];
-    NewTF.leftViewMode = UITextFieldViewModeAlways;
-    [psdleft addSubview:psdleftimg];
-    NewTF.leftView = psdleft;
-    _NewPsdTF = NewTF;
-//    UIImageView *imgv2 = [[UIImageView alloc] init];
-//    imgv2.backgroundColor = [UIColor appLineColor];
-//    imgv2.frame = CGRectMake(10, CGRectGetMaxY(NewTF.frame)+1, self.view.frame.size.width-20, 1);
-//    [self.view addSubview:imgv2];
-    
-    
-    
-    
-    [self.view addSubview:NewTF];
-    
-    
-    
-    
-    
-    _surePsdTF = [[UITextField alloc] initWithFrame:CGRectMake(10+10,CGRectGetMaxY(NewTF.frame)+10, self.view.frame.size.width-20-30, 50)];
-    _surePsdTF.placeholder = @"       确认新密码";
-    [_surePsdTF setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-    
-    [_surePsdTF setKeyboardType:UIKeyboardTypeDefault];
-     [_surePsdTF setSecureTextEntry:YES];
-    
-    _surePsdTF.layer.borderWidth = 1.0;
-    _surePsdTF.layer.borderColor =[UIColor lightGrayColor].CGColor;
-    [_surePsdTF.layer setMasksToBounds:YES];
-    [_surePsdTF.layer setCornerRadius:5];
-    _surePsdTF.delegate =self;
-    [_surePsdTF setClearButtonMode:UITextFieldViewModeWhileEditing];
-    [_surePsdTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
-    UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
-    UIImageView *leftimg2 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
-    [leftimg2 setImage: [UIImage imageNamed:@"Person_lock"]];
-    _surePsdTF.leftViewMode = UITextFieldViewModeAlways;
-    [left2 addSubview:leftimg2];
-    _surePsdTF.leftView = left2;
-    
-//    UIImageView *imgv3 = [[UIImageView alloc] init];
-//    imgv3.backgroundColor = [UIColor appLineColor];
-//    imgv3.frame = CGRectMake(10, CGRectGetMaxY(_surePsdTF.frame)+1, self.view.frame.size.width-20, 1);
-//    [self.view addSubview:imgv3];
-    
-    
-    
-    [self.view addSubview:_surePsdTF];
+//    UITextField *NewTF = [[UITextField alloc] initWithFrame:CGRectMake(10+10, CGRectGetMaxY(_namefi.frame)+10, self.view.frame.size.width-2*10-30, 50)];
+//    [NewTF setPlaceholder:@"        新密码（6-11字符）"];
+//    
+//    
+//    
+//    [NewTF setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
+//    [NewTF setSecureTextEntry:YES];
+//    [NewTF setClearButtonMode:UITextFieldViewModeWhileEditing];
+//    [NewTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+//    [NewTF setDelegate:self];
+//    NewTF.layer.borderWidth = 1.0;
+//    NewTF.layer.borderColor =[UIColor lightGrayColor].CGColor;
+//    
+//    [NewTF.layer setMasksToBounds:YES];
+//    [NewTF.layer setCornerRadius:5];
+//    UIView *psdleft  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
+//    UIImageView *psdleftimg = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+//    [psdleftimg setImage: [UIImage imageNamed:@"Person_lock"]];
+//    NewTF.leftViewMode = UITextFieldViewModeAlways;
+//    [psdleft addSubview:psdleftimg];
+//    NewTF.leftView = psdleft;
+//    _NewPsdTF = NewTF;
+////    UIImageView *imgv2 = [[UIImageView alloc] init];
+////    imgv2.backgroundColor = [UIColor appLineColor];
+////    imgv2.frame = CGRectMake(10, CGRectGetMaxY(NewTF.frame)+1, self.view.frame.size.width-20, 1);
+////    [self.view addSubview:imgv2];
+//    
+//    
+//    
+//    
+//    [self.view addSubview:NewTF];
+//    
+//    
+//    
+//    
+//    
+//    _surePsdTF = [[UITextField alloc] initWithFrame:CGRectMake(10+10,CGRectGetMaxY(NewTF.frame)+10, self.view.frame.size.width-20-30, 50)];
+//    _surePsdTF.placeholder = @"       确认新密码";
+//    [_surePsdTF setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
+//    
+//    [_surePsdTF setKeyboardType:UIKeyboardTypeDefault];
+//     [_surePsdTF setSecureTextEntry:YES];
+//    
+//    _surePsdTF.layer.borderWidth = 1.0;
+//    _surePsdTF.layer.borderColor =[UIColor lightGrayColor].CGColor;
+//    [_surePsdTF.layer setMasksToBounds:YES];
+//    [_surePsdTF.layer setCornerRadius:5];
+//    _surePsdTF.delegate =self;
+//    [_surePsdTF setClearButtonMode:UITextFieldViewModeWhileEditing];
+//    [_surePsdTF setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+//    UIView *left2  = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 30, 30)];
+//    UIImageView *leftimg2 = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 20, 20)];
+//    [leftimg2 setImage: [UIImage imageNamed:@"Person_lock"]];
+//    _surePsdTF.leftViewMode = UITextFieldViewModeAlways;
+//    [left2 addSubview:leftimg2];
+//    _surePsdTF.leftView = left2;
+//    
+////    UIImageView *imgv3 = [[UIImageView alloc] init];
+////    imgv3.backgroundColor = [UIColor appLineColor];
+////    imgv3.frame = CGRectMake(10, CGRectGetMaxY(_surePsdTF.frame)+1, self.view.frame.size.width-20, 1);
+////    [self.view addSubview:imgv3];
+//    
+//    
+//    
+//    [self.view addSubview:_surePsdTF];
     
 
     
@@ -132,8 +135,8 @@
     UIButton *loginBu = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginBu setTitle:@"确定" forState:UIControlStateNormal];
     [loginBu setTitle:@"" forState:UIControlStateHighlighted];
-    [loginBu setFrame:CGRectMake((self.view.frame.size.width-240)/2, CGRectGetMaxY(_surePsdTF.frame)+30, 240, 44)];
-    [loginBu setBackgroundColor:[UIColor orangeColor]];
+    [loginBu setFrame:CGRectMake(20, CGRectGetMaxY(_namefi.frame)+30, SCREEN_WIDTH-40, 44)];
+    [loginBu setBackgroundColor:[UIColor redColor]];
     [loginBu.layer setMasksToBounds:YES];
     [loginBu.layer setCornerRadius:5];
     [loginBu setBackgroundImage:[UIImage imageNamed:@"queding"] forState:UIControlStateNormal];
@@ -173,21 +176,29 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)sureclick{
-
-    if (!([ _NewPsdTF.text isEqualToString:_surePsdTF.text]&&_surePsdTF.text!=nil)) {
+//
+//    if (!([ _NewPsdTF.text isEqualToString:_surePsdTF.text]&&_surePsdTF.text!=nil)) {
+//        
+//        ALERT_WARN(@"两次输入的密码不一致,请重新输入");
+//        return;
+//    }
+//
+//
+  
+    if ( [NSString  isValidateEmail:_namefi.text]==NO||[[NSString deleteSpacing:_namefi.text] length]==0) {
+        [AlertUtil showAlertWithText:@"您输入的邮箱不符合规则，请检查后重新输入！"];
         
-        ALERT_WARN(@"两次输入的密码不一致,请重新输入");
         return;
     }
 
-    
 
     WEHTTPHandler *we= [[WEHTTPHandler alloc]init];
     
     [we executeFindPwdTaskWithEmail:_namefi.text withPaw:_NewPsdTF.text success:^(id obj) {
         DLog(@"输出%@",obj);
+        [AlertUtil showAlertWithText:@"发送成功，请到您的邮箱验收"];
     } failed:^(id obj) {
-
+        [AlertUtil showAlertWithText:@"发送失败，请重新发送"];
     }];
 
 }

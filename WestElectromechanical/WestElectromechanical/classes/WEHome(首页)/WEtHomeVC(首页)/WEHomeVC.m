@@ -172,8 +172,9 @@
         }
     }];
     
-
     [self initNetData:@"北京"];
+
+    [self onCheckVersion];
 }
 
 /**
@@ -277,6 +278,112 @@
         DLog(@"homeVC--error-->%@",obj);
     }];
 }
+
+
+
+
+
+-(void)onCheckVersion
+
+{
+    
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    
+    //CFShow((__bridge CFTypeRef)(infoDic));
+    
+    NSString *currentVersion = [infoDic objectForKey:@"CFBundleVersion"];
+    
+
+    NSString *URL = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",kAPPId];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    [request setURL:[NSURL URLWithString:URL]];
+    
+    [request setHTTPMethod:@"POST"];
+    
+    NSHTTPURLResponse *urlResponse = nil;
+    
+    NSError *error = nil;
+    
+    NSData *recervedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+    
+    
+    
+    NSString *results = [[NSString alloc] initWithBytes:[recervedData bytes] length:[recervedData length] encoding:NSUTF8StringEncoding];
+    
+    NSDictionary *dic =[self dictionaryWithJsonString:results];
+    
+    NSArray *infoArray = [dic objectForKey:@"results"];
+    
+    if ([infoArray count]) {
+        
+        NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
+        
+        NSString *lastVersion = [releaseInfo objectForKey:@"version"];
+        
+        if (![lastVersion isEqualToString:currentVersion]) {
+            
+            //trackViewURL = [releaseInfo objectForKey:@"trackVireUrl"];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
+            
+            alert.tag = 10000;
+            
+            [alert show];
+            
+        }
+        
+        else
+            
+        {
+            
+            //            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            //
+            //            alert.tag = 10001;
+            //
+            //            [alert show];
+            
+        }
+        
+    }
+    
+}
+/*!
+ * @brief 把格式化的JSON格式的字符串转换成字典
+ * @param jsonString JSON格式的字符串
+ * @return 返回字典
+ */
+- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
+
+/**
+ *  alertViewDelegate
+ */
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 10000) {
+        if (buttonIndex == 1) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/cn/app/id%@",kAPPId]]];
+        }
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

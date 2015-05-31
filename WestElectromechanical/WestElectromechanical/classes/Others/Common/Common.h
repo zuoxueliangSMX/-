@@ -29,6 +29,9 @@
 
 #define kHomeCityKey @"homeCityKey"
 #define kProductCount @"productCount"
+//    998942709  西域
+//
+#define kAPPId @"935068969"
 
 #import "UIColor+FlatUI.h"
 #import "UIView+Extension.h"

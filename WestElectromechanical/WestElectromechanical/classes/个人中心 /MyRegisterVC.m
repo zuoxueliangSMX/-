@@ -247,7 +247,7 @@
     
     //同意协议
     
-    UILabel *protolcLa =[[UILabel alloc]initWithFrame:CGRectMake(50, 265+90, 90, 22)];
+    UILabel *protolcLa =[[UILabel alloc]initWithFrame:CGRectMake(50, CGRectGetMaxY(squareView.frame)+20, 90, 22)];
     protolcLa.text = @"同意协议";
     protolcLa.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:protolcLa];
@@ -255,7 +255,7 @@
     
     
     UIButton *protolcBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [protolcBtn setFrame:CGRectMake(30, 265+93, 15, 17)];
+    [protolcBtn setFrame:CGRectMake(30,  CGRectGetMaxY(squareView.frame)+23, 15, 17)];
     
     [protolcBtn setImage:[UIImage imageNamed:@"login_square"] forState: UIControlStateNormal];
     [protolcBtn setImage:[UIImage imageNamed:@"login_selected"] forState:UIControlStateSelected];
@@ -284,9 +284,12 @@
     
     // 注册
     UIButton *loginBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginBut setFrame:CGRectMake(15, 265+130, SCREEN_WIDTH-30, 40)];
+    [loginBut setFrame:CGRectMake(15, CGRectGetMaxY(protolcoDetailBtn.frame)+15, SCREEN_WIDTH-30, 40)];
     [loginBut setTitle:@"注册" forState:UIControlStateNormal];
-       [loginBut setBackgroundColor:[UIColor pumpkinColor]];
+       [loginBut setBackgroundColor:[UIColor redColor]];
+    loginBut.layer.borderWidth = 1;
+    loginBut.layer.borderColor =[UIColor redColor].CGColor;
+    loginBut.layer.cornerRadius = 5;
     [loginBut addTarget:self action:@selector(registerBtn) forControlEvents:UIControlEventTouchUpInside];
     [loginBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:loginBut];

@@ -471,11 +471,12 @@
                             failed:(FailedBlock)failed
 {
     [AlertUtil showAlertWithText:@"找回密码"];
-    NSString *url =[BaseHandler requestUrlWithUrl:API_FINDPWD WithPath:@""];
+//    NSString *url =[BaseHandler requestUrlWithUrl:API_FINDPWD WithPath:@""];
+    NSString *url =@"http://114.215.135.236/ehsy/interface/json_password.php?";
     NSString *params = [NSString stringWithFormat:@"email=%@",email];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
-        if ([[json  objectForKey:@"message"] integerValue]== 0) {
+        if ([[json  objectForKey:@"message"] integerValue]== 1) {
             if (success) {
                 success(json);
             }
