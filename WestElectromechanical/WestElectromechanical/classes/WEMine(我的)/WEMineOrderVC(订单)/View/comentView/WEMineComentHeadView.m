@@ -10,7 +10,6 @@
 
 
 @interface  WEMineComentHeadView()
-@property(nonatomic,weak)UIImageView *productImg;
 @property(nonatomic,weak)UILabel *productLabel;
 @property(nonatomic,weak)UILabel *productCartIdLabel;
 @end

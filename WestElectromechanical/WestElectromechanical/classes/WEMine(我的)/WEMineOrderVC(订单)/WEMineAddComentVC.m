@@ -14,6 +14,7 @@
 #import "JSONKit.h"
 #import "ProductsM.h"
 #import "NSString+Extension.h"
+#import "UIImageView+WebCacheImg.h"
 @interface WEMineAddComentVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     WEHTTPHandler *we;
@@ -37,33 +38,7 @@
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
 }
 
--(void)sendRequset
-{
-    
-    for (ProductsM* pm in self.orderFrame.orderModel.order_products) {
-        
-    }
-  
-//  @[];
-    
-//    NSDictionary *dict =@{@"P_id":self.orderFrame.orderModel.o_id,
-//                          @"Comment":};
-//    
-//    
-//    
-//    NSString *dictJson =[dict JSONString];
-//    DLog(@"%@",dictJson);
-//
-//    [we executeOrderCommentsWithUserId:[AccountHanler userId] withOrderNum:self.orderFrame.orderModel.order_num withJsonStr:(NSString *) Success:^(id obj) {
-//   
-//        
-//    } failed:^(id obj) {
-//  
-//        
-//    }];
 
-
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"订单评价";
@@ -72,8 +47,7 @@
     
     we= [[WEHTTPHandler alloc]init];
     
-    
-    [self sendRequset];
+
     UITableView *table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH,SCREEN_HEIGHT) style:UITableViewStylePlain];
     
     
@@ -88,14 +62,14 @@
     _commentList = table;
     
     UIView * footView= [[UIView  alloc]init];
-    footView.frame =CGRectMake(0, 0, SCREEN_WIDTH, 50);
+    footView.frame =CGRectMake(0, 0, SCREEN_WIDTH, 60);
     table.tableFooterView =footView;
     
     
     
     // 提交
     UIButton *commtiBut = [UIButton buttonWithType:UIButtonTypeCustom];
-    [commtiBut setFrame:CGRectMake(10, 25, SCREEN_WIDTH-20, 40)];
+    [commtiBut setFrame:CGRectMake(10, 5, SCREEN_WIDTH-20, 40)];
     [commtiBut setTitle:@"提交" forState:UIControlStateNormal];
     [commtiBut setBackgroundColor:[UIColor redColor]];
     [commtiBut addTarget:self action:@selector(commitBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -134,6 +108,8 @@
     
     cell.header.titleLabel.text =pm.p_name;
     cell.header.orderNumLa.text =pm.p_order_num;
+    [cell.header.productImg setWebImgUrl:pm.p_imgurl placeHolder:[UIImage imageNamed:@"Product_Placeholder"]];
+    
       return cell;
     
 }
@@ -150,6 +126,7 @@
     NSInteger index=0;
     NSMutableArray *commentArr =[NSMutableArray array];
     for (ProductsM *model in self.orderFrame.orderModel.order_products) {
+       
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
         WEMineAddComentCell *cell =(WEMineAddComentCell *)[_commentList cellForRowAtIndexPath:indexPath];
         if ([[NSString deleteSpacing:cell.tv.text] length]>0) {
@@ -157,6 +134,7 @@
                                          @"comment":cell.tv.text};
             [commentArr addObject:commentDict];
         }
+         index ++;
        
     }
     
