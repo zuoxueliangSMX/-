@@ -72,6 +72,7 @@
 		7FE70D971B05CA0D00830EF6 /* CartOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE70D961B05CA0D00830EF6 /* CartOrderDetailVC.m */; };
 		7FE73D8D1B003DE4004559D4 /* MyOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE73D8C1B003DE4004559D4 /* MyOrderDetailVC.m */; };
 		7FE73D901B009AFA004559D4 /* AddressM.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE73D8F1B009AFA004559D4 /* AddressM.m */; };
+		7FE8DBF11B1C924C0073F967 /* SoftWareShareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8DBF01B1C924C0073F967 /* SoftWareShareVC.m */; };
 		9D0E523495E67FFBE6F2714B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A37D720A9818131CA3C9CC92 /* libPods.a */; };
 		A32D858C1AFBB9B600BC0CB0 /* WEProductImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D858B1AFBB9B600BC0CB0 /* WEProductImgModel.m */; };
 		A32D858F1AFBBA3500BC0CB0 /* WEProductModelImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A32D858E1AFBBA3500BC0CB0 /* WEProductModelImgModel.m */; };
@@ -433,6 +434,8 @@
 		7FE73D8C1B003DE4004559D4 /* MyOrderDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyOrderDetailVC.m; path = "../../个人中心 /MyOrderDetailVC.m"; sourceTree = "<group>"; };
 		7FE73D8E1B009AFA004559D4 /* AddressM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressM.h; sourceTree = "<group>"; };
 		7FE73D8F1B009AFA004559D4 /* AddressM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressM.m; sourceTree = "<group>"; };
+		7FE8DBEF1B1C924C0073F967 /* SoftWareShareVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftWareShareVC.h; sourceTree = "<group>"; };
+		7FE8DBF01B1C924C0073F967 /* SoftWareShareVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftWareShareVC.m; sourceTree = "<group>"; };
 		A32D858A1AFBB9B600BC0CB0 /* WEProductImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductImgModel.h; sourceTree = "<group>"; };
 		A32D858B1AFBB9B600BC0CB0 /* WEProductImgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEProductImgModel.m; sourceTree = "<group>"; };
 		A32D858D1AFBBA3500BC0CB0 /* WEProductModelImgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEProductModelImgModel.h; sourceTree = "<group>"; };
@@ -825,6 +828,8 @@
 				7FE59F101AFBB24100D8ABA9 /* MarkSheetVC.m */,
 				7FE59F051AFB9DF200D8ABA9 /* GlanceHistoryVC.h */,
 				7FE59F061AFB9DF200D8ABA9 /* GlanceHistoryVC.m */,
+				7FE8DBEF1B1C924C0073F967 /* SoftWareShareVC.h */,
+				7FE8DBF01B1C924C0073F967 /* SoftWareShareVC.m */,
 				7FE59F0A1AFB9E8C00D8ABA9 /* GlanceCell.h */,
 				7FE59F0B1AFB9E8C00D8ABA9 /* GlanceCell.m */,
 				7FE59F0C1AFB9E8C00D8ABA9 /* GlanceCell.xib */,
@@ -2153,6 +2158,7 @@
 				7FE18B411B04A111004552B1 /* CommitOrderVC.m in Sources */,
 				7FE6B7DA1B0C1C1200AE2230 /* NSDataEx.m in Sources */,
 				7FE73D901B009AFA004559D4 /* AddressM.m in Sources */,
+				7FE8DBF11B1C924C0073F967 /* SoftWareShareVC.m in Sources */,
 				A3C248901AF8FA1600760C72 /* WEHotRecommendModel.m in Sources */,
 				7FE55B5A1B0BA503002113B1 /* CartCommitOrderVC.m in Sources */,
 				7F8B1AB01AFA01560085FE2D /* UIButton+Button.m in Sources */,
