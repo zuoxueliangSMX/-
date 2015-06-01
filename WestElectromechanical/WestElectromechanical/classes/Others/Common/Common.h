@@ -27,14 +27,14 @@
 #define kPhoneLinkPeopleStateNotUser @"03"// 03:未注册用户
 
 #define kShareSDKAPP @"7d0066c5e8bc"
-#define kWeChatAppId @"wxbe41ebca760466e"
-#define kWeChatAppKey @"270e045bf66d6515309e13e71dceb707"
+#define kWeChatAppId @"wxf0f38df0385e9a1a"
+#define kWeChatAppKey @"5aa4db0acbfdd09bffd4bf064c9a5fc4"
 
 #define kHomeCityKey @"homeCityKey"
 #define kProductCount @"productCount"
 //    998942709  西域
 //
-#define kAPPId @"935068969"
+#define kAPPId @"998942709"
 
 #import "UIColor+FlatUI.h"
 #import "UIView+Extension.h"
@@ -43,11 +43,11 @@
  */
 #define keySqlTraceExecution YES //设定是否显示fmdb的sql语句执行过程
 #define SERVER_PROTOCOL @"http://"
-//#define SERVER_PORT @"/interface"
-//#define SERVER_HOST @"interface.ehsy.com" //开发版本
+#define SERVER_PORT @"/interface"
+#define SERVER_HOST @"interface.ehsy.com" //开发版本
 
-#define SERVER_PORT @"/ehsy/interface"
-#define SERVER_HOST @"114.215.135.236" //开发版本
+//#define SERVER_PORT @"/ehsy/interface"
+//#define SERVER_HOST @"114.215.135.236" //开发版本
 
 
 #define kColor(r,g,b) [UIColor colorWithRed:r green:g blue:b alpha:1]

@@ -20,6 +20,14 @@
 #import "WEProdcutCommentListVC.h"
 #import "WECartHomeVC.h"
 #import "WEHTTPHandler.h"
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
+
+#define TS_APP_SHARE_TEXT _detailModel.p_introduce
+#define TS_APP_SHARE_INSTALL_URL @"http://www.ehsy.com"
+
+#define TS_APP_SHARE_TITLE _detailModel.p_name
+#define FIRIM_APP__URL [NSString stringWithFormat:@"http://www.ehsy.com/show.php?contentid=%@",_productId]
 @interface WEProductDetailVC ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
 {
     CGFloat _height;
@@ -32,6 +40,116 @@
 @end
 
 @implementation WEProductDetailVC
+
+
+- (void)shareContentWeChatLocalImg
+{
+    //只需要在响应分享按钮的方法中添加以下代码即可
+    UIImage *img = [UIImage imageNamed:@"launcher_Icon"];
+    NSData *data =UIImageJPEGRepresentation(img, 1.0);
+    
+    //构造分享内容
+    
+   id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"%@\n%@",TS_APP_SHARE_TEXT,TS_APP_SHARE_INSTALL_URL]
+                        defaultContent:@""
+                                 image:[ShareSDK imageWithData:data fileName:@"icon" mimeType:@"png"]
+                                 title:TS_APP_SHARE_TITLE
+                                   url:FIRIM_APP__URL
+                           description:@""
+                             mediaType:SSPublishContentMediaTypeNews];
+    
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    //    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    //自定义标题栏相关委托
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:NO
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:nil];
+    [ShareSDK showShareActionSheet:container
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:authOptions
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                }
+                            }];
+ 
+}
+
+- (void)shareContentWeChat
+{
+ 
+    
+    //只需要在响应分享按钮的方法中添加以下代码即可
+    
+    //构造分享内容
+    
+    NSString *imgUrl = [_detailModel.imgs[0] imgurl];
+    id<ISSContent> publishContent = [ShareSDK content:[NSString stringWithFormat:@"%@\n%@",TS_APP_SHARE_TEXT,TS_APP_SHARE_INSTALL_URL]
+                        defaultContent:@""
+                                 image:[ShareSDK imageWithUrl:imgUrl]
+                                 title:TS_APP_SHARE_TITLE
+                                   url:FIRIM_APP__URL
+                           description:@""
+                             mediaType:SSPublishContentMediaTypeNews];
+//    if (_detailModel.imgs.count>0) {
+//
+//    }else{
+//        publishContent = [ShareSDK content:[NSString stringWithFormat:@"%@\n%@",TS_APP_SHARE_TEXT,TS_APP_SHARE_INSTALL_URL]
+//                            defaultContent:@""
+//                                     image:[ShareSDK imageWithData:data fileName:@"icon" mimeType:@"png"]
+//                                     title:TS_APP_SHARE_TITLE
+//                                       url:FIRIM_APP__URL
+//                               description:@""
+//                                 mediaType:SSPublishContentMediaTypeText];
+//    }
+
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    //    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    //自定义标题栏相关委托
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:NO
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:nil];
+    [ShareSDK showShareActionSheet:container
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:authOptions
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                }
+                            }];
+    
+}
+
+
+
 #pragma mark -
 #pragma mark - pop和push控制器时的操作
 - (void)viewWillAppear:(BOOL)animated {
@@ -129,6 +247,14 @@
 }
 - (void)shareProduct:(UIButton*)btn{
     NSLog(@"分享产品");
+    
+    if (_detailModel.imgs.count>0) {
+        [self shareContentWeChat];
+
+    }else{
+        [self shareContentWeChatLocalImg];
+    }
+
 }
 
 - (void)viewDidLoad {

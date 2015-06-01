@@ -40,7 +40,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [self addWeChatShareSDK];
     [self setUpConfig];
     [self loadingVC];
     [self.window makeKeyAndVisible];

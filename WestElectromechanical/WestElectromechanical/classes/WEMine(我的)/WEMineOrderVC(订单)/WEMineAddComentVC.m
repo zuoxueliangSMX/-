@@ -157,6 +157,7 @@
                                          @"comment":cell.tv.text};
             [commentArr addObject:commentDict];
         }
+        index++;
        
     }
     

@@ -139,7 +139,6 @@
     for (int i = 0; i < count; i++) {
         startX = i * width;
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(startX, 0, width, height)];
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.tag = kStartTag + i;
         imageView.userInteractionEnabled = YES;
         imageView.translatesAutoresizingMaskIntoConstraints = NO;

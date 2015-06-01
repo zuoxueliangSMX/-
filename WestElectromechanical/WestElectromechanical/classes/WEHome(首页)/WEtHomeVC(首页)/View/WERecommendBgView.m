@@ -52,6 +52,7 @@
     for (int i = 0; i < kImgCount; i++) {
         UIImageView *imgView =[_imgs objectAtIndex:i];
         WERecommendModel *recommendModel =[recommends objectAtIndex:i];
+        DLog(@"111------>%@",recommendModel.Imgurl);
         [imgView setWebImgUrl:recommendModel.Imgurl placeHolder:[UIImage imageNamed:@"product_load_default"]];
     }
 }
