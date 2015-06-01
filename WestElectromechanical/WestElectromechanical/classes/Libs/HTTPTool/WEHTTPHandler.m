@@ -1415,7 +1415,7 @@
 
     [AlertUtil showAlertWithText:@"订单评价"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_ADDCOMMENTS WithPath:@""];
-    NSString *params = [NSString stringWithFormat:@"uid=%@&Order_num=%@&Pinglun_list=%@",userId,orderNum,PinglunList];
+    NSString *params = [NSString stringWithFormat:@"uid=%@&order_num=%@&pinglun_list=%@",userId,orderNum,PinglunList];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         
@@ -1427,14 +1427,14 @@
             }
             
         }else{
-            [AlertUtil showAlertWithText:@"提交出错"];
+//            [AlertUtil showAlertWithText:@"提交出错"];
             if (failed) {
                 failed(nil);
             }
         }
     } withFailure:^(NSError *error) {
         DLog(@"%@",error.localizedDescription);
-        [AlertUtil showAlertWithText:@"网络连接失败"];
+//        [AlertUtil showAlertWithText:@"网络连接失败"];
         
         if (failed) {
             failed(error);
@@ -1446,7 +1446,9 @@
 }
 
 
-
+/**
+ *  36.产品分类搜索
+ */
 
 - (void)executeDoProductFilterWithProductCategory:(NSString *)categoryId
                                    withFirstPrice:(NSString*)firstPrice
@@ -1456,25 +1458,33 @@
                                           Success:(SuccessBlock)success
                                            failed:(FailedBlock)failed
 {
-    [AlertUtil showAlertWithText:@"订单评价"];
+    [AlertUtil showAlertWithText:@"搜索产品"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
     NSString *params = [NSString stringWithFormat:@"t_id=%@&price_one=%@&price_two=%@&page=%@&uid=%@",categoryId,firstPrice,secondPrice,page,[AccountHanler userId]];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         
         
-        if ([[json objectForKey:@"message"] integerValue]== 0) {
+        WEProductsModel *productsModel =[[WEProductsModel alloc]initWithDict:json];
+        if ([productsModel.message integerValue]== 0) {
             
-            if (success) {
-                success(json);
+            if (productsModel.products.count>0) {
+                if (success) {
+                    success(productsModel);
+                }
+                [AlertUtil showAlertWithText:@"搜索成功"];
+
+            }else{
+                [AlertUtil showAlertWithText:@"没有搜索出您需要的产品"];
             }
             
         }else{
-            [AlertUtil showAlertWithText:@"提交出错"];
+            [AlertUtil showAlertWithText:@"没有搜索出您需要的产品"];
             if (failed) {
                 failed(nil);
             }
         }
+
     } withFailure:^(NSError *error) {
         DLog(@"%@",error.localizedDescription);
         [AlertUtil showAlertWithText:@"网络连接失败"];
@@ -1486,8 +1496,9 @@
     
 
 }
-
-
+/**
+ *  35.产品名字搜索
+ */
 - (void)executeDoProductFilterWithProductName:(NSString *)productName
                                    withFirstPrice:(NSString*)firstPrice
                                   withSecondPrice:(NSString *)secondPrice
@@ -1496,25 +1507,34 @@
                                           Success:(SuccessBlock)success
                                            failed:(FailedBlock)failed
 {
-    [AlertUtil showAlertWithText:@"订单评价"];
+    [AlertUtil showAlertWithText:@"搜索产品"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_SEARCH_SEARCH WithPath:@""];
     NSString *params = [NSString stringWithFormat:@"name=%@&price_one=%@&price_two=%@&page=%@&uid=%@",productName,firstPrice,secondPrice,page,[AccountHanler userId]];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
         DLog(@"%@",json);
         
         
-        if ([[json objectForKey:@"message"] integerValue]== 0) {
+        WEProductsModel *productsModel =[[WEProductsModel alloc]initWithDict:json];
+        if ([productsModel.message integerValue]== 0) {
             
-            if (success) {
-                success(json);
+            if (productsModel.products.count>0) {
+                if (success) {
+                    success(productsModel);
+                }
+                [AlertUtil showAlertWithText:@"搜索成功"];
+            }else{
+                [AlertUtil showAlertWithText:@"没有搜索出您需要的产品"];
             }
             
         }else{
-            [AlertUtil showAlertWithText:@"提交出错"];
+            [AlertUtil showAlertWithText:@"没有搜索出您需要的产品"];
             if (failed) {
                 failed(nil);
             }
         }
+
+        
+
     } withFailure:^(NSError *error) {
         DLog(@"%@",error.localizedDescription);
         [AlertUtil showAlertWithText:@"网络连接失败"];

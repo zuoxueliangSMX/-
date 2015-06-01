@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "WEMineComentHeadView.h"
+#import "GCPlaceholderTextView.h"
 @interface WEMineAddComentCell : UITableViewCell
 @property(nonatomic,weak)WEMineComentHeadView *header;
-
+@property (nonatomic ,weak)GCPlaceholderTextView *tv;;
 @end

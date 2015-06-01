@@ -8,13 +8,8 @@
 
 #import "WEMineAddComentCell.h"
 #import "WEMineComentHeadView.h"
-#import "GCPlaceholderTextView.h"
 @interface WEMineAddComentCell()<UITextViewDelegate >
-{
-    GCPlaceholderTextView *tv;
 
-
-}
 @end
 @implementation WEMineAddComentCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -29,7 +24,7 @@
         _header = header;
        
         
-        tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(header.frame)+10,SCREEN_WIDTH-20, 60)];
+        GCPlaceholderTextView *tv=[[GCPlaceholderTextView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(header.frame)+10,SCREEN_WIDTH-20, 60)];
         tv.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         tv.delegate = self;
         
@@ -45,7 +40,8 @@
         
         
         [self addSubview:tv];
- 
+
+        _tv=tv;
 
         
     }

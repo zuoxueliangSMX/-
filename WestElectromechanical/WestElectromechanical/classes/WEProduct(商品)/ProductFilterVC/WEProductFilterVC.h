@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void(^productFilterBlock) (void);
+#import "WEProductsModel.h"
+typedef void(^productFilterBlock) (WEProductsModel *model);
 @interface WEProductFilterVC : UIViewController
 {
     __strong productFilterBlock _block;

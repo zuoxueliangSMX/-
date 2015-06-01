@@ -93,6 +93,18 @@
 - (void)screen:(UIButton*)btn{
     NSLog(@"添加好友");
     WEProductFilterVC *filterVC =[[WEProductFilterVC alloc]init];
+    if (_t_id.length>0&&_t_id) {
+    
+        filterVC.t_id = _t_id;
+    }else{
+        filterVC.productName = _searchName;
+    }
+    
+    [filterVC setProductFilterBlock:^(WEProductsModel *model) {
+        _products = model;
+        [_productList reloadData];
+        [_productCollection reloadData];
+    }];
     [self.navigationController pushViewController:filterVC animated:YES];
 }
 - (void)condition:(UIButton*)btn{

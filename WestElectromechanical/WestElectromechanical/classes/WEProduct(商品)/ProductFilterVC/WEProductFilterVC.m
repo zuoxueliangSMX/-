@@ -9,9 +9,15 @@
 #import "WEProductFilterVC.h"
 #import "RDVTabBarController.h"
 #import "UIButton+Extension.h"
-@interface WEProductFilterVC ()<UITableViewDataSource,UITableViewDelegate>
+#import "WEHTTPHandler.h"
+#import "NSString+Extension.h"
+@interface WEProductFilterVC ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (nonatomic ,strong)NSArray *priceArr;
 @property (nonatomic ,weak)UILabel *priceInterval;
+@property (nonatomic ,copy)NSString *firstPrice;
+@property (nonatomic ,copy)NSString *secondPrice;
+@property (nonatomic ,weak)UITextField *brandTf;
+
 @end
 
 @implementation WEProductFilterVC
@@ -38,6 +44,7 @@
     
     
     _priceArr =@[@"全部",@"0~50",@"50~100",@"100~500",@"500~1000",@"1000~2000",@"2000~5000",@"5000~10000"];
+    
     UITableView *filterList =[[UITableView alloc]initWithFrame:CGRectMake(10, 0, SCREEN_WIDTH-20, SCREEN_HEIGHT-50) style:UITableViewStyleGrouped];
     filterList.delegate =self;
     filterList.dataSource =self;
@@ -50,23 +57,66 @@
     filterList.backgroundColor =[UIColor clearColor];
     [self.view addSubview:filterList];
     
-    
+
     UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(filterList.frame), SCREEN_WIDTH, 50)];
     bottomView.backgroundColor =[UIColor colorFromHexCode:@"f2f2f2"];
     [self.view addSubview:bottomView];
-    
 
-     
     UIButton *button =[UIButton addTarget:self WithNorTitle:@"筛选" withNorColor:[UIColor whiteColor] withSelectedTitle:@"筛选" withSelectedColor:[UIColor whiteColor] withBackgroundColor:[UIColor orangeColor] withTileSize:font(16) action:@selector(filterProduct:)];
     button.frame = CGRectMake(10, 3, SCREEN_WIDTH-20, 44);
     [bottomView addSubview:button];
     
 }
 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [_brandTf resignFirstResponder];
+    return YES;
+}
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [_brandTf resignFirstResponder];
+
+}
 - (void)filterProduct:(UIButton *)btn
 {
-    [AlertUtil showAlertWithText:@"没有搜出您需要的产品"];
-    [self.navigationController popViewControllerAnimated:YES];
+//    [AlertUtil showAlertWithText:@"没有搜出您需要的产品"];
+
+    
+    if ([[NSString deleteSpacing:_brandTf.text] length] == 0) {
+        [AlertUtil showAlertWithText:@"请输入您选择的品牌"];
+        return;
+    }
+    
+    __weak WEProductFilterVC *bSelf =self;
+    if (_productName.length>0) {
+        
+        [[[WEHTTPHandler alloc]init] executeDoProductFilterWithProductName:_productName withFirstPrice:_firstPrice withSecondPrice:_secondPrice withBrand:_brandTf.text withPage:@"1" Success:^(id obj) {
+            
+            if (_block) {
+                _block((WEProductsModel *)obj);
+            }
+            [bSelf.navigationController popViewControllerAnimated:YES];
+        } failed:^(id obj) {
+            
+        }];
+        
+    }else{
+        [[[WEHTTPHandler alloc]init] executeDoProductFilterWithProductCategory:_t_id withFirstPrice:_firstPrice withSecondPrice:_secondPrice withBrand:_brandTf.text withPage:@"1" Success:^(id obj) {
+            
+            if (_block) {
+                _block((WEProductsModel *)obj);
+            }
+            [bSelf.navigationController popViewControllerAnimated:YES];
+        } failed:^(id obj) {
+            
+        }];
+    }
+    
+    
 }
 
 #pragma mark -
@@ -102,9 +152,12 @@
         tf.layer.borderWidth = 1;
         tf.layer.borderColor =[UIColor colorFromHexCode:@"f2f2f2"].CGColor;
         tf.layer.cornerRadius =5;
+        tf.delegate = self;
         [view addSubview:tf];
         view.backgroundColor =[UIColor clearColor];
+        _brandTf = tf;
         return view;
+        
     }else{
         UIView *view =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-20, 50)];
         view.backgroundColor =[UIColor whiteColor];
@@ -122,7 +175,7 @@
         UILabel *priceInterval =[[UILabel alloc]init];
         priceInterval.frame =CGRectMake(  60,0,SCREEN_WIDTH-20-70,50);
         priceInterval.numberOfLines =1;
-        priceInterval.text = @"价格";
+        priceInterval.text = @"全部";
         priceInterval.textAlignment = NSTextAlignmentRight;
         priceInterval.font =[UIFont systemFontOfSize:18.0];
         priceInterval.textColor =[UIColor orangeColor];
@@ -158,9 +211,20 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [_brandTf resignFirstResponder];
+
     UITableViewCell *cell =[tableView cellForRowAtIndexPath:indexPath];
     _priceInterval.text = cell.textLabel.text;
+    
+    
+    if ([_priceInterval.text isEqualToString:@"全部"]) {
+        _firstPrice = @"0";
+        _firstPrice = @"100000000";
+    }else{
+      NSArray * priceArr = [_priceInterval.text componentsSeparatedByString:@"~"];
+        _firstPrice = [priceArr objectAtIndex:0];
+        _secondPrice =[priceArr objectAtIndex:1];
+    }
 }
 
 

@@ -320,13 +320,13 @@
                               failed:(FailedBlock)failed;
 
 /**
- *  31.订单支付
+ *  32.支付宝信息
  */
 - (void)executePayInfoWithSuccess:(SuccessBlock)success
                            failed:(FailedBlock)failed;
 
 /**
- *  32.根据分类搜索产品并排序
+ *  33.根据分类搜索产品并排序
  */
 - (void)executeGetSearchDataWithSearchContent:(NSString *)content
                                     withOrder:(NSString *)order
@@ -334,7 +334,7 @@
                                    withFailed:(FailedBlock)failed;
 
 /**
- *  33.搜索商品名字
+ *  34.搜索商品名字
  */
 
 - (void)executeGetSearchDataWithSearchProductNameOrder:(NSString *)productName
@@ -351,6 +351,10 @@
                                withFailed:(FailedBlock)failed;
 
 
+
+/**
+ *  35.产品名字搜索
+ */
 - (void)executeDoProductFilterWithProductName:(NSString *)productName
                                withFirstPrice:(NSString*)firstPrice
                               withSecondPrice:(NSString *)secondPrice
@@ -358,6 +362,10 @@
                                      withPage:(NSString *)page
                                       Success:(SuccessBlock)success
                                        failed:(FailedBlock)failed;
+
+/**
+ *  36.产品分类搜索
+ */
 
 - (void)executeDoProductFilterWithProductCategory:(NSString *)categoryId
                                    withFirstPrice:(NSString*)firstPrice

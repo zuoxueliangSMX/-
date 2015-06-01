@@ -13,12 +13,14 @@
 #import "RDVTabBarController.h"
 #import "JSONKit.h"
 #import "ProductsM.h"
+#import "NSString+Extension.h"
 @interface WEMineAddComentVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
     WEHTTPHandler *we;
 
 
 }
+@property (nonatomic ,weak)UITableView *commentList;
 @end
 
 @implementation WEMineAddComentVC
@@ -78,10 +80,12 @@
         table.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
     
     self.view.backgroundColor =SET_COLOR(234.0, 234.0, 234.0);
-    
+
+    table.bounces = NO;
     table.delegate =self;
     table.dataSource =self;
     [self.view addSubview:table];
+    _commentList = table;
     
     UIView * footView= [[UIView  alloc]init];
     footView.frame =CGRectMake(0, 0, SCREEN_WIDTH, 50);
@@ -142,6 +146,36 @@
 -(void)commitBtnClick
 {
 
+    
+    NSInteger index=0;
+    NSMutableArray *commentArr =[NSMutableArray array];
+    for (ProductsM *model in self.orderFrame.orderModel.order_products) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        WEMineAddComentCell *cell =(WEMineAddComentCell *)[_commentList cellForRowAtIndexPath:indexPath];
+        if ([[NSString deleteSpacing:cell.tv.text] length]>0) {
+            NSDictionary *commentDict =@{@"p_id":model.pid,
+                                         @"comment":cell.tv.text};
+            [commentArr addObject:commentDict];
+        }
+       
+    }
+    
+    if (commentArr.count == 0) {
+        
+        [AlertUtil showAlertWithText:@"您还没有进行评论，请您进行评论后再提交"];
+        return;
+    }
+    
+    __weak WEMineAddComentVC *bSelf=self;
+    [[[WEHTTPHandler alloc]init] executeOrderCommentsWithUserId:[AccountHanler userId] withOrderNum:self.orderFrame.orderModel.order_num withJsonStr:[commentArr JSONString] Success:^(id obj) {
+        
+        [AlertUtil showAlertWithText:@"提交成功"];
+        [bSelf.navigationController popViewControllerAnimated:YES];
+        
+    } failed:^(id obj) {
+        [AlertUtil showAlertWithText:@"提交失败"];
+
+    }];
 
 
 }
