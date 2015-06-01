@@ -62,11 +62,11 @@
 
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView {
+- (void)textViewDidEndEditing:(UITextView *)textView{
     
+    [_tv resignFirstResponder];
     
 }
-
 
 
 

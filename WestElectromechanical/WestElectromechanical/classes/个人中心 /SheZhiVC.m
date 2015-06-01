@@ -13,6 +13,7 @@
 #import "MarkSheetVC.h"
 #import "TLAlertView.h"
 #import "LoginVC.h"
+#import "SoftWareShareVC.h"
 
 @interface SheZhiVC ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
@@ -160,7 +161,9 @@
             
         case 2:
         {
+            SoftWareShareVC *ss = [[SoftWareShareVC alloc]init];
             
+            [self.navigationController pushViewController:ss animated:YES];
             
         }
             break;

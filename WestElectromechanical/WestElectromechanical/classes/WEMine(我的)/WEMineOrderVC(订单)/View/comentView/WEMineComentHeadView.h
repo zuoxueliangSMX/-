@@ -12,6 +12,7 @@
 @interface WEMineComentHeadView : UIView
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)UILabel *orderNumLa;
+@property(nonatomic,weak)UIImageView *productImg;
 @property(nonatomic,strong)ProductsM *pm;
 
 
