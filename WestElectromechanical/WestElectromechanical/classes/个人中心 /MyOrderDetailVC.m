@@ -110,12 +110,12 @@
     [headView addSubview:headCell];
     UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, VIEW_WIDETH, 150)];
     GlanceCell *footCell = [[[NSBundle mainBundle] loadNibNamed:@"GlanceCell" owner:self options:nil]objectAtIndex:3];
-    footCell.frame = CGRectMake(0, 10, SCREEN_WIDTH, 140);
+    footCell.frame = CGRectMake(10, 10, SCREEN_WIDTH-20, 120);
     [footCell.layer setCornerRadius:4];
     footCell.backgroundColor = [UIColor whiteColor];
     footCell.backgroundColor = [UIColor whiteColor];
   
-    footCell.goodsPriceLa.text = [NSString stringWithFormat:@"商品总额“¥ :%@",_wm.product_all_money];
+    footCell.goodsPriceLa.text = [NSString stringWithFormat:@"商品总额 :¥ %@",_wm.product_all_money];
     footCell.totalCountLa.text =[NSString stringWithFormat:@"总计 :%@件商品",_wm.gongji];
     footCell.freightageLa.text =[NSString stringWithFormat:@"共计运费: ¥ %@",_wm.yunfei];
     footCell.subtractFeeLa.text =[NSString stringWithFormat:@"减免运费: ¥ %@",_wm.reduce_yunfei];
@@ -157,7 +157,7 @@
         cell.backgroundColor = SET_COLOR(234.0, 234.0, 234.0);
         cell.frame =CGRectMake(0, 0, SCREEN_WIDTH, 120);
         
-        UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 110, 120)];
+        UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(10, 0, 100, 120)];
         
         [cell.contentView addSubview:imgV];
         

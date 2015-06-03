@@ -125,6 +125,7 @@
     
     cell.priceLa.text =[NSString stringWithFormat:@"¥%@",singleModel.p_price];
     cell.memberPrice.text =[NSString stringWithFormat:@"会员价:%@",singleModel.p_v_price];
+    [cell.memberPrice sizeToFit];
     cell.memberPrice.textColor =[UIColor redColor];
     UIImageView*imgv2 =(UIImageView*)[cell.contentView viewWithTag:10086];
     imgv2.contentMode =UIViewContentModeScaleAspectFit;

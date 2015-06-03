@@ -212,6 +212,11 @@
 		A3C48FB31AEFD00D001D9717 /* WECartHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C48FB21AEFD00D001D9717 /* WECartHomeCell.m */; };
 		A3C48FB61AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C48FB51AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m */; };
 		A3C48FB91AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C48FB81AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m */; };
+		A3CCA8541B1CC5A9008DB662 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CCA84F1B1CC5A9008DB662 /* Default@2x.png */; };
+		A3CCA8551B1CC5A9008DB662 /* Default-736@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CCA8501B1CC5A9008DB662 /* Default-736@3x.png */; };
+		A3CCA8561B1CC5A9008DB662 /* Default-667@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CCA8511B1CC5A9008DB662 /* Default-667@2x.png */; };
+		A3CCA8571B1CC5A9008DB662 /* Default-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CCA8521B1CC5A9008DB662 /* Default-568@2x.png */; };
+		A3CCA8581B1CC5A9008DB662 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A3CCA8531B1CC5A9008DB662 /* Default.png */; };
 		A3D9E8A91B13FA850090F619 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9E8A71B13FA850090F619 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A3D9E8AC1B1434E60090F619 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9E8AB1B1434E60090F619 /* Product.m */; };
 		A3D9E8D91B14BEAC0090F619 /* WEAdvertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9E8D81B14BEAC0090F619 /* WEAdvertModel.m */; };
@@ -696,6 +701,11 @@
 		A3C48FB51AEFD0B8001D9717 /* WECartHomeCellBackgroudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartHomeCellBackgroudView.m; sourceTree = "<group>"; };
 		A3C48FB71AEFD582001D9717 /* WECartHomeCellMiddleInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WECartHomeCellMiddleInfoView.h; sourceTree = "<group>"; };
 		A3C48FB81AEFD582001D9717 /* WECartHomeCellMiddleInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WECartHomeCellMiddleInfoView.m; sourceTree = "<group>"; };
+		A3CCA84F1B1CC5A9008DB662 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A3CCA8501B1CC5A9008DB662 /* Default-736@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736@3x.png"; sourceTree = "<group>"; };
+		A3CCA8511B1CC5A9008DB662 /* Default-667@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667@2x.png"; sourceTree = "<group>"; };
+		A3CCA8521B1CC5A9008DB662 /* Default-568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568@2x.png"; sourceTree = "<group>"; };
+		A3CCA8531B1CC5A9008DB662 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A3D9E8A61B13FA850090F619 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		A3D9E8A71B13FA850090F619 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		A3D9E8A81B13FA850090F619 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -1278,6 +1288,11 @@
 		A38A320F1AEBE98800F7FE7C /* WestElectromechanical */ = {
 			isa = PBXGroup;
 			children = (
+				A3CCA84F1B1CC5A9008DB662 /* Default@2x.png */,
+				A3CCA8501B1CC5A9008DB662 /* Default-736@3x.png */,
+				A3CCA8511B1CC5A9008DB662 /* Default-667@2x.png */,
+				A3CCA8521B1CC5A9008DB662 /* Default-568@2x.png */,
+				A3CCA8531B1CC5A9008DB662 /* Default.png */,
 				A38A32501AEC033D00F7FE7C /* classes */,
 				A38A321A1AEBE98800F7FE7C /* Main.storyboard */,
 				A38A321F1AEBE98800F7FE7C /* LaunchScreen.xib */,
@@ -2049,10 +2064,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FE4BDAB1B0AE82E001A2B57 /* AlipaySDK.bundle in Resources */,
+				A3CCA8581B1CC5A9008DB662 /* Default.png in Resources */,
 				A38A321C1AEBE98800F7FE7C /* Main.storyboard in Resources */,
+				A3CCA8551B1CC5A9008DB662 /* Default-736@3x.png in Resources */,
 				7FE59F0E1AFB9E8C00D8ABA9 /* GlanceCell.xib in Resources */,
+				A3CCA8561B1CC5A9008DB662 /* Default-667@2x.png in Resources */,
 				A3BF23221B1B401000F0F4AA /* Resource.bundle in Resources */,
 				A38A32211AEBE98800F7FE7C /* LaunchScreen.xib in Resources */,
+				A3CCA8571B1CC5A9008DB662 /* Default-568@2x.png in Resources */,
 				A3BF23261B1B401000F0F4AA /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				7FDEDC1C1AF77A1900911A02 /* Images.xcassets in Resources */,
 				A3883D821AFA186D00EC2CEA /* area.plist in Resources */,
@@ -2060,6 +2079,7 @@
 				7FDEDC171AF7549C00911A02 /* SendIFAPPSeting.plist in Resources */,
 				A3BF23211B1B401000F0F4AA /* ShareSDKLocalizable.strings in Resources */,
 				A369CFB51AEE70C4001F3DB7 /* unicode_to_hanyu_pinyin.txt in Resources */,
+				A3CCA8541B1CC5A9008DB662 /* Default@2x.png in Resources */,
 				A3C3B9ED1B10BD0F00DBA328 /* province_data.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2471,7 +2491,7 @@
 				);
 				PRELINK_FLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/** ${SRCROOT}/WestElectromechanical";
 			};
 			name = Debug;
@@ -2521,7 +2541,7 @@
 				);
 				PRELINK_FLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/** ${SRCROOT}/WestElectromechanical";
 			};
 			name = Release;

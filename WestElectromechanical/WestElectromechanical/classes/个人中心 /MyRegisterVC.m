@@ -455,7 +455,7 @@
             
 //            return;
         }else{
-            [AlertUtil showAlertWithText:@"注册失败"];
+            [AlertUtil showAlertWithText:@"用户已存在"];
             
             //         WARN_ALERT(@"");
         }

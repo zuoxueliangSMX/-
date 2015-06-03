@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Default.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "Default-480@2x.png"
+      "filename" : "Default-667@2x.png"
     },
     {
       "idiom" : "iphone",
-      "filename" : "StartImga@2x.png",
+      "filename" : "Default-568@2x.png",
       "subtype" : "retina4",
       "scale" : "2x"
     },

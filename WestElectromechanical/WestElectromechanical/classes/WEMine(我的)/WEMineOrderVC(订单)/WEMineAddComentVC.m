@@ -128,7 +128,6 @@
     for (ProductsM *model in self.orderFrame.orderModel.order_products) {
        
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-          index ++;
         WEMineAddComentCell *cell =(WEMineAddComentCell *)[_commentList cellForRowAtIndexPath:indexPath];
         if ([[NSString deleteSpacing:cell.tv.text] length]>0) {
             NSDictionary *commentDict =@{@"p_id":model.pid,

@@ -316,7 +316,7 @@
     product.subject = @"西域电商订单";
 //    product.body = self.orderNum;
     
-    product.price = 0.01f;
+    product.price = [allPrice floatValue];
     
     
     

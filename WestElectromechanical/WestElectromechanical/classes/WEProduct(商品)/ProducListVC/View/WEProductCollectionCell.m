@@ -22,7 +22,7 @@
     if (self = [super initWithFrame:frame]) {
         [[NSNotificationCenter defaultCenter] addObserver: self
          selector:@selector(acceptShow) name:@"acceptShow" object:nil];
-
+        UIImage *img = [UIImage imageNamed:@"Product_AddCart"];
         UIImageView *productImg =[[UIImageView alloc]init];
         productImg.frame =CGRectMake(5,5,frame.size.width-10, frame.size.width-10);
         [productImg setImage:[UIImage imageNamed:@"product_advert_default"]];
@@ -70,7 +70,7 @@
         _productType = productType;
         
         UILabel *productOriPrice =[[UILabel alloc]init];
-        productOriPrice.frame =CGRectMake(  CGRectGetMinX(productBrand.frame),CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3+10,16);
+        productOriPrice.frame =CGRectMake(  CGRectGetMinX(productBrand.frame),CGRectGetMaxY(productType.frame)+3,(frame.size.width-img.size.width-25)/2,16);
         productOriPrice.numberOfLines =1;
         productOriPrice.font =font(10);
                productOriPrice.textColor =[UIColor redColor];
@@ -79,7 +79,7 @@
         
         
         UILabel *productDiscountPrice =[[UILabel alloc]init];
-        productDiscountPrice.frame =CGRectMake(  CGRectGetMaxX(productOriPrice.frame)-10,CGRectGetMaxY(productType.frame)+3,(frame.size.width-20)/3+10,16);
+        productDiscountPrice.frame =CGRectMake(  CGRectGetMaxX(productOriPrice.frame)+5,CGRectGetMaxY(productType.frame)+3,(frame.size.width-img.size.width-25)/2,16);
         productDiscountPrice.numberOfLines =1;
         productDiscountPrice.font =font(10);
         productDiscountPrice.textColor =[UIColor darkGrayColor];
@@ -89,14 +89,20 @@
         _prodcutSalePrice = productOriPrice;
         
         
+        
+        
         UIButton *btn =[UIButton buttonWithImageName:@"Product_AddCart" highImageName:@"Product_AddCart" target:self action:@selector(addProductCart:)];
         
 //        UIButton *btn = [[UIButton alloc]init];
 //        [btn setImage:[ UIImage  imageNamed:@"Product_AddCart"] forState:UIControlStateNormal];
-        btn.frame = CGRectMake(frame.size.width-btn.size.width-10, CGRectGetMaxY(productType.frame)+3, btn.size.width, btn.size.height);
+        btn.frame = CGRectMake(frame.size.width-36/2.0-10, CGRectGetMaxY(productType.frame)+3, 36/2.0, 34/2.0);
         
         _addCartBtn =btn;
         [self.contentView addSubview:btn];
+        UIImageView *imgv4 = [[UIImageView alloc] init];
+        imgv4.frame = CGRectMake(CGRectGetMinX(_addCartBtn.frame)-3, CGRectGetMinY(_addCartBtn.frame), 1, CGRectGetHeight(_addCartBtn.frame));
+        imgv4.backgroundColor = [UIColor appLineColor];
+        [self.contentView  addSubview:imgv4];
     }
     return self;
 }

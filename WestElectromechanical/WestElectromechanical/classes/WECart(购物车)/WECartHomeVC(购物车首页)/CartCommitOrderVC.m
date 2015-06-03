@@ -96,7 +96,7 @@
      UILabel *priceLa = [[UILabel alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(orderNumLa.frame)+10, SCREEN_WIDTH, 30)];
     
     priceLa.textColor = [UIColor lightGrayColor];
-    priceLa.text =[NSString stringWithFormat:@"价格：%@",self.allPrice];
+    priceLa.text =[NSString stringWithFormat:@"价格：%.2f",[self.allPrice floatValue]];
     priceLa.font = [UIFont systemFontOfSize:14];
 
     [self.view addSubview:priceLa];
@@ -186,7 +186,7 @@
     product.subject = @"西域电商订单";
     product.body = self.orderNum;
     
-    product.price = 0.01f;
+    product.price = [self.allPrice floatValue];
     
     
     

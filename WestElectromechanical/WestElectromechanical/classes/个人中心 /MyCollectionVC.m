@@ -215,10 +215,7 @@
     
     cell.addCartBtn.tag=[indexPath row]+100;
     
-    UIImageView *imgv4 = [[UIImageView alloc] init];
-    imgv4.frame = CGRectMake(CGRectGetMinX(cell.addCartBtn.frame)-15, CGRectGetMinY(cell.addCartBtn.frame), 1, CGRectGetHeight(cell.addCartBtn.frame));
-    imgv4.backgroundColor = [UIColor appLineColor];
-    [cell addSubview:imgv4];
+
 
     
     

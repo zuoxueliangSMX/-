@@ -47,6 +47,6 @@
         </view>
     </objects>
     <resources>
-        <image name="StartImga" width="640" height="1136"/>
+        <image name="StartImga" width="640" height="960"/>
     </resources>
 </document>

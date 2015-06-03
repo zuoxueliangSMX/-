@@ -54,7 +54,7 @@
         
         
         UILabel *productType =[[UILabel alloc]init];
-        productType.frame =CGRectMake(  CGRectGetMinX(productTitle.frame)+5,CGRectGetMaxY(productOrder.frame)+5,(CGRectGetWidth(productTitle.frame)-20)/2.0,16);
+        productType.frame =CGRectMake(  CGRectGetMinX(productTitle.frame),CGRectGetMaxY(productOrder.frame)+5,(CGRectGetWidth(productTitle.frame)-20)/2.0,16);
         productType.numberOfLines =1;
         productType.font =font(14);
         productType.backgroundColor =[UIColor clearColor];
@@ -63,7 +63,7 @@
 
         
         UILabel *productBrand =[[UILabel alloc]init];
-        productBrand.frame =CGRectMake(CGRectGetMaxX(productType.frame)+5,CGRectGetMaxY(productOrder.frame)+5,(CGRectGetWidth(productTitle.frame)-20)/2.0,16);
+        productBrand.frame =CGRectMake(CGRectGetMaxX(productType.frame),CGRectGetMaxY(productOrder.frame)+5,(CGRectGetWidth(productTitle.frame)-20)/2.0,16);
         productBrand.numberOfLines =1;
         productBrand.font =font(14);
         productBrand.backgroundColor =[UIColor clearColor];
@@ -72,23 +72,23 @@
         
 
         UILabel *productOriPrice =[[UILabel alloc]init];
-        productOriPrice.frame =CGRectMake(CGRectGetMinX(productType.frame),CGRectGetMaxY(productType.frame)+3,(CGRectGetWidth(productTitle.frame)-20)/3.0,16);
+        productOriPrice.frame =CGRectMake(CGRectGetMinX(productType.frame),CGRectGetMaxY(productType.frame)+3,(CGRectGetWidth(productTitle.frame)-20-28)/2.0,16);
         productOriPrice.numberOfLines =1;
         productOriPrice.font =font(12);
         productOriPrice.textColor =[UIColor redColor];
         productOriPrice.backgroundColor =[UIColor clearColor];
         [bgView addSubview:productOriPrice];
-        productOriPrice.text =@"￥ 32.6";
+//        productOriPrice.text =@"￥ 32.6";
         
         
         
         UILabel *productDiscountPrice =[[UILabel alloc]init];
-        productDiscountPrice.frame =CGRectMake( CGRectGetMaxX(productOriPrice.frame)+5,CGRectGetMaxY(productType.frame)+3,(CGRectGetWidth(productTitle.frame)-20)/3.0,16);
+        productDiscountPrice.frame =CGRectMake( CGRectGetMaxX(productOriPrice.frame)+5,CGRectGetMaxY(productType.frame)+3,(CGRectGetWidth(productTitle.frame)-20-28)/2.0,16);
         productDiscountPrice.numberOfLines =1;
-        productDiscountPrice.font =font(10);
+        productDiscountPrice.font =font(12);
         productDiscountPrice.textColor =[UIColor appLineColor];
         productDiscountPrice.backgroundColor =[UIColor clearColor];
-        productDiscountPrice.text =@"￥ 18.6";
+//        productDiscountPrice.text =@"￥ 18.6";
         [bgView addSubview:productDiscountPrice];
         _productPrice = productDiscountPrice;
         _productSalePrice = productOriPrice;
