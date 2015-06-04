@@ -12,6 +12,7 @@
 @property (nonatomic ,strong)WECategorysModel *leftModel;
 @property (nonatomic ,strong)WECategorysModel *rightModel;
 @property (nonatomic ,strong)NSIndexPath *selectedIndex;
+@property (nonatomic ,assign)NSInteger selectedRow;
 @property (nonatomic ,strong)NSMutableArray *leftArr;
 @property (nonatomic ,strong)NSMutableArray *rightArr;
 @property (nonatomic ,weak)UITableView *leftTable;

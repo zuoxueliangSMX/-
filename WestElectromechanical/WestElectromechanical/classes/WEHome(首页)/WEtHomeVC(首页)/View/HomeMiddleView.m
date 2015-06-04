@@ -47,7 +47,7 @@
         for (int i = 0; i< kMiddleBtnCount; i++) {
             UIButton *btn =[UIButton buttonWithType:UIButtonTypeCustom];
             btn.tag = kMiddleBtnTag+i;
-            UIImage *img =[UIImage imageNamed:[NSString stringWithFormat:@"Home_Middle_0%d",i+1]];
+            UIImage *img =[UIImage imageNamed:[NSString stringWithFormat:@"Home_Middle_0%d",1]];
             CGFloat margin =(frame.size.width-4*img.size.width)/5;
             btn.frame =CGRectMake(margin+(img.size.width+margin)*i,CGRectGetMaxY(adBgView.frame)+5, img.size.width,img.size.height);
             [btn setBackgroundColor:[UIColor clearColor]];

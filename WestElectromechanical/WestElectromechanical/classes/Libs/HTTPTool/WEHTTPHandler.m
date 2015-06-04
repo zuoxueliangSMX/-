@@ -31,7 +31,7 @@
                                withSuccess:(SuccessBlock)success
                                 withFailed:(FailedBlock)failed
 {
-    [AlertUtil showAlertWithText:@"获取首页数据"];
+//    [AlertUtil showAlertWithText:@"获取首页数据"];
     NSString *url =[BaseHandler requestUrlWithUrl:API_HOME_DATA WithPath:@""];
     NSString *params =[NSString stringWithFormat:@"city_name=%@",cityName];
     [HttpTool post:url withParams:params withSuccess:^(id json) {
@@ -47,12 +47,17 @@
             if (failed) {
                 failed(nil);
             }
+          
+            [AlertUtil showAlertWithText:@"获取首页数据错误"];
+
         }
     } withFailure:^(NSError *error) {
         DLog(@"%@",error);
         if (failed) {
             failed(error);
         }
+            [AlertUtil showAlertWithText:@"网络请求数据错误"];
+
     }];
     
 }

@@ -37,6 +37,7 @@
 {
     WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
     [handler executeGetSecondCategoryTaskWithCategory:categoryId Success:^(id obj) {
+        self.rightModel = nil;
         self.rightModel = (WECategorysModel *)obj;
         [self.rightTable reloadData];
         
@@ -49,27 +50,22 @@
 /**
  *  获取下一个控制器的数据
  */
-- (void)getNextVCData:(NSString *)categroyId withCategoryName:(NSString *)name
+- (void)getNextVCData:(WECategorySingleModel *)singleModel withCategoryName:(NSString *)name withIndex:(NSIndexPath *)index
 {
     
     WEHTTPHandler *handler =[[WEHTTPHandler alloc]init];
     __weak WESecondCategoryVC *bSelf = self;
     
-    [handler executeGetSecondCategoryTaskWithCategory:categroyId Success:^(id obj) {
+    [handler executeGetSecondCategoryTaskWithCategory:singleModel.t_id Success:^(id obj) {
         WEThirdCategoryVC *thirdCategoryVC =[[WEThirdCategoryVC alloc]init];
         thirdCategoryVC.title = name;
-        thirdCategoryVC.leftModel = (WECategorysModel *)obj;
+        thirdCategoryVC.leftModel = self.rightModel;
+//        thirdCategoryVC.selectedIndex = index;
+        thirdCategoryVC.selectedRow = index.row;
         WECategorysModel *categorysModel =(WECategorysModel *)obj;
-        WECategorySingleModel *singleModel =categorysModel.types[0];
-        WEHTTPHandler *secondhandler =[[WEHTTPHandler alloc]init];
+        thirdCategoryVC.rightModel =categorysModel;
+        [bSelf.navigationController pushViewController:thirdCategoryVC animated:YES];
         
-        [secondhandler executeGetSecondCategoryTaskWithCategory:singleModel.t_id Success:^(id obj) {
-            thirdCategoryVC.rightModel = (WECategorysModel *)obj;
-            [bSelf.navigationController pushViewController:thirdCategoryVC animated:YES];
-            
-        } WithFailed:^(id obj) {
-            
-        }];
     } WithFailed:^(id obj) {
         
     }];
@@ -85,15 +81,16 @@
         self.selectedIndex = indexPath;
         UITableViewCell *cell =[tableView cellForRowAtIndexPath:self.selectedIndex];
         cell.backgroundColor =[UIColor whiteColor];
-        
         WECategorySingleModel *singleModel =self.leftModel.types[indexPath.row];
+        self.title =singleModel.t_name;
         [self getRightData:singleModel.t_id];
         
     }else{
         
         
-        WECategorySingleModel *singleModel =self.leftModel.types[indexPath.row];
-        [self getNextVCData:singleModel.t_id withCategoryName:singleModel.t_name];
+        WECategorySingleModel *singleModel =self.rightModel.types[indexPath.row];
+        DLog(@"%@-----%@-----%@",singleModel.t_name,singleModel.t_id,singleModel.t_types);
+        [self getNextVCData:singleModel withCategoryName:singleModel.t_name withIndex:indexPath];
 
         
     }

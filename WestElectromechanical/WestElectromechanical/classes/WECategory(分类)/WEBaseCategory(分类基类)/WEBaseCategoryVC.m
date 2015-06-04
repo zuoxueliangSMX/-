@@ -15,6 +15,13 @@
 @end
 
 @implementation WEBaseCategoryVC
+- (instancetype)init{
+    if (self =[super init]) {
+
+
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,9 +44,9 @@
     _leftTable =leftTable;
     UIView *view =[[UIView alloc]init];
     leftTable.tableFooterView = view;
-    _selectedIndex =[NSIndexPath indexPathForRow:0 inSection:0];
+    _selectedIndex =[NSIndexPath indexPathForRow:_selectedRow inSection:0];
     
-//    [_leftTable didDeselectRowAtIndexPath:]];
+
 }
 
 - (void)initRightTableView
@@ -82,15 +89,17 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         
     }
-
+    
+    
     if (self.leftTable == tableView) {
         cell.textLabel.text =[_leftModel.types[indexPath.row] t_name];
         cell.backgroundColor =[UIColor clearColor];
         if (!_isSelected) {
             if (indexPath == _selectedIndex) {
                 cell.backgroundColor =[UIColor whiteColor];
+                _isSelected =YES;
             }
-            _isSelected =YES;
+            
         }
        
     }else{

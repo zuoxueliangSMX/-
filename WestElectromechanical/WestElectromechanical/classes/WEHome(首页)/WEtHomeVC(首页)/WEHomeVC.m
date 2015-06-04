@@ -33,7 +33,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
-    [self addRightItem];
+    [self initNetData:@"北京"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -110,7 +110,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor =[UIColor colorFromHexCode:@"#f2f2f2"];
     [self setBarButtonItems];
-
+    [self addRightItem];
     self.automaticallyAdjustsScrollViewInsets = NO;
     __weak WEHomeVC *bSelf =self;
     WEHomeScrollView *scrollView =[[WEHomeScrollView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-49)];
@@ -123,8 +123,8 @@
     [self.view addSubview:scrollView];
     [scrollView.bottomView setHomeBottomScrollViewBlock:^(NSInteger bgTag, NSInteger imgTag) {
         DLog(@"%ld    -----    %ld",bgTag,imgTag);
-        DLog(@"%@------%@-----%@",[_homeInfoModel.recommends[bgTag*4+imgTag] p_id],[_homeInfoModel.recommends[bgTag*4+imgTag] contentid],[_homeInfoModel.recommends[bgTag*4+imgTag] Imgurl]);
-        [bSelf getProductDetailInfo:[_homeInfoModel.recommends[bgTag*4+imgTag] p_id]];
+        DLog(@"%@------%@-----%@",[_homeInfoModel.recommends[bgTag*4+(imgTag-1000)] p_id],[_homeInfoModel.recommends[bgTag*4+(imgTag-1000)] contentid],[_homeInfoModel.recommends[bgTag*4+(imgTag-1000)] Imgurl]);
+        [bSelf getProductDetailInfo:[_homeInfoModel.recommends[bgTag*4+(imgTag-1000)] p_id]];
     }];
 
     [scrollView.middleView setHomeMiddleViewAdLabelBlock:^(NSInteger index) {
@@ -172,7 +172,7 @@
         }
     }];
     
-    [self initNetData:@"北京"];
+    
 
     [self onCheckVersion];
 }

@@ -53,6 +53,8 @@
         UIImageView *imgView =[_imgs objectAtIndex:i];
         WERecommendModel *recommendModel =[recommends objectAtIndex:i];
         DLog(@"111------>%@",recommendModel.Imgurl);
+        DLog(@"222------>%@",recommendModel.p_id);
+       
         [imgView setWebImgUrl:recommendModel.Imgurl placeHolder:[UIImage imageNamed:@"product_load_default"]];
     }
 }
@@ -65,7 +67,7 @@
     
     DLog(@"self--%ld----img-%ld",self.tag,recognizer.view.tag);
     if (_block) {
-        _block(recognizer.view.tag-kTag);
+        _block(recognizer.view.tag);
     }
 }
 /*

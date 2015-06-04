@@ -130,6 +130,16 @@
     NSArray *tem =@[tem1,tem2,tem3];
     for (int i = 0; i < kBottomViewCount; i++) {
        WERecommendBgView *bgView =  [_bgViews objectAtIndex:i];
+        if (i==0) {
+            bgView.backgroundColor =[UIColor redColor];
+
+        }else if(i==1){
+            bgView.backgroundColor =[UIColor blueColor];
+
+        }else{
+            bgView.backgroundColor =[UIColor orangeColor];
+
+        }
         [bgView setUpBgViewData:tem[i]];
     }
 }

@@ -79,6 +79,7 @@
         cell.backgroundColor =[UIColor whiteColor];
         
         WECategorySingleModel *singleModel =self.leftModel.types[indexPath.row];
+        self.title =singleModel.t_name;
         [self getRightData:singleModel.t_id];
         
     }else{
