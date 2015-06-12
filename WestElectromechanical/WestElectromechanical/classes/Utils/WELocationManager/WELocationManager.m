@@ -27,26 +27,49 @@ DEFINE_SINGLETON_FOR_IMPLEMENTATION(WELocationManager)
         _locationMgr = [[CLLocationManager alloc] init];
         // 当它定位完成,获得用户的经度和纬度时,会通知代理
         if ([CLLocationManager locationServicesEnabled]) {
-            DLog(@"定位服务不可用");
+            DLog(@"定位服务可用");
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+                self.locationMgr = [[CLLocationManager alloc] init];
+                self.locationMgr.delegate = self;
+                self.locationMgr.distanceFilter = 200;
+                self.locationMgr.desiredAccuracy = kCLLocationAccuracyThreeKilometers;//设置定位精度
+                //定位频率,每隔多少米定位一次
+                CLLocationDistance distance=10000.0;//十米定位一次
+                self.locationMgr.distanceFilter=distance;
+                [self.locationMgr requestWhenInUseAuthorization];
+                //启动跟踪定位
+                // CLGeocoder可以根据刚才定位管理器定出的 经度和纬度,解码出用户所在位置的城市名
+            }else{
+                 [_locationMgr startUpdatingLocation];
+
+            }
+            _locationGeocoder = [[CLGeocoder alloc] init];
+
             
+        }else{
+            DLog(@"定位服务不可用");
+
         }
         
-        //如果没有授权则请求用户授权
-        if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
-            [_locationMgr requestWhenInUseAuthorization];
-        }else if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusAuthorizedWhenInUse){
-            //设置代理
-            _locationMgr.delegate=self;
-            //设置定位精度
-            _locationMgr.desiredAccuracy=kCLLocationAccuracyThreeKilometers;
-            //定位频率,每隔多少米定位一次
-            CLLocationDistance distance=3000.0;//十米定位一次
-            _locationMgr.distanceFilter=distance;
-            //启动跟踪定位
-//            [_locationMgr startUpdatingLocation];
-             // CLGeocoder可以根据刚才定位管理器定出的 经度和纬度,解码出用户所在位置的城市名
-            _locationGeocoder = [[CLGeocoder alloc] init];
-        }
+        
+//        if([CLLocationManager locationServicesEnabled]){
+//          kCLLocationAccuracyBest;
+//            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+//                //使用期间
+//
+//                //始终
+//                //or [self.locationManage requestAlwaysAuthorization]
+//            }
+//        }
+//        
+//        
+//        
+//        //如果没有授权则请求用户授权
+//        if ([CLLocationManager authorizationStatus]==kCLAuthorizationStatusNotDetermined){
+//            [_locationMgr requestWhenInUseAuthorization];
+//        }else if([CLLocationManager authorizationStatus]==kCLAuthorizationStatusAuthorizedWhenInUse){
+//
+//        }
         
     }
     return self;

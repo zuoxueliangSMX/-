@@ -131,13 +131,13 @@
     for (int i = 0; i < kBottomViewCount; i++) {
        WERecommendBgView *bgView =  [_bgViews objectAtIndex:i];
         if (i==0) {
-            bgView.backgroundColor =[UIColor redColor];
+            bgView.backgroundColor =[UIColor clearColor];
 
         }else if(i==1){
-            bgView.backgroundColor =[UIColor blueColor];
+            bgView.backgroundColor =[UIColor clearColor];
 
         }else{
-            bgView.backgroundColor =[UIColor orangeColor];
+            bgView.backgroundColor =[UIColor clearColor];
 
         }
         [bgView setUpBgViewData:tem[i]];
