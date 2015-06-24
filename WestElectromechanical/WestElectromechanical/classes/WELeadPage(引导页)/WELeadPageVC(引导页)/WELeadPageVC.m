@@ -47,19 +47,23 @@
     for (int i = 0; i<WELeadPageImageCount; i++) {
         // 创建UIImageView
         UIImageView *imageView = [[UIImageView alloc] init];
-        NSString *name = [NSString stringWithFormat:@"welcome_page_%d.png", i + 1];
+        NSString *temName = [NSString stringWithFormat:@"welcome_page_%d", i + 1];
+        NSString *name = [NSString stringWithFormat:@"%@-667h",temName];
         UIImage *image =[UIImage imageNamed:name];
         if (Iphone5Inch) { // 4inch  需要手动去加载4inch对应的-568h图片
-            name = [name stringByAppendingString:@"-568h.png"];
+            name = [temName stringByAppendingString:@"-568h"];
         }else if(Iphone6Inch){
-            name = [name stringByAppendingString:@"-667h.png"];
+            name = [temName stringByAppendingString:@"-667h"];
         }else if(Iphone6PlusInch){
-            name = [name stringByAppendingString:@"-759h.png"];
+            name = [temName stringByAppendingString:@"-736h"];
         }
-        if (![UIImage imageNamed:name]) {
-            imageView.image = image;
+        
+        imageView.image =image;
+
+        
+        if ([UIImage imageNamed:name]) {
+            imageView.image = [UIImage imageNamed:name];
         }else{
-            imageView.image =[UIImage imageNamed:name];
         }
         
         [scrollView addSubview:imageView];

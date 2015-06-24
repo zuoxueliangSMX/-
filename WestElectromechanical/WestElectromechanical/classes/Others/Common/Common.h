@@ -85,7 +85,7 @@ return shared##className; \
 // 是否为4inch
 #define Iphone5Inch ([UIScreen mainScreen].bounds.size.height == 568.0)
 #define Iphone6Inch ([UIScreen mainScreen].bounds.size.height == 667.0)
-#define Iphone6PlusInch  ([UIScreen mainScreen].bounds.size.height > 759.0)
+#define Iphone6PlusInch  ([UIScreen mainScreen].bounds.size.height > 736.0)
 
 //#ifdef DEBUG
 //#define DLog( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
